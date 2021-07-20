@@ -1,0 +1,200 @@
+#loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: $BG-modal;
+  position: fixed;
+  z-index: 9999;
+  font-family: "Squada One", sans-serif;
+  color: $loading-color-thin;
+
+  &.loaded {
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+  }
+
+  .bluelight {
+    display: table;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: content-box;
+    p {
+      display: table-cell;
+      font-size: 2rem;
+      text-decoration: none;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      transition: background 1s,
+        border-width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1), text-shadow 0.5s;
+      color: $loading-text-color;
+      box-shadow: 0 0 0 $loading-color-normal, inset 0 0 0 $loading-color-normal;
+      background-image: radial-gradient(
+        center,
+        ellipse cover,
+        $loading-color-normal 0%,
+        $loading-color-normal 90%
+      );
+      border: 0 dotted $loading-color-normal;
+      box-sizing: content-box;
+      line-height: normal;
+    }
+    &:before,
+    &:after,
+    p:before,
+    p:after {
+      transition: 0.2s ease-in-out;
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      border: 60px dashed transparent;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:before {
+      animation: rotate 20s linear 0s infinite;
+      width: 180%;
+      height: 180%;
+      border: 3px dotted $loading-color-normal;
+      border-color: rgba(10, 175, 230, 0.3);
+      z-index: -1;
+    }
+    &:after {
+      animation: rotate 10s linear 0s infinite reverse;
+      border: 80px dashed $loading-color-normal;
+      border-color: rgba(10, 175, 230, 0.1);
+      width: 160%;
+      height: 160%;
+      z-index: -2;
+    }
+    p {
+      &:before {
+        animation: rotate 5s ease-in-out 0s infinite alternate;
+        width: 120%;
+        height: 120%;
+        border: 50px dashed $loading-color-normal;
+        border-color: rgba(10, 175, 230, 0.3);
+      }
+      &:after {
+        animation: rotate 5s linear 0s infinite;
+        border: 18px dashed $loading-color-normal;
+        border-color: rgba(10, 175, 230, 0.3);
+        width: 120%;
+        height: 120%;
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: $BG-modal;
+  position: fixed;
+  z-index: 9999;
+  font-family: "Squada One", sans-serif;
+  color: $loading-color-thin;
+
+  &.loaded {
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+  }
+
+  .bluelight {
+    display: table;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: content-box;
+    p {
+      display: table-cell;
+      font-size: 1.5rem;
+      text-decoration: none;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 50%;
+      transition: background 1s,
+        border-width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1), text-shadow 0.5s;
+      color: $loading-text-color;
+      box-shadow: 0 0 0 $loading-color-normal, inset 0 0 0 $loading-color-normal;
+      background-image: radial-gradient(
+        center,
+        ellipse cover,
+        $loading-color-normal 0%,
+        $loading-color-normal 90%
+      );
+      border: 0 dotted $loading-color-normal;
+      box-sizing: content-box;
+      line-height: normal;
+    }
+    &:before,
+    &:after,
+    p:before,
+    p:after {
+      transition: 0.2s ease-in-out;
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      border: 30px dashed transparent;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:before {
+      animation: rotate 20s linear 0s infinite;
+      width: 90%;
+      height: 90%;
+      border: 1.5px dotted $loading-color-normal;
+      border-color: rgba(10, 175, 230, 0.3);
+      z-index: -1;
+    }
+    &:after {
+      animation: rotate 10s linear 0s infinite reverse;
+      border: 40px dashed $loading-color-normal;
+      border-color: rgba(10, 175, 230, 0.1);
+      width: 80%;
+      height: 80%;
+      z-index: -2;
+    }
+    p {
+      &:before {
+        animation: rotate 5s ease-in-out 0s infinite alternate;
+        width: 60%;
+        height: 60%;
+        border: 25px dashed $loading-color-normal;
+        border-color: rgba(10, 175, 230, 0.3);
+      }
+      &:after {
+        animation: rotate 5s linear 0s infinite;
+        border: 9px dashed $loading-color-normal;
+        border-color: rgba(10, 175, 230, 0.3);
+        width: 60%;
+        height: 60%;
+      }
+    }
+  }
+}
+}
+/* mobileここまで */

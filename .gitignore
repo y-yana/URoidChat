@@ -1,0 +1,6 @@
+__pycache__
+config.yml
+src/static/models/*.vrm
+
+src/static/main.js
+src/static/style.css

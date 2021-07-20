@@ -1,0 +1,263 @@
+{% extends "layout.html" %}{% block content %}
+
+<!-- オープニング -->
+<div id="opening">
+    <div id="openingContents">
+        <img src="../static/images/logo.png">
+        <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
+    </div>
+</div>
+
+<!-- ローディング -->
+<div id="loadingArea">
+</div>
+
+<!-- ヘッダー  -->
+<div id="header">
+    <!-- ロゴ画像 -->
+    <img src="../static/images/logo.png">
+    <!-- 名前変更フォーム -->
+    <div id="renameArea" style="display: none;">
+        <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
+            <div id='renameInputFlex'>
+            <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
+            <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+            </div>
+            <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
+        </form>
+    </div>
+    <!-- モデル変更フォーム -->
+    <div id="modelChangeArea" style="display: none;">
+        <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
+            <label for="upFile">
+                <div id="spansFlex">
+                    <span class="material-icons">description</span>
+                    <span>ファイルを選択</span>
+                </div>
+                <input id="upFile" type="file" name="the_file">
+            </label>
+            <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
+        </form>
+    </div>
+    <!-- 設定ボタン -->
+    <button id="setting"><span class="material-icons">settings</span></button>
+    <!-- 変数送信用(display:none) -->
+    <button id="modelChange" style="display: none;"></button>
+</div>
+
+<!-- 各種ボタンエリア -->
+<div id="btnArea">
+    <div id="btnFlex">
+        <!-- 録音中の表示 -->
+        <button id="recNow" class="iconBtn" disabled style="display: none;"><span class="material-icons">radio_button_checked</span></button>
+        <!-- スクリーンショットボタン -->
+        <button id="downloadBtn" class="iconBtn"><span class="material-icons">photo_camera</span></button>
+        <!-- ミュートボタン -->
+        <div id="muteBtn" class="iconBtn">
+            <button id="unmute"><span class="material-icons">volume_up</span></button>
+        </div>
+    </div>
+</div>
+
+<!-- メイン機能 -->
+<div id="mainArea">
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
+    </div>
+    <!-- チャットエリア -->
+    <div id="chatArea">
+        <div id="chatLogs">
+        </div>
+        <!-- チャット送信 -->
+        <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
+            <div id="chatSubmitFormItem">
+                <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
+                <button id="recStart_" class="recordBtn chatBtn"><span class="material-icons">mic</span></button>
+                <button id="recStop_" class="recordBtn chatBtn" style="display:none"><span
+                        class="material-icons">mic_off</span></button>
+                <button id="chatSubmitBtn" class="chatBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span
+                        class="material-icons">send</span></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" id="NPscript">var NP = 0;</script>
+<script type="text/javascript" id="ALL_NPscript">ALL_NP = 0;</script>
+<script type="text/javascript" id="facecheckbool">check = '0';</script>
+<script type="text/javascript" id="base_message">check = '0';</script>
+
+<script src="static/main.js"></script>
+<script>
+    // グローバル関数を定義
+    var path = 'path!!'
+
+    // 0のときは再生、1のときはミュート
+    var mute_num = 0
+
+    // チャット機能
+    function changeHandler(input_value) {
+        const chatMessage = $(input_value).serialize();
+
+        // 送受信時間
+        var sendTime = new Date();
+        var Hour = sendTime.getHours();
+        var Min = sendTime.getMinutes();
+        Min = String(Min)
+
+        // 0〜9分なら頭に0を付ける
+        if(Min.length == 1){
+            Min = '0' + Min
+        }
+
+        // 空白でsubmitした時の処理
+        if (input_value.value == '') {
+            var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
+
+            // 返事の表示
+            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + null_message + "</div></div><span id = 'sendTime' >" + Hour + ":" + Min + "</span ></div>");
+
+            // 自動スクロール
+            $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
+
+            if(mute_num == 0){
+                // 返事の読み上げ
+                const text = new SpeechSynthesisUtterance(null_message);
+                speechSynthesis.speak(text);
+            }
+
+            // 関数抜ける
+            return '';
+        };
+
+        // 送信メッセージの表示
+        $("#chatLogs").append("<div id='chatTimeSend'><span id = 'sendTime' >" + Hour + ":" + Min + "</span ><div id='sendMessage' class='chatMessage'><div class='chatLog'>" + input_value.value + "</div></div></div>");
+
+        // 自動スクロール
+        $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
+
+        // 入力欄の初期化
+        document.getElementById('chatMessage').value = "";
+
+        $.ajax("/show", {
+            type: "post",
+            data: chatMessage,  // POSTでサーバーに送信するデータ
+            dataType: "json",
+        }).done(function (data) { // 成功した場合実行される
+            console.log("Ajax通信 成功");
+
+            // POSTリクエストの結果を受け取ってHTMLを書き換える
+            const message = JSON.parse(data.values).message
+            if (message.includes('こんにちは') || message.includes('こんばんは') || message.includes('おはよう')) {
+                document.getElementById('base_message').value = '1';
+            }
+            //ネガポジの受取
+            const NP = JSON.parse(data.values).NP
+            document.getElementById('NPscript').value = NP;
+            const ALL_NP = JSON.parse(data.values).ALL_NP;
+            document.getElementById('ALL_NPscript').value = ALL_NP;
+
+            // 受信メッセージの表示
+            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + message + "</div></div><span id = 'sendTime' >" + Hour + ":" + Min + "</span ></div>");
+
+            // 自動スクロール
+            $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
+
+            // 受信メッセージの読み上げ
+            if (mute_num == 0) {
+                const text = new SpeechSynthesisUtterance(message);
+                speechSynthesis.speak(text);
+            }
+
+            if (NP > 0 || NP < 0) {
+                document.getElementById('facecheckbool').value = '1';
+            }
+
+        }).fail(function (data) { // 失敗した場合実行される
+            console.log("Ajax通信 失敗");
+
+            // エラーメッセージの表示
+            var errorMsg = '<span class="material-icons">error</span >送信エラーが発生しました';
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
+        });
+    }
+
+
+    // モデル変更機能
+    function uploadFormSubmit(input_value) {
+        // loading
+        var parent = document.getElementById("loadingArea");
+        var newElement = document.createElement("div");
+        var newContent = document.createElement("div");
+        var newChild = document.createElement("p");
+
+        newElement.appendChild(newContent);
+        newContent.appendChild(newChild);
+
+        newElement.setAttribute("id", "loading");
+        newContent.setAttribute("class", "loader bluelight");
+
+        var newText = document.createTextNode("Now Loading...");
+        newChild.appendChild(newText);
+
+        $(newElement).appendTo(parent).hide().fadeIn(300);
+
+        // form送信
+        var formData = new FormData($('#uploadForm')[0]);
+        $.ajax({
+            url: '/upload',
+            type: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            timeout: 10000
+        }).done(function (data) {
+            // form要素の削除
+            var parent = document.getElementById('modelChangeArea');
+            var child = document.getElementById('uploadForm');
+            parent.removeChild(child);
+
+            //PATHの受取
+            path = JSON.parse(data.values).path
+
+            var modelChangeBtn = document.getElementById("modelChange")
+
+            modelChangeBtn.value = path;
+
+            modelChangeBtn.click();
+
+            // loading要素の削除
+            $('#loading').fadeOut('normal');
+
+        }).fail(function () {
+            console.log('fail');
+
+            // loading要素の削除
+            $('#loading').fadeOut('normal');
+
+            // エラーメッセージの表示
+            var errorMsg = '<span class="material-icons">error</span >アップロードに失敗しました';
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
+        });
+
+    };
+
+
+    // 名前変更機能
+    function changeUserName() {
+        const newName = $('#renameForm').serialize();
+
+        $.ajax("/rename", {
+            type: "post",
+            data: newName,  // POSTでサーバーに送信するデータ
+            dataType: "json",
+        });
+
+        // form要素の削除
+        var parent = document.getElementById('renameArea');
+        var child = document.getElementById('renameForm');
+        parent.removeChild(child);
+    }
+</script>
+
+{% endblock %}
