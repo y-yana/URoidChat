@@ -21,11 +21,11 @@ def index():
     session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
     session['np_ALL']=0
-    return render_template("home.html")
-
-@app.route("/index", methods=["POST"])
-def move_index():
     return render_template("index.html")
+
+@app.route("/chat", methods=["POST"])
+def move_index():
+    return render_template("chat.html")
 
 @app.route('/rename', methods=['POST'])
 def rename():
