@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <body>
+{% extends "layout.html" %}{% block content %}
+
     <p>Hello</p>
     <form action="/chat" method="POST">
       <input type="submit" value="ボタン">
     </form>
-  </body>
-</html>
+
+{% endblock %}
