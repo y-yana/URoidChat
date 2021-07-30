@@ -4,11 +4,15 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: 'development',
-    entry: './src/entry/js/pages/chat.js',
+    //entry: './src/entry/js/pages/chat.js',
+    entry: {
+        'top': './src/entry/js/pages/top.js',
+        'chat': './src/entry/js/pages/chat.js',
+    },
 
     output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'src/static')
+        path: path.resolve(__dirname, 'src/static/build'),
+        filename: 'build_[name].js'
     },
 
     module: {
