@@ -5,9 +5,10 @@ import '../../ts/components/index.ts';
 import '../components/opening.js';
 import '../components/background.js';
 import '../components/setting.js';
+import '../components/mute.js';
 import '../components/enterKey.js';
 import '../components/speechRecognition.js';
 import '../components/download_png.js';
 
 // Sass
-import '../../style/index.scss';
+import '../../style/chat.scss';
