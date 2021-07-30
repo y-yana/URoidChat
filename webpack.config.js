@@ -1,17 +1,17 @@
 const path = require('path');
-
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FixStyleOnlyEntries = require("webpack-fix-style-only-entries");
 
 module.exports = {
     mode: 'development',
-    //entry: './src/entry/js/pages/chat.js',
     entry: {
         'top': './src/entry/js/pages/top.js',
         'chat': './src/entry/js/pages/chat.js',
+        'style.css': './src/entry/style/chat.scss',
     },
 
     output: {
-        path: path.resolve(__dirname, 'src/static/webpack'),
+        path: path.resolve(__dirname, 'src/static/webpack/'),
         filename: 'build_[name].js'
     },
 
@@ -72,7 +72,8 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             // 出力ファイル名
-            filename: "style.css",
+            filename: "[name]",
         }),
+        new FixStyleOnlyEntries(),
     ]
 };
