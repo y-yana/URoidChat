@@ -1,11 +1,14 @@
 import yaml
-from flask import Flask, render_template, jsonify, request,session
+from flask import Flask, render_template, jsonify, request,session,send_from_directory
 import json
 from chat import response
 import os
+import cv2
+import numpy as np
 import datetime
 import random, string
 from negaposi.negaposi import negaposi
+from image_transform import image_transform
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
@@ -102,6 +105,37 @@ def upload():
     }
 
     return jsonify(values=json.dumps(return_json))
+
+SAVE_DIR = "./images"
+if not os.path.isdir(SAVE_DIR):
+    os.mkdir(SAVE_DIR)
+
+@app.route('/images/<path:path>')
+def send_js(path):
+    return send_from_directory(SAVE_DIR, path)
+
+@app.route('/img', methods=['POST'])
+def upload_img():
+    if request.files['image']:
+        # 画像として読み込み
+        stream = request.files['image'].stream
+        img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+        img = cv2.imdecode(img_array, 1)
+
+
+
+        # 保存
+        #dt_now = datetime.now().strftime("test") + random_str(5)
+        dt_now='image'
+        save_path = os.path.join(SAVE_DIR, dt_now + ".png")
+        cv2.imwrite(save_path, img)
+        print("save", save_path)
+        print("ok----------------")
+
+        image_transform(save_path)
+
+    return ""
+
 
 
 if __name__ == '__main__':
