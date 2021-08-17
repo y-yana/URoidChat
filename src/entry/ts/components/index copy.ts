@@ -5,8 +5,37 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { getConstantValue, updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
-  // canvasの取得
-  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
+  // canvasサイズの制御
+  // 表示用のサイズを格納する変数
+  var newWidth
+  var newHeight
+
+  // 画面サイズを取得
+  var getWidth = window.innerWidth;
+  var getHeight = window.innerHeight;
+
+  // レスポンシブ対応
+  if (getWidth <= 950) {
+    // 比率計算(mobile)
+    newWidth = Math.floor(getWidth * 0.8)
+    newHeight = Math.floor(getHeight * 0.8)
+    // #chatAreaの高さを設定
+    var chatArea = document.getElementById('chatArea')
+    chatArea!.style.height = '16rem'
+    var setting = document.getElementById('setting')
+    setting!.style.display = 'none'
+  } else {
+    // 比率計算(desktop)
+    newWidth = Math.floor(getWidth * (2 / 5))
+    newHeight = Math.floor(getHeight * (5 / 7))
+    // #chatAreaの高さを設定
+    var chatArea = document.getElementById('chatArea')
+    chatArea!.style.height = newHeight + 'px'
+  }
+
+  // canvas生成
+  var modelArea = document.getElementById('modelArea');
+  modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
@@ -30,43 +59,8 @@ window.addEventListener("DOMContentLoaded", () => {
     update()
   })
 
-    // シーンの設定
-    const scene = new THREE.Scene()
-    sceneOption()
-  
-    function sceneOption() {
-      // ライトの設定
-      const light = new THREE.DirectionalLight(0xffffff)
-      light.position.set(1, 1, 1).normalize()
-      scene.add(light)
-  
-      // グリッドを表示
-      const gridHelper = new THREE.GridHelper(10, 10)
-      scene.add(gridHelper)
-      gridHelper.visible = true
-  
-      // 座標軸を表示
-      const axesHelper = new THREE.AxesHelper(0.5)
-      scene.add(axesHelper)
-    }  
-
-    /*const modelChange = (modelPass:string) =>{
-      modelPass = modelPass
-      posepass = '../static/pose/anim2.csv'
-  
-      // 現在のモデルを削除
-      scene.remove.apply(scene, scene.children);
-  
-      // 再描画
-      //sceneOption()
-      //newLoad()
-      //update()
-      console.log("出来たなり");
-      return;
-      };
-    module.exports = modelChange;*/
-  
   // レンダラーの設定
+  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
   const renderer = new THREE.WebGLRenderer({
     canvas: <HTMLCanvasElement>document.querySelector('#canvas'),
     antialias: true,
@@ -86,12 +80,32 @@ window.addEventListener("DOMContentLoaded", () => {
   camera.position.set(0, 1, 4)
 
   // カメラコントロールの設定
-  //if (getWidth > 950) {
+  if (getWidth > 950) {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
     controls.update()
-  //}
+  }
+
+  // シーンの設定
+  const scene = new THREE.Scene()
+  sceneOption()
+
+  function sceneOption() {
+    // ライトの設定
+    const light = new THREE.DirectionalLight(0xffffff)
+    light.position.set(1, 1, 1).normalize()
+    scene.add(light)
+
+    // グリッドを表示
+    const gridHelper = new THREE.GridHelper(10, 10)
+    scene.add(gridHelper)
+    gridHelper.visible = true
+
+    // 座標軸を表示
+    const axesHelper = new THREE.AxesHelper(0.5)
+    scene.add(axesHelper)
+  }
 
   // VRMの読み込み
   let mixer: any

@@ -4,32 +4,12 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { getConstantValue, updateArrayBindingPattern } from 'typescript';
 
-window.addEventListener("DOMContentLoaded", () => {
-  // canvasの取得
-  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
-
-  // 初期値
-  var modelPass = '../static/base_model/base.vrm';
-  //var posepass = '../static/pose/suneru.csv';
-  var posepass = '../static/pose/hellovrm.csv';
-  var facemode = "normal";
-
-  $(document).on('click', '#modelChange', function () {
-    // pathの受け取り
-    var path = <HTMLInputElement>document.getElementById("modelChange");
-
-    modelPass = path.value;
-    posepass = '../static/pose/anim2.csv'
-
-    // 現在のモデルを削除
-    scene.remove.apply(scene, scene.children);
-
-    // 再描画
-    sceneOption()
-    newLoad()
-    update()
-  })
-
+//window.addEventListener("DOMContentLoaded", () => {
+//const modelLoad = (modelPass:string,facemode:string,posepass:string):any => {
+export module modelLib{
+export class modelLoad{
+  modelLoad = (modelPass:string,facemode:string,posepass:string,renderer:any,camera:any):any => { 
+  // VRMの読み込み
     // シーンの設定
     const scene = new THREE.Scene()
     sceneOption()
@@ -48,52 +28,8 @@ window.addEventListener("DOMContentLoaded", () => {
       // 座標軸を表示
       const axesHelper = new THREE.AxesHelper(0.5)
       scene.add(axesHelper)
-    }  
+    }
 
-    /*const modelChange = (modelPass:string) =>{
-      modelPass = modelPass
-      posepass = '../static/pose/anim2.csv'
-  
-      // 現在のモデルを削除
-      scene.remove.apply(scene, scene.children);
-  
-      // 再描画
-      //sceneOption()
-      //newLoad()
-      //update()
-      console.log("出来たなり");
-      return;
-      };
-    module.exports = modelChange;*/
-  
-  // レンダラーの設定
-  const renderer = new THREE.WebGLRenderer({
-    canvas: <HTMLCanvasElement>document.querySelector('#canvas'),
-    antialias: true,
-    alpha: true,
-    preserveDrawingBuffer: true,
-  })
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight)
-  renderer.setPixelRatio(window.devicePixelRatio)
-
-  // カメラの設定
-  const camera = new THREE.PerspectiveCamera(
-    35,
-    canvas.clientWidth / canvas.clientHeight,
-    0.1,
-    1000,
-  )
-  camera.position.set(0, 1, 4)
-
-  // カメラコントロールの設定
-  //if (getWidth > 950) {
-    const controls = new OrbitControls(camera, renderer.domElement)
-    controls.target.set(0, 0.85, 0)
-    controls.screenSpacePanning = true
-    controls.update()
-  //}
-
-  // VRMの読み込み
   let mixer: any
   const loader = new GLTFLoader()
   newLoad()
@@ -166,29 +102,6 @@ window.addEventListener("DOMContentLoaded", () => {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
 
-    var NP = <HTMLInputElement>document.getElementById('NPscript');
-    var ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
-    var message = <HTMLInputElement>document.getElementById('base_message');
-    if (Number(NP.value) > 0 && Number(ALL_NP.value) <= 1) {
-      facemode = "fun"
-    }
-    if (Number(NP.value) < 0 && Number(ALL_NP.value) >= -1) {
-      facemode = "sad"
-    }
-    if (Number(ALL_NP.value) > 0) {
-      posepass = '../static/pose/cats.csv'
-    }
-    if (Number(ALL_NP.value) < 0) {
-      posepass = '../static/pose/hands.csv'
-    }
-    if (Number(ALL_NP.value) <= -3) {
-      posepass = '../static/pose/suneru.csv'
-    }
-    if (message.value == '1') {
-      posepass = '../static/pose/ozigi.csv';
-      (<HTMLInputElement>document.getElementById('base_message')).value = '0';
-    }
-
     // AnimationClipの生成
     const clip = THREE.AnimationClip.parseAnimation({
       hierarchy: csv2hierarchy(http2str(posepass), 200)
@@ -247,4 +160,4 @@ window.addEventListener("DOMContentLoaded", () => {
     renderer.render(scene, camera)
   }
   update()
-})
+}}}

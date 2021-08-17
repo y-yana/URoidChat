@@ -1,3 +1,5 @@
+import '../components/chat_response.js';
+
 // TypeScript
 import '../../ts/components/index.ts';
 
