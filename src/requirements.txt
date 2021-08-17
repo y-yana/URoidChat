@@ -13,3 +13,4 @@ urllib3==1.26.5
 Werkzeug==2.0.1
 janome==0.4.1
 pyyaml
+opencv-python==4.4.0.40
