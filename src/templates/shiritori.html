@@ -1,5 +1,71 @@
 {% extends "layout.html" %}{% block content %}
 
-<p>shiritori</p>
+<div id="shiritori">
+  <p>[[ textArr[arrNum] ]] → [[ textArr[arrNum+1] ]]</p>
+  <input type="text" v-model="inputText" />
+  <p>[[ warning ]]</p>
+  <button id="submitBtn" @click="submit" disabled>submit</button>
+  <p>[[ result ]]</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const shiritori = new Vue({
+    el: '#shiritori',
+    // FlaskとVueを共存させるためにDelimiterを変更する
+    delimiters: ["[[", "]]"],
+    data: {
+      inputText: '',
+      warning: '',
+      arrNum: 0,
+      textArr: ['しりとり'],
+      result: ''
+    },
+    methods: {
+      submit: function () {
+        var newText = this.inputText
+        var search = this.textArr.indexOf(newText);
+
+        // 重複チェック
+        if (search != -1) {
+          this.result = '「' + newText + '」は既出なので、あなたの負けです！'
+          document.getElementById('submitBtn').disabled = true
+        }
+
+        // 「ん」チェック
+        var endStr = newText.slice(-1)
+        if (endStr == 'ん') {
+          this.result = '最後に「ん」がついたので、あなたの負けです！'
+          document.getElementById('submitBtn').disabled = true
+        }
+
+        if (this.arrNum == 0) {
+          this.textArr.push('しりとり')
+        }
+
+        this.textArr.push(newText)
+        this.arrNum += 1
+        this.inputText = ''
+      }
+    },
+    watch: {
+      inputText: function () {
+        var textCheck = this.inputText
+        var submitBtn = document.getElementById('submitBtn')
+
+        if (textCheck.match(/^[ぁ-んー　]+$/)) {
+          submitBtn.disabled = false
+          this.warning = ''
+        } else {
+          submitBtn.disabled = true
+          if (textCheck != '') {
+            this.warning = 'ひらがなで入力してください！'
+          }
+        }
+      }
+    }
+  });
+</script>
 
 {% endblock %}
