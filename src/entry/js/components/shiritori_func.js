@@ -10,7 +10,8 @@ const shiritori = new Vue({
     textArr: [],
     // check = 重複チェック用配列
     check: ['しりとり'],
-    result: ''
+    result: '',
+    replay: false
   },
   created: function() {
       this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
@@ -26,6 +27,7 @@ const shiritori = new Vue({
       if (search != -1) {
         this.result = '「' + newText + '」は既出なので、あなたの負けです！'
         document.getElementById('submitBtn').disabled = true
+        this.replay = true
       }
 
       // 「ん」チェック
@@ -33,6 +35,7 @@ const shiritori = new Vue({
       if (endStr == 'ん') {
         this.result = '最後に「ん」がついたので、あなたの負けです！'
         document.getElementById('submitBtn').disabled = true
+        this.replay = true
       }
 
       this.arrNum += 1
