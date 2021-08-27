@@ -48,13 +48,11 @@ const shiritori = new Vue({
       this.inputText = ''
     },
     replay: function () {
-      console.log('replay')
       this.resetArr()
       this.reset()
       this.input()
     },
     back: function () {
-      console.log('back')
       this.reset()
       this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
     },
