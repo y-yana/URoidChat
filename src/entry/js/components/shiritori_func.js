@@ -14,7 +14,9 @@ const shiritori = new Vue({
     replayQuestion: false
   },
   created: function () {
+    this.resetArr()
     this.reset()
+    this.input()
   },
   methods: {
     submit: function () {
@@ -45,19 +47,27 @@ const shiritori = new Vue({
     },
     replay: function () {
       console.log('replay')
+      this.resetArr()
       this.reset()
+      this.input()
     },
     back: function () {
       console.log('back')
+      this.reset()
+      this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
     },
-    reset: function () {
+    resetArr: function () {
       this.textArr = []
       this.check = ['しりとり']
+    },
+    reset: function () {
       this.result = ''
+      this.replayQuestion = false
+    },
+    input: function () {
       this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
       this.textArr.push({id: this.arrNum, text: 'それでは私から始めます！' })
       this.textArr.push({ id: this.arrNum, text: 'しりとり' })
-      this.replayQuestion = false
     }
   },
   watch: {
