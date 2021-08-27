@@ -27,8 +27,12 @@ def index():
     return render_template("index.html", pageTitle='TopPage')
 
 @app.route("/chat", methods=["POST"])
-def move_index():
+def move_chat():
     return render_template("chat.html", pageTitle='URoidChat')
+
+@app.route("/shiritori", methods=["POST"])
+def move_shiritori():
+    return render_template("shiritori.html", pageTitle='Shiritori')
 
 @app.route('/rename', methods=['POST'])
 def rename():

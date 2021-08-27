@@ -1,0 +1,21 @@
+{% extends "layout.html" %}{% block content %}
+
+<div id="shiritori">
+  <div v-for="m in textArr" :key="textArr.id">
+    <div>[[m.text]]</div>
+  </div>
+  <p>[[ result ]]</p>
+  <div v-if="replayQuestion">
+    <p>もう一度あそぶ？</p>
+    <button @click="replay">はい</button>
+    <button @click="back">いいえ</button>
+  </div>
+  <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
+  <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
+  <p v-html='warning'></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="static/webpack/build_shiritori.js"></script>
+
+{% endblock %}
