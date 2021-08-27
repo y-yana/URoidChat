@@ -13,7 +13,8 @@ const shiritori = new Vue({
     result: '',
     endStr: 'り',
     submitBtnDisabled: false,
-    replayQuestion: false
+    replayQuestion: false,
+    submitCheck: 'NG'
   },
   created: function () {
     this.resetArr()
@@ -22,6 +23,7 @@ const shiritori = new Vue({
   },
   methods: {
     submit: function () {
+      this.submitCheck = 'NG'
       var newText = this.inputText
       var search = this.check.indexOf(newText);
 
@@ -70,6 +72,11 @@ const shiritori = new Vue({
       this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
       this.textArr.push({id: this.arrNum, text: 'それでは私から始めるよ！' })
       this.textArr.push({ id: this.arrNum, text: 'しりとり' })
+    },
+    enter: function () {
+        if(this.submitCheck == 'OK'){
+          this.submit()
+        }
     }
   },
   watch: {
@@ -81,13 +88,16 @@ const shiritori = new Vue({
       if (textCheck.match(/^[ぁ-んー]+$/)) {
         if (firstStr != this.endStr) {
           submitBtn.disabled = true
+          this.submitCheck = 'NG'
           this.warning = '<span class="material-icons">error_outline</span>「' + this.endStr + '」から始まる単語を入力してね！'
         } else {
           submitBtn.disabled = false
+          this.submitCheck = 'OK'
           this.warning = ''
         }
       } else {
         submitBtn.disabled = true
+        this.submitCheck = 'NG'
         if (textCheck != '') {
           this.warning = '<span class="material-icons">error_outline</span>ひらがなで入力してね！'
         }

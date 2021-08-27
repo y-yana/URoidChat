@@ -10,7 +10,7 @@
     <button @click="replay">はい</button>
     <button @click="back">いいえ</button>
   </div>
-  <input type="text" v-model="inputText" :disabled="submitBtnDisabled" placeholder="ひらがなで入力"/>
+  <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
   <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
   <p v-html='warning'></p>
 </div>
