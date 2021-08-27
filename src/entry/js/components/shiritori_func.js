@@ -11,6 +11,7 @@ const shiritori = new Vue({
     // check = 重複チェック用配列
     check: ['しりとり'],
     result: '',
+    submitBtnDisabled: false,
     replayQuestion: false
   },
   created: function () {
@@ -26,7 +27,7 @@ const shiritori = new Vue({
       // 重複チェック
       if (search != -1) {
         this.result = '「' + newText + '」は既出なので、あなたの負けです！'
-        document.getElementById('submitBtn').disabled = true
+        this.submitBtnDisabled = true
         this.replayQuestion = true
       }
 
@@ -34,7 +35,7 @@ const shiritori = new Vue({
       var endStr = newText.slice(-1)
       if (endStr == 'ん') {
         this.result = '最後に「ん」がついたので、あなたの負けです！'
-        document.getElementById('submitBtn').disabled = true
+        this.submitBtnDisabled = true
         this.replayQuestion = true
       }
 
@@ -57,6 +58,7 @@ const shiritori = new Vue({
       this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
     },
     resetArr: function () {
+      this.submitBtnDisabled = false
       this.textArr = []
       this.check = ['しりとり']
     },
