@@ -7,10 +7,15 @@ const shiritori = new Vue({
     warning: '',
     arrNum: 0,
     // textArr = 表示用配列
-    textArr: [{ "id": 0, "text": "しりとり" }],
+    textArr: [],
     // check = 重複チェック用配列
     check: ['しりとり'],
     result: ''
+  },
+  created: function() {
+      this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
+      this.textArr.push({id: this.arrNum, text: 'それでは私から始めます！' })
+      this.textArr.push({ id: this.arrNum, text: 'しりとり' })
   },
   methods: {
     submit: function () {
