@@ -12,7 +12,7 @@
   </div>
   <input type="text" v-model="inputText" :disabled="submitBtnDisabled" placeholder="ひらがなで入力"/>
   <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
-  <p>[[ warning ]]</p>
+  <p v-html='warning'></p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

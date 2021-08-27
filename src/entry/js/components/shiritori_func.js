@@ -81,7 +81,7 @@ const shiritori = new Vue({
       if (textCheck.match(/^[ぁ-んー]+$/)) {
         if (firstStr != this.endStr) {
           submitBtn.disabled = true
-          this.warning = '「' + this.endStr + '」から始まる単語を入力してね！'
+          this.warning = '<span class="material-icons">error_outline</span>「' + this.endStr + '」から始まる単語を入力してね！'
         } else {
           submitBtn.disabled = false
           this.warning = ''
@@ -89,7 +89,7 @@ const shiritori = new Vue({
       } else {
         submitBtn.disabled = true
         if (textCheck != '') {
-          this.warning = 'ひらがなで入力してね！'
+          this.warning = '<span class="material-icons">error_outline</span>ひらがなで入力してね！'
         }
       }
     }
