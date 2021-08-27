@@ -1,8 +1,10 @@
 {% extends "layout.html" %}{% block content %}
 
 <div id="shiritori">
-  <p>[[ textArr[arrNum] ]] → [[ textArr[arrNum+1] ]]</p>
-  <input type="text" v-model="inputText" />
+  <div v-for="m in textArr" :key="textArr.id">
+    <div>[[m.text]]</div>
+  </div>
+  <input type="text" v-model="inputText" placeholder="ひらがなで入力"/>
   <p>[[ warning ]]</p>
   <button id="submitBtn" @click="submit" disabled>submit</button>
   <p>[[ result ]]</p>
@@ -19,13 +21,16 @@
       inputText: '',
       warning: '',
       arrNum: 0,
-      textArr: ['しりとり'],
+      // textArr = 表示用配列
+      textArr: [{ "id": 0, "text": "しりとり" }],
+      // check = 重複チェック用配列
+      check: ['しりとり'],
       result: ''
     },
     methods: {
       submit: function () {
         var newText = this.inputText
-        var search = this.textArr.indexOf(newText);
+        var search = this.check.indexOf(newText);
 
         // 重複チェック
         if (search != -1) {
@@ -40,12 +45,11 @@
           document.getElementById('submitBtn').disabled = true
         }
 
-        if (this.arrNum == 0) {
-          this.textArr.push('しりとり')
-        }
-
-        this.textArr.push(newText)
         this.arrNum += 1
+
+        this.check.push(newText)
+        this.textArr.push({ id: this.arrNum, text: newText })
+
         this.inputText = ''
       }
     },
