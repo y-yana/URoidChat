@@ -77,7 +77,7 @@ const shiritori = new Vue({
       var textCheck = this.inputText
       var submitBtn = document.getElementById('submitBtn')
 
-      if (textCheck.match(/^[ぁ-んー　]+$/)) {
+      if (textCheck.match(/^[ぁ-んー]+$/)) {
         submitBtn.disabled = false
         this.warning = ''
       } else {
