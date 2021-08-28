@@ -1,7 +1,7 @@
 {% extends "layout.html" %}{% block content %}
 
-<div id="quiz" v-if="info">
-  <p>[[ info[0].quizName ]]</p>
+<div id="quiz">
+  <p v-if="info">[[ info[0].quizName ]]</p>
   <div>
     <template v-if="select">
       <p>好きなテーマを選んでね！</p>
@@ -16,6 +16,7 @@
       <button @click="createQuiz(3)">基本情報<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
     </template>
   </div>
+  <p v-if="quiz">[[ quiz ]]</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

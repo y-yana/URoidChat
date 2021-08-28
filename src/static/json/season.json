@@ -1,0 +1,301 @@
+
+{
+  "season":[
+    {
+      "question": "キャベツの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "アスパラガスの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "セロリの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "スナップエンドウの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "クレソンの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "たけのこの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "そら豆の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "さやえんどうの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option1"
+    },
+    {
+      "question": "レタスの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "トマトの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "きゅうりの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "ピーマンの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "かぼちゃの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "ナスの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "ゴーヤーの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "とうもろこしの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "ズッキーニの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option2"
+    },
+    {
+      "question": "しいたけの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "にんじんの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "じゃがいもの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "玉ねぎの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "ぶなしめじの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "まいたけの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "ごぼうの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "さつまいもの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "さといもの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option3"
+    },
+    {
+      "question": "かぶの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "れんこんの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "春菊の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "長ねぎの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "白菜の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "大根の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "ブロッコリーの旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "ほうれん草の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "水菜の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "菜の花の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    },
+    {
+      "question": "小松菜の旬はいつ？",
+      "option1": "春",
+      "option2": "夏",
+      "option3": "秋",
+      "option4": "冬",
+      "answer": "option4"
+    }
+  ]
+}

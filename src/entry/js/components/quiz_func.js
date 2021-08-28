@@ -5,7 +5,8 @@ const quiz = new Vue({
   data: {
     select: true,
     option: true,
-    info: null
+    info: null,
+    quiz: null
   },
   mounted() {
     axios
@@ -14,7 +15,12 @@ const quiz = new Vue({
   },
   methods: {
     createQuiz: function (value) {
-      console.log(value)
+      this.getQuizData(value)
+    },
+    getQuizData: function (value) {
+      axios
+        .get('./static/json/' + this.info[value].quizName + '.json')
+        .then(response => { this.quiz = response.data })
     }
   }
 });
