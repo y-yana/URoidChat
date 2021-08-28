@@ -4,7 +4,13 @@ const quiz = new Vue({
   delimiters: ["[[", "]]"],
   data: {
     select: true,
-    option: true
+    option: true,
+    info: null
+  },
+  mounted() {
+    axios
+      .get('./static/json/quiz.json')
+      .then(response => { this.info = response.data.quiz })
   },
   methods: {
     createQuiz: function (value) {

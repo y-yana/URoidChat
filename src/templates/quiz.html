@@ -1,6 +1,7 @@
 {% extends "layout.html" %}{% block content %}
 
-<div id="quiz">
+<div id="quiz" v-if="info">
+  <p>[[ info[0].quizName ]]</p>
   <div>
     <template v-if="select">
       <p>好きなテーマを選んでね！</p>
@@ -9,15 +10,16 @@
       <p>（むずかしい）</p>
     </template>
     <template v-if="option">
-      <button @click="createQuiz('prefectures')">県庁所在地<span class="material-icons">star</span></button>
-      <button @click="createQuiz('season')">野菜の旬<span class="material-icons">star</span></button>
-      <button @click="createQuiz('NationalFlag')">世界の国旗<span class="material-icons">star</span><span class="material-icons">star</span></button>
-      <button @click="createQuiz('fe')">基本情報<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
+      <button @click="createQuiz(0)">県庁所在地<span class="material-icons">star</span></button>
+      <button @click="createQuiz(1)">野菜の旬<span class="material-icons">star</span></button>
+      <button @click="createQuiz(2)">世界の国旗<span class="material-icons">star</span><span class="material-icons">star</span></button>
+      <button @click="createQuiz(3)">基本情報<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
     </template>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
 <script src="static/webpack/build_quiz.js"></script>
 
 {% endblock %}
