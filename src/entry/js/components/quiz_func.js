@@ -4,7 +4,7 @@ const quiz = new Vue({
   delimiters: ["[[", "]]"],
   data: {
     select: true,
-    option: true,
+    quizNameOption: true,
     info: null,
     quiz: null
   },
