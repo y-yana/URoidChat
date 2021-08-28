@@ -25,6 +25,8 @@ const quiz = new Vue({
       this.getQuizData(value)
       this.createArr()
       this.shuffleArr()
+      this.quizNumArr = this.quizNumArr.slice(0, 10)
+      this.question = this.quiz[this.info[value].quizName][this.quizNumArr[0]].question
     },
     getQuizData: function (value) {
       axios
