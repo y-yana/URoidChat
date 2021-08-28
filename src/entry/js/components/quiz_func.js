@@ -13,12 +13,14 @@ const quiz = new Vue({
     n: 37,
     temp: 0,
     quizName: '',
+    selectQuizNum: 0,
     question: '',
     option1: '',
     option2: '',
     option3: '',
     option4: '',
     answer: '',
+    questionNum: 0
   },
   mounted() {
     axios
@@ -27,15 +29,16 @@ const quiz = new Vue({
   },
   methods: {
     createQuiz: function (value) {
-      this.getQuizDataJSON(value)
+      this.selectQuizNum = value
+      this.getQuizDataJSON()
       this.createArr()
       this.shuffleArr()
       this.quizNumArr = this.quizNumArr.slice(0, 10)
-      this.getQuizDataDetail(value)
+      this.getQuizDataDetail()
     },
-    getQuizDataJSON: function (value) {
+    getQuizDataJSON: function () {
       axios
-        .get('./static/json/' + this.info[value].quizName + '.json')
+        .get('./static/json/' + this.info[this.selectQuizNum].quizName + '.json')
         .then(response => { this.quiz = response.data })
     },
     createArr: function () {
@@ -59,14 +62,22 @@ const quiz = new Vue({
       }
       console.log(this.quizNumArr)
     },
-    getQuizDataDetail: function (value) {
-      var quizGet = this.quiz[this.info[value].quizName][this.quizNumArr[0]]
+    getQuizDataDetail: function () {
+      var quizGet = this.quiz[this.info[this.selectQuizNum].quizName][this.quizNumArr[this.questionNum]]
       this.question = quizGet.question
       this.option1 = quizGet.option1
       this.option2 = quizGet.option2
       this.option3 = quizGet.option3
       this.option4 = quizGet.option4
       this.answer = quizGet.answer
+    },
+    nextQuestion: function () {
+      this.questionNum += 1
+      if (this.questionNum < 10) {
+        this.getQuizDataDetail()
+      } else {
+        this.questionNum = 0
+      }
     }
   }
 });

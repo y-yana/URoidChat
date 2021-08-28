@@ -18,12 +18,14 @@
   </div>
   <p v-if="quiz">[[ quiz ]]</p>
   <p v-if="quizNumArr">[[ quizNumArr ]]</p>
+  <p v-if="questionNum">[[ questionNum ]]</p>
   <p v-if="question">[[ question ]]</p>
   <p v-if="option1">[[ option1 ]]</p>
   <p v-if="option2">[[ option2 ]]</p>
   <p v-if="option3">[[ option3 ]]</p>
   <p v-if="option4">[[ option4 ]]</p>
   <p v-if="answer">[[ answer ]]</p>
+  <button @click="nextQuestion">次の問題</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
