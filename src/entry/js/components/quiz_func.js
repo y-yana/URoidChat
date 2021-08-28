@@ -11,15 +11,26 @@ const quiz = new Vue({
     i: 0,
     j: 0,
     n: 37,
-    temp: 0
+    temp: 0,
+    quizName: '',
+    question: ''
   },
   mounted() {
     axios
       .get('./static/json/quiz.json')
       .then(response => { this.info = response.data.quiz })
-    this.createArr()
   },
   methods: {
+    createQuiz: function (value) {
+      this.getQuizData(value)
+      this.createArr()
+      this.shuffleArr()
+    },
+    getQuizData: function (value) {
+      axios
+        .get('./static/json/' + this.info[value].quizName + '.json')
+        .then(response => { this.quiz = response.data })
+    },
     createArr: function () {
       var i = this.i
       this.quizNumArr.splice(0, this.quizNumArr.length)
@@ -27,15 +38,6 @@ const quiz = new Vue({
         this.quizNumArr.push(i);
       }
       console.log(this.quizNumArr)
-    },
-    createQuiz: function (value) {
-      this.getQuizData(value)
-      this.shuffleArr()
-    },
-    getQuizData: function (value) {
-      axios
-        .get('./static/json/' + this.info[value].quizName + '.json')
-        .then(response => { this.quiz = response.data })
     },
     shuffleArr: function () {
       var n = this.n
