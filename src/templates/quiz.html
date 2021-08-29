@@ -26,10 +26,10 @@
   </div>
   <div id="optionShowArea">
     <template v-if="quizNameOption">
-      <button @click="createQuiz(0)">県庁所在地<span class="material-icons">star</span></button>
-      <button @click="createQuiz(1)">野菜の旬<span class="material-icons">star</span></button>
-      <button @click="createQuiz(2)">世界の国旗<span class="material-icons">star</span><span class="material-icons">star</span></button>
-      <button @click="createQuiz(3)">基本情報<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(0)">[[ info[0].quizNameJa ]]<span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(1)">[[ info[1].quizNameJa ]]<span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(2)">[[ info[2].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
     </template>
     <template id="quizAnswerOption">
       <button v-if="option1" @click="judgeSelectAnswer(1)">[[ option1 ]]</button>
