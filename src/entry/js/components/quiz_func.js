@@ -23,7 +23,8 @@ const quiz = new Vue({
     option2: '',
     option3: '',
     option4: '',
-    answer: '',
+    answerNum: '',
+    answerText: '',
     questionNumUse: 0,
     questionNumShow: 1,
     trueCounter: 0
@@ -75,7 +76,8 @@ const quiz = new Vue({
       this.option2 = quizGet.option2
       this.option3 = quizGet.option3
       this.option4 = quizGet.option4
-      this.answer = quizGet.answer
+      this.answerNum = quizGet.answerNum
+      this.answerText = quizGet.answerText
     },
     nextQuestion: function () {
       this.questionNumUse += 1
@@ -89,9 +91,7 @@ const quiz = new Vue({
     },
     judgeSelectAnswer: function (ans) {
       console.log(ans)
-      console.log('option' + ans)
-      var selectOptionName = 'option' + ans
-      if (this.answer == selectOptionName) {
+      if (this.answerNum == ans) {
         console.log('○')
         this.trueCounter += 1
       } else {
