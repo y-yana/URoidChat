@@ -25,7 +25,8 @@ const quiz = new Vue({
     option4: '',
     answer: '',
     questionNumUse: 0,
-    questionNumShow: 1
+    questionNumShow: 1,
+    trueCounter: 0
   },
   mounted() {
     axios
@@ -92,6 +93,7 @@ const quiz = new Vue({
       var selectOptionName = 'option' + ans
       if (this.answer == selectOptionName) {
         console.log('○')
+        this.trueCounter += 1
       } else {
         console.log('×')
       }
