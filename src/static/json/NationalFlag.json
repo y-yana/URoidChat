@@ -6,7 +6,8 @@
       "option2": "バングラデシュ",
       "option3": "韓国",
       "option4": "台湾",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "日本"
     },
     {
       "question": "この国旗の国は?,British.png",
@@ -14,7 +15,8 @@
       "option2": "イギリス",
       "option3": "アイルランド",
       "option4": "アイスランド",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "イギリス"
     },
     {
       "question": "この国旗の国は?,America.png",
@@ -22,7 +24,8 @@
       "option2": "ギリシャ",
       "option3": "アメリカ",
       "option4": "リベリア",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "アメリカ"
     },
     {
       "question": "この国旗の国は?,France.png",
@@ -30,7 +33,8 @@
       "option2": "オランダ",
       "option3": "ロシア",
       "option4": "フランス",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "フランス"
     },
     {
       "question": "この国旗の国は?,Russia.png",
@@ -38,7 +42,8 @@
       "option2": "イタリア",
       "option3": "グルジア",
       "option4": "ルクセンブルク",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "スペイン"
     },
     {
       "question": "この国旗の国は?,Italy.png",
@@ -46,7 +51,8 @@
       "option2": "イタリア",
       "option3": "ポルトガル",
       "option4": "アイルランド",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "イタリア"
     },
     {
       "question": "この国旗の国は?,Switzerland.png",
@@ -54,7 +60,8 @@
       "option2": "スウェーデン",
       "option3": "スイス",
       "option4": "アイスランド",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "スイス"
     },
     {
       "question": "この国旗の国は?,Sweden.png",
@@ -62,7 +69,8 @@
       "option2": "フィンランド",
       "option3": "ノルウェー",
       "option4": "スウェーデン",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "スウェーデン"
     },
     {
       "question": "この国旗の国は?,Germany.png",
@@ -70,7 +78,8 @@
       "option2": "ベルギー",
       "option3": "イラク",
       "option4": "アルメニア",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "ドイツ"
     },
     {
       "question": "この国旗の国は?,Canada.png",
@@ -78,7 +87,8 @@
       "option2": "カナダ",
       "option3": "ベネズエラ",
       "option4": "イスラエル",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "カナダ"
     },
     {
       "question": "この国旗の国は?,Jamaica.png",
@@ -86,7 +96,8 @@
       "option2": "キューバ",
       "option3": "ジャマイカ",
       "option4": "ハイチ",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "ジャマイカ"
     },
     {
       "question": "この国旗の国は?,Bahrain.png",
@@ -94,7 +105,8 @@
       "option2": "カタール",
       "option3": "オマーン",
       "option4": "バーレーン",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "バーレーン"
     },
     {
       "question": "この国旗の国は?,Romania.png",
@@ -102,7 +114,8 @@
       "option2": "コロンビア",
       "option3": "チャド",
       "option4": "ブルガリア",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "ルーマニア"
     },
     {
       "question": "この国旗の国は?,NewZealand.png",
@@ -110,7 +123,8 @@
       "option2": "ニュージーランド",
       "option3": "東ティモール",
       "option4": "オーストラリア",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "ニュージーランド"
     },
     {
       "question": "この国旗の国は?,China.png",
@@ -118,7 +132,8 @@
       "option2": "香港",
       "option3": "中国",
       "option4": "韓国",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "中国"
     },
     {
       "question": "この国旗の国は?,Bhutan.png",
@@ -126,7 +141,8 @@
       "option2": "ネパール",
       "option3": "ラオス",
       "option4": "ブータン",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "ブータン"
     },
     {
       "question": "この国旗の国は?,India.png",
@@ -134,7 +150,8 @@
       "option2": "スリランカ",
       "option3": "パキスタン",
       "option4": "アルゼンチン",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "インド"
     },
     {
       "question": "この国旗の国は?,Cambodia.png",
@@ -142,7 +159,8 @@
       "option2": "カンボジア",
       "option3": "シンガポール",
       "option4": "ブルネイ",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "カンボジア"
     },
     {
       "question": "この国旗の国は?,Malaysia.png",
@@ -150,7 +168,8 @@
       "option2": "アメリカ",
       "option3": "マレーシア",
       "option4": "トルコ",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "マレーシア"
     },
     {
       "question": "この国旗の国は?,Ghana.png",
@@ -158,7 +177,8 @@
       "option2": "カメルーン",
       "option3": "モロッコ",
       "option4": "ガーナ",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "ガーナ"
     },
     {
       "question": "この国旗の国は?,Mali.png",
@@ -166,7 +186,8 @@
       "option2": "ベナン",
       "option3": "セネガル",
       "option4": "エチオピア",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "マリ"
     },
     {
       "question": "この国旗の国は?,SouthAfrica.png",
@@ -174,7 +195,8 @@
       "option2": "南アフリカ",
       "option3": "ボツワナ",
       "option4": "アンゴラ",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "南アフリカ"
     },
     {
       "question": "この国旗の国は?,Libya.png",
@@ -182,7 +204,8 @@
       "option2": "サウジアラビア",
       "option3": "リビア",
       "option4": "エジプト",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "リビア"
     },
     {
       "question": "この国旗の国は?,Hungary.png",
@@ -190,7 +213,8 @@
       "option2": "ブルガリア",
       "option3": "タジキスタン",
       "option4": "ハンガリー",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "ハンガリー"
     },
     {
       "question": "この国旗の国は?,Guinea.png",
@@ -198,7 +222,8 @@
       "option2": "ケニア",
       "option3": "セネガル",
       "option4": "ナイジェリア",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "ギニア"
     },
     {
       "question": "この国旗の国は?,Seychelles.png",
@@ -206,7 +231,8 @@
       "option2": "セーシェル",
       "option3": "マダガスカル",
       "option4": "タンザニア",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "セーシェル"
     },
     {
       "question": "この国旗の国は?,Macedonia.png",
@@ -214,7 +240,8 @@
       "option2": "キルギス",
       "option3": "マケドニア",
       "option4": "ギリシャ",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "マケドニア"
     },
     {
       "question": "この国旗の国は?,Mongolia.png",
@@ -222,7 +249,8 @@
       "option2": "レバノン",
       "option3": "マカオ",
       "option4": "モンゴル",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "モンゴル"
     },
     {
       "question": "この国旗の国は?,Ukuraina.png",
@@ -230,7 +258,8 @@
       "option2": "アルゼンチン",
       "option3": "ポーランド",
       "option4": "モナコ",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "ウクライナ"
     },
     {
       "question": "この国旗の国は?,Nigeria.png",
@@ -238,7 +267,8 @@
       "option2": "ナイジェリア",
       "option3": "コートジボワール",
       "option4": "ニジェール",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "ナイジェリア"
     },
     {
       "question": "この国旗の国は?,Turkey.png",
@@ -246,7 +276,8 @@
       "option2": "シンガポール",
       "option3": "トルコ",
       "option4": "チュニジア",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "トルコ"
     },
     {
       "question": "この国旗の連合は?,EU.png",
@@ -254,7 +285,8 @@
       "option2": "国連",
       "option3": "ASEAN",
       "option4": "EU",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "EU"
     },
     {
       "question": "この国旗の国は?,Tajikistan.png",
@@ -262,7 +294,8 @@
       "option2": "ウズベキスタン",
       "option3": "カザフスタン",
       "option4": "トルクメニスタン",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "タジキスタン"
     },
     {
       "question": "この国旗の国は?,Philippines.png",
@@ -270,7 +303,8 @@
       "option2": "フィリピン",
       "option3": "インドネシア",
       "option4": "東ティモール",
-      "answer": "option2"
+      "answerNum": "2",
+      "answerText": "フィリピン"
     },
     {
       "question": "この国旗の国は?,Barbados.png",
@@ -278,7 +312,8 @@
       "option2": "グレナダ",
       "option3": "バルバドス",
       "option4": "ドミニカ",
-      "answer": "option3"
+      "answerNum": "3",
+      "answerText": "バルバドス"
     },
     {
       "question": "この国旗の国は?,UnitedArabEmirates.png",
@@ -286,7 +321,8 @@
       "option2": "クウェート",
       "option3": "イエメン",
       "option4": "アラブ首長国連邦",
-      "answer": "option4"
+      "answerNum": "4",
+      "answerText": "アラブ首長国連邦"
     },
     {
       "question": "この国旗の国は?,Laos.png",
@@ -294,7 +330,8 @@
       "option2": "ミャンマー",
       "option3": "タイ",
       "option4": "ベトナム",
-      "answer": "option1"
+      "answerNum": "1",
+      "answerText": "ラオス"
     }
   ]
 }
