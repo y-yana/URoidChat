@@ -14,6 +14,13 @@
       <!-- 正解をここに表示 -->
       <button @click="nextQuestion">次の問題</button>
     </template>
+    <template id="yourResult">
+      <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
+      <p>10問中<!-- ここに正解数を表示 -->問正解！</p>
+      <button>もう1度あそぶ</button>
+      <!-- ここにTwitterシェアボタンを表示 -->
+      <button>別の問題</button>
+    </template>
   </div>
   <div id="optionShowArea">
     <template v-if="quizNameOption">

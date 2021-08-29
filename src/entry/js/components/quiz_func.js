@@ -5,6 +5,7 @@ const quiz = new Vue({
   data: {
     selectQuiz: true,
     askQuestion: true,
+    yourResult: true,
     quizNameOption: true,
     quizAnswerOption: true,
     resultRanking: true,
