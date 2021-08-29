@@ -3,7 +3,8 @@ const quiz = new Vue({
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
-    select: true,
+    selectQuiz: true,
+    askQuestion: true,
     quizNameOption: true,
     info: null,
     quiz: null,
@@ -20,7 +21,8 @@ const quiz = new Vue({
     option3: '',
     option4: '',
     answer: '',
-    questionNum: 0
+    questionNumUse: 0,
+    questionNumShow: 1
   },
   mounted() {
     axios
@@ -63,7 +65,7 @@ const quiz = new Vue({
       console.log(this.quizNumArr)
     },
     getQuizDataDetail: function () {
-      var quizGet = this.quiz[this.info[this.selectQuizNum].quizName][this.quizNumArr[this.questionNum]]
+      var quizGet = this.quiz[this.info[this.selectQuizNum].quizName][this.quizNumArr[this.questionNumUse]]
       this.question = quizGet.question
       this.option1 = quizGet.option1
       this.option2 = quizGet.option2
@@ -72,11 +74,13 @@ const quiz = new Vue({
       this.answer = quizGet.answer
     },
     nextQuestion: function () {
-      this.questionNum += 1
-      if (this.questionNum < 10) {
+      this.questionNumUse += 1
+      this.questionNumShow += 1
+      if (this.questionNumUse < 10) {
         this.getQuizDataDetail()
       } else {
-        this.questionNum = 0
+        this.questionNumUse = 0
+        this.questionNumShow = 1
       }
     }
   }
