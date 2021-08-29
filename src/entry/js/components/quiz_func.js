@@ -6,6 +6,8 @@ const quiz = new Vue({
     selectQuiz: true,
     askQuestion: true,
     quizNameOption: true,
+    quizAnswerOption: true,
+    resultRanking: true,
     info: null,
     quiz: null,
     quizNumArr: [],
