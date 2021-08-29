@@ -82,6 +82,16 @@ const quiz = new Vue({
         this.questionNumUse = 0
         this.questionNumShow = 1
       }
+    },
+    judgeSelectAnswer: function (ans) {
+      console.log(ans)
+      console.log('option' + ans)
+      var selectOptionName = 'option' + ans
+      if (this.answer == selectOptionName) {
+        console.log('○')
+      } else {
+        console.log('×')
+      }
     }
   }
 });

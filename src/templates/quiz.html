@@ -22,7 +22,14 @@
       <button @click="createQuiz(2)">世界の国旗<span class="material-icons">star</span><span class="material-icons">star</span></button>
       <button @click="createQuiz(3)">基本情報<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
     </template>
+    <template id="quizAnswerOption">
+      <button v-if="option1" @click="judgeSelectAnswer(1)">[[ option1 ]]</button>
+      <button v-if="option2" @click="judgeSelectAnswer(2)">[[ option2 ]]</button>
+      <button v-if="option3" @click="judgeSelectAnswer(3)">[[ option3 ]]</button>
+      <button v-if="option4" @click="judgeSelectAnswer(4)">[[ option4 ]]</button>
+    </template>
   </div>
+
   <!-- testArea -->
   <!-- クイズジャンルが格納されたJSONデータ -->
   <p v-if="info">[[ info[0].quizName ]]</p>
