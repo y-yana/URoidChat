@@ -3,6 +3,8 @@ import yaml
 import requests
 import json
 import random
+from chat_model.chaplus_API import chaplus_API
+from chat_model.rinna import rinna
 
 def response(word,u_name,b_name,in_np,np_ALL,npi):
     with open('./config.yml', 'r') as yml:
@@ -50,11 +52,20 @@ def response(word,u_name,b_name,in_np,np_ALL,npi):
     if in_np<-2:
         return f'{u_name}のばか...'
 
+    #chaplus_API
+    #url = config['chat_api_key']
+    #res=chaplus_API(word,u_name,b_name,url)
+
+    #rinnna
+    res=rinna(word)
+    
+    
+
+    return res
 
 
 
-
-    # リクエストに必要なパラメーター
+    """# リクエストに必要なパラメーター
     headers = {'content-type':'text/json'}
     payload = {'utterance':word,
                 "username":u_name,
@@ -71,8 +82,7 @@ def response(word,u_name,b_name,in_np,np_ALL,npi):
     res = requests.post(url=url, headers=headers, data=json.dumps(payload))
 
     # 最適と思われるレスポンスを抽出
-    #print(res.json()['bestResponse']['utterance'])
 
-    return(res.json()['bestResponse']['utterance'])
+    return(res.json()['bestResponse']['utterance'])"""
 
 #print(response('おはよう'))
