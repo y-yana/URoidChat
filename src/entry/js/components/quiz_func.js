@@ -107,6 +107,27 @@ const quiz = new Vue({
       if (this.questionNumUse == 9) {
         this.nextQuestionBtnText = '結果を見る'
       }
+    },
+    replaySameQuiz: function () {
+      console.log('replay')
+      this.yourResult = false
+      this.resultRanking = false
+      this.askQuestion = true
+      this.quizAnswerOption = true
+      this.resetQuizPlayData()
+      this.createQuiz(this.selectQuizNum)
+    },
+    replayAnotherQuiz: function () {
+      console.log('another')
+      this.yourResult = false
+      this.resultRanking = false
+      this.selectQuiz = true
+      this.quizNameOption = true
+      this.resetQuizPlayData()
+    },
+    resetQuizPlayData: function () {
+      this.trueCounter = 0
+      this.nextQuestionBtnText = '次の問題'
     }
   }
 });
