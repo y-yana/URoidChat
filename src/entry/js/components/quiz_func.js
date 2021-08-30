@@ -35,9 +35,9 @@ const quiz = new Vue({
       .then(response => { this.info = response.data.quiz })
   },
   methods: {
-    createQuiz: function (value) {
+    createQuiz: async function (value) {
       this.selectQuizNum = value
-      this.getQuizDataJSON()
+      await this.getQuizDataJSON()
       this.createArr()
       this.shuffleArr()
       this.quizNumArr = this.quizNumArr.slice(0, 10)
@@ -47,10 +47,12 @@ const quiz = new Vue({
       this.askQuestion = true
       this.quizAnswerOption = true
     },
-    getQuizDataJSON: function () {
-      axios
+    getQuizDataJSON: async function () {
+      let ret = null
+      await axios
         .get('./static/json/' + this.info[this.selectQuizNum].quizName + '.json')
         .then(response => { this.quiz = response.data })
+      return ret
     },
     createArr: function () {
       var i = this.i
