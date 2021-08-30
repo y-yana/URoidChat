@@ -12,10 +12,6 @@ const quiz = new Vue({
     info: null,
     quiz: null,
     quizNumArr: [],
-    i: 0,
-    j: 0,
-    n: 37,
-    temp: 0,
     quizName: '',
     selectQuizNum: 0,
     question: '',
@@ -55,7 +51,7 @@ const quiz = new Vue({
       return ret
     },
     createArr: function () {
-      var i = this.i
+      var i = 0
       this.quizNumArr.splice(0, this.quizNumArr.length)
       for (i = 0; i < 37; i++){
         this.quizNumArr.push(i);
@@ -63,9 +59,9 @@ const quiz = new Vue({
       console.log(this.quizNumArr)
     },
     shuffleArr: function () {
-      var n = this.n
-      var temp = this.temp
-      var j = this.j
+      var n = 37
+      var temp = 0
+      var j = 0
       var arr = this.quizNumArr
       while (n) {
         j = Math.floor(Math.random() * n--);
