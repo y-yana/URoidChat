@@ -4,11 +4,11 @@ const quiz = new Vue({
   delimiters: ["[[", "]]"],
   data: {
     selectQuiz: true,
-    askQuestion: true,
-    yourResult: true,
+    askQuestion: false,
+    yourResult: false,
     quizNameOption: true,
-    quizAnswerOption: true,
-    resultRanking: true,
+    quizAnswerOption: false,
+    resultRanking: false,
     info: null,
     quiz: null,
     quizNumArr: [],
@@ -42,6 +42,10 @@ const quiz = new Vue({
       this.shuffleArr()
       this.quizNumArr = this.quizNumArr.slice(0, 10)
       this.getQuizDataDetail()
+      this.selectQuiz = false
+      this.quizNameOption = false
+      this.askQuestion = true
+      this.quizAnswerOption = true
     },
     getQuizDataJSON: function () {
       axios
