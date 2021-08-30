@@ -12,7 +12,7 @@
       <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
       <p v-if="question">[[ question ]]</p>
       <p>正解：[[ answerText ]]</p>
-      <button @click="nextQuestion">次の問題</button>
+      <button @click="nextQuestion">[[ nextQuestionBtnText ]]</button>
     </template>
     <template v-if="yourResult">
       <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>

@@ -23,7 +23,8 @@ const quiz = new Vue({
     answerText: '',
     questionNumUse: 0,
     questionNumShow: 1,
-    trueCounter: 0
+    trueCounter: 0,
+    nextQuestionBtnText: '次の問題'
   },
   mounted() {
     axios
@@ -89,6 +90,10 @@ const quiz = new Vue({
       } else {
         this.questionNumUse = 0
         this.questionNumShow = 1
+        this.askQuestion = false
+        this.quizAnswerOption = false
+        this.yourResult = true
+        this.resultRanking = true
       }
     },
     judgeSelectAnswer: function (ans) {
@@ -98,6 +103,9 @@ const quiz = new Vue({
         this.trueCounter += 1
       } else {
         console.log('×')
+      }
+      if (this.questionNumUse == 9) {
+        this.nextQuestionBtnText = '結果を見る'
       }
     }
   }
