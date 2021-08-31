@@ -11,8 +11,8 @@
     <template v-if="askQuestion">
       <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
       <p v-if="question">[[ question ]]</p>
-      <p>正解：[[ answerText ]]</p>
-      <button @click="nextQuestion">[[ nextQuestionBtnText ]]</button>
+      <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
+      <button @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]</button>
     </template>
     <template v-if="yourResult">
       <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
@@ -32,33 +32,15 @@
       <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
     </template>
     <template v-if="quizAnswerOption">
-      <button v-if="option1" @click="judgeSelectAnswer(1)">[[ option1 ]]</button>
-      <button v-if="option2" @click="judgeSelectAnswer(2)">[[ option2 ]]</button>
-      <button v-if="option3" @click="judgeSelectAnswer(3)">[[ option3 ]]</button>
-      <button v-if="option4" @click="judgeSelectAnswer(4)">[[ option4 ]]</button>
+      <button v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
+      <button v-if="option2" @click="judgeSelectAnswer(2)" :disabled="optionBtnDisabled">[[ option2 ]]</button>
+      <button v-if="option3" @click="judgeSelectAnswer(3)" :disabled="optionBtnDisabled">[[ option3 ]]</button>
+      <button v-if="option4" @click="judgeSelectAnswer(4)" :disabled="optionBtnDisabled">[[ option4 ]]</button>
     </template>
     <template v-if="resultRanking">
       <p>ここにランキングを表示</p>
     </template>
   </div>
-
-  <!-- testArea -->
-  <!-- クイズジャンルが格納されたJSONデータ -->
-  <!-- <p v-if="info">[[ info[0].quizName ]]</p> -->
-  <!-- 選択したジャンルのJSONデータ -->
-  <!-- <p v-if="quiz">[[ quiz ]]</p> -->
-  <!-- 今回出題する問題の配列 -->
-  <!-- <p v-if="quizNumArr">[[ quizNumArr ]]</p> -->
-  <!-- 第○問目 -->
-  <!-- <p v-if="questionNumUse">[[ questionNumUse ]]</p> -->
-  <!-- 取得したクイズの各項目 -->
-  <!--<p v-if="question">[[ question ]]</p>
-  <p v-if="option1">[[ option1 ]]</p>
-  <p v-if="option2">[[ option2 ]]</p>
-  <p v-if="option3">[[ option3 ]]</p>
-  <p v-if="option4">[[ option4 ]]</p>
-  <p v-if="answer">[[ answer ]]</p>
-  <button @click="nextQuestion">次の問題</button> -->
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

@@ -9,6 +9,9 @@ const quiz = new Vue({
     quizNameOption: true,
     quizAnswerOption: false,
     resultRanking: false,
+    optionBtnDisabled: false,
+    nextQuizBtnDisabled: true,
+    quizAnsShowControl: false,
     info: null,
     quiz: null,
     quizNumArr: [],
@@ -83,6 +86,9 @@ const quiz = new Vue({
       this.answerText = quizGet.answerText
     },
     nextQuestion: function () {
+      this.optionBtnDisabled = false
+      this.nextQuizBtnDisabled = true
+      this.quizAnsShowControl = false
       this.questionNumUse += 1
       this.questionNumShow += 1
       if (this.questionNumUse < 10) {
@@ -98,6 +104,9 @@ const quiz = new Vue({
     },
     judgeSelectAnswer: function (ans) {
       console.log(ans)
+      this.optionBtnDisabled = true
+      this.nextQuizBtnDisabled = false
+      this.quizAnsShowControl = true
       if (this.answerNum == ans) {
         console.log('○')
         this.trueCounter += 1
