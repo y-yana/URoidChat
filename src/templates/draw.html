@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="og:title" content="黒板であそぼ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://after-school-black-board.herokuapp.com/">
+    <meta property="og:image" content="https://after-school-black-board.herokuapp.com/static/images/ogp-title.png" />
+    <meta property="og:description" content="黒板に絵をみんなで同時に書くことができます！">
+    <meta property="og:site_name" content="黒板であそぼ">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="./static/webpack/style.css">
+    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>黒板であそぼ</title>
+    <style>
+        body {
+            background-image: url("static/images/BG-rouka.jpeg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+        }
+    </style>
+</head>
+
+<body id="BGchange">
+    <div id="rouka">
+        <!--<form class="form-inline">
+            <div class="form-group">
+                <label class="roomLabel" for="rooms">部屋：</label>
+                <select class="form-control" id="rooms">
+                    <option value="room1" id="room1">部屋1</option>
+                    <option value="room2" id="room2">部屋2</option>
+                    <option value="room3" id="room3">部屋3</option>
+                </select>
+                <!--
+                    delete add button
+                <button type="button" id="addRoom"><span class="material-icons">add</span></button>
+                -->
+        <!--
+                <label class="nameLabel" for="nameForm">名前:</label>
+                <input type="text" class="form-control" id="nameForm">
+            </div>
+            <button type="submit" class="btn btn-primary" id="sendButton">入室</button>
+        </form>
+            -->
+        <form class="form-inline" id="roukaForm">
+            <div class="form-group">
+                <label class="roomLabel" for="rooms">クラス名：</label>
+                <select class="form-control" id="rooms">
+                    <option value="room1">3-1</option>
+                    <option value="room2">3-2</option>
+                    <option value="room3">3-3</option>
+                    <option value="room4">3-4</option>
+                    <option value="room5">3-5</option>
+                    <option value="room6">2-1</option>
+                    <option value="room7">2-2</option>
+                    <option value="room8">2-3</option>
+                    <option value="room9">2-4</option>
+                    <option value="room10">2-5</option>
+                    <option value="room11">1-1</option>
+                    <option value="room12">1-2</option>
+                    <option value="room13">1-3</option>
+                    <option value="room14">1-4</option>
+                    <option value="room15">1-5</option>
+                </select>
+                <span id="nameAreaForm">
+                    <label class="nameLabel" for="nameForm">名前：</label>
+                    <input type="text" class="form-control" id="nameForm">
+                </span>
+            </div>
+            <button type="submit" class="btn btn-primary" id="sendButton">入室</button>
+        </form>
+    </div>
+
+    <!-- ここに各教室が動的に生成される -->
+
+    <div id="blackCover"></div>
+    <div id="center" style="display: none;">
+        <div id="createTheme">
+            <p id="generateTheme">&nbsp;</p>
+            <button>お題を生成する</button>
+        </div>
+        <div id="responsiveArea">
+            <div id="flexArea">
+                <canvas id="canvas" width="500" height="400"></canvas>
+                <div class="container">
+                    <form class="form-inline">
+                        <div id="messageHeader">
+                            <label class="roomLabel" id="selectRooms">部屋</label>
+                            <label class="roomLabel" id="nameBox">名前</label>
+                            <label class="roomMember" id="room">
+                        </div>
+                        <div id="allChatLogs">
+                            <div id="chatLogs"></div>
+                        </div>
+                        <div id="messageFooter">
+                            <input type="text" class="form-control" id="msgForm" placeholder="メッセージを入力">
+                            <button type="submit" class="btn btn-primary" id="sendButton"><span
+                                    class="material-icons">send</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="selectArea">
+                <div id="selectAreaContents">
+                    <ul>
+                        <li style="background-color:#D61A6A"></li>
+                        <li style="background-color:#E68D13"></li>
+                        <li style="background-color:#F8F13B"></li>
+                        <li style="background-color:#18D37D"></li>
+                        <li style="background-color:#1A54D6"></li>
+                    </ul>
+                    <div id="button">
+                        <button id="save"><span class="material-icons">file_download
+                            </span></button>
+                        <button id="clear"><span class="material-icons">delete</span></button>
+
+                        <button id="eraser"><img id="image" src="./static/images/eraser.png" alt="" title=""></button>
+                        <button id="large">大</button>
+                        <button id="midium">中</button>
+                        <button id="smalle">小</button>
+                        <button type="submit" class="btn btn-primary" id="outButton"><span
+                                class="material-icons">logout</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="./static/js/jquery-3.6.0.min.js"></script>
+    <script src="./static/js/jquery-ui.js"></script>
+    <!--<script src="./static/js/addRoom.js"></script>-->
+    <!--後で消すよ！　忘れないで！-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./static/webpack/bundle.js"></script>
+
+    <script type="text/javascript">
+        var socket = io.connect(); // C02. ソケットへの接続
+        var isEnter = false;
+        var name = '';
+
+        //画面幅によって黒板の横幅を動的に変更する
+        if (window.innerWidth < 950) {
+            document.getElementById("canvas").width = 300;
+            document.getElementById("canvas").height = 400;
+            document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
+        }
+
+        //同時接続人数把握用 部屋の数をいじってください
+        socket.on('memberList', function (data) {
+            roomSize = 15; //部屋の数
+            for (let i = 1; i <= roomSize; i++) {
+                roomName = "room" + i.toString();
+                document.getElementById(roomName).textContent = searchMember(data, roomName) + "人";
+            }
+        });//ここまで同時接続人数把握
+
+        // C04. server_to_clientイベント・データを受信する
+        socket.on("server_to_client", function (data) {
+            appendMsg(data.value)
+        });
+        function appendMsg(text) {
+            $("#chatLogs").prepend("<div class='chatLog'>" + text + "</div>");
+        }
+
+        $("form").submit(function (e) {
+            var nameMessage = $("#nameForm").val();
+            var message = $("#msgForm").val();
+            var selectRoom = $("#rooms").val();
+            $("#msgForm").val('');
+
+            //名前が空なら返すeventキャンセル
+            if (!$("#nameForm").val()) {
+                console.log("反応してるよ");
+                confirm('名前を入力してください');
+                document.nameForm.submit();
+                return false;
+            } else {
+                if (isEnter) {
+                    var sendTime = new Date();
+                    var Hour = sendTime.getHours();
+                    var Min = sendTime.getMinutes();
+
+                    message = name + "： " + message + "<span id='sendTime'>" + Hour + ":" + Min + "</span>";
+                    // C03. client_to_serverイベント・データを送信する
+                    socket.emit("client_to_server", { value: message });
+                } else {
+                    name = nameMessage;
+                    var entryMessage = name + "さんが入室しました。";
+                    socket.emit("client_to_server_join", { value: selectRoom });
+                    // C05. client_to_server_broadcastイベント・データを送信する
+                    socket.emit("client_to_server_broadcast", { value: entryMessage });
+                    // C06. client_to_server_personalイベント・データを送信する
+                    socket.emit("client_to_server_personal", { value: name });
+                    enterLabel();
+
+
+                    //oekaki開始
+                    $(function () {
+                        var offset = 5;
+                        var fromX;
+                        var fromY;
+                        var drawFlag = false;
+                        var eraserFlag = false;
+                        var smalleFlag = false;
+                        var midiumFlag = true;
+                        var largeFlag = false
+                        var context = $("canvas").get(0).getContext('2d');
+
+                        //色の初期値
+                        context.strokeStyle = '#D61A6A';
+
+                        //var socket = io.connect('http://localhost:3333');
+
+                        var selectRoom = $("#rooms").val();
+
+                        //socket.emit("client_to_server_join", {value : selectRoom});
+
+
+                        // サーバからメッセージ受信
+                        socket.on('send user', function (msg) {
+
+                            tmpColor = context.strokeStyle //色情報を一時保存
+                            context.strokeStyle = msg.color;
+                            context.lineWidth = 2;
+                            context.beginPath();
+                            context.moveTo(msg.fx, msg.fy);
+                            context.lineTo(msg.tx, msg.ty);
+                            context.stroke();
+                            context.closePath();
+                            context.strokeStyle = tmpColor //色情報を呼び出し
+
+
+                        });
+
+                        socket.on('clear user', function () {
+                            context.clearRect(0, 0, $('canvas').width(), $('canvas').height());
+                        });
+
+
+
+                        $('canvas').mousedown(function (e) {
+                            drawFlag = true;
+                            fromX = e.pageX - $(this).offset().left - offset;
+                            fromY = e.pageY - $(this).offset().top - offset;
+
+                            //console.log('mousedown')
+                            //console.log($(this).offset().top - offset);
+                            //console.log(e.pageX);
+                            //console.log(fromX)
+
+
+                            return false;  // for chrome
+                        });
+
+                        $('canvas').mousemove(function (e) {
+                            //console.log('mousemove');
+                            //console.log(drawFlag);
+                            if (drawFlag) {
+                                draw(e);
+                            }
+                        });
+
+                        $('canvas').on('mouseup', function () {
+                            drawFlag = false;
+                        });
+
+                        $('canvas').on('mouseleave', function () {
+                            drawFlag = false;
+                        });
+
+
+
+                        //sumaho
+                        $('canvas').bind({
+                            'touchstart': function (e) {
+                                //console.log('touchstart');
+
+                                drawFlag = true;
+                                fromX = e.touches[0].clientX - $(this).offset().left - offset;
+                                fromY = e.touches[0].clientY - $(this).offset().top - offset;
+
+                                //console.log($(this).offset().top - offset);
+                                //console.log(e.touches[0].pageX);
+                                //console.log(fromX)
+                                return false;  // for chrome
+
+                            },
+
+                            'touchmove': function (e) {
+                                //console.log('touchmove');
+                                //console.log(drawFlag);
+                                if (drawFlag) {
+                                    draw_sumaho(e)
+                                }
+                            },
+                            'touchend': function () {
+                                drawFlag = false;
+                                //console.log(drawFlag)
+
+                            }
+
+                        });
+
+                        $('li').click(function () {
+                            context.strokeStyle = $(this).css('background-color');
+                            //描画モード
+                            context.globalCompositeOperation = 'source-over';
+                            eraserFlag = false
+                        });
+
+                        $('#clear').click(function (e) {
+                            socket.emit('clear send');
+                            e.preventDefault();
+                            context.clearRect(0, 0, $('canvas').width(), $('canvas').height());
+                        });
+
+                        $('#eraser').click(function (e) {
+                            console.log("kesigomu")
+                            //消しゴムモード
+                            context.globalCompositeOperation = 'destination-out';
+                            eraserFlag = true
+                        });
+
+                        $('#large').click(function (e) {
+                            context.globalCompositeOperation = 'source-over';
+                            largeFlag = true
+                            midiumFlag = false
+                            smalleFlag = false
+                            eraserFlag = false
+
+                        });
+                        $('#midium').click(function (e) {
+                            context.globalCompositeOperation = 'source-over';
+                            largeFlag = false
+                            midiumFlag = true
+                            smalleFlag = false
+                            eraserFlag = false
+                        });
+                        $('#smalle').click(function (e) {
+                            context.globalCompositeOperation = 'source-over';
+                            largeFlag = false
+                            midiumFlag = false
+                            smalleFlag = true
+                            eraserFlag = false
+                        });
+
+
+                        function draw(e) {
+                            var toX = e.pageX - $('canvas').offset().left - offset;
+                            var toY = e.pageY - $('canvas').offset().top - offset;
+                            if (eraserFlag) {
+                                context.lineWidth = 20;
+                            }
+                            else if (largeFlag) {
+                                context.lineWidth = 10;
+
+                            }
+                            else if (midiumFlag) {
+                                context.lineWidth = 5;
+                            }
+                            else {
+                                context.lineWidth = 2;
+                            }
+                            context.beginPath();
+                            context.moveTo(fromX, fromY);
+                            context.lineTo(toX, toY);
+                            context.stroke();
+                            context.closePath();
+
+
+                            // サーバへメッセージ送信
+                            socket.emit('server send', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle });
+                            fromX = toX;
+                            fromY = toY;
+
+                        }
+
+
+                        function draw_sumaho(e) {
+                            var toX = e.touches[0].clientX - $('canvas').offset().left - offset;
+                            var toY = e.touches[0].clientY - $('canvas').offset().top - offset;
+                            if (eraserFlag) {
+                                context.lineWidth = 20;
+                            }
+                            else if (largeFlag) {
+                                context.lineWidth = 10;
+
+                            }
+                            else if (midiumFlag) {
+                                context.lineWidth = 5;
+                            }
+                            else {
+                                context.lineWidth = 2;
+                            }
+                            context.beginPath();
+                            context.moveTo(fromX, fromY);
+                            context.lineTo(toX, toY);
+                            context.stroke();
+                            context.closePath();
+
+
+                            // サーバへメッセージ送信
+                            socket.emit('server send', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle });
+                            fromX = toX;
+                            fromY = toY;
+                        }
+
+                        $('#save').click(function () {
+                            var d = $("canvas")[0].toDataURL("image/png");
+                            d = d.replace("image/png", "image/octet-stream");
+                            window.open(d, "save");
+                        });
+                    });
+                    ////oekakiおわり
+                    $("#outButton").click(function () {
+                        if (confirm('ルームを退出しますか？')) {
+                            window.location.href = '/index';
+                        }
+                    });
+                }
+            }
+            e.preventDefault();
+        });
+
+        function enterLabel() {
+            $("#sendButton").text("送信");
+            isEnter = true;
+            $("#selectRooms").text($("#rooms").val());
+            $("#nameBox").text($("#nameForm").val());
+        }
+        function outLabel() {
+            $("#rooms").prop("disabled", true);
+        }
+        function searchMember(memberList, roomName) {
+            var roomMember = 0;
+            for (let i = 0; i <= memberList.length; i++) {
+                if (roomName === memberList[i]) {
+                    roomMember += 1;
+                }
+            }
+            return roomMember;
+        }
+
+    </script>
+
+</body>
+
+</html>
