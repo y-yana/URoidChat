@@ -12,6 +12,7 @@
       <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
       <p v-if="question">[[ question ]]</p>
       <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
+      <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'" width=30px>
       <button @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]</button>
     </template>
     <template v-if="yourResult">

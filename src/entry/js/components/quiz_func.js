@@ -27,7 +27,8 @@ const quiz = new Vue({
     questionNumUse: 0,
     questionNumShow: 1,
     trueCounter: 0,
-    nextQuestionBtnText: '次の問題'
+    nextQuestionBtnText: '次の問題',
+    answerImageSrc: 'true'
   },
   mounted() {
     axios
@@ -104,18 +105,20 @@ const quiz = new Vue({
     },
     judgeSelectAnswer: function (ans) {
       console.log(ans)
-      this.optionBtnDisabled = true
-      this.nextQuizBtnDisabled = false
-      this.quizAnsShowControl = true
       if (this.answerNum == ans) {
         console.log('○')
+        this.answerImageSrc = 'true'
         this.trueCounter += 1
       } else {
+        this.answerImageSrc = 'false'
         console.log('×')
       }
       if (this.questionNumUse == 9) {
         this.nextQuestionBtnText = '結果を見る'
       }
+      this.optionBtnDisabled = true
+      this.nextQuizBtnDisabled = false
+      this.quizAnsShowControl = true
     },
     replaySameQuiz: function () {
       console.log('replay')
