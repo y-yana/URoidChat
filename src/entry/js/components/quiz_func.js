@@ -28,7 +28,9 @@ const quiz = new Vue({
     questionNumShow: 1,
     trueCounter: 0,
     nextQuestionBtnText: '次の問題',
-    answerImageSrc: 'true'
+    answerImageSrc: 'true',
+    NationalFlagCheck: false,
+    NationalFlagImg: ''
   },
   mounted() {
     axios
@@ -38,6 +40,9 @@ const quiz = new Vue({
   methods: {
     createQuiz: async function (value) {
       this.selectQuizNum = value
+      if (value == 2) {
+        this.NationalFlagCheck = true
+      }
       await this.getQuizDataJSON()
       this.createArr()
       this.shuffleArr()
@@ -61,7 +66,7 @@ const quiz = new Vue({
       for (i = 0; i < 37; i++){
         this.quizNumArr.push(i);
       }
-      console.log(this.quizNumArr)
+      //console.log(this.quizNumArr)
     },
     shuffleArr: function () {
       var n = 37
@@ -74,11 +79,17 @@ const quiz = new Vue({
         arr[n] = arr[j];
         arr[j] = temp;
       }
-      console.log(this.quizNumArr)
+      //console.log(this.quizNumArr)
     },
     getQuizDataDetail: function () {
       var quizGet = this.quiz[this.info[this.selectQuizNum].quizName][this.quizNumArr[this.questionNumUse]]
-      this.question = quizGet.question
+      if (this.info[this.selectQuizNum].quizName != 'NationalFlag') {
+        this.question = quizGet.question
+      } else {
+        var NationalFlagArr = quizGet.question.split(',')
+        this.question = NationalFlagArr[0]
+        this.NationalFlagImg = NationalFlagArr[1]
+      }
       this.option1 = quizGet.option1
       this.option2 = quizGet.option2
       this.option3 = quizGet.option3
@@ -101,17 +112,18 @@ const quiz = new Vue({
         this.quizAnswerOption = false
         this.yourResult = true
         this.resultRanking = true
+        this.NationalFlagCheck = false
       }
     },
     judgeSelectAnswer: function (ans) {
-      console.log(ans)
+      //console.log(ans)
       if (this.answerNum == ans) {
-        console.log('○')
+        //console.log('○')
         this.answerImageSrc = 'true'
         this.trueCounter += 1
       } else {
         this.answerImageSrc = 'false'
-        console.log('×')
+        //console.log('×')
       }
       if (this.questionNumUse == 9) {
         this.nextQuestionBtnText = '結果を見る'
@@ -121,7 +133,7 @@ const quiz = new Vue({
       this.quizAnsShowControl = true
     },
     replaySameQuiz: function () {
-      console.log('replay')
+      //console.log('replay')
       this.yourResult = false
       this.resultRanking = false
       this.askQuestion = true
@@ -130,7 +142,7 @@ const quiz = new Vue({
       this.createQuiz(this.selectQuizNum)
     },
     replayAnotherQuiz: function () {
-      console.log('another')
+      //console.log('another')
       this.yourResult = false
       this.resultRanking = false
       this.selectQuiz = true
