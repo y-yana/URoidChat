@@ -81,7 +81,7 @@ const shiritori = new Vue({
         }
     },
     ajaxGetMessage: function () {
-      var postMessage = this.inputText
+      var postMessage = this.endStr
       let self = this;
       $.ajax("/shiritori/ajax/", {
             type: "post",
