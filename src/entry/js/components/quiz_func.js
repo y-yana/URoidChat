@@ -96,7 +96,7 @@ const quiz = new Vue({
       this.answerNum = quizGet.answerNum
       this.answerText = quizGet.answerText
     },
-    nextQuestion: function () {
+    nextQuestion: async function () {
       this.optionBtnDisabled = false
       this.nextQuizBtnDisabled = true
       this.quizAnsShowControl = false
@@ -109,6 +109,7 @@ const quiz = new Vue({
         // resultTimeミリ秒
         this.resultTime = this.timerEnd - this.timerStart
         this.pageMove_askQuestion2yourResult()
+        await this.ajaxGetRanking()
         this.resetQuizPlayData()
       }
     },
@@ -163,6 +164,24 @@ const quiz = new Vue({
       this.resultRanking = false
       this.selectQuiz = true
       this.quizNameOption = true
+    },
+    ajaxGetRanking: async function () {
+      var postMessage = {
+        trueCounter: this.trueCounter,
+        playTime: this.resultTime
+      }
+      let self = this;
+      await $.ajax("/quiz/ajax", {
+        type: "post",
+        data: postMessage,
+        dataType: "json",
+      }).done(function (data) {
+        console.log("Ajax通信 成功");
+        const getData= JSON.parse(data.values).rankingData
+        console.log(getData)
+      }).fail(function (data) {
+        console.log("Ajax通信 失敗");
+      })
     }
   }
 });

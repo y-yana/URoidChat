@@ -14,7 +14,8 @@ const shiritori = new Vue({
     endStr: 'り',
     submitBtnDisabled: false,
     replayQuestion: false,
-    submitCheck: 'NG'
+    submitCheck: 'NG',
+    ajaxText: ''
   },
   created: function () {
     this.resetArr()
@@ -24,29 +25,10 @@ const shiritori = new Vue({
   methods: {
     submit: function () {
       this.submitCheck = 'NG'
-      var newText = this.inputText
-      var search = this.check.indexOf(newText);
-
-      // 重複チェック
-      if (search != -1) {
-        this.result = '「' + newText + '」は既出なので、あなたの負けです！'
-        this.submitBtnDisabled = true
-        this.replayQuestion = true
-      }
-
-      // 「ん」チェック
-      this.endStr = newText.slice(-1)
-      if (this.endStr == 'ん') {
-        this.result = '最後に「ん」がついたので、あなたの負けです！'
-        this.submitBtnDisabled = true
-        this.replayQuestion = true
-      }
-
-      this.arrNum += 1
-
-      this.check.push(newText)
-      this.textArr.push({ id: this.arrNum, text: newText })
-
+      this.endStr = this.inputText.slice(-1)
+      this.textCheck()
+      this.pushNewText(this.inputText)
+      this.ajaxGetMessage()
       this.inputText = ''
     },
     replay: function () {
@@ -57,6 +39,26 @@ const shiritori = new Vue({
     back: function () {
       this.reset()
       this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
+    },
+    textCheck: function () {
+      // 重複チェック
+      if (this.check.indexOf(this.inputText) != -1) {
+        this.result = '「' + this.inputText + '」は既出なので、あなたの負けです！'
+        this.submitBtnDisabled = true
+        this.replayQuestion = true
+      }
+
+      // 「ん」チェック
+      if (this.endStr == 'ん') {
+        this.result = '最後に「ん」がついたので、あなたの負けです！'
+        this.submitBtnDisabled = true
+        this.replayQuestion = true
+      }
+    },
+    pushNewText: function (text) {
+      this.arrNum += 1
+      this.check.push(text)
+      this.textArr.push({ id: this.arrNum, text: text })
     },
     resetArr: function () {
       this.submitBtnDisabled = false
@@ -77,6 +79,22 @@ const shiritori = new Vue({
         if(this.submitCheck == 'OK'){
           this.submit()
         }
+    },
+    ajaxGetMessage: function () {
+      var postMessage = this.endStr
+      let self = this;
+      $.ajax("/shiritori/ajax/", {
+            type: "post",
+            data: postMessage,
+            dataType: "text",
+        }).done(function (data) {
+          console.log("Ajax通信 成功");
+          self.ajaxText = data
+          self.endStr = self.ajaxText.slice(-1)
+          self.pushNewText(self.ajaxText)
+        }).fail(function (data) {
+          console.log("Ajax通信 失敗");
+        });
     }
   },
   watch: {
