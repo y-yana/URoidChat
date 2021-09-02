@@ -51,10 +51,7 @@ const quiz = new Vue({
       this.shuffleArr()
       this.quizNumArr = this.quizNumArr.slice(0, 10)
       this.getQuizDataDetail()
-      this.selectQuiz = false
-      this.quizNameOption = false
-      this.askQuestion = true
-      this.quizAnswerOption = true
+      this.pageMove_selectQuiz2askQuestion()
       this.timerStart = performance.now();
     },
     getQuizDataJSON: async function () {
@@ -116,11 +113,8 @@ const quiz = new Vue({
         //console.log(this.resultTime)
         this.questionNumUse = 0
         this.questionNumShow = 1
-        this.askQuestion = false
-        this.quizAnswerOption = false
-        this.yourResult = true
-        this.resultRanking = true
         this.NationalFlagCheck = false
+        this.pageMove_askQuestion2yourResult()
       }
     },
     judgeSelectAnswer: function (ans) {
@@ -142,24 +136,42 @@ const quiz = new Vue({
     },
     replaySameQuiz: function () {
       //console.log('replay')
-      this.yourResult = false
-      this.resultRanking = false
-      this.askQuestion = true
-      this.quizAnswerOption = true
+      this.pageMove_yourResult2askQuestion()
       this.resetQuizPlayData()
       this.createQuiz(this.selectQuizNum)
     },
     replayAnotherQuiz: function () {
       //console.log('another')
-      this.yourResult = false
-      this.resultRanking = false
-      this.selectQuiz = true
-      this.quizNameOption = true
+      this.pageMove_yourResult2selectQuiz()
       this.resetQuizPlayData()
     },
     resetQuizPlayData: function () {
       this.trueCounter = 0
       this.nextQuestionBtnText = '次の問題'
+    },
+    pageMove_selectQuiz2askQuestion: function () {
+      this.selectQuiz = false
+      this.quizNameOption = false
+      this.askQuestion = true
+      this.quizAnswerOption = true
+    },
+    pageMove_askQuestion2yourResult: function () {
+        this.askQuestion = false
+        this.quizAnswerOption = false
+        this.yourResult = true
+        this.resultRanking = true
+    },
+    pageMove_yourResult2askQuestion: function() {
+      this.yourResult = false
+      this.resultRanking = false
+      this.askQuestion = true
+      this.quizAnswerOption = true
+    },
+    pageMove_yourResult2selectQuiz: function () {
+      this.yourResult = false
+      this.resultRanking = false
+      this.selectQuiz = true
+      this.quizNameOption = true
     }
   }
 });
