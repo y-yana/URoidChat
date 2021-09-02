@@ -114,7 +114,8 @@ def upload():
 
     return jsonify(values=json.dumps(return_json))
 
-SAVE_DIR = "./images"
+
+SAVE_DIR = "./static/images/nigaoe"
 if not os.path.isdir(SAVE_DIR):
     os.mkdir(SAVE_DIR)
 
