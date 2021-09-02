@@ -145,6 +145,12 @@ def upload_img():
     return ""
 
 
+@app.route('/shiritori/ajax/', methods=['POST'])
+def ajax():
+    ajax = 'ごりら'
+    return ajax
+
+
 
 if __name__ == '__main__':
     #port = int(os.environ.get("PORT", 5000))
