@@ -1,0 +1,337 @@
+{
+  "NationalFlag":[
+    {
+      "question": "この国旗の国は?,Japan.png",
+      "option1": "日本",
+      "option2": "バングラデシュ",
+      "option3": "韓国",
+      "option4": "台湾",
+      "answerNum": "1",
+      "answerText": "日本"
+    },
+    {
+      "question": "この国旗の国は?,British.png",
+      "option1": "オーストラリア",
+      "option2": "イギリス",
+      "option3": "アイルランド",
+      "option4": "アイスランド",
+      "answerNum": "2",
+      "answerText": "イギリス"
+    },
+    {
+      "question": "この国旗の国は?,America.png",
+      "option1": "チリ",
+      "option2": "ギリシャ",
+      "option3": "アメリカ",
+      "option4": "リベリア",
+      "answerNum": "3",
+      "answerText": "アメリカ"
+    },
+    {
+      "question": "この国旗の国は?,France.png",
+      "option1": "ポーランド",
+      "option2": "オランダ",
+      "option3": "ロシア",
+      "option4": "フランス",
+      "answerNum": "4",
+      "answerText": "フランス"
+    },
+    {
+      "question": "この国旗の国は?,Russia.png",
+      "option1": "スペイン",
+      "option2": "イタリア",
+      "option3": "グルジア",
+      "option4": "ルクセンブルク",
+      "answerNum": "1",
+      "answerText": "スペイン"
+    },
+    {
+      "question": "この国旗の国は?,Italy.png",
+      "option1": "スペイン",
+      "option2": "イタリア",
+      "option3": "ポルトガル",
+      "option4": "アイルランド",
+      "answerNum": "2",
+      "answerText": "イタリア"
+    },
+    {
+      "question": "この国旗の国は?,Switzerland.png",
+      "option1": "デンマーク",
+      "option2": "スウェーデン",
+      "option3": "スイス",
+      "option4": "アイスランド",
+      "answerNum": "3",
+      "answerText": "スイス"
+    },
+    {
+      "question": "この国旗の国は?,Sweden.png",
+      "option1": "グルジア",
+      "option2": "フィンランド",
+      "option3": "ノルウェー",
+      "option4": "スウェーデン",
+      "answerNum": "4",
+      "answerText": "スウェーデン"
+    },
+    {
+      "question": "この国旗の国は?,Germany.png",
+      "option1": "ドイツ",
+      "option2": "ベルギー",
+      "option3": "イラク",
+      "option4": "アルメニア",
+      "answerNum": "1",
+      "answerText": "ドイツ"
+    },
+    {
+      "question": "この国旗の国は?,Canada.png",
+      "option1": "コスタリカ",
+      "option2": "カナダ",
+      "option3": "ベネズエラ",
+      "option4": "イスラエル",
+      "answerNum": "2",
+      "answerText": "カナダ"
+    },
+    {
+      "question": "この国旗の国は?,Jamaica.png",
+      "option1": "パナマ",
+      "option2": "キューバ",
+      "option3": "ジャマイカ",
+      "option4": "ハイチ",
+      "answerNum": "3",
+      "answerText": "ジャマイカ"
+    },
+    {
+      "question": "この国旗の国は?,Bahrain.png",
+      "option1": "サウジアラビア",
+      "option2": "カタール",
+      "option3": "オマーン",
+      "option4": "バーレーン",
+      "answerNum": "4",
+      "answerText": "バーレーン"
+    },
+    {
+      "question": "この国旗の国は?,Romania.png",
+      "option1": "ルーマニア",
+      "option2": "コロンビア",
+      "option3": "チャド",
+      "option4": "ブルガリア",
+      "answerNum": "1",
+      "answerText": "ルーマニア"
+    },
+    {
+      "question": "この国旗の国は?,NewZealand.png",
+      "option1": "インドネシア",
+      "option2": "ニュージーランド",
+      "option3": "東ティモール",
+      "option4": "オーストラリア",
+      "answerNum": "2",
+      "answerText": "ニュージーランド"
+    },
+    {
+      "question": "この国旗の国は?,China.png",
+      "option1": "台湾",
+      "option2": "香港",
+      "option3": "中国",
+      "option4": "韓国",
+      "answerNum": "3",
+      "answerText": "中国"
+    },
+    {
+      "question": "この国旗の国は?,Bhutan.png",
+      "option1": "ベトナム",
+      "option2": "ネパール",
+      "option3": "ラオス",
+      "option4": "ブータン",
+      "answerNum": "4",
+      "answerText": "ブータン"
+    },
+    {
+      "question": "この国旗の国は?,India.png",
+      "option1": "インド",
+      "option2": "スリランカ",
+      "option3": "パキスタン",
+      "option4": "アルゼンチン",
+      "answerNum": "1",
+      "answerText": "インド"
+    },
+    {
+      "question": "この国旗の国は?,Cambodia.png",
+      "option1": "タイ",
+      "option2": "カンボジア",
+      "option3": "シンガポール",
+      "option4": "ブルネイ",
+      "answerNum": "2",
+      "answerText": "カンボジア"
+    },
+    {
+      "question": "この国旗の国は?,Malaysia.png",
+      "option1": "インドネシア",
+      "option2": "アメリカ",
+      "option3": "マレーシア",
+      "option4": "トルコ",
+      "answerNum": "3",
+      "answerText": "マレーシア"
+    },
+    {
+      "question": "この国旗の国は?,Ghana.png",
+      "option1": "ギニア",
+      "option2": "カメルーン",
+      "option3": "モロッコ",
+      "option4": "ガーナ",
+      "answerNum": "4",
+      "answerText": "ガーナ"
+    },
+    {
+      "question": "この国旗の国は?,Mali.png",
+      "option1": "マリ",
+      "option2": "ベナン",
+      "option3": "セネガル",
+      "option4": "エチオピア",
+      "answerNum": "1",
+      "answerText": "マリ"
+    },
+    {
+      "question": "この国旗の国は?,SouthAfrica.png",
+      "option1": "ルワンダ",
+      "option2": "南アフリカ",
+      "option3": "ボツワナ",
+      "option4": "アンゴラ",
+      "answerNum": "2",
+      "answerText": "南アフリカ"
+    },
+    {
+      "question": "この国旗の国は?,Libya.png",
+      "option1": "モーリタニア",
+      "option2": "サウジアラビア",
+      "option3": "リビア",
+      "option4": "エジプト",
+      "answerNum": "3",
+      "answerText": "リビア"
+    },
+    {
+      "question": "この国旗の国は?,Hungary.png",
+      "option1": "イタリア",
+      "option2": "ブルガリア",
+      "option3": "タジキスタン",
+      "option4": "ハンガリー",
+      "answerNum": "4",
+      "answerText": "ハンガリー"
+    },
+    {
+      "question": "この国旗の国は?,Guinea.png",
+      "option1": "ギニア",
+      "option2": "ケニア",
+      "option3": "セネガル",
+      "option4": "ナイジェリア",
+      "answerNum": "1",
+      "answerText": "ギニア"
+    },
+    {
+      "question": "この国旗の国は?,Seychelles.png",
+      "option1": "ソマリア",
+      "option2": "セーシェル",
+      "option3": "マダガスカル",
+      "option4": "タンザニア",
+      "answerNum": "2",
+      "answerText": "セーシェル"
+    },
+    {
+      "question": "この国旗の国は?,Macedonia.png",
+      "option1": "ローマ帝国",
+      "option2": "キルギス",
+      "option3": "マケドニア",
+      "option4": "ギリシャ",
+      "answerNum": "3",
+      "answerText": "マケドニア"
+    },
+    {
+      "question": "この国旗の国は?,Mongolia.png",
+      "option1": "レソト",
+      "option2": "レバノン",
+      "option3": "マカオ",
+      "option4": "モンゴル",
+      "answerNum": "4",
+      "answerText": "モンゴル"
+    },
+    {
+      "question": "この国旗の国は?,Ukuraina.png",
+      "option1": "ウクライナ",
+      "option2": "アルゼンチン",
+      "option3": "ポーランド",
+      "option4": "モナコ",
+      "answerNum": "1",
+      "answerText": "ウクライナ"
+    },
+    {
+      "question": "この国旗の国は?,Nigeria.png",
+      "option1": "アルジェリア",
+      "option2": "ナイジェリア",
+      "option3": "コートジボワール",
+      "option4": "ニジェール",
+      "answerNum": "2",
+      "answerText": "ナイジェリア"
+    },
+    {
+      "question": "この国旗の国は?,Turkey.png",
+      "option1": "ウズベキスタン",
+      "option2": "シンガポール",
+      "option3": "トルコ",
+      "option4": "チュニジア",
+      "answerNum": "3",
+      "answerText": "トルコ"
+    },
+    {
+      "question": "この国旗の連合は?,EU.png",
+      "option1": "オリンピック",
+      "option2": "国連",
+      "option3": "ASEAN",
+      "option4": "EU",
+      "answerNum": "4",
+      "answerText": "EU"
+    },
+    {
+      "question": "この国旗の国は?,Tajikistan.png",
+      "option1": "タジキスタン",
+      "option2": "ウズベキスタン",
+      "option3": "カザフスタン",
+      "option4": "トルクメニスタン",
+      "answerNum": "1",
+      "answerText": "タジキスタン"
+    },
+    {
+      "question": "この国旗の国は?,Philippines.png",
+      "option1": "ブルネイ",
+      "option2": "フィリピン",
+      "option3": "インドネシア",
+      "option4": "東ティモール",
+      "answerNum": "2",
+      "answerText": "フィリピン"
+    },
+    {
+      "question": "この国旗の国は?,Barbados.png",
+      "option1": "セントルシア",
+      "option2": "グレナダ",
+      "option3": "バルバドス",
+      "option4": "ドミニカ",
+      "answerNum": "3",
+      "answerText": "バルバドス"
+    },
+    {
+      "question": "この国旗の国は?,UnitedArabEmirates.png",
+      "option1": "シリア",
+      "option2": "クウェート",
+      "option3": "イエメン",
+      "option4": "アラブ首長国連邦",
+      "answerNum": "4",
+      "answerText": "アラブ首長国連邦"
+    },
+    {
+      "question": "この国旗の国は?,Laos.png",
+      "option1": "ラオス",
+      "option2": "ミャンマー",
+      "option3": "タイ",
+      "option4": "ベトナム",
+      "answerNum": "1",
+      "answerText": "ラオス"
+    }
+  ]
+}

@@ -34,6 +34,10 @@ def move_chat():
 def move_shiritori():
     return render_template("shiritori.html", pageTitle='Shiritori')
 
+@app.route("/quiz", methods=["POST"])
+def move_quiz():
+    return render_template("quiz.html", pageTitle='Quiz')
+
 @app.route('/rename', methods=['POST'])
 def rename():
     session['user_name'] = request.form['user_name']

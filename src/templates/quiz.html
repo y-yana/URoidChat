@@ -1,0 +1,53 @@
+{% extends "layout.html" %}{% block content %}
+
+<div id="quiz">
+  <div id="questionShowArea">
+    <template v-if="selectQuiz">
+      <p>好きなテーマを選んでね！</p>
+      <p>難易度：<span class="material-icons">star</span>〜<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></p>
+      <p>（かんたん）</p>
+      <p>（むずかしい）</p>
+    </template>
+    <template v-if="askQuestion">
+      <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
+      <p v-if="question">[[ question ]]</p>
+      <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg" width=150px>
+      <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
+      <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'" width=30px>
+      <button @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]</button>
+    </template>
+    <template v-if="yourResult">
+      <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
+      <p v-if="trueCounter == 0">全問不正解でした…</p>
+      <p v-if="0 < trueCounter && trueCounter < 10">10問中[[ trueCounter ]]問正解！</p>
+      <p v-if="trueCounter == 10">全問正解でした！</p>
+      <p v-if="resultTime">（[[ resultTime ]]秒）</p>
+      <button @click="replaySameQuiz">もう1度あそぶ</button>
+      <a href="https://twitter.com/share?url=URL&text=本文&hashtags=ハッシュタグ">ツイートする</a>
+      <button @click="replayAnotherQuiz">別の問題</button>
+    </template>
+  </div>
+  <div id="optionShowArea">
+    <template v-if="quizNameOption">
+      <button v-if="info" @click="createQuiz(0)">[[ info[0].quizNameJa ]]<span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(1)">[[ info[1].quizNameJa ]]<span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(2)">[[ info[2].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span></button>
+      <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
+    </template>
+    <template v-if="quizAnswerOption">
+      <button v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
+      <button v-if="option2" @click="judgeSelectAnswer(2)" :disabled="optionBtnDisabled">[[ option2 ]]</button>
+      <button v-if="option3" @click="judgeSelectAnswer(3)" :disabled="optionBtnDisabled">[[ option3 ]]</button>
+      <button v-if="option4" @click="judgeSelectAnswer(4)" :disabled="optionBtnDisabled">[[ option4 ]]</button>
+    </template>
+    <template v-if="resultRanking">
+      <p>ここにランキングを表示</p>
+    </template>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+<script src="static/webpack/build_quiz.js"></script>
+
+{% endblock %}

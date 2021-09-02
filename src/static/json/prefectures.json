@@ -1,0 +1,337 @@
+{
+  "prefectures":[
+    {
+      "question": "北海道の県庁所在地はどこ？",
+      "option1": "札幌市",
+      "option2": "函館市",
+      "option3": "稚内市",
+      "option4": "小樽市",
+      "answerNum": "1",
+      "answerText": "札幌市"
+    },
+    {
+      "question": "青森県の県庁所在地はどこ？",
+      "option1": "八戸市",
+      "option2": "青森市",
+      "option3": "弘前市",
+      "option4": "十和田市",
+      "answerNum": "2",
+      "answerText": "青森市"
+    },
+    {
+      "question": "岩手県の県庁所在地はどこ？",
+      "option1": "岩手町",
+      "option2": "花巻市",
+      "option3": "盛岡市",
+      "option4": "一関市",
+      "answerNum": "3",
+      "answerText": "盛岡市"
+    },
+    {
+      "question": "宮城県の県庁所在地はどこ？",
+      "option1": "大崎市",
+      "option2": "白石市",
+      "option3": "石巻市",
+      "option4": "仙台市",
+      "answerNum": "4",
+      "answerText": "仙台市"
+    },
+    {
+      "question": "秋田県の県庁所在地はどこ？",
+      "option1": "秋田市",
+      "option2": "大館市",
+      "option3": "横手市",
+      "option4": "湯沢市",
+      "answerNum": "1",
+      "answerText": "秋田市"
+    },
+    {
+      "question": "山形県の県庁所在地はどこ？",
+      "option1": "新庄市",
+      "option2": "山形市",
+      "option3": "酒田市",
+      "option4": "米沢市",
+      "answerNum": "2",
+      "answerText": "山形市"
+    },
+    {
+      "question": "福島県の県庁所在地はどこ？",
+      "option1": "郡山市",
+      "option2": "会津若松市",
+      "option3": "福島市",
+      "option4": "いわき市",
+      "answerNum": "3",
+      "answerText": "福島市"
+    },
+    {
+      "question": "茨城県の県庁所在地はどこ？",
+      "option1": "日立市",
+      "option2": "大洗市",
+      "option3": "那珂市",
+      "option4": "水戸市",
+      "answerNum": "4",
+      "answerText": "水戸市"
+    },
+    {
+      "question": "栃木県の県庁所在地はどこ？",
+      "option1": "宇都宮市",
+      "option2": "栃木市",
+      "option3": "日光市",
+      "option4": "那須塩原市",
+      "answerNum": "1",
+      "answerText": "宇都宮市"
+    },
+    {
+      "question": "群馬県の県庁所在地はどこ？",
+      "option1": "富岡市",
+      "option2": "前橋市",
+      "option3": "沼田市",
+      "option4": "伊勢崎市",
+      "answerNum": "2",
+      "answerText": "前橋市"
+    },
+    {
+      "question": "新潟県の県庁所在地はどこ？",
+      "option1": "長岡市",
+      "option2": "新発田市",
+      "option3": "新潟市",
+      "option4": "柏崎市",
+      "answerNum": "3",
+      "answerText": "新潟市"
+    },
+    {
+      "question": "富山県の県庁所在地はどこ？",
+      "option1": "高岡市",
+      "option2": "黒部市",
+      "option3": "魚津市",
+      "option4": "富山市",
+      "answerNum": "4",
+      "answerText": "富山市"
+    },
+    {
+      "question": "石川県の県庁所在地はどこ？",
+      "option1": "金沢市",
+      "option2": "加賀市",
+      "option3": "七尾市",
+      "option4": "小松市",
+      "answerNum": "1",
+      "answerText": "金沢市"
+    },
+    {
+      "question": "福井県の県庁所在地はどこ？",
+      "option1": "鯖江市",
+      "option2": "福井市",
+      "option3": "越前市",
+      "option4": "敦賀市",
+      "answerNum": "2",
+      "answerText": "福井市"
+    },
+    {
+      "question": "山梨県の県庁所在地はどこ？",
+      "option1": "山梨市",
+      "option2": "甲州市",
+      "option3": "甲府市",
+      "option4": "大月市",
+      "answerNum": "3",
+      "answerText": "甲府市"
+    },
+    {
+      "question": "長野県の県庁所在地はどこ？",
+      "option1": "伊那市",
+      "option2": "飯田市",
+      "option3": "松本市",
+      "option4": "長野市",
+      "answerNum": "4",
+      "answerText": "長野市"
+    },
+    {
+      "question": "岐阜県の県庁所在地はどこ？",
+      "option1": "岐阜市",
+      "option2": "高山市",
+      "option3": "飛騨市",
+      "option4": "土岐市",
+      "answerNum": "1",
+      "answerText": "岐阜市"
+    },
+    {
+      "question": "静岡県の県庁所在地はどこ？",
+      "option1": "浜松市",
+      "option2": "静岡市",
+      "option3": "伊豆市",
+      "option4": "富士市",
+      "answerNum": "2",
+      "answerText": "静岡市"
+    },
+    {
+      "question": "愛知県の県庁所在地はどこ？",
+      "option1": "豊田市",
+      "option2": "岡崎市",
+      "option3": "名古屋市",
+      "option4": "豊橋市",
+      "answerNum": "3",
+      "answerText": "名古屋市"
+    },
+    {
+      "question": "三重県の県庁所在地はどこ？",
+      "option1": "四日市市",
+      "option2": "伊勢市",
+      "option3": "伊賀市",
+      "option4": "津市",
+      "answerNum": "4",
+      "answerText": "津市"
+    },
+    {
+      "question": "滋賀県の県庁所在地はどこ？",
+      "option1": "大津市",
+      "option2": "草津市",
+      "option3": "近江八幡市",
+      "option4": "彦根市",
+      "answerNum": "1",
+      "answerText": "大津市"
+    },
+    {
+      "question": "兵庫県の県庁所在地はどこ？",
+      "option1": "姫路市",
+      "option2": "神戸市",
+      "option3": "明石市",
+      "option4": "尼崎市",
+      "answerNum": "2",
+      "answerText": "神戸市"
+    },
+    {
+      "question": "奈良県の県庁所在地はどこ？",
+      "option1": "天理市",
+      "option2": "御所市",
+      "option3": "奈良市",
+      "option4": "生駒市",
+      "answerNum": "3",
+      "answerText": "奈良市"
+    },
+    {
+      "question": "和歌山県の県庁所在地はどこ？",
+      "option1": "御坊市",
+      "option2": "有田市",
+      "option3": "田辺市",
+      "option4": "和歌山市",
+      "answerNum": "4",
+      "answerText": "和歌山市"
+    },
+    {
+      "question": "鳥取県の県庁所在地はどこ？",
+      "option1": "鳥取市",
+      "option2": "米子市",
+      "option3": "倉吉市",
+      "option4": "境港市",
+      "answerNum": "1",
+      "answerText": "鳥取市"
+    },
+    {
+      "question": "島根県の県庁所在地はどこ？",
+      "option1": "浜田市",
+      "option2": "松江市",
+      "option3": "出雲市",
+      "option4": "益田市",
+      "answerNum": "2",
+      "answerText": "松江市"
+    },
+    {
+      "question": "岡山県の県庁所在地はどこ？",
+      "option1": "倉敷市",
+      "option2": "備前市",
+      "option3": "岡山市",
+      "option4": "瀬戸内市",
+      "answerNum": "3",
+      "answerText": "岡山市"
+    },
+    {
+      "question": "広島県の県庁所在地はどこ？",
+      "option1": "福山市",
+      "option2": "東広島市",
+      "option3": "呉市",
+      "option4": "広島市",
+      "answerNum": "4",
+      "answerText": "広島市"
+    },
+    {
+      "question": "山口県の県庁所在地はどこ？",
+      "option1": "山口市",
+      "option2": "下関市",
+      "option3": "周南市",
+      "option4": "岩国市",
+      "answerNum": "1",
+      "answerText": "山口市"
+    },
+    {
+      "question": "徳島県の県庁所在地はどこ？",
+      "option1": "鳴門市",
+      "option2": "徳島市",
+      "option3": "阿波市",
+      "option4": "三好市",
+      "answerNum": "2",
+      "answerText": "徳島市"
+    },
+    {
+      "question": "香川県の県庁所在地はどこ？",
+      "option1": "丸亀市",
+      "option2": "さぬき市",
+      "option3": "高松市",
+      "option4": "東かがわ市",
+      "answerNum": "3",
+      "answerText": "高松市"
+    },
+    {
+      "question": "愛媛県の県庁所在地はどこ？",
+      "option1": "伊予市",
+      "option2": "今治市",
+      "option3": "西条市",
+      "option4": "松山市",
+      "answerNum": "4",
+      "answerText": "松山市"
+    },
+    {
+      "question": "佐賀県の県庁所在地はどこ？",
+      "option1": "佐賀市",
+      "option2": "鳥栖市",
+      "option3": "唐津市",
+      "option4": "鹿島市",
+      "answerNum": "1",
+      "answerText": "佐賀市"
+    },
+    {
+      "question": "大分県の県庁所在地はどこ？",
+      "option1": "由布市",
+      "option2": "大分市",
+      "option3": "別府市",
+      "option4": "佐伯市",
+      "answerNum": "2",
+      "answerText": "大分市"
+    },
+    {
+      "question": "宮崎県の県庁所在地はどこ？",
+      "option1": "日南市",
+      "option2": "都城市",
+      "option3": "宮崎市",
+      "option4": "延岡市",
+      "answerNum": "3",
+      "answerText": "宮崎市"
+    },
+    {
+      "question": "熊本県の県庁所在地はどこ？",
+      "option1": "八代市",
+      "option2": "阿蘇市",
+      "option3": "水俣市",
+      "option4": "熊本市",
+      "answerNum": "4",
+      "answerText": "熊本市"
+    },
+    {
+      "question": "沖縄県の県庁所在地はどこ？",
+      "option1": "那覇市",
+      "option2": "沖縄市",
+      "option3": "石垣市",
+      "option4": "宮古島市",
+      "answerNum": "1",
+      "answerText": "那覇市"
+    }
+  ]
+}

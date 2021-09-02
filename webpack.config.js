@@ -8,6 +8,7 @@ module.exports = {
         'top': './src/entry/js/pages/top.js',
         'chat': './src/entry/js/pages/chat.js',
         'shiritori': './src/entry/js/pages/shiritori.js',
+        'quiz': './src/entry/js/pages/quiz.js',
         'style.css': './src/entry/style/chat.scss',
     },
 
