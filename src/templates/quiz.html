@@ -21,6 +21,7 @@
       <p v-if="trueCounter == 0">全問不正解でした…</p>
       <p v-if="0 < trueCounter && trueCounter < 10">10問中[[ trueCounter ]]問正解！</p>
       <p v-if="trueCounter == 10">全問正解でした！</p>
+      <p v-if="resultTime">（[[ resultTime ]]秒）</p>
       <button @click="replaySameQuiz">もう1度あそぶ</button>
       <!-- ここにTwitterシェアボタンを表示 -->
       <button @click="replayAnotherQuiz">別の問題</button>

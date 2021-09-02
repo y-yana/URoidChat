@@ -30,7 +30,10 @@ const quiz = new Vue({
     nextQuestionBtnText: '次の問題',
     answerImageSrc: 'true',
     NationalFlagCheck: false,
-    NationalFlagImg: ''
+    NationalFlagImg: 'America.png',
+    timerStart: 0,
+    timerEnd: 0,
+    resultTime: 0
   },
   mounted() {
     axios
@@ -52,6 +55,7 @@ const quiz = new Vue({
       this.quizNameOption = false
       this.askQuestion = true
       this.quizAnswerOption = true
+      this.timerStart = performance.now();
     },
     getQuizDataJSON: async function () {
       let ret = null
@@ -106,6 +110,10 @@ const quiz = new Vue({
       if (this.questionNumUse < 10) {
         this.getQuizDataDetail()
       } else {
+        this.timerEnd = performance.now();
+        // resultTimeミリ秒
+        this.resultTime = this.timerEnd - this.timerStart
+        //console.log(this.resultTime)
         this.questionNumUse = 0
         this.questionNumShow = 1
         this.askQuestion = false
