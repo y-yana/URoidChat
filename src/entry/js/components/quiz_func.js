@@ -52,7 +52,7 @@ const quiz = new Vue({
       this.quizNumArr = this.quizNumArr.slice(0, 10)
       this.getQuizDataDetail()
       this.pageMove_selectQuiz2askQuestion()
-      this.timerStart = performance.now();
+      this.timerStart = performance.now()
     },
     getQuizDataJSON: async function () {
       let ret = null
@@ -65,9 +65,8 @@ const quiz = new Vue({
       var i = 0
       this.quizNumArr.splice(0, this.quizNumArr.length)
       for (i = 0; i < 37; i++){
-        this.quizNumArr.push(i);
+        this.quizNumArr.push(i)
       }
-      //console.log(this.quizNumArr)
     },
     shuffleArr: function () {
       var n = 37
@@ -75,12 +74,11 @@ const quiz = new Vue({
       var j = 0
       var arr = this.quizNumArr
       while (n) {
-        j = Math.floor(Math.random() * n--);
-        temp = arr[n];
-        arr[n] = arr[j];
-        arr[j] = temp;
+        j = Math.floor(Math.random() * n--)
+        temp = arr[n]
+        arr[n] = arr[j]
+        arr[j] = temp
       }
-      //console.log(this.quizNumArr)
     },
     getQuizDataDetail: function () {
       var quizGet = this.quiz[this.info[this.selectQuizNum].quizName][this.quizNumArr[this.questionNumUse]]
@@ -110,22 +108,16 @@ const quiz = new Vue({
         this.timerEnd = performance.now();
         // resultTimeミリ秒
         this.resultTime = this.timerEnd - this.timerStart
-        //console.log(this.resultTime)
-        this.questionNumUse = 0
-        this.questionNumShow = 1
-        this.NationalFlagCheck = false
         this.pageMove_askQuestion2yourResult()
+        this.resetQuizPlayData()
       }
     },
     judgeSelectAnswer: function (ans) {
-      //console.log(ans)
       if (this.answerNum == ans) {
-        //console.log('○')
         this.answerImageSrc = 'true'
         this.trueCounter += 1
       } else {
         this.answerImageSrc = 'false'
-        //console.log('×')
       }
       if (this.questionNumUse == 9) {
         this.nextQuestionBtnText = '結果を見る'
@@ -135,17 +127,16 @@ const quiz = new Vue({
       this.quizAnsShowControl = true
     },
     replaySameQuiz: function () {
-      //console.log('replay')
       this.pageMove_yourResult2askQuestion()
-      this.resetQuizPlayData()
       this.createQuiz(this.selectQuizNum)
     },
     replayAnotherQuiz: function () {
-      //console.log('another')
       this.pageMove_yourResult2selectQuiz()
-      this.resetQuizPlayData()
     },
     resetQuizPlayData: function () {
+      this.questionNumUse = 0
+      this.questionNumShow = 1
+      this.NationalFlagCheck = false
       this.trueCounter = 0
       this.nextQuestionBtnText = '次の問題'
     },
