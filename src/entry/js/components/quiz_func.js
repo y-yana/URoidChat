@@ -166,10 +166,12 @@ const quiz = new Vue({
       this.quizNameOption = true
     },
     ajaxGetRanking: async function () {
-      var postMessage = {
+      var json_text = {
         trueCounter: this.trueCounter,
         playTime: this.resultTime
       }
+      //JSONにエンコード
+      var postMessage = JSON.stringify(json_text);
       let self = this;
       await $.ajax("/quiz/ajax", {
         type: "post",
