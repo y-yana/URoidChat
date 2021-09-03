@@ -9,7 +9,7 @@
     <button id="Btn" onclick="uploading(document.getElementById('upFile'))">
       upload</button>
   </form>
-  <img id="file-preview">
+  <img id="file-preview" width="500px">
 </div>
 
 <script src="static/webpack/build_nigaoe.js"></script>
@@ -25,6 +25,8 @@
       contentType: false,
     }).done(function (data) {
       console.log('ok');
+      var img = document.getElementById('file-preview');
+      img.src = 'static/images/nigaoe/image.png';
     }).fail(function () {
       console.log('fail');
     });
