@@ -25,8 +25,10 @@
       contentType: false,
     }).done(function (data) {
       console.log('ok');
+      var e_time = new Date();
+      var id = e_time.getTime();
       var img = document.getElementById('file-preview');
-      img.src = 'static/images/nigaoe/image.png';
+      img.src = 'static/images/nigaoe/image.png?'+id;
     }).fail(function () {
       console.log('fail');
     });
