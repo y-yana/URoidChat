@@ -38,6 +38,10 @@ def move_shiritori():
 def move_quiz():
     return render_template("quiz.html", pageTitle='Quiz')
 
+@app.route("/nigaoe", methods=["POST"])
+def move_nigaoe():
+    return render_template("nigaoe.html", pageTitle='Nigaoe')
+
 @app.route('/rename', methods=['POST'])
 def rename():
     session['user_name'] = request.form['user_name']
