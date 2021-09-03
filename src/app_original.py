@@ -9,34 +9,14 @@ import datetime
 import random, string
 from negaposi.negaposi import negaposi
 from image_transform import image_transform
-from threading import Lock
-from flask import Flask, render_template, session, request, \
-    copy_current_request_context
-from flask_socketio import SocketIO, emit, join_room, leave_room, \
-    close_room, rooms, disconnect
-
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
     config = yaml.load(yml)
 app.secret_key = config['flask_secret_key']
 #app.permanent_session_lifetime = timedelta(minutes=5)
-async_mode = None
-app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app, async_mode=async_mode)
-thread = None
-thread_lock = Lock()
 
-def background_thread():
-    """Example of how to send server generated events to clients."""
-    count = 0
-    while True:
-        socketio.sleep(10)
-        count += 1
-        socketio.emit('my_response',
-                      {'data': 'Server generated event', 'count': count})
-
-@app.route('/draw.html')
+@app.route('/')
 def index():
     #return "Hello World"
 
@@ -157,22 +137,6 @@ def upload_img():
 
     return ""
 
-member_count = []
-
-@socketio.event
-def connect():
-    #global thread
-    #with thread_lock:
-    #    if thread is None:
-    #        thread = socketio.start_background_task(background_thread)
-    room = ''
-    name = ''
-    emit('memberList',member_count)
-
-    @socketio.on('client_to_server_join')
-    def client_to_server_join(data):
-        room = data.value
-        
 
 
 if __name__ == '__main__':
