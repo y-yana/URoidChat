@@ -194,6 +194,14 @@ def quiz_ajax():
     trueNum = 正解数
     time = かかった時間
     '''
+
+    getMessage = request.get_json('postMessage')
+    trueCounter = getMessage['trueCounter']
+    playTime = getMessage['playTime']
+
+    print(trueCounter)
+    print(playTime)
+
     return jsonify(values=json.dumps(return_json))
 
 
