@@ -1,7 +1,34 @@
 {% extends "layout.html" %}{% block content %}
 
-<p>似顔絵 </p>
+<div id="btn" class="upload">
+  <form id="img" enctype="multipart/form-data" method="post" onsubmit="return false;">
+    <label for="file-sample">
+      画像を選択
+      <input type="file" name="image" accept="image/png,image/jpeg" id="file-sample">
+    </label>
+    <button id="Btn" onclick="uploading(document.getElementById('upFile'))">
+      upload</button>
+  </form>
+  <img id="file-preview">
+</div>
 
 <script src="static/webpack/build_nigaoe.js"></script>
+<script>
+  function uploading(input_value) {
+    var fd = new FormData();
+    var fd = new FormData($('#img').get(0));
+    $.ajax({
+      url: '/img',
+      type: "post",
+      data: fd,  // POSTでサーバーに送信するデータ
+      processData: false,
+      contentType: false,
+    }).done(function (data) {
+      console.log('ok');
+    }).fail(function () {
+      console.log('fail');
+    });
+  }
+</script>
 
 {% endblock %}
