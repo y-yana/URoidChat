@@ -152,15 +152,16 @@ def upload_img():
 
 @app.route('/shiritori/ajax/', methods=['POST'])
 def shiritori_ajax():
-    # test用なので消して大丈夫です
-    ajax = 'ごりら'
+    ans = request.get_data('postMessage')
+    getMessage = ans.decode()
+    print(getMessage)
 
     '''
     ・ユーザーが入力した単語の最後の1文字(ひらがな)を投げてます
     ・受け取った文字から始まる単語をひらがなで返してほしいです
     ・AIが返した単語の重複チェックやAIが負けた場合の処理はフロント側で実装する予定です(たぶん)(がんばる)
     '''
-    return ajax
+    return getMessage
 
 
 @app.route('/quiz/ajax/', methods=['POST'])
