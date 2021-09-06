@@ -14,3 +14,4 @@ Werkzeug==2.0.1
 janome==0.4.1
 pyyaml
 opencv-python==4.4.0.40
+pandas==1.1.0
