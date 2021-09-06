@@ -2,4 +2,4 @@
 import '../../ts/components/setting_top.ts';
 
 // JavaScript
-import '../components/test.js';
+import '../components/top_func.js';
