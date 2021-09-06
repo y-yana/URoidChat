@@ -5,8 +5,34 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { getConstantValue, updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
+
+  // canvasサイズの制御
+  // 表示用のサイズを格納する変数
+  var newWidth
+  var newHeight
+
+  // 画面サイズを取得
+  var getWidth = window.innerWidth;
+  var getHeight = window.innerHeight;
+
+  // レスポンシブ対応
+  if (getWidth <= 950) {
+    // 比率計算(mobile)
+    newWidth = Math.floor(getWidth * 0.8)
+    newHeight = Math.floor(getHeight * 0.8)
+  } else {
+    // 比率計算(desktop)
+    newWidth = Math.floor(getWidth * (2 / 5))
+    newHeight = Math.floor(getHeight * (5 / 7))
+  }
+
+  // canvas生成
+  var modelArea = document.getElementById('modelArea');
+  modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
+
+
   // canvasの取得
-  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
+var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
@@ -14,58 +40,26 @@ window.addEventListener("DOMContentLoaded", () => {
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
-  $(document).on('click', '#modelChange', function () {
-    // pathの受け取り
-    var path = <HTMLInputElement>document.getElementById("modelChange");
-
-    modelPass = path.value;
-    posepass = '../static/pose/anim2.csv'
-
-    // 現在のモデルを削除
-    scene.remove.apply(scene, scene.children);
-
-    // 再描画
-    sceneOption()
-    newLoad()
-    update()
-  })
-
     // シーンの設定
     const scene = new THREE.Scene()
     sceneOption()
-  
+
     function sceneOption() {
       // ライトの設定
       const light = new THREE.DirectionalLight(0xffffff)
       light.position.set(1, 1, 1).normalize()
       scene.add(light)
-  
+
       // グリッドを表示
       const gridHelper = new THREE.GridHelper(10, 10)
       scene.add(gridHelper)
       gridHelper.visible = true
-  
+
       // 座標軸を表示
       const axesHelper = new THREE.AxesHelper(0.5)
       scene.add(axesHelper)
-    }  
+    }
 
-    /*const modelChange = (modelPass:string) =>{
-      modelPass = modelPass
-      posepass = '../static/pose/anim2.csv'
-  
-      // 現在のモデルを削除
-      scene.remove.apply(scene, scene.children);
-  
-      // 再描画
-      //sceneOption()
-      //newLoad()
-      //update()
-      console.log("出来たなり");
-      return;
-      };
-    module.exports = modelChange;*/
-  
   // レンダラーの設定
   const renderer = new THREE.WebGLRenderer({
     canvas: <HTMLCanvasElement>document.querySelector('#canvas'),
@@ -166,29 +160,6 @@ window.addEventListener("DOMContentLoaded", () => {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
 
-    var NP = <HTMLInputElement>document.getElementById('NPscript');
-    var ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
-    var message = <HTMLInputElement>document.getElementById('base_message');
-    if (Number(NP.value) > 0 && Number(ALL_NP.value) <= 1) {
-      facemode = "fun"
-    }
-    if (Number(NP.value) < 0 && Number(ALL_NP.value) >= -1) {
-      facemode = "sad"
-    }
-    if (Number(ALL_NP.value) > 0) {
-      posepass = '../static/pose/cats.csv'
-    }
-    if (Number(ALL_NP.value) < 0) {
-      posepass = '../static/pose/hands.csv'
-    }
-    if (Number(ALL_NP.value) <= -3) {
-      posepass = '../static/pose/suneru.csv'
-    }
-    if (message.value == '1') {
-      posepass = '../static/pose/ozigi.csv';
-      (<HTMLInputElement>document.getElementById('base_message')).value = '0';
-    }
-
     // AnimationClipの生成
     const clip = THREE.AnimationClip.parseAnimation({
       hierarchy: csv2hierarchy(http2str(posepass), 200)
@@ -222,14 +193,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // フレーム毎に呼ばれる
   const update = () => {
     requestAnimationFrame(update)
-
-    var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
-    if (facecheck.value == '1') {
-      scene.remove.apply(scene, scene.children);
-      sceneOption()
-      newLoad();
-      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
-    }
 
     // 時間計測
     let time = (new Date()).getTime()
