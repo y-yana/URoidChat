@@ -23,12 +23,14 @@
     <div id="modelArea">
     </div>
     <p>[[ modelMessage ]]</p>
+    <!--
     <div v-for="item in items" :key="item.id">
       <form v-bind:action="item.root" method="POST">
         <input type="submit" v-bind:value=item.title>
       </form>
     </div>
-    <button v-for="item in items" :key="item.id">[[ item.title ]]</button>
+    -->
+    <button v-for="item in items" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

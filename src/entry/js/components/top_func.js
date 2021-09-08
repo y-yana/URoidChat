@@ -43,5 +43,13 @@ const shiritori = new Vue({
     modelMessage: '私と何をして遊びますか？？'
   },
   methods: {
+    showTutorial: function (value) {
+      console.log(value)
+      if (value < 6) {
+        console.log('ok')
+      } else {
+        console.log('comming soon')
+      }
+    }
   }
 });
