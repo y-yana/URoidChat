@@ -28,6 +28,7 @@
         <input type="submit" v-bind:value=item.title>
       </form>
     </div>
+    <button v-for="item in items" :key="item.id">[[ item.title ]]</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
