@@ -4,43 +4,57 @@
         "id": 0,
         "root": "/chat",
         "title": "おはなし",
-        "tutorial": "おはなしのあそびかた"
+        "tutorial": "おはなしのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       },
       {
         "id": 1,
         "root": "/shiritori",
         "title": "しりとり",
-        "tutorial": "しりとりのあそびかた"
+        "tutorial": "しりとりのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       },
       {
         "id": 2,
         "root": "/quiz",
         "title": "クイズ",
-        "tutorial": "クイズのあそびかた"
+        "tutorial": "クイズのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       },
       {
         "id": 3,
         "root": "/nigaoe",
         "title": "にがおえ",
-        "tutorial": "にがおえのあそびかた"
+        "tutorial": "にがおえのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       },
       {
         "id": 4,
         "root": "/oekaki",
         "title": "おえかき",
-        "tutorial": "おえかきのあそびかた"
+        "tutorial": "おえかきのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       },
       {
         "id": 5,
         "root": "/",
         "title": "Comming soon...",
-        "tutorial": "Comming soon..."
+        "tutorial": "Comming soon...",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       },
       {
         "id": 6,
         "root": "/",
         "title": "Comming soon...",
-        "tutorial": "Comming soon..."
+        "tutorial": "Comming soon...",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png"
       }
     ]
 }
