@@ -1,0 +1,46 @@
+{
+  "allGames": [
+      {
+        "id": 0,
+        "root": "/chat",
+        "title": "おはなし",
+        "tutorial": "おはなしのあそびかた"
+      },
+      {
+        "id": 1,
+        "root": "/shiritori",
+        "title": "しりとり",
+        "tutorial": "しりとりのあそびかた"
+      },
+      {
+        "id": 2,
+        "root": "/quiz",
+        "title": "クイズ",
+        "tutorial": "クイズのあそびかた"
+      },
+      {
+        "id": 3,
+        "root": "/nigaoe",
+        "title": "にがおえ",
+        "tutorial": "にがおえのあそびかた"
+      },
+      {
+        "id": 4,
+        "root": "/oekaki",
+        "title": "おえかき",
+        "tutorial": "おえかきのあそびかた"
+      },
+      {
+        "id": 5,
+        "root": "/",
+        "title": "Comming soon...",
+        "tutorial": "Comming soon..."
+      },
+      {
+        "id": 6,
+        "root": "/",
+        "title": "Comming soon...",
+        "tutorial": "Comming soon..."
+      }
+    ]
+}
