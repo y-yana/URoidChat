@@ -39,7 +39,8 @@ const shiritori = new Vue({
         root: '/',
         title: 'Comming soon...'
       }
-    ]
+    ],
+    modelMessage: '私と何をして遊びますか？？'
   },
   methods: {
   }
