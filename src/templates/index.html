@@ -34,9 +34,11 @@
       <button v-for="item in items" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
     </template>
     <template v-if="tutorial">
-      <p>tutorial</p>
+      <p>[[ items[choiceGameNum].title ]]</p>
       <button @click="cancel">やめとく</button>
-      <button @click="play">あそぶ！</button>
+      <form v-bind:action="items[choiceGameNum].root" method="POST">
+        <input type="submit" value="あそぶ！">
+      </form>
     </template>
   </div>
 

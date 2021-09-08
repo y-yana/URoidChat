@@ -42,15 +42,17 @@ const shiritori = new Vue({
     ],
     modelMessage: '私と何をして遊びますか？？',
     gameChoice: true,
-    tutorial: false
+    tutorial: false,
+    choiceGameNum: 0
   },
   methods: {
     showTutorial: function (value) {
       console.log(value)
-      if (value < 5) {
+      if (value < 4) {
         console.log('ok')
         this.gameChoice = false
         this.tutorial = true
+        this.choiceGameNum = value
       } else {
         console.log('comming soon')
         this.gameChoice = true
@@ -62,9 +64,6 @@ const shiritori = new Vue({
       this.gameChoice = true
       this.tutorial = false
       this.modelMessage = '私と何をして遊びますか？？'
-    },
-    play: function () {
-      console.log('play')
     }
   }
 });
