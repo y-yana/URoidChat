@@ -3,47 +3,16 @@ const shiritori = new Vue({
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
-    items: [
-      {
-        id: 0,
-        root: '/chat',
-        title: 'おはなし'
-      },
-      {
-        id: 1,
-        root: '/shiritori',
-        title: 'しりとり'
-      },
-      {
-        id: 2,
-        root: '/quiz',
-        title: 'クイズ'
-      },
-      {
-        id: 3,
-        root: '/nigaoe',
-        title: 'にがおえ'
-      },
-      {
-        id: 4,
-        root: '/oekaki',
-        title: 'おえかき'
-      },
-      {
-        id: 5,
-        root: '/',
-        title: 'Comming soon...'
-      },
-      {
-        id: 6,
-        root: '/',
-        title: 'Comming soon...'
-      }
-    ],
+    info: null,
     modelMessage: '私と何をして遊びますか？？',
     gameChoice: true,
     tutorial: false,
     choiceGameNum: 0
+  },
+  mounted() {
+    axios
+      .get('./static/json/tutorial.json')
+      .then(response => { this.info = response.data.allGames })
   },
   methods: {
     showTutorial: function (value) {

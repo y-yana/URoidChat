@@ -31,18 +31,20 @@
     </div>
     -->
     <template v-if="gameChoice">
-      <button v-for="item in items" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+      <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
     </template>
     <template v-if="tutorial">
-      <p>[[ items[choiceGameNum].title ]]</p>
+      <p v-if="info">[[ info[choiceGameNum].title ]]</p>
+      <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
       <button @click="cancel">やめとく</button>
-      <form v-bind:action="items[choiceGameNum].root" method="POST">
+      <form v-bind:action="info[choiceGameNum].root" method="POST">
         <input type="submit" value="あそぶ！">
       </form>
     </template>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
   <script src="static/webpack/build_top.js"></script>
 
 {% endblock %}
