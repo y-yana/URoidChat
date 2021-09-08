@@ -6,7 +6,8 @@
         "title": "おはなし",
         "tutorial": "おはなしのあそびかた",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "私とおはなししますか？"
       },
       {
         "id": 1,
@@ -14,7 +15,8 @@
         "title": "しりとり",
         "tutorial": "しりとりのあそびかた",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "私としりとりしますか？"
       },
       {
         "id": 2,
@@ -22,7 +24,8 @@
         "title": "クイズ",
         "tutorial": "クイズのあそびかた",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "私とクイズしますか？"
       },
       {
         "id": 3,
@@ -30,7 +33,8 @@
         "title": "にがおえ",
         "tutorial": "にがおえのあそびかた",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "私とにがおえであそびますか？"
       },
       {
         "id": 4,
@@ -38,7 +42,8 @@
         "title": "おえかき",
         "tutorial": "おえかきのあそびかた",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "私とおえかきしますか？"
       },
       {
         "id": 5,
@@ -46,7 +51,8 @@
         "title": "Comming soon...",
         "tutorial": "Comming soon...",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "〜であそびますか？"
       },
       {
         "id": 6,
@@ -54,7 +60,8 @@
         "title": "Comming soon...",
         "tutorial": "Comming soon...",
         "image1": "shiritori.png",
-        "image2": "shiritori.png"
+        "image2": "shiritori.png",
+        "dialogue": "〜であそびますか？"
       }
     ]
 }

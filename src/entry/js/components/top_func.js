@@ -25,11 +25,12 @@ const shiritori = new Vue({
     },
     showTutorial: function (value) {
       console.log(value)
+      this.choiceGameNum = value
       if (value < 4) {
         console.log('ok')
         this.gameChoice = false
         this.tutorial = true
-        this.choiceGameNum = value
+        this.modelMessage = this.info[this.choiceGameNum].dialogue
       } else {
         console.log('comming soon')
         this.gameChoice = true
