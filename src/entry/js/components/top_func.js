@@ -3,6 +3,7 @@ const shiritori = new Vue({
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
+    audio: true,
     info: null,
     modelMessage: '私と何をして遊びますか？？',
     gameChoice: true,
@@ -15,6 +16,13 @@ const shiritori = new Vue({
       .then(response => { this.info = response.data.allGames })
   },
   methods: {
+    audioCheck: function (text) {
+      if (text == "yes") {
+        const voice = new Audio("./static/sound/sampleVoice.mp3")
+        voice.play();
+      }
+      this.audio = false
+    },
     showTutorial: function (value) {
       console.log(value)
       if (value < 4) {
