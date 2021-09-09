@@ -1,5 +1,9 @@
 {% extends "layout.html" %}{% block content %}
 
+<!-- モデル表示エリア -->
+<div id="modelArea">
+</div>
+
 <div id="shiritori">
   <div v-for="m in textArr" :key="textArr.id">
     <div>[[m.text]]</div>
