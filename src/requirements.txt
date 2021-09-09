@@ -15,3 +15,9 @@ janome==0.4.1
 pyyaml
 opencv-python==4.4.0.40
 pandas==1.1.0
+Flask-Login==0.4.1
+Flask-Session==0.3.1
+Flask_SocketIO
+python-engineio
+python-socketio
+six==1.11.0

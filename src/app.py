@@ -7,6 +7,10 @@ import cv2
 import numpy as np
 import datetime
 import random, string
+from threading import Lock
+from flask import Flask, render_template, session
+from flask_socketio import SocketIO, emit, join_room
+from engineio.payload import Payload
 from negaposi.negaposi import negaposi
 from python.image_transform import image_transform
 from python.shiritori import shiritori
@@ -17,21 +21,14 @@ with open('./config.yml', 'r') as yml:
 app.secret_key = config['flask_secret_key']
 #app.permanent_session_lifetime = timedelta(minutes=5)
 async_mode = None
+Payload.max_decode_packets = 50
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
 
-def background_thread():
-    """Example of how to send server generated events to clients."""
-    count = 0
-    while True:
-        socketio.sleep(10)
-        count += 1
-        socketio.emit('my_response',
-                      {'data': 'Server generated event', 'count': count})
 
-@app.route('/draw.html')
+@app.route('/')
 def index():
     #return "Hello World"
 
@@ -39,7 +36,11 @@ def index():
     session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
     session['np_ALL']=0
-    #return render_template("index.html", pageTitle='TopPage')
+    return render_template("index.html", pageTitle='TopPage')
+
+@app.route('/oekaki',methods=["POST"])
+def move_oekaki():
+    return render_template('draw.html', pageTitle='Oekaki',async_mode=socketio.async_mode)
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
@@ -164,23 +165,6 @@ def upload_img():
 
     return ""
 
-member_count = []
-
-@socketio.event
-def connect():
-    #global thread
-    #with thread_lock:
-    #    if thread is None:
-    #        thread = socketio.start_background_task(background_thread)
-    room = ''
-    name = ''
-    emit('memberList',member_count)
-
-    @socketio.on('client_to_server_join')
-    def client_to_server_join(data):
-        room = data.value
-        
-
 @app.route('/shiritori/ajax/', methods=['POST'])
 def shiritori_ajax():
     ans = request.get_data('postMessage')
@@ -237,6 +221,38 @@ def quiz_ajax():
 
     return jsonify(values=json.dumps(return_json))
 
+#お絵かき
+@socketio.event
+def my_event(message):
+    session['receive_count'] = session.get('receive_count', 0) + 1
+    emit('my_response',
+         {'data': message['data'], 'count': session['receive_count']})
+
+
+@socketio.event
+def broadcast_event(message):
+    session['receive_count'] = session.get('receive_count', 0) + 1
+    emit('my_response',
+         {'data': message['name'] + ' : ' + message['data']}, to=message['room'])
+
+
+@socketio.event
+def all_broadcast_event(message):
+    emit('send user', message, to=message['room'])
+
+
+@socketio.event
+def clear_room_board(message):
+    emit('clear user', to=message['room'])
+
+
+@socketio.event
+def join(message):
+    join_room(message['room'])
+    session['receive_count'] = session.get('receive_count', 0) + 1
+    emit('my_response',
+         {'data': message['name']+'さんが入室しました'}, to=message['room'])
+#お絵描きここまで
 
 if __name__ == '__main__':
     #port = int(os.environ.get("PORT", 5000))
