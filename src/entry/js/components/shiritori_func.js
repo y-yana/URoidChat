@@ -40,14 +40,12 @@ const shiritori = new Vue({
       this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
     },
     textCheck: function () {
-      // 重複チェック
       if (this.check.indexOf(this.inputText) != -1) {
         this.result = '「' + this.inputText + '」は既出なので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
         return
       }
-      // 「ん」チェック
       if (this.endStr == 'ん') {
         this.result = '最後に「ん」がついたので、あなたの負けです！'
         this.submitBtnDisabled = true
@@ -93,6 +91,11 @@ const shiritori = new Vue({
           self.ajaxText = data
           self.endStr = self.ajaxText.slice(-1)
           self.pushNewText(self.ajaxText)
+          if (self.endStr == 'ん') {
+            self.result = '最後に「ん」がついたので、私の負けです…'
+            self.submitBtnDisabled = true
+            self.replayQuestion = true
+          }
         }).fail(function (data) {
           console.log("Ajax通信 失敗");
         });
