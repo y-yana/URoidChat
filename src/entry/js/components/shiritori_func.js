@@ -28,7 +28,6 @@ const shiritori = new Vue({
       this.endStr = this.inputText.slice(-1)
       this.textCheck()
       this.pushNewText(this.inputText)
-      this.ajaxGetMessage()
       this.inputText = ''
     },
     replay: function () {
@@ -46,14 +45,16 @@ const shiritori = new Vue({
         this.result = '「' + this.inputText + '」は既出なので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        return
       }
-
       // 「ん」チェック
       if (this.endStr == 'ん') {
         this.result = '最後に「ん」がついたので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        return
       }
+      this.ajaxGetMessage()
     },
     pushNewText: function (text) {
       this.arrNum += 1
