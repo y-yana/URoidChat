@@ -1,5 +1,10 @@
 {% extends "layout.html" %}{% block content %}
 
+<form action="/top" method="POST">
+  <!--<input type="submit" value="Topに戻る">-->
+  <button type="submit"><span class="material-icons">arrow_back</span></button>
+</form>
+
 <!-- モデル表示エリア -->
 <div id="modelArea">
 </div>
@@ -18,10 +23,6 @@
   <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
   <p v-html='warning'></p>
 </div>
-
-<form action="/top" method="POST">
-  <input type="submit" value="Topに戻る">
-</form>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
