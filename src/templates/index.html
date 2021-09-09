@@ -1,9 +1,59 @@
 {% extends "layout.html" %}{% block content %}
 
-    <form action="/chat" method="POST">
-      <input type="submit" value="おはなし">
-    </form>
+  <!--
+  <form action="/chat" method="POST">
+    <input type="submit" value="おはなし">
+  </form>
 
-    <script src="static/webpack/build_top.js"></script>
+  <form action="/shiritori" method="POST">
+    <input type="submit" value="しりとり">
+  </form>
+
+  <form action="/quiz" method="POST">
+    <input type="submit" value="クイズ">
+  </form>
+
+  <form action="/nigaoe" method="POST">
+    <input type="submit" value="にがおえ">
+  </form>
+  -->
+
+  <div id="top">
+    <template v-if="audio">
+      <p>本サイトは音が出ます。再生を許可しますか？</p>
+      <button @click="audioCheck('yes')">はい</button>
+      <button @click="audioCheck('no')">いいえ</button>
+    </template>
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
+    </div>
+    <p>[[ modelMessage ]]</p>
+    <!--
+    <div v-for="item in items" :key="item.id">
+      <form v-bind:action="item.root" method="POST">
+        <input type="submit" v-bind:value=item.title>
+      </form>
+    </div>
+    -->
+    <template v-if="gameChoice">
+      <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+    </template>
+    <template v-if="tutorial">
+      <p v-if="info">[[ info[choiceGameNum].title ]]</p>
+      <!-- socketで取得した各部屋の人数を表示 -->
+      <p>現在の参加人数<span class="material-icons">groups</span></p>
+      <img :src="'../static/images/top/'+info[choiceGameNum].image1" width=330px>
+      <img :src="'../static/images/top/'+info[choiceGameNum].image2" width=330px>
+      <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
+      <button @click="cancel">やめとく</button>
+      <form v-bind:action="info[choiceGameNum].root" method="POST">
+        <input type="submit" value="あそぶ！">
+      </form>
+    </template>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+  <script src="static/webpack/build_top.js"></script>
 
 {% endblock %}

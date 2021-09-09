@@ -7,6 +7,9 @@ module.exports = {
     entry: {
         'top': './src/entry/js/pages/top.js',
         'chat': './src/entry/js/pages/chat.js',
+        'shiritori': './src/entry/js/pages/shiritori.js',
+        'quiz': './src/entry/js/pages/quiz.js',
+        'nigaoe': './src/entry/js/pages/nigaoe.js',
         'style.css': './src/entry/style/chat.scss',
     },
 

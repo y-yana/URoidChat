@@ -1,0 +1,337 @@
+{
+  "fe":[
+    {
+      "question": "情報管理，情報システムの統括を含む戦略立案と執行を任務として設置した役員はどれか。",
+      "option1": "CIO",
+      "option2": "CEO",
+      "option3": "CFO",
+      "option4": "COO",
+      "answerNum": "1",
+      "answerText": "CIO"
+    },
+    {
+      "question": "電子メールを暗号化するために使用される方式はどれか。",
+      "option1": "PNG",
+      "option2": "S/MIME",
+      "option3": "BASE64",
+      "option4": "GZIP",
+      "answerNum": "2",
+      "answerText": "S/MIME"
+    },
+    {
+      "question": "メモリアクセスの信頼性を高めるための方式で，データ誤りの自動訂正が可能なものはどれか。",
+      "option1": "チェックサム",
+      "option2": "パリティ",
+      "option3": "ECC",
+      "option4": "CRC",
+      "answerNum": "3",
+      "answerText": "ECC"
+    },
+    {
+      "question": "階層の上位から下位に節点をたどることによって，データを取り出すことができる構造を何というか。",
+      "option1": "キュー",
+      "option2": "木構造",
+      "option3": "スタック",
+      "option4": "リスト",
+      "answerNum": "2",
+      "answerText": "木構造"
+    },
+    {
+      "question": "データの破壊，改ざんなどの不正な機能をプログラムの一部に組み込んだものを送ってインストールさせ，実行させるものはどれか。",
+      "option1": "バッファオーバフロー攻撃",
+      "option2": "辞書攻撃",
+      "option3": "トロイの木馬",
+      "option4": "DoS攻撃",
+      "answerNum": "3",
+      "answerText": "トロイの木馬"
+    },
+    {
+      "question": "利害関係者要件の確認において，定義された要件に対して，発生した変更要求の実装までの経過を明らかにできることを表すものはどれか。",
+      "option1": "ユーザビリティ",
+      "option2": "インターオペラビリティ",
+      "option3": "セキュリティ",
+      "option4": "トレーサビリティ",
+      "answerNum": "4",
+      "answerText": "トレーサビリティ"
+    },
+    {
+      "question": "ソフトウェアの機能を入出力データ数やファイル数などによって定量的に計測し，複雑さによる調整を行って，ソフトウェア規模を見積もる方法を何というか。",
+      "option1": "ファンクションポイント法",
+      "option2": "類推見積法",
+      "option3": "標準値法",
+      "option4": "COCOMO",
+      "answerNum": "1",
+      "answerText": "ファンクションポイント法"
+    },
+    {
+      "question": "32ビットのレジスタに16進数ABCDが入っているとき，2ビットだけ右に論理シフトしたときの値はどれか。",
+      "option1": "AF34",
+      "option2": "2AF3",
+      "option3": "EAF3",
+      "option4": "6AF3",
+      "answerNum": "2",
+      "answerText": "2AF3"
+    },
+    {
+      "question": "液晶ディスプレイなどの表示装置において，傾いた直線を滑らかに表示する手法はどれか。",
+      "option1": "テクスチャマッピング",
+      "option2": "アンチエイリアシング",
+      "option3": "シェーディング",
+      "option4": "バンプマッピング",
+      "answerNum": "2",
+      "answerText": "アンチエイリアシング"
+    },
+    {
+      "question": "ディジタルカメラの画像データや携帯音楽プレーヤの音楽データの記録媒体として利用されているものはどれか。",
+      "option1": "DRAM",
+      "option2": "フラッシュメモリ",
+      "option3": "マスク ROM",
+      "option4": "SRAM",
+      "answerNum": "2",
+      "answerText": "フラッシュメモリ"
+    },
+    {
+      "question": "コードから商品の内容が容易に分かるようにしたいとき，どのコード体系を選択するのが適切か。",
+      "option1": "桁別コード",
+      "option2": "連番コード",
+      "option3": "表意コード",
+      "option4": "区分コード",
+      "answerNum": "3",
+      "answerText": "表意コード"
+    },
+    {
+      "question": "ハッシュ表探索において，同一のハッシュ値となる確率が最も低くなるのは，ハッシュ値がどの分布で近似されるときか。",
+      "option1": "一様分布",
+      "option2": "正規分布",
+      "option3": "ポアソン分布",
+      "option4": "2項分布",
+      "answerNum": "1",
+      "answerText": "一様分布"
+    },
+    {
+      "question": "PCや通信などを利用する能力や機会の違いによって，経済的，又は社会的な格差が生じることを何というか。",
+      "option1": "ディジタルデモクラシー",
+      "option2": "ワンストップサービス",
+      "option3": "ディジタルディバイド",
+      "option4": "ユニバーサルサービス",
+      "answerNum": "3",
+      "answerText": "ディジタルディバイド"
+    },
+    {
+      "question": "主記憶へのアクセスを伴う演算命令を実行するとき，命令解読とオペランド読出しの間に行われる動作はどれか。",
+      "option1": "入出力装置起動",
+      "option2": "分岐アドレス計算",
+      "option3": "割込み発生",
+      "option4": "実効アドレス計算",
+      "answerNum": "4",
+      "answerText": "実効アドレス計算"
+    },
+    {
+      "question": "利用者が，インターネットを経由してサービスプロバイダ側のシステムに接続し，サービスプロバイダが提供するアプリケーションの必要な機能だけを必要なときにオンラインで利用するものはどれか。",
+      "option1": "SaaS",
+      "option2": "SCM",
+      "option3": "ERP",
+      "option4": "XBRL",
+      "answerNum": "1",
+      "answerText": "SaaS"
+    },
+    {
+      "question": "業務プロセスのモデリング表記法として用いられ，複数のモデル図法を体系化したものはどれか。",
+      "option1": "DFD",
+      "option2": "UML",
+      "option3": "状態遷移図",
+      "option4": "E-R図",
+      "answerNum": "2",
+      "answerText": "UML"
+    },
+    {
+      "question": "Webサーバに対するアクセスがどのPCからのものであるかを識別するために，Webサーバの指示によってブラウザにユーザ情報などを保存する仕組みはどれか。",
+      "option1": "CGI",
+      "option2": "SSL",
+      "option3": "cookie",
+      "option4": "URL",
+      "answerNum": "3",
+      "answerText": "cookie"
+    },
+    {
+      "question": "インターネット上で，一般消費者が買いたい品物とその購入条件を提示し，単数又は複数の売り手がそれに応じる取引形態はどれか。",
+      "option1": "G to C",
+      "option2": "バーチャルモール",
+      "option3": "逆オークション",
+      "option4": "B to B",
+      "answerNum": "3",
+      "answerText": "逆オークション"
+    },
+    {
+      "question": "RDBMSの機能によって実現されるトランザクションの性質はどれか。",
+      "option1": "候補キーの一意性",
+      "option2": "関数従属性",
+      "option3": "ACID特性",
+      "option4": "データ独立性",
+      "answerNum": "3",
+      "answerText": "ACID特性"
+    },
+    {
+      "question": "ビジネスプロセスを根本的に考え直し，抜本的にデザインし直すことによって，企業のコスト，品質，サービス，スピードなどのパフォーマンスを劇的に改善するものはどれか。",
+      "option1": "リエンジニアリング",
+      "option2": "アライアンス",
+      "option3": "コアコンピタンス",
+      "option4": "ゴーイングコンサーン",
+      "answerNum": "1",
+      "answerText": "リエンジニアリング"
+    },
+    {
+      "question": "コンピュータウイルスを作成する行為を処罰の対象とする法律はどれか。",
+      "option1": "刑法",
+      "option2": "不正アクセス禁止法",
+      "option3": "不正競争防止法",
+      "option4": "プロパイダ責任制限法",
+      "answerNum": "1",
+      "answerText": "刑法"
+    },
+    {
+      "question": "XML文書のDTDに記述するものはどれか。",
+      "option1": "使用する文字コード",
+      "option2": "データ",
+      "option3": "バージョン情報",
+      "option4": "文書型の定義",
+      "answerNum": "4",
+      "answerText": "文書型の定義"
+    },
+    {
+      "question": "多相性を実現するときに，特有のものはどれか。",
+      "option1": "多重継承",
+      "option2": "オーバライド",
+      "option3": "メッセージパッシング",
+      "option4": "カプセル化",
+      "answerNum": "2",
+      "answerText": "オーバライド"
+    },
+    {
+      "question": "プロジェクトのスケジュールを短縮するために，アクティビティに割り当てる資源を増やして，アクティビティの所要期間を短縮する技法はどれか。",
+      "option1": "クリティカルチェーン法",
+      "option2": "クラッシング",
+      "option3": "モンテカルロ法",
+      "option4": "ファストトラッキング",
+      "answerNum": "2",
+      "answerText": "クラッシング"
+    },
+    {
+      "question": "媒体障害発生時にデータベースを復旧するために使用するファイルは主に二つある。一つはバックアップファイルであるが，あと一つはどれか。",
+      "option1": "ロールバックファイル",
+      "option2": "ログファイル",
+      "option3": "トランザクションファイル",
+      "option4": "マスタファイル",
+      "answerNum": "2",
+      "answerText": "ログファイル"
+    },
+    {
+      "question": "プロジェクトのリスクに対応する戦略として，損害発生時のリスクに備え，損害賠償保険に加入することにした。PMBOKによれば，該当する戦略はどれか。",
+      "option1": "回避",
+      "option2": "受容",
+      "option3": "軽減",
+      "option4": "転嫁",
+      "answerNum": "4",
+      "answerText": "転嫁"
+    },
+    {
+      "question": "情報化投資において，リスクや投資価値の類似性でカテゴリ分けし，最適な資源配分を行う際に用いる手法はどれか。",
+      "option1": "ベンチマーキング",
+      "option2": "エンタープライズアーキテクチャ",
+      "option3": "ITポートフォリオ",
+      "option4": "3C分析",
+      "answerNum": "3",
+      "answerText": "ITポートフォリオ"
+    },
+    {
+      "question": "ビッグデータの活用例として，大量のデータから統計学的手法などを用いて新たな知識(傾向やパターン)を見つけ出すプロセスはどれか。",
+      "option1": "データディクショナリ",
+      "option2": "データマイニング",
+      "option3": "メタデータ",
+      "option4": "データウェアハウス",
+      "answerNum": "2",
+      "answerText": "データマイニング"
+    },
+    {
+      "question": "コンデンサに蓄えた電荷の有無で情報を記憶するメモリはどれか。",
+      "option1": "SDRAM",
+      "option2": "SRAM",
+      "option3": "EEPROM",
+      "option4": "フラッシュメモリ",
+      "answerNum": "1",
+      "answerText": "SDRAM"
+    },
+    {
+      "question": "EDIを実施するための情報表現規約で規定されるべきものはどれか。",
+      "option1": "システムの運用時間",
+      "option2": "伝送制御手順",
+      "option3": "メッセージの形式",
+      "option4": "企業間の取引の契約内容",
+      "answerNum": "3",
+      "answerText": "メッセージの形式"
+    },
+    {
+      "question": "並列にアクセス可能な複数台の磁気ディスクに，各ファイルのデータを一定サイズのブロックに分割して分散配置し，ファイルアクセスの高速化を図る手法はどれか。",
+      "option1": "ディスクキャッシュ",
+      "option2": "ディスクミラーリング",
+      "option3": "ディスクストライピング",
+      "option4": "ディスクアットワンス",
+      "answerNum": "3",
+      "answerText": "ディスクストライピング"
+    },
+    {
+      "question": "IPv6のIPアドレスは何ビットか。",
+      "option1": "64",
+      "option2": "256",
+      "option3": "128",
+      "option4": "32",
+      "answerNum": "3",
+      "answerText": "128"
+    },
+    {
+      "question": "仮想記憶管理のページ入替え方式のうち，最後に使われてからの経過時間が最も長いページを入れ替えるものはどれか。",
+      "option1": "FlFO",
+      "option2": "LFU",
+      "option3": "LRU",
+      "option4": "LIFO",
+      "answerNum": "3",
+      "answerText": "LRU"
+    },
+    {
+      "question": "階層構造のモジュール群から成るソフトウェアの結合テストを，上位のモジュールから行う。この場合に使用する，下位モジュールの代替となるテスト用のモジュールはどれか。",
+      "option1": "エミュレータ",
+      "option2": "ドライバ",
+      "option3": "スタブ",
+      "option4": "シミュレータ",
+      "answerNum": "3",
+      "answerText": "スタブ"
+    },
+    {
+      "question": "コンピュータの電源投入時に最初に実行されるプログラムの格納に適しているものはどれか。ここで，主記憶のバッテリバックアップはしないものとする。",
+      "option1": "DRAM",
+      "option2": "SRAM",
+      "option3": "HDD",
+      "option4": "ROM",
+      "answerNum": "4",
+      "answerText": "ROM"
+    },
+    {
+      "question": "乱数を応用して，求める解や法則性の近似を得る手法はどれか。",
+      "option1": "指数平滑法",
+      "option2": "モンテカルロ法",
+      "option3": "クラスタ分析法",
+      "option4": "デルファイ法",
+      "answerNum": "2",
+      "answerText": "モンテカルロ法"
+    },
+    {
+      "question": "UML(Unified Modeling Language)が定義する図のうち，オブジェクト間の相互作用を表現するためのものはどれか。",
+      "option1": "クラス図",
+      "option2": "オブジェクト図",
+      "option3": "コンポーネント図",
+      "option4": "シーケンス図",
+      "answerNum": "4",
+      "answerText": "シーケンス図"
+    }
+  ]
+}

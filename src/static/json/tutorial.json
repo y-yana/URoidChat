@@ -1,0 +1,67 @@
+{
+  "allGames": [
+      {
+        "id": 0,
+        "root": "/chat",
+        "title": "おはなし",
+        "tutorial": "おはなしのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "私とおはなししますか？"
+      },
+      {
+        "id": 1,
+        "root": "/shiritori",
+        "title": "しりとり",
+        "tutorial": "しりとりのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "私としりとりしますか？"
+      },
+      {
+        "id": 2,
+        "root": "/quiz",
+        "title": "クイズ",
+        "tutorial": "クイズのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "私とクイズしますか？"
+      },
+      {
+        "id": 3,
+        "root": "/nigaoe",
+        "title": "にがおえ",
+        "tutorial": "にがおえのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "私とにがおえであそびますか？"
+      },
+      {
+        "id": 4,
+        "root": "/oekaki",
+        "title": "おえかき",
+        "tutorial": "おえかきのあそびかた",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "私とおえかきしますか？"
+      },
+      {
+        "id": 5,
+        "root": "/",
+        "title": "Comming soon...",
+        "tutorial": "Comming soon...",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "〜であそびますか？"
+      },
+      {
+        "id": 6,
+        "root": "/",
+        "title": "Comming soon...",
+        "tutorial": "Comming soon...",
+        "image1": "shiritori.png",
+        "image2": "shiritori.png",
+        "dialogue": "〜であそびますか？"
+      }
+    ]
+}

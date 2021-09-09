@@ -1,0 +1,20 @@
+{
+  "quiz":[
+    {
+      "quizName": "prefectures",
+      "quizNameJa": "県庁所在地"
+    },
+    {
+      "quizName": "season",
+      "quizNameJa": "野菜の旬"
+    },
+    {
+      "quizName": "NationalFlag",
+      "quizNameJa": "世界の国旗"
+    },
+    {
+      "quizName": "fe",
+      "quizNameJa": "基本情報"
+    }
+  ]
+}

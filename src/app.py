@@ -1,20 +1,15 @@
 import yaml
 from flask import Flask, render_template, jsonify, request,session,send_from_directory
 import json
-from chat import response
+from python.chat import response
 import os
 import cv2
 import numpy as np
 import datetime
 import random, string
 from negaposi.negaposi import negaposi
-from image_transform import image_transform
-from threading import Lock
-from flask import Flask, render_template, session, request, \
-    copy_current_request_context
-from flask_socketio import SocketIO, emit, join_room, leave_room, \
-    close_room, rooms, disconnect
-
+from python.image_transform import image_transform
+from python.shiritori import shiritori
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
@@ -47,9 +42,20 @@ def index():
     #return render_template("index.html", pageTitle='TopPage')
 
 @app.route("/chat", methods=["POST"])
-def move_index():
-    #return render_template("chat.html", pageTitle='URoidChat')
-    return render_template("draw.html", pageTitle='URoidDraw')
+def move_chat():
+    return render_template("chat.html", pageTitle='URoidChat')
+
+@app.route("/shiritori", methods=["POST"])
+def move_shiritori():
+    return render_template("shiritori.html", pageTitle='Shiritori')
+
+@app.route("/quiz", methods=["POST"])
+def move_quiz():
+    return render_template("quiz.html", pageTitle='Quiz')
+
+@app.route("/nigaoe", methods=["POST"])
+def move_nigaoe():
+    return render_template("nigaoe.html", pageTitle='Nigaoe')
 
 @app.route('/rename', methods=['POST'])
 def rename():
@@ -127,7 +133,8 @@ def upload():
 
     return jsonify(values=json.dumps(return_json))
 
-SAVE_DIR = "./images"
+
+SAVE_DIR = "./static/images/nigaoe"
 if not os.path.isdir(SAVE_DIR):
     os.mkdir(SAVE_DIR)
 
@@ -173,6 +180,62 @@ def connect():
     def client_to_server_join(data):
         room = data.value
         
+
+@app.route('/shiritori/ajax/', methods=['POST'])
+def shiritori_ajax():
+    ans = request.get_data('postMessage')
+    getMessage = ans.decode()
+    print(getMessage)
+    res_shiritori=shiritori(getMessage)
+    print(res_shiritori)
+
+    '''
+    ・ユーザーが入力した単語の最後の1文字(ひらがな)を投げてます
+    ・受け取った文字から始まる単語をひらがなで返してほしいです
+    ・AIが返した単語の重複チェックやAIが負けた場合の処理はフロント側で実装する予定です(たぶん)(がんばる)
+    '''
+    return res_shiritori
+
+
+@app.route('/quiz/ajax/', methods=['POST'])
+def quiz_ajax():
+    '''
+    受信するjsonデータ↓
+    {
+        trueCounter: this.trueCounter, // 正解数(0~10)
+        playTime: this.resultTime //かかった時間(単位はミリ秒)
+    }
+    ・かかった時間は単位を秒に変えて、小数点第三位を四捨五入して欲しいです
+    ・「正解数＞かかった時間」の優先度で順位のソート＆ jsonの書き換えをお願いします
+    '''
+
+    # test用なので消して大丈夫です
+    return_json = {
+        "rankingData": 'Ranking!!'
+    }
+
+    '''
+    ・jsonの保存先は、src/static/json の中で、フォーマットは↓のようにお願いします
+    [
+        {"id": 1, "name": "うどん", "trueNum": 10, "time": 32.12},
+        {"id": 2, "name": "そば", "trueNum": 10, "time": 33.45},
+    〜中間省略〜
+        {"id": 7, "name": "らーめん", "trueNum": 8, "time": 46.38}
+    ]
+    id = 順位
+    name = ニックネーム
+    trueNum = 正解数
+    time = かかった時間
+    '''
+
+    getMessage = request.get_json('postMessage')
+    trueCounter = getMessage['trueCounter']
+    playTime = getMessage['playTime']
+
+    print(trueCounter)
+    print(playTime)
+
+    return jsonify(values=json.dumps(return_json))
 
 
 if __name__ == '__main__':
