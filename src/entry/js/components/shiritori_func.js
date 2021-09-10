@@ -3,6 +3,11 @@ const shiritori = new Vue({
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
+    difficultyChoice: true,
+    playGame: false,
+    timerMode: false,
+    modePicked: null,
+    difficultyPicked: null,
     inputText: '',
     warning: '',
     arrNum: 0,
@@ -15,7 +20,10 @@ const shiritori = new Vue({
     submitBtnDisabled: false,
     replayQuestion: false,
     submitCheck: 'NG',
-    ajaxText: ''
+    ajaxText: '',
+    timerVal: 10,
+    difficultyVal: null,
+    intervalID: null
   },
   created: function () {
     this.resetArr()
@@ -23,37 +31,59 @@ const shiritori = new Vue({
     this.input()
   },
   methods: {
+    gameStart: function () {
+      this.difficultyVal = this.difficultyPicked
+      this.difficultyChoice = false
+      this.playGame = true
+      if (this.modePicked == "timer") {
+        this.timerMode = true
+        this.timerVal = this.difficultyVal
+        this.timerStart()
+      } else {
+        this.timerMode = false
+      }
+    },
     submit: function () {
       this.submitCheck = 'NG'
       this.endStr = this.inputText.slice(-1)
       this.textCheck()
       this.pushNewText(this.inputText)
-      this.ajaxGetMessage()
       this.inputText = ''
     },
     replay: function () {
       this.resetArr()
       this.reset()
       this.input()
+      //this.timerVal = this.difficultyVal
+      if (this.modePicked == "timer") {
+        this.timerMode = true
+        this.timerVal = this.difficultyVal
+        this.timerStart()
+      }
     },
     back: function () {
+      this.resetArr()
       this.reset()
-      this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
+      this.input()
+      this.difficultyChoice = true
+      this.playGame = false
     },
     textCheck: function () {
-      // 重複チェック
       if (this.check.indexOf(this.inputText) != -1) {
         this.result = '「' + this.inputText + '」は既出なので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        clearInterval(this.intervalID)
+        return
       }
-
-      // 「ん」チェック
       if (this.endStr == 'ん') {
         this.result = '最後に「ん」がついたので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        clearInterval(this.intervalID)
+        return
       }
+      this.ajaxGetMessage()
     },
     pushNewText: function (text) {
       this.arrNum += 1
@@ -67,6 +97,7 @@ const shiritori = new Vue({
       this.endStr = 'り'
     },
     reset: function () {
+      this.inputText = ''
       this.result = ''
       this.replayQuestion = false
     },
@@ -92,9 +123,33 @@ const shiritori = new Vue({
           self.ajaxText = data
           self.endStr = self.ajaxText.slice(-1)
           self.pushNewText(self.ajaxText)
+          if (self.endStr == 'ん') {
+            self.result = '最後に「ん」がついたので、私の負けです…'
+            self.submitBtnDisabled = true
+            self.replayQuestion = true
+            clearInterval(self.intervalID)
+            return
+          }
         }).fail(function (data) {
           console.log("Ajax通信 失敗");
         });
+      clearInterval(this.intervalID)
+      this.timerStart()
+    },
+    timerStart: function () {
+      let self = this;
+      this.timerVal = this.difficultyVal
+      this.intervalID = setInterval(function () { self.updateProgress() }, 1000)
+    },
+    updateProgress: function () {
+      this.timerVal -= 1
+      if (this.timerVal == 0) {
+        clearInterval(this.intervalID)
+        this.result = 'タイムオーバーなので、あなたの負けです！'
+        this.submitBtnDisabled = true
+        this.replayQuestion = true
+        return
+      }
     }
   },
   watch: {

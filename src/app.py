@@ -38,6 +38,10 @@ def index():
     session['np_ALL']=0
     return render_template("index.html", pageTitle='TopPage')
 
+@app.route("/top", methods=["POST"])
+def move_top():
+    return render_template("index.html", pageTitle='TopPage')
+
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
     return render_template('draw.html', pageTitle='Oekaki',async_mode=socketio.async_mode)
