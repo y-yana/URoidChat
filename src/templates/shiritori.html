@@ -19,6 +19,9 @@
     <button @click="replay">はい</button>
     <button @click="back">いいえ</button>
   </div>
+  <p>あと[[ timerVal ]]秒</p>
+  <progress id="timerProgress" :value=timerVal max="10"></progress>
+  <button @click="timerStart">スタート</button>
   <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
   <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
   <p v-html='warning'></p>

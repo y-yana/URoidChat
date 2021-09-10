@@ -15,7 +15,9 @@ const shiritori = new Vue({
     submitBtnDisabled: false,
     replayQuestion: false,
     submitCheck: 'NG',
-    ajaxText: ''
+    ajaxText: '',
+    timerVal: 10,
+    intervalID: null
   },
   created: function () {
     this.resetArr()
@@ -44,12 +46,14 @@ const shiritori = new Vue({
         this.result = '「' + this.inputText + '」は既出なので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        clearInterval(this.intervalID)
         return
       }
       if (this.endStr == 'ん') {
         this.result = '最後に「ん」がついたので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        clearInterval(this.intervalID)
         return
       }
       this.ajaxGetMessage()
@@ -95,10 +99,29 @@ const shiritori = new Vue({
             self.result = '最後に「ん」がついたので、私の負けです…'
             self.submitBtnDisabled = true
             self.replayQuestion = true
+            clearInterval(self.intervalID)
+            return
           }
         }).fail(function (data) {
           console.log("Ajax通信 失敗");
         });
+      clearInterval(this.intervalID)
+      this.timerStart()
+    },
+    timerStart: function () {
+      let self = this;
+      this.timerVal = 10
+      this.intervalID = setInterval(function () { self.updateProgress() }, 1000)
+    },
+    updateProgress: function () {
+      this.timerVal -= 1
+      if (this.timerVal == 0) {
+        clearInterval(this.intervalID)
+        this.result = 'タイムオーバーなので、あなたの負けです！'
+        this.submitBtnDisabled = true
+        this.replayQuestion = true
+        return
+      }
     }
   },
   watch: {
