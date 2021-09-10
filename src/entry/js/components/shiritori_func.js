@@ -31,13 +31,14 @@ const shiritori = new Vue({
     this.input()
   },
   methods: {
-    start: function () {
+    gameStart: function () {
       this.difficultyVal = this.difficultyPicked
       this.difficultyChoice = false
       this.playGame = true
       if (this.modePicked == "timer") {
         this.timerMode = true
         this.timerVal = this.difficultyVal
+        this.timerStart()
       } else {
         this.timerMode = false
       }
@@ -53,7 +54,12 @@ const shiritori = new Vue({
       this.resetArr()
       this.reset()
       this.input()
-      this.timerVal = this.difficultyVal
+      //this.timerVal = this.difficultyVal
+      if (this.modePicked == "timer") {
+        this.timerMode = true
+        this.timerVal = this.difficultyVal
+        this.timerStart()
+      }
     },
     back: function () {
       this.resetArr()
