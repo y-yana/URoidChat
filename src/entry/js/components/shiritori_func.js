@@ -53,10 +53,14 @@ const shiritori = new Vue({
       this.resetArr()
       this.reset()
       this.input()
+      this.timerVal = this.difficultyVal
     },
     back: function () {
+      this.resetArr()
       this.reset()
-      this.textArr.push({ id: this.arrNum, text: 'またあそぼうね！' })
+      this.input()
+      this.difficultyChoice = true
+      this.playGame = false
     },
     textCheck: function () {
       if (this.check.indexOf(this.inputText) != -1) {
@@ -87,6 +91,7 @@ const shiritori = new Vue({
       this.endStr = 'り'
     },
     reset: function () {
+      this.inputText = ''
       this.result = ''
       this.replayQuestion = false
     },
