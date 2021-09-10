@@ -133,8 +133,12 @@ const shiritori = new Vue({
         }).fail(function (data) {
           console.log("Ajax通信 失敗");
         });
-      clearInterval(this.intervalID)
-      this.timerStart()
+      if (this.modePicked == "timer") {
+        this.timerMode = true
+        this.timerVal = this.difficultyVal
+        clearInterval(this.intervalID)
+        this.timerStart()
+      }
     },
     timerStart: function () {
       let self = this;
