@@ -50,6 +50,7 @@
 
                 $('form#castmessage').submit(function (event) {
                     socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val(), name: $("#nameForm").val() });
+                    $('#msg_data').val('') 
                     return false;
                 });
                 //oekaki開始
