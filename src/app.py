@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
-
+member_list_dic = {}
 
 @app.route('/')
 def index():
@@ -228,10 +228,14 @@ def quiz_ajax():
 #お絵かき
 @socketio.event
 def my_event(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
-         {'data': message['data'], 'count': session['receive_count']})
+         {'data': message['data']})
 
+
+@socketio.event
+def member_list(message):
+    member_list_dic[message] += 1
+    emit('')
 
 @socketio.event
 def broadcast_event(message):
