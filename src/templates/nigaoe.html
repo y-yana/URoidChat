@@ -1,5 +1,13 @@
 {% extends "layout.html" %}{% block content %}
 
+<form action="/top" method="POST">
+  <button type="submit"><span class="material-icons">arrow_back</span></button>
+</form>
+
+<!-- モデル表示エリア -->
+<div id="modelArea">
+</div>
+
 <div id="btn" class="upload">
   <form id="img" enctype="multipart/form-data" method="post" onsubmit="return false;">
     <label for="file-sample">
@@ -10,6 +18,7 @@
       upload</button>
   </form>
   <img id="file-preview" width="500px">
+  <a id="download" style="display:none" download>画像を保存する</a>
 </div>
 
 <script src="static/webpack/build_nigaoe.js"></script>
@@ -28,7 +37,10 @@
       var e_time = new Date();
       var id = e_time.getTime();
       var img = document.getElementById('file-preview');
+      var download = document.getElementById('download');
       img.src = 'static/images/nigaoe/image.png?'+id;
+      download.href = 'static/images/nigaoe/image.png?' + id;
+      download.style.display = 'block';
     }).fail(function () {
       console.log('fail');
     });
