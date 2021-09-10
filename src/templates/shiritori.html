@@ -10,21 +10,35 @@
 </div>
 
 <div id="shiritori">
-  <div v-for="m in textArr" :key="textArr.id">
-    <div>[[m.text]]</div>
-  </div>
-  <p>[[ result ]]</p>
-  <div v-if="replayQuestion">
-    <p>もう一度あそぶ？</p>
-    <button @click="replay">はい</button>
-    <button @click="back">いいえ</button>
-  </div>
-  <p>あと[[ timerVal ]]秒</p>
-  <progress id="timerProgress" :value=timerVal max="10"></progress>
-  <button @click="timerStart">スタート</button>
-  <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
-  <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
-  <p v-html='warning'></p>
+  <template v-if="difficultyChoice">
+    <p>どっちのモードであそぶ？</p>
+    <input type="radio" id="one" value="normal" v-model="modePicked"><label for="one">じっくり</label>
+    <input type="radio" id="two" value="timer" v-model="modePicked"><label for="two">タイマー</label>
+    <p>難易度をえらんでね</p>
+    <input type="radio" id="easy" value="10" v-model="difficultyPicked"><label for="easy">かんたん</label>
+    <input type="radio" id="normal" value="5" v-model="difficultyPicked"><label for="normal">ふつう</label>
+    <input type="radio" id="difficult" value="3" v-model="difficultyPicked"><label for="difficult">むずかしい</label>
+    <button @click="start">これであそぶ！</button>
+  </template>
+  <template v-if="playGame">
+    <div v-for="m in textArr" :key="textArr.id">
+      <div>[[m.text]]</div>
+    </div>
+    <p>[[ result ]]</p>
+    <div v-if="replayQuestion">
+      <p>もう一度あそぶ？</p>
+      <button @click="replay">はい</button>
+      <button @click="back">いいえ</button>
+    </div>
+    <div v-if="timerMode">
+      <p>あと[[ timerVal ]]秒</p>
+      <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
+      <button @click="timerStart">スタート</button>
+    </div>
+    <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
+    <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
+    <p v-html='warning'></p>
+  </template>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

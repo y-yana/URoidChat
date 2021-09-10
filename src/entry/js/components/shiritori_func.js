@@ -3,6 +3,11 @@ const shiritori = new Vue({
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
+    difficultyChoice: true,
+    playGame: false,
+    timerMode: false,
+    modePicked: null,
+    difficultyPicked: null,
     inputText: '',
     warning: '',
     arrNum: 0,
@@ -17,6 +22,7 @@ const shiritori = new Vue({
     submitCheck: 'NG',
     ajaxText: '',
     timerVal: 10,
+    difficultyVal: null,
     intervalID: null
   },
   created: function () {
@@ -25,6 +31,17 @@ const shiritori = new Vue({
     this.input()
   },
   methods: {
+    start: function () {
+      this.difficultyVal = this.difficultyPicked
+      this.difficultyChoice = false
+      this.playGame = true
+      if (this.modePicked == "timer") {
+        this.timerMode = true
+        this.timerVal = this.difficultyVal
+      } else {
+        this.timerMode = false
+      }
+    },
     submit: function () {
       this.submitCheck = 'NG'
       this.endStr = this.inputText.slice(-1)
@@ -110,7 +127,7 @@ const shiritori = new Vue({
     },
     timerStart: function () {
       let self = this;
-      this.timerVal = 10
+      this.timerVal = this.difficultyVal
       this.intervalID = setInterval(function () { self.updateProgress() }, 1000)
     },
     updateProgress: function () {
