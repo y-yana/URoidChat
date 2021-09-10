@@ -26,7 +26,7 @@ const shiritori = new Vue({
     showTutorial: function (value) {
       console.log(value)
       this.choiceGameNum = value
-      if (value < 4) {
+      if (value < 5) {
         console.log('ok')
         this.gameChoice = false
         this.tutorial = true
