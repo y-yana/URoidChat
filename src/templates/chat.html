@@ -81,24 +81,11 @@
         </form>
     </div>
 </div>
-<!--画像処理-->
-<div id="btn" class="upload">
-    <form id="img"  enctype="multipart/form-data" method="post" onsubmit="return false;">
-      <label for="file-sample">
-        顔写真を選択
-        <input type="file" name="image" accept="image/png,image/jpeg" id="file-sample">
-      </label>
-      <button id="Btn" onclick="uploadimg(document.getElementById('upFile'))">
-        upload</button>
-    </form>
-    <img id="file-preview">
-</div>
 
 <script type="text/javascript" id="NPscript">var NP = 0;</script>
 <script type="text/javascript" id="ALL_NPscript">ALL_NP = 0;</script>
 <script type="text/javascript" id="facecheckbool">check = '0';</script>
 <script type="text/javascript" id="base_message">check = '0';</script>
-<script src="../static/webpack/build_chat.js"></script>
 
 <script src="static/webpack/build_chat.js"></script>
 <script>
