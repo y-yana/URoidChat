@@ -4,7 +4,7 @@
 <div id="modelArea">
 </div>
 
-<div id="rouka">
+<div id="roomChoiceArea">
     <form class="form-inline" id="roukaForm">
         <div class="form-group">
             <label class="roomLabel" for="rooms">クラス名：</label>
@@ -30,11 +30,11 @@
                 <input type="text" class="form-control" id="nameForm">
             </span>
         </div>
-        <button type="submit" class="btn btn-primary" id="sendButton">入室</button>
+        <button type="submit" class="btn btn-primary" id="enterTheRoom">入室</button>
     </form>
 </div>
 
-<div id="responsiveArea">
+<div id="oekakiRoomArea" style='display: none;'>
     <div id="flexArea">
         <canvas id="oekakiCanvas" width="500" height="400"></canvas>
         <div class="container">
@@ -50,8 +50,7 @@
             </form>
             <form id="castmessage" method="POST" action='#'>
                 <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
-                <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span
-                        class="material-icons">send</span></button>
+                <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span class="material-icons">send</span></button>
             </form>
         </div>
     </div>
@@ -77,12 +76,8 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
-    integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
-    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         // Connect to the Socket.IO server.
