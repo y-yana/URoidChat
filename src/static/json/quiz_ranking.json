@@ -1,0 +1,38 @@
+[
+    {
+        "rank": 1,
+        "name": "test",
+        "trueNum": 4,
+        "time": 7.13
+    },
+    {
+        "rank": 2,
+        "name": "a",
+        "trueNum": 1,
+        "time": 2
+    },
+    {
+        "rank": 3,
+        "name": "\u3046\u3069\u30932",
+        "trueNum": 1,
+        "time": 15
+    },
+    {
+        "rank": 4,
+        "name": "\u3046\u3069\u30932",
+        "trueNum": 0,
+        "time": 8
+    },
+    {
+        "rank": 5,
+        "name": "\u3046\u3069\u3093",
+        "trueNum": 0,
+        "time": 10
+    },
+    {
+        "rank": 6,
+        "name": "test",
+        "trueNum": 0,
+        "time": 29.61
+    }
+]

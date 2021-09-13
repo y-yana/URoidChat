@@ -111,16 +111,23 @@ const shiritori = new Vue({
           this.submit()
         }
     },
-    ajaxGetMessage: function () {
-      var postMessage = this.inputText
+    ajaxGetMessage: async function () {
+      var json_text = {
+        word: this.inputText,
+        difficult: this.difficultyVal
+      }
+      var postMessage = JSON.stringify(json_text);
+      console.log(postMessage)
       let self = this;
-      $.ajax("/shiritori/ajax/", {
+      await $.ajax("/shiritori/ajax/", {
             type: "post",
             data: postMessage,
-            dataType: "text",
+            dataType: "json",
         }).done(function (data) {
           console.log("Ajax通信 成功");
-          self.ajaxText = data
+          const getData= JSON.parse(data.values).res_shiritori
+          console.log(getData)
+          self.ajaxText = getData
           self.endStr = self.ajaxText.slice(-1)
           self.pushNewText(self.ajaxText)
           if (self.endStr == 'ん') {

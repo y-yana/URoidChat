@@ -171,21 +171,35 @@ def upload_img():
 
 @app.route('/shiritori/ajax/', methods=['POST'])
 def shiritori_ajax():
-    ans = request.get_data('postMessage')
-    getMessage = ans.decode()
-    print(getMessage)
-    est=0.5
-    res_shiritori=shiritori(getMessage,est)
+    """ans = request.get_data('postMessage')
+    getMessage = ans.decode()"""
+    getMessage = request.get_json('postMessage')
+    word = getMessage['word']
+    defi = getMessage['difficult']
+
+    #print(word,defi)
+
+    #10,8,5
+    #est=0.5
+    res_shiritori,end_str=shiritori(word,defi)
 
     
-    print(res_shiritori,est)
+    #print(res_shiritori,defi)
 
     '''
     ・ユーザーが入力した単語の最後の1文字(ひらがな)を投げてます
     ・受け取った文字から始まる単語をひらがなで返してほしいです
     ・AIが返した単語の重複チェックやAIが負けた場合の処理はフロント側で実装する予定です(たぶん)(がんばる)
     '''
-    return res_shiritori
+    #return res_shiritori
+    return_json = {
+        "res_shiritori": res_shiritori,
+        "endstr":end_str
+    }
+    print(return_json)
+
+    return jsonify(values=json.dumps(return_json))
+
 
 
 @app.route('/quiz/ajax/', methods=['POST'])
