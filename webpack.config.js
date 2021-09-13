@@ -10,6 +10,7 @@ module.exports = {
         'shiritori': './src/entry/js/pages/shiritori.js',
         'quiz': './src/entry/js/pages/quiz.js',
         'nigaoe': './src/entry/js/pages/nigaoe.js',
+        'oekaki': './src/entry/js/pages/oekaki.js',
         'style.css': './src/entry/style/chat.scss',
     },
 
