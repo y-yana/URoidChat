@@ -14,6 +14,7 @@ from engineio.payload import Payload
 from negaposi.negaposi import negaposi
 from python.image_transform import image_transform
 from python.shiritori import shiritori
+from python.ranking_quiz import ranking
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
@@ -238,7 +239,8 @@ def quiz_ajax():
     playTime = getMessage['playTime']
 
     print(trueCounter)
-    print(playTime)
+    print(round(playTime/1000, 2))
+    ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
 
     return jsonify(values=json.dumps(return_json))
 

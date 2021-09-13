@@ -2,5 +2,7 @@ __pycache__
 config.yml
 src/static/models/*.vrm
 
+
 src/static/webpack/*
 .DS_Store
+

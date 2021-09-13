@@ -17,7 +17,7 @@ def shiritori(word,defi):
 
   if word[-1]=="ん":
     return ""
-    
+
   else:
     df2=pd.read_csv("./static/shiritori/vocab.csv")
     print(est)
