@@ -174,8 +174,11 @@ def shiritori_ajax():
     ans = request.get_data('postMessage')
     getMessage = ans.decode()
     print(getMessage)
-    res_shiritori=shiritori(getMessage)
-    print(res_shiritori)
+    est=0.5
+    res_shiritori=shiritori(getMessage,est)
+
+    
+    print(res_shiritori,est)
 
     '''
     ・ユーザーが入力した単語の最後の1文字(ひらがな)を投げてます
