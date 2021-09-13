@@ -204,8 +204,8 @@ def quiz_ajax():
     playTime = getMessage['playTime']
 
     print(trueCounter)
-    print(playTime)
-    ranking(trueCounter,playTime)
+    print(round(playTime/1000, 2))
+    ranking(trueCounter,round(playTime/1000, 2),"test")
 
     return jsonify(values=json.dumps(return_json))
 
