@@ -205,7 +205,7 @@ def quiz_ajax():
 
     print(trueCounter)
     print(round(playTime/1000, 2))
-    ranking(trueCounter,round(playTime/1000, 2),"test")
+    ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
 
     return jsonify(values=json.dumps(return_json))
 
