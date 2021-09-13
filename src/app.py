@@ -10,6 +10,7 @@ import random, string
 from negaposi.negaposi import negaposi
 from python.image_transform import image_transform
 from python.shiritori import shiritori
+from python.ranking_quiz import ranking
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
@@ -204,6 +205,7 @@ def quiz_ajax():
 
     print(trueCounter)
     print(playTime)
+    ranking(trueCounter,playTime)
 
     return jsonify(values=json.dumps(return_json))
 
