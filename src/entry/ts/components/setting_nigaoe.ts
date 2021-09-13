@@ -4,32 +4,90 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { getConstantValue, updateArrayBindingPattern } from 'typescript';
 
-//window.addEventListener("DOMContentLoaded", () => {
-//const modelLoad = (modelPass:string,facemode:string,posepass:string):any => {
-export module modelLib{
-export class modelLoad{
-  modelLoad = (modelPass:string,facemode:string,posepass:string,renderer:any,camera:any):any => { 
-  // VRMの読み込み
+window.addEventListener("DOMContentLoaded", () => {
+
+  // canvasサイズの制御
+  // 表示用のサイズを格納する変数
+  var newWidth
+  var newHeight
+
+  // 画面サイズを取得
+  var getWidth = window.innerWidth;
+  var getHeight = window.innerHeight;
+
+  // レスポンシブ対応
+  if (getWidth <= 950) {
+    // 比率計算(mobile)
+    newWidth = Math.floor(getWidth * 0.8)
+    newHeight = Math.floor(getHeight * 0.8)
+  } else {
+    // 比率計算(desktop)
+    newWidth = Math.floor(getWidth * (2 / 5))
+    newHeight = Math.floor(getHeight * (5 / 7))
+  }
+
+  // canvas生成
+  var modelArea = document.getElementById('modelArea');
+  modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
+
+
+  // canvasの取得
+var canvas = <HTMLCanvasElement>document.getElementById('canvas');
+
+  // 初期値
+  var modelPass = '../static/base_model/base.vrm';
+  //var posepass = '../static/pose/suneru.csv';
+  var posepass = '../static/pose/hellovrm.csv';
+  var facemode = "normal";
+
     // シーンの設定
     const scene = new THREE.Scene()
     sceneOption()
-  
+
     function sceneOption() {
       // ライトの設定
       const light = new THREE.DirectionalLight(0xffffff)
       light.position.set(1, 1, 1).normalize()
       scene.add(light)
-  
+
       // グリッドを表示
       const gridHelper = new THREE.GridHelper(10, 10)
       scene.add(gridHelper)
       gridHelper.visible = true
-  
+
       // 座標軸を表示
       const axesHelper = new THREE.AxesHelper(0.5)
       scene.add(axesHelper)
     }
 
+  // レンダラーの設定
+  const renderer = new THREE.WebGLRenderer({
+    canvas: <HTMLCanvasElement>document.querySelector('#canvas'),
+    antialias: true,
+    alpha: true,
+    preserveDrawingBuffer: true,
+  })
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight)
+  renderer.setPixelRatio(window.devicePixelRatio)
+
+  // カメラの設定
+  const camera = new THREE.PerspectiveCamera(
+    35,
+    canvas.clientWidth / canvas.clientHeight,
+    0.1,
+    1000,
+  )
+  camera.position.set(0, 1, 4)
+
+  // カメラコントロールの設定
+  //if (getWidth > 950) {
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.target.set(0, 0.85, 0)
+    controls.screenSpacePanning = true
+    controls.update()
+  //}
+
+  // VRMの読み込み
   let mixer: any
   const loader = new GLTFLoader()
   newLoad()
@@ -136,14 +194,6 @@ export class modelLoad{
   const update = () => {
     requestAnimationFrame(update)
 
-    var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
-    if (facecheck.value == '1') {
-      scene.remove.apply(scene, scene.children);
-      sceneOption()
-      newLoad();
-      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
-    }
-
     // 時間計測
     let time = (new Date()).getTime()
     let delta = time - lastTime;
@@ -160,4 +210,4 @@ export class modelLoad{
     renderer.render(scene, camera)
   }
   update()
-}}}
+})
