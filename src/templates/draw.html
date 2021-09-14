@@ -1,16 +1,22 @@
 {% extends "layout.html" %}{% block content %}
 
+<!-- ヘッダー -->
+<div id="header">
+    <!-- ロゴ画像 -->
+    <img src="../static/images/logo.png">
+    <!-- room名&ニックネームの表示 -->
+    <div id="messageHeader" style='display: none;'>
+        <label class="roomLabel" id="selectRooms"></label>
+        <!-- ここに現在のルーム内人数を表示 -->
+        <!--<label class="roomLabel" id="nameBox">名前</label>
+        <label class="roomMember" id="room">-->
+    </div>
+</div>
+
 <!-- 戻るボタン -->
 <form action="/top" method="POST">
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
-
-<!-- ヘッダー部分 -->
-<div id="messageHeader">
-    <label class="roomLabel" id="selectRooms">部屋</label>
-    <label class="roomLabel" id="nameBox">名前</label>
-    <label class="roomMember" id="room">
-</div>
 
 <!-- モデル表示エリア -->
 <div id="modelArea">
@@ -296,8 +302,8 @@
         function enterLabel() {
             //$("#sendButton").text("送信");
             isEnter = true;
-            $("#selectRooms").text($("#rooms").val());
-            $("#nameBox").text($("#nameForm").val());
+            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#rooms").val());
+            //$("#nameBox").text($("#nameForm").val());
         }
         function outLabel() {
             $("#rooms").prop("disabled", true);
