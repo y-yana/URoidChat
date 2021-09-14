@@ -13,10 +13,13 @@
     </div>
 </div>
 
-<!-- 戻るボタン -->
-<form action="/top" method="POST">
+<!-- topに戻るボタン -->
+<form id='topMoveBtn' action="/top" method="POST">
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
+
+<!-- room選択画面に戻るボタン -->
+<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span class="material-icons">arrow_back</span></button>
 
 <!-- モデル表示エリア -->
 <div id="modelArea">
@@ -88,7 +91,6 @@
                 <button id="large">大</button>
                 <button id="medium">中</button>
                 <button id="small">小</button>
-                <button type="submit" class="btn btn-primary" id="leaveButton"><span class="material-icons">logout</span></button>
             </div>
         </div>
     </div>
@@ -294,7 +296,8 @@
             //oekaki終わり
             $("#leaveButton").click(function () {
                 if (confirm('ルームを退出しますか？')) {
-                    window.location.href = '/';
+                    //window.location.href = '/';
+                    location.reload();
                 }
             });
             return false;
