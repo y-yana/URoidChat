@@ -1,8 +1,16 @@
 {% extends "layout.html" %}{% block content %}
 
+<!-- 戻るボタン -->
 <form action="/top" method="POST">
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
+
+<!-- ヘッダー部分 -->
+<div id="messageHeader">
+    <label class="roomLabel" id="selectRooms">部屋</label>
+    <label class="roomLabel" id="nameBox">名前</label>
+    <label class="roomMember" id="room">
+</div>
 
 <!-- モデル表示エリア -->
 <div id="modelArea">
@@ -11,7 +19,7 @@
 <div id="roomChoiceArea">
     <form class="form-inline" id="roukaForm">
         <div class="form-group">
-            <label class="roomLabel" for="rooms">クラス名：</label>
+            <label class="roomLabel" for="rooms">ルーム名</label>
             <select class="form-control" id="rooms">
                 <option value="room1">3-1</option>
                 <option value="room2">3-2</option>
@@ -30,11 +38,11 @@
                 <option value="room15">1-5</option>
             </select>
             <span id="nameAreaForm">
-                <label class="nameLabel" for="nameForm">名前：</label>
+                <label class="nameLabel" for="nameForm">ニックネーム</label>
                 <input type="text" class="form-control" id="nameForm">
             </span>
         </div>
-        <button type="submit" class="btn btn-primary" id="enterTheRoom">入室</button>
+        <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
     </form>
 </div>
 
@@ -43,11 +51,11 @@
         <canvas id="oekakiCanvas" width="500" height="400"></canvas>
         <div class="container">
             <form class="form-inline">
-                <div id="messageHeader">
+                <!--<div id="messageHeader">
                     <label class="roomLabel" id="selectRooms">部屋</label>
                     <label class="roomLabel" id="nameBox">名前</label>
                     <label class="roomMember" id="room">
-                </div>
+                </div>-->
                 <div id="allChatLogs">
                     <div id="log"></div>
                 </div>
@@ -286,7 +294,7 @@
             return false;
         });
         function enterLabel() {
-            $("#sendButton").text("送信");
+            //$("#sendButton").text("送信");
             isEnter = true;
             $("#selectRooms").text($("#rooms").val());
             $("#nameBox").text($("#nameForm").val());
