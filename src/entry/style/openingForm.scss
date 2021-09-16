@@ -4,19 +4,18 @@
   width: 100vw;
   height: 100vh;
   background-color: $BG-modal;
-  position: fixed;
   z-index: 9000;
 
   #openingFormContents{
     opacity: 0;
     transition: 1500ms;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
 
     &.is-fadein {
-      opacity: 1
+      opacity: 1;
     }
 
     img{
@@ -33,6 +32,53 @@
       font-size: 1.7rem;
       gap: 0 1rem;
       margin: 0 auto;
+    }
+
+    #openingForm{
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      margin: 5rem auto;
+
+      #soundCheckbox{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #openingBtn{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #openingFormCustomize{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #soundCheckbox{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #yourNameInput{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #AInameInput{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #vrmChoiceBtn{
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      #upFile{
+        display: none;
+      }
     }
   }
 }

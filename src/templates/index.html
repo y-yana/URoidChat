@@ -6,16 +6,22 @@
     <img src="../static/images/logo.png">
     <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     <form id="openingForm" action="/opening" method="post" onsubmit="return false;">
-      <input type="checkbox" id="sound" name="sound">
-      <label for="sound">音声再生を許可します</label>
+      <div id="soundCheckbox">
+        <input type="checkbox" id="sound" name="sound">
+        <label for="sound">音声再生を許可します</label>
+      </div>
       <button id="openingBtn" onclick="openingForm()">はじめる</button>
-      <p>カスタマイズ（任意）</p>
-      <label for="youName">あなたの名前</label>
-      <input type="text" id="youName" name="youName">
-      <label for="AIname">AIの名前</label>
-      <input type="text" id="AIname" name="AIname">
+      <p id="openingFormCustomize">カスタマイズ（任意）</p>
+      <div id="yourNameInput">
+        <label for="yourName">あなたの名前</label>
+        <input type="text" id="yourName" name="youName">
+      </div>
+      <div id="AInameInput">
+        <label for="AIname">AIの名前</label>
+        <input type="text" id="AIname" name="AIname">
+      </div>
       <label for="upFile">
-        <div id="spansFlex">
+        <div id="vrmChoiceBtn">
           <span class="material-icons">description</span>
           <span>VRMファイルを選択</span>
         </div>
