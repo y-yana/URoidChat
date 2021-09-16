@@ -6,27 +6,33 @@
     <img src="../static/images/logo.png">
     <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     <form id="openingForm" action="/opening" method="post" onsubmit="return false;">
-      <div id="soundCheckbox">
-        <input type="checkbox" id="sound" name="sound">
-        <label for="sound">音声再生を許可します</label>
-      </div>
-      <button id="openingBtn" class="blueBtn" onclick="openingForm()">はじめる</button>
-      <p id="openingFormCustomize">カスタマイズ（任意）</p>
-      <div id="yourNameInput">
-        <label for="yourName">あなたの名前</label>
-        <input type="text" id="yourName" name="youName">
-      </div>
-      <div id="AInameInput">
-        <label for="AIname">AIの名前</label>
-        <input type="text" id="AIname" name="AIname">
-      </div>
-      <label for="upFile">
-        <div id="vrmChoiceBtn">
-          <span class="material-icons">description</span>
-          <span>VRMファイルを選択</span>
+      <div id="openingFormMain">
+        <div id="soundCheckbox">
+          <input type="checkbox" id="sound" name="sound">
+          <label for="sound">音声再生を許可します</label>
         </div>
-        <input type="file" id="upFile" name="the_file" accept=".vrm">
-      </label>
+        <button id="openingBtn" class="blueBtn" onclick="openingForm()">はじめる</button>
+      </div>
+      <div id="openingCustomizeArea">
+        <p id="openingFormCustomize">カスタマイズ（任意）</p>
+        <div id="openingNameArea">
+          <div id="yourNameInput">
+            <label for="yourName">あなたの名前</label>
+            <input type="text" id="yourName" name="youName">
+          </div>
+          <div id="AInameInput">
+            <label for="AIname">AIの名前</label>
+            <input type="text" id="AIname" name="AIname">
+          </div>
+        </div>
+        <label for="upFile">
+          <div id="vrmChoiceBtn">
+            <span class="material-icons">description</span>
+            <span>VRMファイルを選択</span>
+          </div>
+          <input type="file" id="upFile" name="the_file" accept=".vrm">
+        </label>
+      </div>
     </form>
   </div>
   <!-- background -->

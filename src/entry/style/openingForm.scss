@@ -9,7 +9,7 @@
     opacity: 0;
     transition: 1500ms;
     position: absolute;
-    top: 40%;
+    top: 52%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
 
@@ -38,45 +38,62 @@
       height: fit-content;
       display: flex;
       flex-direction: column;
+      gap: 5rem;
       margin: 5rem auto;
 
-      #soundCheckbox{
-        width: fit-content;
-        margin: 0 auto;
+      #openingFormMain{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        #soundCheckbox{
+          width: fit-content;
+          margin: 0 auto;
+        }
+
+        #openingBtn{
+          width: fit-content;
+          margin: 0 auto;
+        }
       }
 
-      #openingBtn{
-        width: fit-content;
-        margin: 0 auto;
-      }
+      #openingCustomizeArea{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: #ffffffc4;
+        padding: 2rem;
+        border-radius: 10px;
 
-      #openingFormCustomize{
-        width: fit-content;
-        margin: 0 auto;
-      }
+        #openingFormCustomize{
+          width: fit-content;
+          margin: 0 auto;
+        }
 
-      #soundCheckbox{
-        width: fit-content;
-        margin: 0 auto;
-      }
+        #openingNameArea{
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
 
-      #yourNameInput{
-        width: fit-content;
-        margin: 0 auto;
-      }
+          #yourNameInput{
+            width: fit-content;
+            margin: 0 auto;
+          }
 
-      #AInameInput{
-        width: fit-content;
-        margin: 0 auto;
-      }
+          #AInameInput{
+            width: fit-content;
+            margin: 0 auto;
+          }
+        }
 
-      #vrmChoiceBtn{
-        width: fit-content;
-        margin: 0 auto;
-      }
+        #vrmChoiceBtn{
+          width: fit-content;
+          margin: 0 auto;
+        }
 
-      #upFile{
-        display: none;
+        #upFile{
+          display: none;
+        }
       }
     }
   }
