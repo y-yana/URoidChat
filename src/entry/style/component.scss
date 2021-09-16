@@ -13,3 +13,13 @@ $BG-send-message: #2bbcff;
 $BG-get-message: #cbeeff;
 $BG-header: #f4fbff;
 $rec-now: #eb1a1a;
+$btn-blue-BG: #8AD9FB;
+$btn-blue-text: #1E6D90;
+
+.blueBtn{
+  background-color: $btn-blue-BG;
+  color: $btn-blue-text;
+  font-weight: bold;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+}
