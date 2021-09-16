@@ -1,312 +1,318 @@
-<!DOCTYPE HTML>
-<html>
+{% extends "layout.html" %}{% block content %}
 
-<head>
-    <title>Flask-SocketIO Test</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
-        integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function () {
-            // Connect to the Socket.IO server.
-            // The connection URL has the following format, relative to the current page:
-            //     http[s]://<domain>:<port>[/<namespace>]
-            var socket = io();
+<!-- ヘッダー -->
+<div id="header">
+    <!-- ロゴ画像 -->
+    <img src="../static/images/logo.png">
+    <!-- room名&ニックネームの表示 -->
+    <div id="messageHeader" style='display: none;'>
+        <label class="roomLabel" id="selectRooms"></label>
+        <!-- ここに現在のルーム内人数を表示 -->
+        <!--<label class="roomLabel" id="nameBox">名前</label>
+        <label class="roomMember" id="room">-->
+    </div>
+</div>
 
-            // Event handler for new connections.
-            // The callback function is invoked when a connection with the
-            // server is established.
-            socket.on('connect', function () {
-                socket.emit('my_event', { data: 'I\'m connected!' });
-            });
+<!-- topに戻るボタン -->
+<form id='topMoveBtn' action="/top" method="POST">
+    <button type="submit"><span class="material-icons">arrow_back</span></button>
+</form>
 
-            // Event handler for server sent data.
-            // The callback function is invoked whenever the server emits data
-            // to the client. The data is then displayed in the "Received"
-            // section of the page.
-            socket.on('my_response', function (msg, cb) {
-                var sendTime = new Date();
-                var Hour = sendTime.getHours();
-                var Min = sendTime.getMinutes();
-                $('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
-                if (cb)
-                    cb();
-            });
+<!-- room選択画面に戻るボタン -->
+<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span class="material-icons">arrow_back</span></button>
 
-            //画面幅によって黒板の横幅を動的に変更する
-            if (window.innerWidth < 950) {
-                document.getElementById("canvas").width = 300;
-                document.getElementById("canvas").height = 400;
-                document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
-            }
+<!-- モデル表示エリア -->
+<div id="modelArea">
+</div>
 
-            $('form#roukaForm').submit(function (event) {
-                socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
+<div id="roomChoiceArea">
+    <form class="form-inline" id="roukaForm">
+        <div class="form-group">
+            <label class="roomLabel" for="rooms">ルーム名</label>
+            <select class="form-control" id="rooms">
+                <option value="room1">3-1</option>
+                <option value="room2">3-2</option>
+                <option value="room3">3-3</option>
+                <option value="room4">3-4</option>
+                <option value="room5">3-5</option>
+                <option value="room6">2-1</option>
+                <option value="room7">2-2</option>
+                <option value="room8">2-3</option>
+                <option value="room9">2-4</option>
+                <option value="room10">2-5</option>
+                <option value="room11">1-1</option>
+                <option value="room12">1-2</option>
+                <option value="room13">1-3</option>
+                <option value="room14">1-4</option>
+                <option value="room15">1-5</option>
+            </select>
+            <span id="nameAreaForm">
+                <label class="nameLabel" for="nameForm">ニックネーム</label>
+                <input type="text" class="form-control" id="nameForm">
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
+    </form>
+</div>
 
-                enterLabel();
-
-                $('form#castmessage').submit(function (event) {
-                    socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val(), name: $("#nameForm").val() });
-                    $('#msg_data').val('') 
-                    return false;
-                });
-                //oekaki開始
-                $(function () {
-                    var offset = 5;
-                    var fromX;
-                    var fromY;
-                    var drawFlag = false;
-                    var eraserFlag = false;
-                    var context = $("canvas").get(0).getContext('2d');
-                    //太さの初期値
-                    context.lineWidth = 5;
-
-                    //色の初期値
-                    context.strokeStyle = '#D61A6A';
-
-                    // サーバからメッセージ受信
-                    socket.on('send user', function (msg) {
-                        tmpColor = context.strokeStyle //色情報を保存
-                        tmplineWidth = context.lineWidth //線の太さを保存
-                        tmpmode = context.globalCompositeOperation //描画モードを保存
-                        context.globalCompositeOperation = msg.mode
-                        context.strokeStyle = msg.color;
-                        context.lineWidth = msg.lineWidth;
-                        context.beginPath();
-                        context.moveTo(msg.fx, msg.fy);
-                        context.lineTo(msg.tx, msg.ty);
-                        context.stroke();
-                        context.closePath();
-                        context.globalCompositeOperation = tmpmode //描画モードの呼び出し
-                        context.lineWidth = tmplineWidth //線の太さを呼び出し
-                        context.strokeStyle = tmpColor //色情報を呼び出し
-                    });
-
-                    socket.on('clear user', function () {
-                        context.clearRect(0, 0, $('canvas').width(), $('canvas').height());
-                    });
-
-                    $('canvas').mousedown(function (e) {
-                        drawFlag = true;
-                        fromX = e.pageX - $(this).offset().left - offset;
-                        fromY = e.pageY - $(this).offset().top - offset;
-                        return false;  // for chrome
-                    });
-
-                    $('canvas').mousemove(function (e) {
-                        if (drawFlag) {
-                            draw(e);
-                        }
-                    });
-
-                    $('canvas').on('mouseup', function () {
-                        drawFlag = false;
-                    });
-
-                    $('canvas').on('mouseleave', function () {
-                        drawFlag = false;
-                    });
-
-                    //sumaho
-                    $('canvas').bind({
-                        'touchstart': function (e) {
-                            drawFlag = true;
-                            fromX = e.touches[0].clientX - $(this).offset().left - offset;
-                            fromY = e.touches[0].clientY - $(this).offset().top - offset;
-                            return false;  // for chrome
-                        },
-
-                        'touchmove': function (e) {
-                            if (drawFlag) {
-                                draw_sumaho(e)
-                            }
-                        },
-                        'touchend': function () {
-                            drawFlag = false;
-                        }
-
-                    });
-
-                    $('li').click(function () {
-                        context.strokeStyle = $(this).css('background-color');
-                        //描画モード
-                        context.globalCompositeOperation = 'source-over';
-                        eraserFlag = false
-                    });
-
-                    $('#clear').click(function (e) {
-                        socket.emit('clear_room_board', { room: $('#rooms').val() });
-                        e.preventDefault();
-                        context.clearRect(0, 0, $('canvas').width(), $('canvas').height());
-                    });
-
-                    $('#eraser').click(function (e) {
-                        //消しゴムモード
-                        context.globalCompositeOperation = 'destination-out';
-                        context.lineWidth = 20;
-                        eraserFlag = true
-                    });
-
-                    $('#large').click(function (e) {
-                        context.globalCompositeOperation = 'source-over';
-                        context.lineWidth = 10;
-                        eraserFlag = false
-                    });
-                    $('#medium').click(function (e) {
-                        context.globalCompositeOperation = 'source-over';
-                        context.lineWidth = 5;
-                        eraserFlag = false
-                    });
-                    $('#small').click(function (e) {
-                        context.globalCompositeOperation = 'source-over';
-                        context.lineWidth = 2;
-                        eraserFlag = false
-                    });
-
-
-                    function draw(e) {
-                        var toX = e.pageX - $('canvas').offset().left - offset;
-                        var toY = e.pageY - $('canvas').offset().top - offset;
-
-                        context.beginPath();
-                        context.moveTo(fromX, fromY);
-                        context.lineTo(toX, toY);
-                        context.stroke();
-                        context.closePath();
-
-                        // サーバへメッセージ送信
-                        socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
-                        fromX = toX;
-                        fromY = toY;
-                    }
-                    function draw_sumaho(e) {
-                        var toX = e.touches[0].clientX - $('canvas').offset().left - offset;
-                        var toY = e.touches[0].clientY - $('canvas').offset().top - offset;
-
-                        context.beginPath();
-                        context.moveTo(fromX, fromY);
-                        context.lineTo(toX, toY);
-                        context.stroke();
-                        context.closePath();
-
-                        // サーバへメッセージ送信
-                        socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
-                        fromX = toX;
-                        fromY = toY;
-                    }
-
-                    $('#save').click(function () {
-                        var d = $("canvas")[0].toDataURL("image/png");
-                        d = d.replace("image/png", "image/octet-stream");
-                        window.open(d, "save");
-                    });
-                });
-                //oekaki終わり
-                $("#leaveButton").click(function () {
-                    if (confirm('ルームを退出しますか？')) {
-                        window.location.href = '/';
-                    }
-                });
-                return false;
-            });
-            function enterLabel() {
-                $("#sendButton").text("送信");
-                isEnter = true;
-                $("#selectRooms").text($("#rooms").val());
-                $("#nameBox").text($("#nameForm").val());
-            }
-            function outLabel() {
-                $("#rooms").prop("disabled", true);
-            }
-        });
-    </script>
-</head>
-
-<body>
-    <body id="BGchange">
-        <div id="rouka">
-            <form class="form-inline" id="roukaForm">
-                <div class="form-group">
-                    <label class="roomLabel" for="rooms">クラス名：</label>
-                    <select class="form-control" id="rooms">
-                        <option value="room1">3-1</option>
-                        <option value="room2">3-2</option>
-                        <option value="room3">3-3</option>
-                        <option value="room4">3-4</option>
-                        <option value="room5">3-5</option>
-                        <option value="room6">2-1</option>
-                        <option value="room7">2-2</option>
-                        <option value="room8">2-3</option>
-                        <option value="room9">2-4</option>
-                        <option value="room10">2-5</option>
-                        <option value="room11">1-1</option>
-                        <option value="room12">1-2</option>
-                        <option value="room13">1-3</option>
-                        <option value="room14">1-4</option>
-                        <option value="room15">1-5</option>
-                    </select>
-                    <span id="nameAreaForm">
-                        <label class="nameLabel" for="nameForm">名前：</label>
-                        <input type="text" class="form-control" id="nameForm">
-                    </span>
+<div id="oekakiRoomArea" style='display: none;'>
+    <div id="flexArea">
+        <canvas id="oekakiCanvas" width="500" height="400"></canvas>
+        <div class="container">
+            <form class="form-inline">
+                <!--<div id="messageHeader">
+                    <label class="roomLabel" id="selectRooms">部屋</label>
+                    <label class="roomLabel" id="nameBox">名前</label>
+                    <label class="roomMember" id="room">
+                </div>-->
+                <div id="allChatLogs">
+                    <div id="log"></div>
                 </div>
-                <button type="submit" class="btn btn-primary" id="sendButton">入室</button>
+            </form>
+            <form id="castmessage" method="POST" action='#'>
+                <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
+                <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span class="material-icons">send</span></button>
             </form>
         </div>
-
-        <div id="blackCover"></div>
-        <div id="createTheme">
-            <p id="generateTheme">&nbsp;</p>
-            <button>お題を生成する</button>
-        </div>
-        <div id="responsiveArea">
-            <div id="flexArea">
-                <canvas id="canvas" width="500" height="400"></canvas>
-                <div class="container">
-                    <form class="form-inline">
-                        <div id="messageHeader">
-                            <label class="roomLabel" id="selectRooms">部屋</label>
-                            <label class="roomLabel" id="nameBox">名前</label>
-                            <label class="roomMember" id="room">
-                        </div>
-                        <div id="allChatLogs">
-                            <div id="log"></div>
-                        </div>
-                    </form>
-                    <form id="castmessage" method="POST" action='#'>
-                        <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
-                        <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span
-                                class="material-icons">send</span></button>
-                    </form>
-                </div>
-            </div>
-            <div id="selectArea">
-                <div id="selectAreaContents">
-                    <ul>
-                        <li style="background-color:#D61A6A"></li>
-                        <li style="background-color:#E68D13"></li>
-                        <li style="background-color:#F8F13B"></li>
-                        <li style="background-color:#18D37D"></li>
-                        <li style="background-color:#1A54D6"></li>
-                    </ul>
-                    <div id="button">
-                        <button id="save"><span class="material-icons">file_download
-                            </span></button>
-                        <button id="clear"><span class="material-icons">delete</span></button>
-                        <button id="eraser"><img id="image" src="./static/images/eraser.png" alt="" title=""></button>
-                        <button id="large">大</button>
-                        <button id="medium">中</button>
-                        <button id="small">小</button>
-                        <button type="submit" class="btn btn-primary" id="leaveButton"><span
-                                class="material-icons">logout</span></button>
-                    </div>
-                </div>
+    </div>
+    <div id="selectArea">
+        <div id="selectAreaContents">
+            <ul>
+                <li style="background-color:#D61A6A"></li>
+                <li style="background-color:#E68D13"></li>
+                <li style="background-color:#F8F13B"></li>
+                <li style="background-color:#18D37D"></li>
+                <li style="background-color:#1A54D6"></li>
+            </ul>
+            <div id="button">
+                <button id="save"><span class="material-icons">file_download</span></button>
+                <button id="clear"><span class="material-icons">delete</span></button>
+                <button id="eraser"><img id="image" src="./static/images/eraser.png" alt="" title=""></button>
+                <button id="large">大</button>
+                <button id="medium">中</button>
+                <button id="small">小</button>
             </div>
         </div>
-        </div>
-    </body>
+    </div>
+</div>
 
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        // Connect to the Socket.IO server.
+        // The connection URL has the following format, relative to the current page:
+        //     http[s]://<domain>:<port>[/<namespace>]
+        var socket = io();
+
+        // Event handler for new connections.
+        // The callback function is invoked when a connection with the
+        // server is established.
+        socket.on('connect', function () {
+            socket.emit('my_event', { data: 'I\'m connected!' });
+        });
+
+        // Event handler for server sent data.
+        // The callback function is invoked whenever the server emits data
+        // to the client. The data is then displayed in the "Received"
+        // section of the page.
+        socket.on('my_response', function (msg, cb) {
+            var sendTime = new Date();
+            var Hour = sendTime.getHours();
+            var Min = sendTime.getMinutes();
+            $('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            if (cb)
+                cb();
+        });
+
+        //画面幅によって黒板の横幅を動的に変更する
+        if (window.innerWidth < 950) {
+            document.getElementById("#oekakiCanvas").width = 300;
+            document.getElementById("#oekakiCanvas").height = 400;
+            document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
+        }
+
+        $('form#roukaForm').submit(function (event) {
+            socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
+
+            enterLabel();
+
+            $('form#castmessage').submit(function (event) {
+                socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val(), name: $("#nameForm").val() });
+                $('#msg_data').val('')
+                return false;
+            });
+            //oekaki開始
+            $(function () {
+                var offset = 5;
+                var fromX;
+                var fromY;
+                var drawFlag = false;
+                var eraserFlag = false;
+                var context = $("#oekakiCanvas").get(0).getContext('2d');
+                //太さの初期値
+                context.lineWidth = 5;
+
+                //色の初期値
+                context.strokeStyle = '#D61A6A';
+
+                // サーバからメッセージ受信
+                socket.on('send user', function (msg) {
+                    tmpColor = context.strokeStyle //色情報を保存
+                    tmplineWidth = context.lineWidth //線の太さを保存
+                    tmpmode = context.globalCompositeOperation //描画モードを保存
+                    context.globalCompositeOperation = msg.mode
+                    context.strokeStyle = msg.color;
+                    context.lineWidth = msg.lineWidth;
+                    context.beginPath();
+                    context.moveTo(msg.fx, msg.fy);
+                    context.lineTo(msg.tx, msg.ty);
+                    context.stroke();
+                    context.closePath();
+                    context.globalCompositeOperation = tmpmode //描画モードの呼び出し
+                    context.lineWidth = tmplineWidth //線の太さを呼び出し
+                    context.strokeStyle = tmpColor //色情報を呼び出し
+                });
+
+                socket.on('clear user', function () {
+                    context.clearRect(0, 0, $('#oekakiCanvas').width(), $('#oekakiCanvas').height());
+                });
+
+                $('#oekakiCanvas').mousedown(function (e) {
+                    drawFlag = true;
+                    fromX = e.pageX - $(this).offset().left - offset;
+                    fromY = e.pageY - $(this).offset().top - offset;
+                    return false;  // for chrome
+                });
+
+                $('#oekakiCanvas').mousemove(function (e) {
+                    if (drawFlag) {
+                        draw(e);
+                    }
+                });
+
+                $('#oekakiCanvas').on('mouseup', function () {
+                    drawFlag = false;
+                });
+
+                $('#oekakiCanvas').on('mouseleave', function () {
+                    drawFlag = false;
+                });
+
+                //sumaho
+                $('#oekakiCanvas').bind({
+                    'touchstart': function (e) {
+                        drawFlag = true;
+                        fromX = e.touches[0].clientX - $(this).offset().left - offset;
+                        fromY = e.touches[0].clientY - $(this).offset().top - offset;
+                        return false;  // for chrome
+                    },
+
+                    'touchmove': function (e) {
+                        if (drawFlag) {
+                            draw_sumaho(e)
+                        }
+                    },
+                    'touchend': function () {
+                        drawFlag = false;
+                    }
+
+                });
+
+                $('li').click(function () {
+                    context.strokeStyle = $(this).css('background-color');
+                    //描画モード
+                    context.globalCompositeOperation = 'source-over';
+                    eraserFlag = false
+                });
+
+                $('#clear').click(function (e) {
+                    socket.emit('clear_room_board', { room: $('#rooms').val() });
+                    e.preventDefault();
+                    context.clearRect(0, 0, $('#oekakiCanvas').width(), $('#oekakiCanvas').height());
+                });
+
+                $('#eraser').click(function (e) {
+                    //消しゴムモード
+                    context.globalCompositeOperation = 'destination-out';
+                    context.lineWidth = 20;
+                    eraserFlag = true
+                });
+
+                $('#large').click(function (e) {
+                    context.globalCompositeOperation = 'source-over';
+                    context.lineWidth = 10;
+                    eraserFlag = false
+                });
+                $('#medium').click(function (e) {
+                    context.globalCompositeOperation = 'source-over';
+                    context.lineWidth = 5;
+                    eraserFlag = false
+                });
+                $('#small').click(function (e) {
+                    context.globalCompositeOperation = 'source-over';
+                    context.lineWidth = 2;
+                    eraserFlag = false
+                });
+
+
+                function draw(e) {
+                    var toX = e.pageX - $('#oekakiCanvas').offset().left - offset;
+                    var toY = e.pageY - $('#oekakiCanvas').offset().top - offset;
+
+                    context.beginPath();
+                    context.moveTo(fromX, fromY);
+                    context.lineTo(toX, toY);
+                    context.stroke();
+                    context.closePath();
+
+                    // サーバへメッセージ送信
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
+                    fromX = toX;
+                    fromY = toY;
+                }
+                function draw_sumaho(e) {
+                    var toX = e.touches[0].clientX - $('#oekakiCanvas').offset().left - offset;
+                    var toY = e.touches[0].clientY - $('#oekakiCanvas').offset().top - offset;
+
+                    context.beginPath();
+                    context.moveTo(fromX, fromY);
+                    context.lineTo(toX, toY);
+                    context.stroke();
+                    context.closePath();
+
+                    // サーバへメッセージ送信
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
+                    fromX = toX;
+                    fromY = toY;
+                }
+
+                $('#save').click(function () {
+                    var d = $("#oekakiCanvas")[0].toDataURL("image/png");
+                    d = d.replace("image/png", "image/octet-stream");
+                    window.open(d, "save");
+                });
+            });
+            //oekaki終わり
+            $("#leaveButton").click(function () {
+                if (confirm('ルームを退出しますか？')) {
+                    //window.location.href = '/';
+                    location.reload();
+                }
+            });
+            return false;
+        });
+        function enterLabel() {
+            //$("#sendButton").text("送信");
+            isEnter = true;
+            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#rooms").val());
+            //$("#nameBox").text($("#nameForm").val());
+        }
+        function outLabel() {
+            $("#rooms").prop("disabled", true);
+        }
+    });
+</script>
+<script src="static/webpack/build_oekaki.js"></script>
+
+{% endblock %}
