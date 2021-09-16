@@ -1,10 +1,10 @@
 {% extends "layout.html" %}{% block content %}
 
 <!-- オープニング -->
-<div id="opening">
-  <div id="openingContents">
+<div id="openingForm">
+  <div id="openingFormContents">
     <img src="../static/images/logo.png">
-    <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
+    <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     <form id="openingForm" action="/opening" method="post" onsubmit="return false;">
       <input type="checkbox" id="sound" name="sound">
       <label for="sound">音声再生を許可します</label>
@@ -83,11 +83,11 @@
 
 <script>
   window.onload = function () {
-      var openingElement = document.getElementById('openingContents');
+      var openingElement = document.getElementById('openingFormContents');
       $(openingElement).addClass('is-fadein');
     }
   function fadeout() {
-      $('#opening').fadeOut('slow');
+      $('#openingForm').fadeOut('slow');
     }
   function openingForm() {
     const newName = $('#openingForm').serialize();
