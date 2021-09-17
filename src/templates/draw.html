@@ -26,7 +26,7 @@
 </div>
 
 <div id="roomChoiceArea">
-    <form class="form-inline" id="roukaForm">
+    <!--<form class="form-inline" id="roukaForm">
         <div class="form-group">
             <label class="roomLabel" for="rooms">ルーム名</label>
             <select class="form-control" id="rooms">
@@ -52,10 +52,20 @@
             </span>
         </div>
         <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
+    </form>-->
+
+    <form method="POST" action='#' v-for="item in roomName" :key="item">
+        <p>[[ item ]]</p>
+        <p>
+            <span class="material-icons">group</span>
+            <!-- ここにroomの人数を表示 -->
+        </p>
+        <button type="submit"><span class="material-icons">login</span></button>
     </form>
+
 </div>
 
-<div id="oekakiRoomArea" style='display: none;'>
+<div id="oekakiRoomArea">
     <div id="flexArea">
         <canvas id="oekakiCanvas" width="500" height="400"></canvas>
         <div class="container">
@@ -98,6 +108,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         // Connect to the Socket.IO server.

@@ -1,3 +1,4 @@
+/*
 document.getElementById('enterTheRoom').onclick = function () {
   // room選択画面の非表示
   var roomChoiceArea = document.getElementById('roomChoiceArea');
@@ -15,3 +16,13 @@ document.getElementById('enterTheRoom').onclick = function () {
   var oekakiRoomArea = document.getElementById('oekakiRoomArea');
   oekakiRoomArea.style.display = 'block';
 }
+*/
+
+const oekakiRoom = new Vue({
+  el: '#roomChoiceArea',
+  // FlaskとVueを共存させるためにDelimiterを変更する
+  delimiters: ["[[", "]]"],
+  data: {
+    roomName: ['HTML', 'CSS', 'JavaScript', 'Sass', 'TypeScript', 'Vue.js', 'Three.js', 'Python', 'Flask', 'jQuery', 'webpack', 'WebSocket', 'Docker', 'Unity', 'Heroku']
+  }
+});
