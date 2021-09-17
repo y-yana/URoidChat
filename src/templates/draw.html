@@ -54,8 +54,8 @@
         <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
     </form>-->
 
-    <form method="POST" action='#' v-for="item in roomName" :key="item">
-        <p>[[ item ]]</p>
+    <form v-bind:id=item.id method="POST" action='#' v-for="item in roomData" :key="item.roomName">
+        <p>[[ item.roomName ]]</p>
         <p>
             <span class="material-icons">group</span>
             <!-- ここにroomの人数を表示 -->

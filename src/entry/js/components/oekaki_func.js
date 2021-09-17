@@ -23,6 +23,67 @@ const oekakiRoom = new Vue({
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
-    roomName: ['HTML', 'CSS', 'JavaScript', 'Sass', 'TypeScript', 'Vue.js', 'Three.js', 'Python', 'Flask', 'jQuery', 'webpack', 'WebSocket', 'Docker', 'Unity', 'Heroku']
+    roomData: [
+      {
+        roomName: 'HTML',
+        id: ''
+      },
+      {
+        roomName: 'css',
+        id: ''
+      },
+      {
+        roomName: 'JavaScript',
+        id: ''
+      },
+      {
+        roomName: 'Sass',
+        id: ''
+      },
+      {
+        roomName: 'TypeScript',
+        id: ''
+      },
+      {
+        roomName: 'Vue.js',
+        id: ''
+      },
+      {
+        roomName: 'Three.js',
+        id: ''
+      },
+      {
+        roomName: 'Python',
+        id: ''
+      },
+      {
+        roomName: 'Flask',
+        id: ''
+      },
+      {
+        roomName: 'jQuery',
+        id: ''
+      },
+      {
+        roomName: 'webpack',
+        id: ''
+      },
+      {
+        roomName: 'WebSocket',
+        id: ''
+      },
+      {
+        roomName: 'Docker',
+        id: ''
+      },
+      {
+        roomName: 'Unity',
+        id: ''
+      },
+      {
+        roomName: 'Heroku',
+        id: ''
+      }
+    ]
   }
 });
