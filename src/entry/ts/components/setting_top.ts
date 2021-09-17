@@ -36,8 +36,7 @@ var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
-  var posepass = '../static/pose/goodbye.csv';
-  //var posepass = '../static/pose/hellovrm.csv';
+  var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
     // シーンの設定
@@ -53,8 +52,7 @@ var canvas = <HTMLCanvasElement>document.getElementById('canvas');
       // グリッドを表示
       /*const gridHelper = new THREE.GridHelper(10, 10)
       scene.add(gridHelper)
-      gridHelper.visible = true
-*/
+      gridHelper.visible = true */
       // 座標軸を表示
       /*const axesHelper = new THREE.AxesHelper(0.5)
       scene.add(axesHelper)*/
