@@ -1,7 +1,20 @@
-window.onload = function () {
-  var openingElement = document.getElementById('openingFormContents');
-  $(openingElement).addClass('is-fadein');
-}
+jQuery(function () {
+  var webStorage = function () {
+    if (sessionStorage.getItem('access')) {
+      // 2回目以降のアクセス
+      console.log('2回目以降のアクセスです');
+      var openingForm = document.getElementById('openingForm');
+      openingForm.style.display = 'none';
+    } else {
+      // 初回アクセス
+      sessionStorage.setItem('access', 0);
+      console.log('初回アクセスです');
+      var openingElement = document.getElementById('openingFormContents');
+      $(openingElement).addClass('is-fadein');
+    }
+  }
+  webStorage();
+});
 
 function fadeout() {
   $('#openingForm').fadeOut('slow');
@@ -36,5 +49,4 @@ $("#openingBtn").on('click', function(){
       voice.play();
     },2000);
   }
-
 })
