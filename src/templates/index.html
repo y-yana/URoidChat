@@ -1,15 +1,52 @@
 {% extends "layout.html" %}{% block content %}
 
-<!-- オープニング -->
-<div id="opening">
-  <div id="openingContents">
+<div id="openingForm">
+  <div id="openingFormContents">
     <img src="../static/images/logo.png">
-    <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
+    <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     <form id="openingForm" action="/opening" method="post" onsubmit="return false;">
-      <input type="checkbox" id="sound" name="sound">
-      <label for="sound">音声再生を許可します</label>
-      <button id="openingBtn" onclick="openingForm()">はじめる</button>
+      <div id="openingFormMain">
+        <div id="soundCheckbox">
+          <input type="checkbox" id="sound" name="sound">
+          <label for="sound">音声再生を許可します</label>
+        </div>
+        <button id="openingBtn" class="blueBtn">はじめる</button>
+      </div>
+      <div id="openingCustomizeArea">
+        <p id="openingFormCustomize">カスタマイズ（任意）</p>
+        <div id="openingNameArea">
+          <div id="yourNameInput" class="openingInputText">
+            <label for="yourName">あなたの名前</label>
+            <input type="text" id="yourName" class="whiteInputText" name="yourName">
+          </div>
+          <div id="AInameInput" class="openingInputText">
+            <label for="AIname">AIの名前</label>
+            <input type="text" id="AIname" class="whiteInputText" name="AIname">
+          </div>
+        </div>
+        <div id="openingVRM">
+          <label for="upFile">
+            <div id="vrmChoiceBtn">
+              <span class="material-icons">description</span>
+              <span>VRMファイルを選択</span>
+            </div>
+            <input type="file" id="upFile" name="vrmFile" accept=".vrm">
+          </label>
+        </div>
+      </div>
     </form>
+  </div>
+  <!-- background -->
+  <div class="opening_box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </div>
 
@@ -32,15 +69,12 @@
 -->
 
 <div id="top">
-  <template v-if="audio">
-    <p>本サイトは音が出ます。再生を許可しますか？</p>
-    <button @click="audioCheck('yes')">はい</button>
-    <button @click="audioCheck('no')">いいえ</button>
-  </template>
-  <!-- モデル表示エリア -->
-  <div id="modelArea">
+  <div class="modelAndDialogue">
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
+    </div>
+    <p>[[ modelMessage ]]</p>
   </div>
-  <p>[[ modelMessage ]]</p>
   <!--
   <div v-for="item in items" :key="item.id">
     <form v-bind:action="item.root" method="POST">
@@ -49,7 +83,9 @@
   </div>
   -->
   <template v-if="gameChoice">
-    <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+    <div id="gameChoiceBtns">
+      <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+    </div>
   </template>
   <template v-if="tutorial">
     <p v-if="info">[[ info[choiceGameNum].title ]]</p>
@@ -68,24 +104,5 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
 <script src="static/webpack/build_top.js"></script>
-
-<script>
-  window.onload = function () {
-      var openingElement = document.getElementById('openingContents');
-      $(openingElement).addClass('is-fadein');
-    }
-  function fadeout() {
-      $('#opening').fadeOut('slow');
-    }
-  function openingForm() {
-    const newName = $('#openingForm').serialize();
-    $.ajax("/opening", {
-      type: "post",
-      data: newName,
-      dataType: "json",
-    });
-    setTimeout(fadeout, 900);
-  }
-</script>
 
 {% endblock %}

@@ -43,6 +43,23 @@ def index():
 def move_top():
     return render_template("index.html", pageTitle='TopPage')
 
+
+@app.route('/opening', methods=['POST'])
+def openingForm():
+    getData = request.get_json('postFormData')
+    sound = getData['sound']  #boolean
+    yourName = getData['yourName'] #str
+    AIname = getData['AIname'] #str
+    vrmFile = getData['vrmFile'] #str
+
+    print(sound)
+    print(yourName)
+    print(AIname)
+    print(vrmFile)
+
+    return ""
+
+
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
     return render_template('draw.html', pageTitle='Oekaki',async_mode=socketio.async_mode)
@@ -184,14 +201,9 @@ def shiritori_ajax():
     #est=0.5
     res_shiritori,end_str=shiritori(word,defi)
 
-    
+
     #print(res_shiritori,defi)
 
-    '''
-    ・ユーザーが入力した単語の最後の1文字(ひらがな)を投げてます
-    ・受け取った文字から始まる単語をひらがなで返してほしいです
-    ・AIが返した単語の重複チェックやAIが負けた場合の処理はフロント側で実装する予定です(たぶん)(がんばる)
-    '''
     #return res_shiritori
     return_json = {
         "res_shiritori": res_shiritori,
@@ -205,35 +217,6 @@ def shiritori_ajax():
 
 @app.route('/quiz/ajax/', methods=['POST'])
 def quiz_ajax():
-    '''
-    受信するjsonデータ↓
-    {
-        trueCounter: this.trueCounter, // 正解数(0~10)
-        playTime: this.resultTime //かかった時間(単位はミリ秒)
-    }
-    ・かかった時間は単位を秒に変えて、小数点第三位を四捨五入して欲しいです
-    ・「正解数＞かかった時間」の優先度で順位のソート＆ jsonの書き換えをお願いします
-    '''
-
-    # test用なので消して大丈夫です
-    return_json = {
-        "rankingData": 'Ranking!!'
-    }
-
-    '''
-    ・jsonの保存先は、src/static/json の中で、フォーマットは↓のようにお願いします
-    [
-        {"id": 1, "name": "うどん", "trueNum": 10, "time": 32.12},
-        {"id": 2, "name": "そば", "trueNum": 10, "time": 33.45},
-    〜中間省略〜
-        {"id": 7, "name": "らーめん", "trueNum": 8, "time": 46.38}
-    ]
-    id = 順位
-    name = ニックネーム
-    trueNum = 正解数
-    time = かかった時間
-    '''
-
     getMessage = request.get_json('postMessage')
     trueCounter = getMessage['trueCounter']
     playTime = getMessage['playTime']
