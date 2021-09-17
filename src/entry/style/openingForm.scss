@@ -4,12 +4,13 @@
   width: 100vw;
   height: 100vh;
   z-index: 9000;
+  position: fixed;
 
   #openingFormContents {
     opacity: 0;
     transition: 1500ms;
     position: absolute;
-    top: 55%;
+    top: 20%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
 
@@ -63,7 +64,7 @@
         flex-direction: column;
         gap: 3rem;
         background-color: #ffffffd5;
-        padding: 2rem 4rem;
+        padding: 2rem 4rem ;
         border-radius: 10px;
 
         #openingFormCustomize {
@@ -72,6 +73,7 @@
         }
 
         #openingNameArea {
+          width: max-content;
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
@@ -128,7 +130,7 @@
 @media screen and (max-width: 950px) {
   #openingForm {
     #openingFormContents {
-      top: 55%;
+      top: 15%;
 
       img {
         width: 15rem;
