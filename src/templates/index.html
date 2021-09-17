@@ -69,10 +69,12 @@
 -->
 
 <div id="top">
-  <!-- モデル表示エリア -->
-  <div id="modelArea">
+  <div class="modelAndDialogue">
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
+    </div>
+    <p>[[ modelMessage ]]</p>
   </div>
-  <p>[[ modelMessage ]]</p>
   <!--
   <div v-for="item in items" :key="item.id">
     <form v-bind:action="item.root" method="POST">
@@ -81,7 +83,9 @@
   </div>
   -->
   <template v-if="gameChoice">
-    <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+    <div id="gameChoiceBtns">
+      <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+    </div>
   </template>
   <template v-if="tutorial">
     <p v-if="info">[[ info[choiceGameNum].title ]]</p>

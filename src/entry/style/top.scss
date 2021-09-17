@@ -1,0 +1,20 @@
+#top{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #top{
+    width: auto;
+    flex-direction: column;
+  }
+}
+/* mobileここまで */
