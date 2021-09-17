@@ -30,6 +30,11 @@ $("#openingBtn").on('click', function(){
 
   setTimeout(fadeout, 900);
 
-  // ここにsoundがtrueの場合に音声を再生させる処理を書く
+  if (soundData.checked == true) {
+    const voice = new Audio("./static/sound/sampleVoice.mp3");
+    setTimeout(function () {
+      voice.play();
+    },2000);
+  }
 
-  })
+})

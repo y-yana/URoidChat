@@ -1,6 +1,5 @@
 {% extends "layout.html" %}{% block content %}
 
-<!-- オープニング -->
 <div id="openingForm">
   <div id="openingFormContents">
     <img src="../static/images/logo.png">
@@ -70,11 +69,6 @@
 -->
 
 <div id="top">
-  <template v-if="audio">
-    <p>本サイトは音が出ます。再生を許可しますか？</p>
-    <button @click="audioCheck('yes')">はい</button>
-    <button @click="audioCheck('no')">いいえ</button>
-  </template>
   <!-- モデル表示エリア -->
   <div id="modelArea">
   </div>
