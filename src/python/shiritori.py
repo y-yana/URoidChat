@@ -7,6 +7,9 @@ def trans(strj):
 
 def shiritori(word,defi):
   word=trans(word)
+  #伸ばし棒の除去
+  if word[-1]=="-"or word[-1]=="ー":
+    word=word[:-1]
 
   if defi=='10':
     est=0.9
