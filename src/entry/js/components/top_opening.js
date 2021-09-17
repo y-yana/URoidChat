@@ -44,9 +44,19 @@ $("#openingBtn").on('click', function(){
   setTimeout(fadeout, 900);
 
   if (soundData.checked == true) {
-    const voice = new Audio("./static/sound/sampleVoice.mp3");
+    var now = new Date();
+    var Hour = now.getHours();
+
+    if (Hour >= 5 && Hour < 11) {
+      const voice = new Audio("./static/sound/greeting/morning.mp3");
+    } else if (Hour >= 11 && Hour < 19) {
+      const voice = new Audio("./static/sound/greeting/daytime.mp3");
+    } else {
+      const voice = new Audio("./static/sound/greeting/night.mp3");
+    }
+
     setTimeout(function () {
       voice.play();
-    },2000);
+    },1500);
   }
 })
