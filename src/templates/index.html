@@ -11,7 +11,7 @@
           <input type="checkbox" id="sound" name="sound">
           <label for="sound">音声再生を許可します</label>
         </div>
-        <button id="openingBtn" class="blueBtn" onclick="openingForm()">はじめる</button>
+        <button id="openingBtn" class="blueBtn">はじめる</button>
       </div>
       <div id="openingCustomizeArea">
         <p id="openingFormCustomize">カスタマイズ（任意）</p>
@@ -106,24 +106,5 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
 <script src="static/webpack/build_top.js"></script>
-
-<script>
-  window.onload = function () {
-      var openingElement = document.getElementById('openingFormContents');
-      $(openingElement).addClass('is-fadein');
-    }
-  function fadeout() {
-      $('#openingForm').fadeOut('slow');
-    }
-  function openingForm() {
-    const newName = $('#openingForm').serialize();
-    $.ajax("/opening", {
-      type: "post",
-      data: newName,
-      dataType: "json",
-    });
-    setTimeout(fadeout, 900);
-  }
-</script>
 
 {% endblock %}
