@@ -8,8 +8,9 @@
         "image1": "shiritori.png",
         "image2": "shiritori.png",
         "dialogue": "私とおはなししますか？",
-        "colorClass1": "wave orange",
-        "colorClass2": "wave -two yellow"
+        "colorClass1": "wave pink",
+        "colorClass2": "wave -two rightPink",
+        "grid": "chat"
       },
       {
         "id": 1,
@@ -20,7 +21,8 @@
         "image2": "shiritori.png",
         "dialogue": "私としりとりしますか？",
         "colorClass1": "wave orange",
-        "colorClass2": "wave -two yellow"
+        "colorClass2": "wave -two yellow",
+        "grid": "shiritori"
       },
       {
         "id": 2,
@@ -31,7 +33,8 @@
         "image2": "shiritori.png",
         "dialogue": "私とクイズしますか？",
         "colorClass1": "wave rightGreen",
-        "colorClass2": "wave -two green"
+        "colorClass2": "wave -two green",
+        "grid": "quiz"
       },
       {
         "id": 3,
@@ -41,8 +44,9 @@
         "image1": "shiritori.png",
         "image2": "shiritori.png",
         "dialogue": "私とにがおえであそびますか？",
-        "colorClass1": "wave pink",
-        "colorClass2": "wave -two rightPink"
+        "colorClass1": "wave blue",
+        "colorClass2": "wave -two rightBlue",
+        "grid": "nigaoe"
       },
       {
         "id": 4,
@@ -52,8 +56,9 @@
         "image1": "shiritori.png",
         "image2": "shiritori.png",
         "dialogue": "私とおえかきしますか？",
-        "colorClass1": "wave pink",
-        "colorClass2": "wave -two rightPink"
+        "colorClass1": "wave orange",
+        "colorClass2": "wave -two yellow",
+        "grid": "oekaki"
       },
       {
         "id": 5,
@@ -64,7 +69,8 @@
         "image2": "shiritori.png",
         "dialogue": "〜であそびますか？",
         "colorClass1": "wave green",
-        "colorClass2": "wave -two rightGreen"
+        "colorClass2": "wave -two rightGreen",
+        "grid": "CommingSoon1"
       },
       {
         "id": 6,
@@ -75,7 +81,8 @@
         "image2": "shiritori.png",
         "dialogue": "〜であそびますか？",
         "colorClass1": "wave blue",
-        "colorClass2": "wave -two rightBlue"
+        "colorClass2": "wave -two rightBlue",
+        "grid": "CommingSoon2"
       }
     ]
 }

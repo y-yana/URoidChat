@@ -1,3 +1,5 @@
+$grid-size: 5.5rem;
+
 #top{
   width: fit-content;
   display: flex;
@@ -8,6 +10,47 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+
+  /* grid layout */
+  #gameChoiceBtns{
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    grid-template-rows: $grid-size $grid-size $grid-size $grid-size $grid-size $grid-size;
+    grid-template-columns: $grid-size $grid-size $grid-size $grid-size $grid-size $grid-size;
+    align-items: center;
+    justify-items: center;
+    margin: auto;
+
+    #chat {
+      grid-row: 3 / 5;
+      grid-column: 3 / 5;
+    }
+    #shiritori {
+      grid-row: 2 / 4;
+      grid-column: 5 / 7;
+    }
+    #quiz {
+      grid-row: 1 / 3;
+      grid-column: 3 / 5;
+    }
+    #nigaoe {
+      grid-row: 2 / 4;
+      grid-column: 1 / 3;
+    }
+    #oekaki {
+      grid-row: 4 / 6;
+      grid-column: 1 / 3;
+    }
+    #CommingSoon1 {
+      grid-row: 5 / 7;
+      grid-column: 3 / 5;
+    }
+    #CommingSoon2 {
+      grid-row: 4 / 6;
+      grid-column: 5 / 7;
+    }
+  }
 }
 
 /* mobileここから */
