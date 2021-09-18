@@ -100,8 +100,10 @@
         <!-- socketで取得した各部屋の人数を表示 -->
         <p id="roomPeoples"><span>現在の参加人数</span><span class="material-icons">groups</span></p>
       </div>
-      <img :src="'../static/images/top/'+info[choiceGameNum].image1">
-      <img :src="'../static/images/top/'+info[choiceGameNum].image2">
+      <div id="tutorial_img">
+        <img :src="'../static/images/top/'+info[choiceGameNum].image1">
+        <img :src="'../static/images/top/'+info[choiceGameNum].image2">
+      </div>
       <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
       <div id="tutorialBtns">
         <button class="btnBase whiteBtn" @click="cancel">やめとく</button>

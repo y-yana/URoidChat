@@ -3,6 +3,9 @@
   padding: 2rem;
   border-radius: 10px;
   color: $logo-main-color;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 
   #tutorialTitleFlex{
     display: flex;
@@ -16,8 +19,14 @@
     }
   }
 
-  img{
-    width: 18rem;
+  #tutorial_img{
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+
+    img{
+      width: 16rem;
+    }
   }
 
   #tutorialBtns{
