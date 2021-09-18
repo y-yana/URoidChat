@@ -84,7 +84,13 @@
   -->
   <template v-if="gameChoice">
     <div id="gameChoiceBtns">
-      <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+      <!--<button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>-->
+      <div class="box" v-for="item in info" :key="item.id">
+        <div class="wave"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+        <button class="title" @click="showTutorial(item.id)">[[ item.title ]]</button>
+      </div>
     </div>
   </template>
   <template v-if="tutorial">
