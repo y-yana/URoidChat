@@ -12,7 +12,13 @@
 
 <div id="mainContent">
   <!-- モデル表示エリア -->
-  <div id="modelArea">
+  <!--<div id="modelArea">
+  </div>-->
+  <div class="modelAndDialogue">
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
+    </div>
+    <p id="message" class="modelMessage">私にまかせてください！</p>
   </div>
   <!-- uploadエリア -->
   <div id="btn" class="upload">
@@ -59,6 +65,8 @@
       download.href = 'static/images/nigaoe/image.png?' + id;
       submitArea.style.display = 'none';
       downloadArea.style.display = 'block';
+      var message = document.getElementById('message');
+      message.innerHTML = 'できました！みてください！！';
     }).fail(function () {
       console.log('fail');
     });

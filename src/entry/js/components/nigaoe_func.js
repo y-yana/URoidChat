@@ -26,4 +26,6 @@ document.getElementById('nigaoeReplayBtn').onclick = function () {
   img.style.display = 'none';
   downloadArea.style.display = 'none';
   submitArea.style.display = 'flex';
+  var message = document.getElementById('message');
+  message.innerHTML = '私にまかせてください！';
 }
