@@ -85,7 +85,7 @@
   <template v-if="gameChoice">
     <div id="gameChoiceBtns">
       <!--<button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>-->
-      <div class="box" v-for="item in info" :key="item.id" @click="showTutorial(item.id)">
+      <div v-bind:id=item.grid class="box" v-for="item in info" :key="item.id" @click="showTutorial(item.id)">
         <div v-bind:class=item.colorClass1></div>
         <div v-bind:class=item.colorClass2></div>
         <div class="wave -three"></div>
