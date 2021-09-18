@@ -1,0 +1,35 @@
+#tutorial{
+  background-color: #ffffffe0;
+  padding: 2rem;
+  border-radius: 10px;
+  color: $logo-main-color;
+
+  #tutorialTitleFlex{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+    #roomPeoples{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  img{
+    width: 18rem;
+  }
+
+  #tutorialBtns{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 5rem;
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+}
+/* mobileここまで */

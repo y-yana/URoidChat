@@ -18,12 +18,20 @@ $btn-blue-text: #1E6D90;
 $BG-white-thin: #fffffff3;
 $text-main: #013E6A;
 
-.blueBtn{
-  background-color: $btn-blue-BG;
+.btnBase{
   color: $btn-blue-text;
   font-weight: bold;
   padding: 0.7rem 1.2rem;
   border-radius: 10px;
+  border: 1px solid $btn-blue-text;
+}
+
+.blueBtn{
+  background-color: $btn-blue-BG;
+}
+
+.whiteBtn{
+  background-color: #ffffff;
 }
 
 .whiteInputText{
@@ -35,7 +43,7 @@ $text-main: #013E6A;
 
 .modelAndDialogue{
   position: relative;
-  
+
   .modelMessage{
     width: fit-content;
     max-width: 90%;

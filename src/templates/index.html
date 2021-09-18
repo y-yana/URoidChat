@@ -10,7 +10,7 @@
           <input type="checkbox" id="sound" name="sound">
           <label for="sound">音声再生を許可します</label>
         </div>
-        <button id="openingBtn" class="blueBtn">はじめる</button>
+        <button id="openingBtn" class="btnBase blueBtn">はじめる</button>
       </div>
       <div id="openingCustomizeArea">
         <p id="openingFormCustomize">カスタマイズ（任意）</p>
@@ -95,16 +95,20 @@
   </template>
   <template v-if="tutorial">
     <div id="tutorial">
-      <p v-if="info">[[ info[choiceGameNum].title ]]</p>
-      <!-- socketで取得した各部屋の人数を表示 -->
-      <p>現在の参加人数<span class="material-icons">groups</span></p>
-      <img :src="'../static/images/top/'+info[choiceGameNum].image1" width=330px>
-      <img :src="'../static/images/top/'+info[choiceGameNum].image2" width=330px>
+      <div id="tutorialTitleFlex">
+        <p v-if="info">[[ info[choiceGameNum].title ]]</p>
+        <!-- socketで取得した各部屋の人数を表示 -->
+        <p id="roomPeoples"><span>現在の参加人数</span><span class="material-icons">groups</span></p>
+      </div>
+      <img :src="'../static/images/top/'+info[choiceGameNum].image1">
+      <img :src="'../static/images/top/'+info[choiceGameNum].image2">
       <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
-      <button @click="cancel">やめとく</button>
-      <form v-bind:action="info[choiceGameNum].root" method="POST">
-        <input type="submit" value="あそぶ！">
-      </form>
+      <div id="tutorialBtns">
+        <button class="btnBase whiteBtn" @click="cancel">やめとく</button>
+        <form v-bind:action="info[choiceGameNum].root" method="POST">
+          <input class="btnBase blueBtn" type="submit" value="あそぶ！">
+        </form>
+      </div>
     </div>
   </template>
 </div>
