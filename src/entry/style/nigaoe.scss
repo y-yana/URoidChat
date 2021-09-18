@@ -49,6 +49,27 @@
       }
     }
 
+    #nigaoeResultBtns{
+      width: fit-content;
+      display: flex;
+      gap: 6rem;
+      margin: 0 auto;
+
+      #nigaoeDownloadBtn{
+        a{
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+
+      #nigaoeReplayBtn{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
     #file-preview{
       max-width: 28rem;
       border: 6px solid #ffffff;
