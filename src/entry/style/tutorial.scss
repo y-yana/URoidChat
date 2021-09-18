@@ -1,6 +1,6 @@
 #tutorial{
   background-color: #ffffffe0;
-  padding: 2rem;
+  padding: 3rem 2rem;
   border-radius: 10px;
   color: $logo-main-color;
   display: flex;
@@ -8,14 +8,24 @@
   gap: 3rem;
 
   #tutorialTitleFlex{
+    width: fit-content;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    gap: 10rem;
+    margin: 0 auto;
+
+    #tutorialTitle{
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+    }
 
     #roomPeoples{
+      background-color: $btn-blue-BG;
       display: flex;
       align-items: center;
       gap: 1rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 10px;
     }
   }
 

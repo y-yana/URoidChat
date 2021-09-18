@@ -96,7 +96,7 @@
   <template v-if="tutorial">
     <div id="tutorial">
       <div id="tutorialTitleFlex">
-        <p v-if="info">[[ info[choiceGameNum].title ]]</p>
+        <p id="tutorialTitle" v-if="info">[[ info[choiceGameNum].title ]]</p>
         <!-- socketで取得した各部屋の人数を表示 -->
         <p id="roomPeoples"><span>現在の参加人数</span><span class="material-icons">groups</span></p>
       </div>
