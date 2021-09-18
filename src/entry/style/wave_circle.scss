@@ -1,14 +1,14 @@
 .box{
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 8rem;
+  height: 8rem;
 }
 
 .wave {
   opacity: .8;
   position: absolute;
-  width: 130px;
-  height: 130px;
+  width: 8rem;
+  height: 8rem;
   border-radius: 40%;
   -webkit-animation: drift 3000ms infinite linear;
   animation: drift 3000ms infinite linear;
@@ -30,8 +30,6 @@
   bottom: 0;
   left: 0;
   margin: auto;
-  width: 128px;
-  height: 128px;
 }
 
 .title {
