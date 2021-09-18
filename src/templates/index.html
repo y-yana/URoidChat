@@ -10,7 +10,7 @@
           <input type="checkbox" id="sound" name="sound">
           <label for="sound">音声再生を許可します</label>
         </div>
-        <button id="openingBtn" class="blueBtn">はじめる</button>
+        <button id="openingBtn" class="btnBase blueBtn">はじめる</button>
       </div>
       <div id="openingCustomizeArea">
         <p id="openingFormCustomize">カスタマイズ（任意）</p>
@@ -73,7 +73,7 @@
     <!-- モデル表示エリア -->
     <div id="modelArea">
     </div>
-    <p>[[ modelMessage ]]</p>
+    <p class="modelMessage">[[ modelMessage ]]</p>
   </div>
   <!--
   <div v-for="item in items" :key="item.id">
@@ -84,20 +84,34 @@
   -->
   <template v-if="gameChoice">
     <div id="gameChoiceBtns">
-      <button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>
+      <!--<button v-for="item in info" :key="item.id" @click="showTutorial(item.id)">[[ item.title ]]</button>-->
+      <div v-bind:id=item.grid class="box" v-for="item in info" :key="item.id" @click="showTutorial(item.id)">
+        <div v-bind:class=item.colorClass1></div>
+        <div v-bind:class=item.colorClass2></div>
+        <div class="wave -three"></div>
+        <p class="title">[[ item.title ]]</p>
+      </div>
     </div>
   </template>
   <template v-if="tutorial">
-    <p v-if="info">[[ info[choiceGameNum].title ]]</p>
-    <!-- socketで取得した各部屋の人数を表示 -->
-    <p>現在の参加人数<span class="material-icons">groups</span></p>
-    <img :src="'../static/images/top/'+info[choiceGameNum].image1" width=330px>
-    <img :src="'../static/images/top/'+info[choiceGameNum].image2" width=330px>
-    <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
-    <button @click="cancel">やめとく</button>
-    <form v-bind:action="info[choiceGameNum].root" method="POST">
-      <input type="submit" value="あそぶ！">
-    </form>
+    <div id="tutorial">
+      <div id="tutorialTitleFlex">
+        <p id="tutorialTitle" v-if="info">[[ info[choiceGameNum].title ]]</p>
+        <!-- socketで取得した各部屋の人数を表示 -->
+        <p id="roomPeoples"><span>現在の参加人数</span><span class="material-icons">groups</span></p>
+      </div>
+      <div id="tutorial_img">
+        <img :src="'../static/images/top/'+info[choiceGameNum].image1">
+        <img :src="'../static/images/top/'+info[choiceGameNum].image2">
+      </div>
+      <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
+      <div id="tutorialBtns">
+        <button class="btnBase whiteBtn" @click="cancel">やめとく</button>
+        <form v-bind:action="info[choiceGameNum].root" method="POST">
+          <input class="btnBase blueBtn" type="submit" value="あそぶ！">
+        </form>
+      </div>
+    </div>
   </template>
 </div>
 

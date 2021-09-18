@@ -7,7 +7,10 @@
         "tutorial": "おはなしのあそびかた",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "私とおはなししますか？"
+        "dialogue": "私とおはなししますか？",
+        "colorClass1": "wave pink",
+        "colorClass2": "wave -two rightPink",
+        "grid": "chat"
       },
       {
         "id": 1,
@@ -16,7 +19,10 @@
         "tutorial": "しりとりのあそびかた",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "私としりとりしますか？"
+        "dialogue": "私としりとりしますか？",
+        "colorClass1": "wave orange",
+        "colorClass2": "wave -two yellow",
+        "grid": "shiritori"
       },
       {
         "id": 2,
@@ -25,7 +31,10 @@
         "tutorial": "クイズのあそびかた",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "私とクイズしますか？"
+        "dialogue": "私とクイズしますか？",
+        "colorClass1": "wave rightGreen",
+        "colorClass2": "wave -two green",
+        "grid": "quiz"
       },
       {
         "id": 3,
@@ -34,7 +43,10 @@
         "tutorial": "にがおえのあそびかた",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "私とにがおえであそびますか？"
+        "dialogue": "私とにがおえであそびますか？",
+        "colorClass1": "wave blue",
+        "colorClass2": "wave -two rightBlue",
+        "grid": "nigaoe"
       },
       {
         "id": 4,
@@ -43,7 +55,10 @@
         "tutorial": "おえかきのあそびかた",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "私とおえかきしますか？"
+        "dialogue": "私とおえかきしますか？",
+        "colorClass1": "wave orange",
+        "colorClass2": "wave -two yellow",
+        "grid": "oekaki"
       },
       {
         "id": 5,
@@ -52,7 +67,10 @@
         "tutorial": "Comming soon...",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "〜であそびますか？"
+        "dialogue": "〜であそびますか？",
+        "colorClass1": "wave green",
+        "colorClass2": "wave -two rightGreen",
+        "grid": "CommingSoon1"
       },
       {
         "id": 6,
@@ -61,7 +79,10 @@
         "tutorial": "Comming soon...",
         "image1": "shiritori.png",
         "image2": "shiritori.png",
-        "dialogue": "〜であそびますか？"
+        "dialogue": "〜であそびますか？",
+        "colorClass1": "wave blue",
+        "colorClass2": "wave -two rightBlue",
+        "grid": "CommingSoon2"
       }
     ]
 }

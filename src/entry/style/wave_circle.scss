@@ -1,0 +1,104 @@
+.box{
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  cursor: pointer;
+}
+
+.wave {
+  opacity: .8;
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 40%;
+  -webkit-animation: drift 3000ms infinite linear;
+  animation: drift 3000ms infinite linear;
+}
+
+.wave.-two {
+  -webkit-animation: drift 7000ms infinite linear;
+  animation: drift 7000ms infinite linear;
+  opacity: .6;
+  border-radius: 40%;
+}
+
+.wave.-three {
+  background: rgb(255, 255, 255);
+  opacity: 1;
+  border-radius: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  color: $logo-main-color;
+  font-size: 1.1rem;
+}
+
+.rightPink{
+  background: #facdec;
+}
+
+.pink{
+  background: #ff83ec;
+}
+
+.yellow{
+  background: #fff59e;
+}
+
+.orange{
+  background: #ffc74e;
+}
+
+.rightGreen{
+  background: #aeecb8;
+}
+
+.green{
+  background: #06d644;
+}
+
+.rightBlue{
+  background: #62d3fc;
+}
+
+.blue{
+  background: #629eff;
+}
+
+@-webkit-keyframes drift {
+  /*macのsafari、chrome　円の回転のアニメーション設定*/
+    from { /*startの配置*/
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    from { /*360度回転*/
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes drift {
+  /* 円の回転のアニメーション設定*/
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    from {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
