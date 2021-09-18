@@ -9,4 +9,7 @@ document.getElementById('file-sample').addEventListener('change', function (e) {
   // img要素に表示
   var img = document.getElementById('file-preview');
   img.src = blobUrl;
+
+  var img = document.getElementById('file-preview');
+  img.style.display = 'block';
 });

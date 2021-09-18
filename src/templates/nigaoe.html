@@ -10,21 +10,25 @@
   <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
-<!-- モデル表示エリア -->
-<div id="modelArea">
-</div>
-
-<div id="btn" class="upload">
-  <form id="img" enctype="multipart/form-data" method="post" onsubmit="return false;">
-    <label for="file-sample">
-      画像を選択
-      <input type="file" name="image" accept="image/png,image/jpeg" id="file-sample">
-    </label>
-    <button id="Btn" onclick="uploading(document.getElementById('upFile'))">
-      upload</button>
-  </form>
-  <img id="file-preview" width="500px">
-  <a id="download" style="display:none" download>画像を保存する</a>
+<div id="mainContent">
+  <!-- モデル表示エリア -->
+  <div id="modelArea">
+  </div>
+  <!-- uploadエリア -->
+  <div id="btn" class="upload">
+    <form id="img" enctype="multipart/form-data" method="post" onsubmit="return false;">
+      <label for="file-sample">
+        <div id="fileChoiceBtn" class="btnBase whiteBtn">
+          <span class="material-icons">image</span>
+          <span>画像を選択</span>
+        </div>
+        <input type="file" name="image" accept="image/png,image/jpeg" id="file-sample">
+      </label>
+      <button id="Btn" class="btnBase whiteBtn" onclick="uploading(document.getElementById('upFile'))"><span class="material-icons">send</span><span>送信</span></button>
+    </form>
+    <img id="file-preview" style="display:none">
+    <a id="download" style="display:none" download>画像を保存する</a>
+  </div>
 </div>
 
 <script src="static/webpack/build_nigaoe.js"></script>
