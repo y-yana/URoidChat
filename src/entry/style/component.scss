@@ -87,6 +87,7 @@ $border-gray: #ced6db;
 }
 .sendMessageComponent{
   background: $BG-send-message;
+  margin: 0 0 0 auto;
   &::before{
     left: 95%;
     border-left: 25px solid $BG-send-message;
