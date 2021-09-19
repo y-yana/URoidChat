@@ -68,52 +68,41 @@ $border-gray: #ced6db;
 }
 
 /* 吹き出し（青・白） */
-.sendMessageComponent{
+.speechBalloonBase{
   width: fit-content;
-  position: relative;
-  display: inline-block;
-  margin-right: 15px;
   min-width: 120px;
-  max-width: 100%;
-  background: $BG-send-message;
   max-width: 15rem;
+  display: inline-block;
+  position: relative;
   border-radius: 15px;
+  margin-left: 15px;
   padding: 0.7rem 1rem;
   &::before{
     content: "";
     position: absolute;
     top: 70%;
-    left: 95%;
     margin-top: -15px;
     border: 10px solid transparent;
+  }
+}
+.sendMessageComponent{
+  background: $BG-send-message;
+  &::before{
+    left: 95%;
     border-left: 25px solid $BG-send-message;
+  }
+}
+.getMessageComponent{
+  background: $BG-get-message;
+  &::before{
+    left: -30px;
+    border-right: 25px solid $BG-get-message;
   }
 }
 .chatLogComponent{
   width: fit-content;
   margin: 0;
   padding: 0;
-}
-.getMessageComponent{
-  position: relative;
-  display: inline-block;
-  margin-left: 15px;
-  padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
-  background: $BG-get-message;
-  max-width: 15rem;
-  border-radius: 15px;
-  padding: 0.7rem 1rem;
-  &::before{
-    content: "";
-    position: absolute;
-    top: 70%;
-    left: -30px;
-    margin-top: -15px;
-    border: 10px solid transparent;
-    border-right: 25px solid $BG-get-message;
-  }
 }
 
 /* mobileここから */

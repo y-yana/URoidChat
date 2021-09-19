@@ -49,7 +49,7 @@
     <template v-if="playGame">
       <div class="shiritoriChatArea">
         <div v-for="m in textArr" :key="textArr.id">
-          <div v-bind:class=classVue[m.id]>
+          <div class="speechBalloonBase" v-bind:class=classVue[m.id]>
             <div class="chatLogComponent">[[m.text]]</div>
           </div>
         </div>
