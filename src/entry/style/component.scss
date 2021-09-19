@@ -19,12 +19,14 @@ $BG-white-thin: #fffffff3;
 $text-main: #013E6A;
 $border-gray: #ced6db;
 
+/* 戻るボタン */
 .back2topBtn{
   width: fit-content;
   position: absolute;
   margin: 2rem;
 }
 
+/* ボタン（青・白） */
 .btnBase{
   color: $btn-blue-text;
   font-weight: bold;
@@ -32,15 +34,14 @@ $border-gray: #ced6db;
   border-radius: 10px;
   border: 1px solid $btn-blue-text;
 }
-
 .blueBtn{
   background-color: $btn-blue-BG;
 }
-
 .whiteBtn{
   background-color: #ffffff;
 }
 
+/* input type="text" 白 */
 .whiteInputText{
   width: 10rem;
   border: 1px solid $logo-main-color;
@@ -48,9 +49,9 @@ $border-gray: #ced6db;
   padding: 0.3rem 0.8rem;
 }
 
+/* model & dialog */
 .modelAndDialogue{
   position: relative;
-
   .modelMessage{
     width: fit-content;
     max-width: 90%;
