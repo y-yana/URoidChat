@@ -107,7 +107,9 @@ const shiritori = new Vue({
     },
     input: function () {
       this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
-      this.textArr.push({id: this.arrNum, text: 'それでは私から始めるよ！' })
+      this.arrNum += 1
+      this.textArr.push({ id: this.arrNum, text: 'それでは私から始めるよ！' })
+      this.arrNum += 1
       this.textArr.push({ id: this.arrNum, text: 'しりとり' })
     },
     enter: function () {
