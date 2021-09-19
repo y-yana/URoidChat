@@ -18,6 +18,12 @@ $btn-blue-text: #1E6D90;
 $BG-white-thin: #fffffff3;
 $text-main: #013E6A;
 
+.back2topBtn{
+  width: fit-content;
+  position: absolute;
+  margin: 2rem;
+}
+
 .btnBase{
   color: $btn-blue-text;
   font-weight: bold;
