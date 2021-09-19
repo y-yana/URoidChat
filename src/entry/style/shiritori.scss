@@ -1,0 +1,32 @@
+#shiritoriMainArea{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin: 3rem auto 0;
+
+  #shiritori{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+
+    #shiritoriChoiceArea{
+      background-color: $BG-white-thin;
+      border-radius: 10px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      button{
+        width: fit-content;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+}
+/* mobileここまで */
