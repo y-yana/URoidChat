@@ -18,6 +18,26 @@
       flex-direction: column;
       gap: 2rem;
 
+      .shiritoriChoice{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+
+        .shiritoriRadio{
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+
+          input{
+            display: none;
+            &:checked + label{
+              background-color: $btn-blue-BG;
+            }
+          }
+        }
+      }
+
       hr{
         color: $border-gray;
       }
