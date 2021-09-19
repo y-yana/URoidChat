@@ -18,6 +18,10 @@
       flex-direction: column;
       gap: 2rem;
 
+      hr{
+        color: $border-gray;
+      }
+
       button{
         width: fit-content;
         margin: 0 auto;
