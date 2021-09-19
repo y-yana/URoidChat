@@ -47,22 +47,26 @@
       </div>
     </template>
     <template v-if="playGame">
-      <div v-for="m in textArr" :key="textArr.id">
-        <div>[[m.text]]</div>
+      <div class="shiritoriChatArea">
+        <div class="sendMessageComponent" v-for="m in textArr" :key="textArr.id">
+          <div class="chatLogComponent">[[m.text]]</div>
+        </div>
+        <p>[[ result ]]</p>
+        <div v-if="replayQuestion">
+          <p>同じモードでもう一度あそぶ？</p>
+          <button @click="replay">はい</button>
+          <button @click="back">いいえ</button>
+        </div>
+        <div v-if="timerMode">
+          <p>あと[[ timerVal ]]秒</p>
+          <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
+        </div>
+        <div class="shiritoriSubmitArea">
+          <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
+          <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
+        </div>
+        <p v-html='warning'></p>
       </div>
-      <p>[[ result ]]</p>
-      <div v-if="replayQuestion">
-        <p>同じモードでもう一度あそぶ？</p>
-        <button @click="replay">はい</button>
-        <button @click="back">いいえ</button>
-      </div>
-      <div v-if="timerMode">
-        <p>あと[[ timerVal ]]秒</p>
-        <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
-      </div>
-      <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
-      <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
-      <p v-html='warning'></p>
     </template>
   </div>
 </div>
