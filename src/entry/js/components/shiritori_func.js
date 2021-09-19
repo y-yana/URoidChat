@@ -44,6 +44,10 @@ const shiritori = new Vue({
       }
     },
     submit: function () {
+      if (this.inputText == '') {
+        console.log('空欄のままです！')
+        return
+      }
       this.submitCheck = 'NG'
       this.endStr = this.inputText.slice(-1)
       this.textCheck()
