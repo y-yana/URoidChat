@@ -13,15 +13,16 @@
     #shiritoriChoiceArea{
       background-color: $BG-white-thin;
       border-radius: 10px;
-      padding: 2rem;
+      padding: 3rem 2rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      color: $text-main;
 
       .shiritoriChoice{
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
         align-items: center;
 
         .shiritoriRadio{
