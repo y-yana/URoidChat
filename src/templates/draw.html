@@ -146,18 +146,14 @@
         }
 
         //入室
-        /*$('form#roukaForm').submit(function (event) {
-            socket.emit('join', { room: $('#rooms').val()});
-            //socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });*/
-        $('join_form').submit(function (event) {
+        $('form#join_form').submit(function (event) {
             socket.emit('join', { room: $('#roomNameInput').val()});
-            //socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
 
             enterLabel();
 
             //チャット送信
             $('form#castmessage').submit(function (event) {
-                socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val()});
+                socket.emit('broadcast_event', { room: $('#roomNameInput').val(), data: $('#msg_data').val()});
                 $('#msg_data').val('')
                 return false;
             });
@@ -246,7 +242,7 @@
                 });
 
                 $('#clear').click(function (e) {
-                    socket.emit('clear_room_board', { room: $('#rooms').val() });
+                    socket.emit('clear_room_board', { room: $('#roomNameInput').val() });
                     e.preventDefault();
                     context.clearRect(0, 0, $('#oekakiCanvas').width(), $('#oekakiCanvas').height());
                 });
@@ -286,7 +282,7 @@
                     context.closePath();
 
                     // サーバへメッセージ送信
-                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#roomNameInput').val(), mode: context.globalCompositeOperation });
                     fromX = toX;
                     fromY = toY;
                 }
@@ -301,7 +297,7 @@
                     context.closePath();
 
                     // サーバへメッセージ送信
-                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#roomNameInput').val(), mode: context.globalCompositeOperation });
                     fromX = toX;
                     fromY = toY;
                 }
@@ -322,10 +318,7 @@
         });
         function enterLabel() {
             isEnter = true;
-            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#rooms").val());
-        }
-        function outLabel() {
-            $("#rooms").prop("disabled", true);
+            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#roomNameInput").val());
         }
     });
 </script>
