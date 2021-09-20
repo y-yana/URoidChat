@@ -11,13 +11,14 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    margin: auto;
   }
 }
 
 #questionShowArea{
   background-color: $BG-white-thin;
   border-radius: 10px;
-  padding: 2rem 1rem;
+  padding: 2rem;
   border: 1px solid $text-main;
 }
 
@@ -51,6 +52,53 @@
         width: fit-content;
       }
     }
+  }
+}
+
+.quizGrid{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 2rem;
+  button{
+    background-color: #ffffff;
+    width: fit-content;
+    min-width: 10rem;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    color: $text-main;
+  }
+}
+$quiz-grid-shadow: 4px;
+.quizGrid1{
+  grid-column: 1 / 2;
+	grid-row: 1 / 2;
+  box-shadow: $quiz-grid-shadow $quiz-grid-shadow $quiz-pink;
+}
+.quizGrid2{
+  grid-column: 2 / 3;
+	grid-row: 1 / 2;
+  box-shadow: $quiz-grid-shadow $quiz-grid-shadow $quiz-blue;
+}
+.quizGrid3{
+  grid-column: 1 / 2;
+	grid-row: 2 / 3;
+  box-shadow: $quiz-grid-shadow $quiz-grid-shadow $quiz-yellow;
+}
+.quizGrid4{
+  grid-column: 2 / 3;
+	grid-row: 2 / 3;
+  box-shadow: $quiz-grid-shadow $quiz-grid-shadow $quiz-green;
+}
+.quizChoiceGrid{
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  span{
+    width: fit-content;
   }
 }
 

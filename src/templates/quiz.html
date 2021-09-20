@@ -64,10 +64,12 @@
     </div>
     <div id="optionShowArea">
       <template v-if="quizNameOption">
-        <button v-if="info" @click="createQuiz(0)">[[ info[0].quizNameJa ]]<span class="material-icons star">star</span></button>
-        <button v-if="info" @click="createQuiz(1)">[[ info[1].quizNameJa ]]<span class="material-icons star">star</span></button>
-        <button v-if="info" @click="createQuiz(2)">[[ info[2].quizNameJa ]]<span class="material-icons star">star</span><span class="material-icons star">star</span></button>
-        <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span></button>
+        <div class="quizGrid">
+          <button class="quizGrid1 quizChoiceGrid" v-if="info" @click="createQuiz(0)"><span>[[ info[0].quizNameJa ]]</span><span class="material-icons star">star</span></button>
+          <button class="quizGrid2 quizChoiceGrid" v-if="info" @click="createQuiz(1)"><span>[[ info[1].quizNameJa ]]</span><span class="material-icons star">star</span></button>
+          <button class="quizGrid3 quizChoiceGrid" v-if="info" @click="createQuiz(2)"><span>[[ info[2].quizNameJa ]]</span><span><span class="material-icons star">star</span><span class="material-icons star">star</span></span></button>
+          <button class="quizGrid4 quizChoiceGrid" v-if="info" @click="createQuiz(3)"><span>[[ info[3].quizNameJa ]]</span><span><span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span></span></button>
+        </div>
       </template>
       <template v-if="quizAnswerOption">
         <button v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
