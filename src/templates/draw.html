@@ -19,14 +19,15 @@
 </form>
 
 <!-- room選択画面に戻るボタン -->
-<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span class="material-icons">arrow_back</span></button>
+<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span
+        class="material-icons">arrow_back</span></button>
 
 <!-- モデル表示エリア -->
 <div id="modelArea">
 </div>
 
 <div id="roomChoiceArea">
-    <form class="form-inline" id="roukaForm">
+    <!--<form class="form-inline" id="roukaForm">
         <div class="form-group">
             <label class="roomLabel" for="rooms">ルーム名</label>
             <select class="form-control" id="rooms">
@@ -52,10 +53,26 @@
             </span>
         </div>
         <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
+    </form>-->
+
+    <div id=join_message>
+        <form v-bind:id=item.id method="POST" action='#' onsubmit="return false;" v-for="item in roomData" :key="item.roomName">
+            <p>[[ item.roomName ]]</p>
+            <p>
+                <span class="material-icons">group</span>
+                <!-- ここにroomの人数を表示 -->
+            </p>
+            <button type="submit" @click="sendVue(item.roomName)"><span class="material-icons">login</span></button>
+        </form>
+    </div>
+    <!--見えないform-->
+    <form id='join_form' method="POST" action='#' style="display:none;">
+        <input type="text" id="roomNameInput">
+        <button id="roomSubmit"></button>
     </form>
 </div>
 
-<div id="oekakiRoomArea" style='display: none;'>
+<div id="oekakiRoomArea">
     <div id="flexArea">
         <canvas id="oekakiCanvas" width="500" height="400"></canvas>
         <div class="container">
@@ -71,7 +88,8 @@
             </form>
             <form id="castmessage" method="POST" action='#'>
                 <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
-                <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span class="material-icons">send</span></button>
+                <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span
+                        class="material-icons">send</span></button>
             </form>
         </div>
     </div>
@@ -96,26 +114,21 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
+    integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
-        // Connect to the Socket.IO server.
-        // The connection URL has the following format, relative to the current page:
-        //     http[s]://<domain>:<port>[/<namespace>]
         var socket = io();
 
-        // Event handler for new connections.
-        // The callback function is invoked when a connection with the
-        // server is established.
         socket.on('connect', function () {
             socket.emit('my_event', { data: 'I\'m connected!' });
         });
 
-        // Event handler for server sent data.
-        // The callback function is invoked whenever the server emits data
-        // to the client. The data is then displayed in the "Received"
-        // section of the page.
         socket.on('my_response', function (msg, cb) {
             var sendTime = new Date();
             var Hour = sendTime.getHours();
@@ -132,13 +145,15 @@
             document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
         }
 
-        $('form#roukaForm').submit(function (event) {
-            socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
+        //入室
+        $('form#join_form').submit(function (event) {
+            socket.emit('join', { room: $('#roomNameInput').val()});
 
             enterLabel();
 
+            //チャット送信
             $('form#castmessage').submit(function (event) {
-                socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val(), name: $("#nameForm").val() });
+                socket.emit('broadcast_event', { room: $('#roomNameInput').val(), data: $('#msg_data').val()});
                 $('#msg_data').val('')
                 return false;
             });
@@ -227,7 +242,7 @@
                 });
 
                 $('#clear').click(function (e) {
-                    socket.emit('clear_room_board', { room: $('#rooms').val() });
+                    socket.emit('clear_room_board', { room: $('#roomNameInput').val() });
                     e.preventDefault();
                     context.clearRect(0, 0, $('#oekakiCanvas').width(), $('#oekakiCanvas').height());
                 });
@@ -267,7 +282,7 @@
                     context.closePath();
 
                     // サーバへメッセージ送信
-                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#roomNameInput').val(), mode: context.globalCompositeOperation });
                     fromX = toX;
                     fromY = toY;
                 }
@@ -282,7 +297,7 @@
                     context.closePath();
 
                     // サーバへメッセージ送信
-                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#rooms').val(), mode: context.globalCompositeOperation });
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#roomNameInput').val(), mode: context.globalCompositeOperation });
                     fromX = toX;
                     fromY = toY;
                 }
@@ -296,20 +311,14 @@
             //oekaki終わり
             $("#leaveButton").click(function () {
                 if (confirm('ルームを退出しますか？')) {
-                    //window.location.href = '/';
                     location.reload();
                 }
             });
             return false;
         });
         function enterLabel() {
-            //$("#sendButton").text("送信");
             isEnter = true;
-            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#rooms").val());
-            //$("#nameBox").text($("#nameForm").val());
-        }
-        function outLabel() {
-            $("#rooms").prop("disabled", true);
+            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#roomNameInput").val());
         }
     });
 </script>

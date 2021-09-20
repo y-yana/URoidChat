@@ -230,16 +230,14 @@ def quiz_ajax():
 #お絵かき
 @socketio.event
 def my_event(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
-         {'data': message['data'], 'count': session['receive_count']})
+         {'data': message['data']})
 
 
 @socketio.event
 def broadcast_event(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
-         {'data': message['name'] + ' : ' + message['data']}, to=message['room'])
+         {'data': session['user_name'] + ' : ' + message['data']}, to=message['room'])
 
 
 @socketio.event
@@ -255,9 +253,8 @@ def clear_room_board(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
-         {'data': message['name']+'さんが入室しました'}, to=message['room'])
+         {'data': session['user_name']+'さんが入室しました'}, to=message['room'])
 #お絵描きここまで
 
 if __name__ == '__main__':
