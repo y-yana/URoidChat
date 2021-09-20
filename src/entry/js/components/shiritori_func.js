@@ -155,10 +155,12 @@ const shiritori = new Vue({
           console.log("Ajax通信 失敗");
         });
       if (this.modePicked == "timer") {
-        this.timerMode = true
-        this.timerVal = this.difficultyVal
-        clearInterval(this.intervalID)
-        this.timerStart()
+        if (this.replayQuestion != true) {
+          this.timerMode = true
+          this.timerVal = this.difficultyVal
+          clearInterval(this.intervalID)
+          this.timerStart()
+        }
       }
       this.scroll()
     },
