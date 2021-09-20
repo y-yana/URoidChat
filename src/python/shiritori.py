@@ -23,7 +23,7 @@ def shiritori(word,defi):
 
   else:
     df2=pd.read_csv("./static/shiritori/vocab.csv")
-    print(est)
+    #print(est)
     if est>random():
 
       

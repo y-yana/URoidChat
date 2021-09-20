@@ -165,13 +165,26 @@ if not os.path.isdir(SAVE_DIR):
 def send_js(path):
     return send_from_directory(SAVE_DIR, path)
 
+
+    
+
 @app.route('/img', methods=['POST'])
 def upload_img():
     if request.files['image']:
         # 画像として読み込み
         stream = request.files['image'].stream
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+      
         img = cv2.imdecode(img_array, 1)
+
+        w=img.shape[1]
+
+        if w>300:
+            w=300
+
+        img = cv2.resize(img, dsize=(w, int(w * img.shape[0] / img.shape[1])))
+
+        
 
 
 
@@ -180,8 +193,8 @@ def upload_img():
         dt_now='image'
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
         cv2.imwrite(save_path, img)
-        print("save", save_path)
-        print("ok----------------")
+        #print("save", save_path)
+      
 
         image_transform(save_path)
 
@@ -209,7 +222,7 @@ def shiritori_ajax():
         "res_shiritori": res_shiritori,
         "endstr":end_str
     }
-    print(return_json)
+    #print(return_json)
 
     return jsonify(values=json.dumps(return_json))
 
@@ -221,11 +234,12 @@ def quiz_ajax():
     trueCounter = getMessage['trueCounter']
     playTime = getMessage['playTime']
 
-    print(trueCounter)
-    print(round(playTime/1000, 2))
+    #print(trueCounter)
+    #print(round(playTime/1000, 2))
     ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
 
-    return jsonify(values=json.dumps(return_json))
+    #return jsonify(values=json.dumps(return_json))
+    return ""
 
 #お絵かき
 @socketio.event

@@ -30,6 +30,7 @@ def sub_color(src, K):
 
 def anime_filter(img, K):
     # グレースケール変換
+
     gray = cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY)
 
     # ぼかしでノイズ低減
@@ -56,7 +57,11 @@ def image_transform(path):
     anime = anime_filter(img, 30)
 
     # 結果出力
-    cv2.imwrite(path, anime)
+
+    
+    cv2.imwrite('./static/images/nigaoe/image_r.png', anime)
+    
+    print('./static/images/nigaoe/image_r.png')
 
 if __name__ == '__main__':
     image_transform()
