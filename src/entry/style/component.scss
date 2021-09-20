@@ -17,7 +17,16 @@ $btn-blue-BG: #8AD9FB;
 $btn-blue-text: #1E6D90;
 $BG-white-thin: #fffffff3;
 $text-main: #013E6A;
+$border-gray: #ced6db;
 
+/* 戻るボタン */
+.back2topBtn{
+  width: fit-content;
+  position: absolute;
+  margin: 2rem;
+}
+
+/* ボタン（青・白） */
 .btnBase{
   color: $btn-blue-text;
   font-weight: bold;
@@ -25,15 +34,14 @@ $text-main: #013E6A;
   border-radius: 10px;
   border: 1px solid $btn-blue-text;
 }
-
 .blueBtn{
   background-color: $btn-blue-BG;
 }
-
 .whiteBtn{
   background-color: #ffffff;
 }
 
+/* input type="text" 白 */
 .whiteInputText{
   width: 10rem;
   border: 1px solid $logo-main-color;
@@ -41,9 +49,9 @@ $text-main: #013E6A;
   padding: 0.3rem 0.8rem;
 }
 
+/* model & dialog */
 .modelAndDialogue{
   position: relative;
-
   .modelMessage{
     width: fit-content;
     max-width: 90%;
@@ -57,6 +65,45 @@ $text-main: #013E6A;
     color: $text-main;
     font-size: 1.1rem;
   }
+}
+
+/* 吹き出し（青・白） */
+.speechBalloonBase{
+  width: fit-content;
+  max-width: 15rem;
+  display: inline-block;
+  position: relative;
+  border-radius: 15px;
+  margin-left: 15px;
+  padding: 0.7rem 1rem;
+  color: $text-main;
+  &::before{
+    content: "";
+    position: absolute;
+    top: 70%;
+    margin-top: -15px;
+    border: 10px solid transparent;
+  }
+}
+.sendMessageComponent{
+  background: $BG-send-message;
+  margin: 0 0 0 auto;
+  &::before{
+    left: 95%;
+    border-left: 25px solid $BG-send-message;
+  }
+}
+.getMessageComponent{
+  background: $BG-get-message;
+  &::before{
+    left: -30px;
+    border-right: 25px solid $BG-get-message;
+  }
+}
+.chatLogComponent{
+  width: fit-content;
+  margin: 0;
+  padding: 0;
 }
 
 /* mobileここから */

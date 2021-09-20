@@ -1,42 +1,80 @@
 {% extends "layout.html" %}{% block content %}
 
-<form action="/top" method="POST">
+<!-- オープニング -->
+<div id="opening">
+  <div id="openingContents">
+    <img src="../static/images/logo.png">
+    <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
+  </div>
+</div>
+
+<!-- ヘッダー -->
+<div id="header">
+  <img src="../static/images/logo.png">
+</div>
+
+<!-- topに戻るボタン -->
+<form class="back2topBtn" action="/top" method="POST">
   <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
-<!-- モデル表示エリア -->
-<div id="modelArea">
-</div>
+<div id="shiritoriMainArea">
+  <!-- モデル表示エリア -->
+  <div id="modelArea">
+  </div>
 
-<div id="shiritori">
-  <template v-if="difficultyChoice">
-    <p>どっちのモードであそぶ？</p>
-    <input type="radio" id="one" value="normal" v-model="modePicked"><label for="one">じっくり</label>
-    <input type="radio" id="two" value="timer" v-model="modePicked"><label for="two">タイマー</label>
-    <p>難易度をえらんでね</p>
-    <input type="radio" id="easy" value="10" v-model="difficultyPicked"><label for="easy">かんたん</label>
-    <input type="radio" id="normal" value="8" v-model="difficultyPicked"><label for="normal">ふつう</label>
-    <input type="radio" id="difficult" value="5" v-model="difficultyPicked"><label for="difficult">むずかしい</label>
-    <button @click="gameStart">これであそぶ！</button>
-  </template>
-  <template v-if="playGame">
-    <div v-for="m in textArr" :key="textArr.id">
-      <div>[[m.text]]</div>
+  <div id="shiritori">
+    <template v-if="difficultyChoice">
+      <div id="shiritoriChoiceArea">
+        <div class="shiritoriChoice">
+        <p>どっちのモードであそぶ？</p>
+          <div id="shiritoriModeRadio" class="shiritoriRadio">
+            <input type="radio" id="one" value="normal" v-model="modePicked"><label class="btnBase whiteBtn" for="one">じっくり</label>
+            <input type="radio" id="two" value="timer" v-model="modePicked"><label class="btnBase whiteBtn" for="two">タイマー</label>
+          </div>
+        </div>
+        <hr>
+        <div class="shiritoriChoice">
+          <p>難易度をえらんでね</p>
+          <div id="shiritoriDifficulyRadio" class="shiritoriRadio">
+            <input type="radio" id="easy" value="10" v-model="difficultyPicked"><label class="btnBase whiteBtn" for="easy">かんたん</label>
+            <input type="radio" id="normal" value="8" v-model="difficultyPicked"><label class="btnBase whiteBtn" for="normal">ふつう</label>
+            <input type="radio" id="difficult" value="5" v-model="difficultyPicked"><label class="btnBase whiteBtn" for="difficult">むずかしい</label>
+          </div>
+        </div>
+        <hr>
+        <button class="btnBase blueBtn" @click="gameStart">これであそぶ！</button>
+      </div>
+    </template>
+    <template v-if="playGame">
+      <div class="shiritoriChatArea">
+        <div class="speechBalloonBase" v-bind:class=classVue[m.id] v-for="m in textArr" :key="textArr.id">
+            <div class="chatLogComponent">[[m.text]]</div>
+        </div>
+        <p v-if="replayQuestion" class="speechBalloonBase getMessageComponent">[[ result ]]</p>
+        <div class="shiritoriReplay" v-if="replayQuestion">
+          <p>同じモードでもう一度あそぶ？</p>
+          <div id="shiritoriReplayBtns">
+            <button class="btnBase whiteBtn" @click="back">いいえ</button>
+            <button class="btnBase blueBtn" @click="replay">はい</button>
+          </div>
+        </div>
+    </template>
+    <div id="shiritoriSubmitAll" v-if="playGame">
+      <div id="shiritoriTimer" v-if="timerMode">
+        <p>あと<span>[[ timerVal ]]</span>秒</p>
+        <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
+      </div>
+      <div class="shiritoriSubmitArea">
+        <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled"
+          placeholder="Enterで送信" />
+        <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span
+            class="material-icons">send</span></button>
+      </div>
+      <p id="shiritoriWarning" v-html='warning'></p>
     </div>
-    <p>[[ result ]]</p>
-    <div v-if="replayQuestion">
-      <p>同じモードでもう一度あそぶ？</p>
-      <button @click="replay">はい</button>
-      <button @click="back">いいえ</button>
     </div>
-    <div v-if="timerMode">
-      <p>あと[[ timerVal ]]秒</p>
-      <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
-    </div>
-    <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
-    <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
-    <p v-html='warning'></p>
-  </template>
+  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

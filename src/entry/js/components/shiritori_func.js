@@ -15,6 +15,7 @@ const shiritori = new Vue({
     textArr: [],
     // check = 重複チェック用配列
     check: ['しりとり'],
+    classVue: ['getMessageComponent'],
     result: '',
     endStr: 'り',
     submitBtnDisabled: false,
@@ -44,11 +45,17 @@ const shiritori = new Vue({
       }
     },
     submit: function () {
+      if (this.inputText == '') {
+        console.log('空欄のままです！')
+        return
+      }
       this.submitCheck = 'NG'
       this.endStr = this.inputText.slice(-1)
       this.textCheck()
       this.pushNewText(this.inputText)
+      this.classVue.push('sendMessageComponent')
       this.inputText = ''
+      this.scroll()
     },
     replay: function () {
       this.resetArr()
@@ -92,7 +99,9 @@ const shiritori = new Vue({
     },
     resetArr: function () {
       this.submitBtnDisabled = false
+      this.arrNum = 0
       this.textArr = []
+      this.classVue = ['getMessageComponent']
       this.check = ['しりとり']
       this.endStr = 'り'
     },
@@ -103,7 +112,11 @@ const shiritori = new Vue({
     },
     input: function () {
       this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
-      this.textArr.push({id: this.arrNum, text: 'それでは私から始めるよ！' })
+      this.arrNum += 1
+      this.classVue.push('getMessageComponent')
+      this.textArr.push({ id: this.arrNum, text: 'それでは私から始めるよ！' })
+      this.arrNum += 1
+      this.classVue.push('getMessageComponent')
       this.textArr.push({ id: this.arrNum, text: 'しりとり' })
     },
     enter: function () {
@@ -130,6 +143,7 @@ const shiritori = new Vue({
           self.ajaxText = getData
           self.endStr = self.ajaxText.slice(-1)
           self.pushNewText(self.ajaxText)
+          self.classVue.push('getMessageComponent')
           if (self.endStr == 'ん') {
             self.result = '最後に「ん」がついたので、私の負けです…'
             self.submitBtnDisabled = true
@@ -141,11 +155,14 @@ const shiritori = new Vue({
           console.log("Ajax通信 失敗");
         });
       if (this.modePicked == "timer") {
-        this.timerMode = true
-        this.timerVal = this.difficultyVal
-        clearInterval(this.intervalID)
-        this.timerStart()
+        if (this.replayQuestion != true) {
+          this.timerMode = true
+          this.timerVal = this.difficultyVal
+          clearInterval(this.intervalID)
+          this.timerStart()
+        }
       }
+      this.scroll()
     },
     timerStart: function () {
       let self = this;
@@ -161,6 +178,12 @@ const shiritori = new Vue({
         this.replayQuestion = true
         return
       }
+    },
+    scroll: function () {
+      this.$nextTick(function() {
+        var container = this.$el.querySelector(".shiritoriChatArea")
+        container.scrollTop = container.scrollHeight
+      })
     }
   },
   watch: {
@@ -173,7 +196,7 @@ const shiritori = new Vue({
         if (firstStr != this.endStr) {
           submitBtn.disabled = true
           this.submitCheck = 'NG'
-          this.warning = '<span class="material-icons">error_outline</span>「' + this.endStr + '」から始まる単語を入力してね！'
+          this.warning = '<span class="material-icons">error_outline</span><span>「' + this.endStr + '」から始まる単語を入力してね！</span>'
         } else {
           submitBtn.disabled = false
           this.submitCheck = 'OK'
@@ -183,7 +206,7 @@ const shiritori = new Vue({
         submitBtn.disabled = true
         this.submitCheck = 'NG'
         if (textCheck != '') {
-          this.warning = '<span class="material-icons">error_outline</span>ひらがなで入力してね！'
+          this.warning = '<span class="material-icons">error_outline</span><span>ひらがなで入力してね！</span>'
         }
       }
     }
