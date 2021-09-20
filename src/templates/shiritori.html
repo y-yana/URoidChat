@@ -59,19 +59,21 @@
             <button class="btnBase blueBtn" @click="replay">はい</button>
           </div>
         </div>
-        <div id="shiritoriSubmitAll">
-          <div id="shiritoriTimer" v-if="timerMode">
-            <p>あと<span>[[ timerVal ]]</span>秒</p>
-            <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
-          </div>
-          <div class="shiritoriSubmitArea">
-            <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
-            <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
-          </div>
-          <p id="shiritoriWarning" v-html='warning'></p>
-        </div>
-      </div>
     </template>
+    <div id="shiritoriSubmitAll" v-if="playGame">
+      <div id="shiritoriTimer" v-if="timerMode">
+        <p>あと<span>[[ timerVal ]]</span>秒</p>
+        <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
+      </div>
+      <div class="shiritoriSubmitArea">
+        <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled"
+          placeholder="Enterで送信" />
+        <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span
+            class="material-icons">send</span></button>
+      </div>
+      <p id="shiritoriWarning" v-html='warning'></p>
+    </div>
+    </div>
   </div>
 </div>
 
