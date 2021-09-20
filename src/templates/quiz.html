@@ -25,10 +25,23 @@
   <div id="quizMainArea">
     <div id="questionShowArea">
       <template v-if="selectQuiz">
-        <p>好きなテーマを選んでね！</p>
-        <p>難易度：<span class="material-icons star">star</span>〜<span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span></p>
-        <p>（かんたん）</p>
-        <p>（むずかしい）</p>
+        <div id="selectQuizArea">
+          <p>好きなテーマを選んでね！</p>
+          <div id="quizDifficulyTeach">
+            <p>難易度：</p>
+            <div class="starFlex">
+              <span class="material-icons star">star</span>
+              <p>（かんたん）</p>
+            </div>
+            <p>〜</p>
+            <div class="starFlex">
+              <div id="threeStar">
+                <span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span>
+              </div>
+              <p>（むずかしい）</p>
+              </div>
+          </div>
+        </div>
       </template>
       <template v-if="askQuestion">
         <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
