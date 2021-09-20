@@ -52,10 +52,12 @@
             <div class="chatLogComponent">[[m.text]]</div>
         </div>
         <p v-if="replayQuestion" class="speechBalloonBase getMessageComponent">[[ result ]]</p>
-        <div v-if="replayQuestion">
+        <div class="shiritoriReplay" v-if="replayQuestion">
           <p>同じモードでもう一度あそぶ？</p>
-          <button @click="replay">はい</button>
-          <button @click="back">いいえ</button>
+          <div id="shiritoriReplayBtns">
+            <button class="btnBase whiteBtn" @click="back">いいえ</button>
+            <button class="btnBase blueBtn" @click="replay">はい</button>
+          </div>
         </div>
         <div v-if="timerMode">
           <p>あと[[ timerVal ]]秒</p>

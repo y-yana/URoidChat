@@ -6,7 +6,7 @@
   margin: 3rem auto 0;
 
   #shiritori{
-    width: fit-content;
+    width: 25rem;
     height: fit-content;
     margin: auto;
 
@@ -52,10 +52,11 @@
 }
 
 .shiritoriChatArea{
-  width: 20rem;
+  width: 21.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  margin: 0 auto;
 }
 
 .shiritoriSubmitArea{
@@ -65,11 +66,29 @@
   background-color: #ffffff;
   border-radius: 5rem;
   padding: 0.5rem 1.3rem;
-  margin: 0 auto;
+  margin: 1rem auto 0;
   gap: 1rem;
 
   button{
     color: $logo-main-color;
+  }
+}
+
+.shiritoriReplay{
+  width: fit-content;
+  height: fit-content;
+  background-color: $BG-white-thin;
+  margin: 1rem auto 0;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  color: $text-main;
+
+  #shiritoriReplayBtns{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin: 1rem auto 0;
   }
 }
 
