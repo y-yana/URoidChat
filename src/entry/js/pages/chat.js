@@ -1,7 +1,7 @@
 import '../components/chat_response.js';
 
 // TypeScript
-import '../../ts/components/index.ts';
+import '../../ts/components/setting_chat.js';
 
 // JavaScript
 import '../components/opening.js';
