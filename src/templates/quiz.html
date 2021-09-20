@@ -26,7 +26,7 @@
     <div id="questionShowArea">
       <template v-if="selectQuiz">
         <p>好きなテーマを選んでね！</p>
-        <p>難易度：<span class="material-icons">star</span>〜<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></p>
+        <p>難易度：<span class="material-icons star">star</span>〜<span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span></p>
         <p>（かんたん）</p>
         <p>（むずかしい）</p>
       </template>
@@ -51,10 +51,10 @@
     </div>
     <div id="optionShowArea">
       <template v-if="quizNameOption">
-        <button v-if="info" @click="createQuiz(0)">[[ info[0].quizNameJa ]]<span class="material-icons">star</span></button>
-        <button v-if="info" @click="createQuiz(1)">[[ info[1].quizNameJa ]]<span class="material-icons">star</span></button>
-        <button v-if="info" @click="createQuiz(2)">[[ info[2].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span></button>
-        <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
+        <button v-if="info" @click="createQuiz(0)">[[ info[0].quizNameJa ]]<span class="material-icons star">star</span></button>
+        <button v-if="info" @click="createQuiz(1)">[[ info[1].quizNameJa ]]<span class="material-icons star">star</span></button>
+        <button v-if="info" @click="createQuiz(2)">[[ info[2].quizNameJa ]]<span class="material-icons star">star</span><span class="material-icons star">star</span></button>
+        <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span></button>
       </template>
       <template v-if="quizAnswerOption">
         <button v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>

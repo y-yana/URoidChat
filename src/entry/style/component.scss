@@ -18,6 +18,11 @@ $btn-blue-text: #1E6D90;
 $BG-white-thin: #fffffff3;
 $text-main: #013E6A;
 $border-gray: #ced6db;
+$quiz-pink:#ED7EEB;
+$quiz-blue:#4B91F0;
+$quiz-yellow:#FCD15E;
+$quiz-green:#56D34C;
+
 
 /* 戻るボタン */
 .back2topBtn{
@@ -104,6 +109,11 @@ $border-gray: #ced6db;
   width: fit-content;
   margin: 0;
   padding: 0;
+}
+
+/* star icon */
+.star{
+  color: $quiz-yellow;
 }
 
 /* mobileここから */
