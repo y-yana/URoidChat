@@ -127,5 +127,10 @@
 
 /* mobileここから */
 @media screen and (max-width: 950px) {
+  #shiritoriMainArea{
+    flex-direction: column-reverse;
+    gap: 1rem;
+    margin: 1.5rem auto;
+  }
 }
 /* mobileここまで */
