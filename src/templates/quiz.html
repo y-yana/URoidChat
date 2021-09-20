@@ -72,10 +72,12 @@
         </div>
       </template>
       <template v-if="quizAnswerOption">
-        <button v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
-        <button v-if="option2" @click="judgeSelectAnswer(2)" :disabled="optionBtnDisabled">[[ option2 ]]</button>
-        <button v-if="option3" @click="judgeSelectAnswer(3)" :disabled="optionBtnDisabled">[[ option3 ]]</button>
-        <button v-if="option4" @click="judgeSelectAnswer(4)" :disabled="optionBtnDisabled">[[ option4 ]]</button>
+        <div class="quizGrid">
+          <button class="quizGrid1 quizAnswerOptionGrid" v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
+          <button class="quizGrid2 quizAnswerOptionGrid" v-if="option2" @click="judgeSelectAnswer(2)" :disabled="optionBtnDisabled">[[ option2 ]]</button>
+          <button class="quizGrid3 quizAnswerOptionGrid" v-if="option3" @click="judgeSelectAnswer(3)" :disabled="optionBtnDisabled">[[ option3 ]]</button>
+          <button class="quizGrid4 quizAnswerOptionGrid" v-if="option4" @click="judgeSelectAnswer(4)" :disabled="optionBtnDisabled">[[ option4 ]]</button>
+        </div>
       </template>
       <template v-if="resultRanking">
         <p>ここにランキングを表示</p>

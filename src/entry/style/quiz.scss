@@ -6,7 +6,7 @@
   margin: 3rem auto 0;
 
   #quizMainArea{
-    width: fit-content;
+    width: 27rem;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -100,6 +100,9 @@ $quiz-grid-shadow: 4px;
   span{
     width: fit-content;
   }
+}
+.quizAnswerOptionGrid{
+  text-align: center;
 }
 
 /* mobileここから */
