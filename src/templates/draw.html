@@ -55,14 +55,16 @@
         <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
     </form>-->
 
+    <div id=join_message>
     <form v-bind:id=item.id method="POST" action='#' v-for="item in roomData" :key="item.roomName">
         <p>[[ item.roomName ]]</p>
         <p>
             <span class="material-icons">group</span>
             <!-- ここにroomの人数を表示 -->
         </p>
-        <button type="submit"><span class="material-icons">login</span></button>
+        <button type="submit" ><span class="material-icons">login</span></button>
     </form>
+</div>
 
 </div>
 
@@ -138,14 +140,19 @@
             document.getElementById("#oekakiCanvas").height = 400;
             document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
         }
-
-        $('form#roukaForm').submit(function (event) {
-            socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
+        
+        //入室
+        /*$('form#roukaForm').submit(function (event) {
+            socket.emit('join', { room: $('#rooms').val()});
+            //socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });*/
+        $('join_message').submit(function (event) {
+            socket.emit('join', { room: $('#rooms').val()});
+            //socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
 
             enterLabel();
 
+            //チャット送信
             $('form#castmessage').submit(function (event) {
-                //socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val(), name: $("#nameForm").val() });
                 socket.emit('broadcast_event', { room: $('#rooms').val(), data: $('#msg_data').val()});
                 $('#msg_data').val('')
                 return false;
