@@ -1,5 +1,5 @@
 const quiz = new Vue({
-  el: '#quiz',
+  el: '#quizArea',
   // FlaskとVueを共存させるためにDelimiterを変更する
   delimiters: ["[[", "]]"],
   data: {
