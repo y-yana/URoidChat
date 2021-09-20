@@ -1,0 +1,25 @@
+#quiz{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin: 3rem auto 0;
+
+  #quizMainArea{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #quiz{
+    flex-direction: column-reverse;
+    gap: 1rem;
+    margin: 1.5rem auto;
+  }
+}
+/* mobileここまで */
