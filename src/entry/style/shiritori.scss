@@ -53,10 +53,12 @@
 
 .shiritoriChatArea{
   width: 21.5rem;
+  height: 40rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   margin: 0 auto;
+  overflow: scroll;
 }
 
 .shiritoriSubmitArea{

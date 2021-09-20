@@ -55,6 +55,7 @@ const shiritori = new Vue({
       this.pushNewText(this.inputText)
       this.classVue.push('sendMessageComponent')
       this.inputText = ''
+      this.scroll()
     },
     replay: function () {
       this.resetArr()
@@ -159,6 +160,7 @@ const shiritori = new Vue({
         clearInterval(this.intervalID)
         this.timerStart()
       }
+      this.scroll()
     },
     timerStart: function () {
       let self = this;
@@ -174,6 +176,12 @@ const shiritori = new Vue({
         this.replayQuestion = true
         return
       }
+    },
+    scroll: function () {
+      this.$nextTick(function() {
+        var container = this.$el.querySelector(".shiritoriChatArea")
+        container.scrollTop = container.scrollHeight
+      })
     }
   },
   watch: {
