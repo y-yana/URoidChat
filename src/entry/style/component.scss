@@ -70,13 +70,13 @@ $border-gray: #ced6db;
 /* 吹き出し（青・白） */
 .speechBalloonBase{
   width: fit-content;
-  min-width: 120px;
   max-width: 15rem;
   display: inline-block;
   position: relative;
   border-radius: 15px;
   margin-left: 15px;
   padding: 0.7rem 1rem;
+  color: $text-main;
   &::before{
     content: "";
     position: absolute;
