@@ -65,7 +65,8 @@
             <button type="submit" @click="sendVue(item.roomName)"><span class="material-icons">login</span></button>
         </form>
     </div>
-    <form id='test' method="POST" action='#' style="display:none;">
+    <!--見えないform-->
+    <form id='join_form' method="POST" action='#' style="display:none;">
         <input type="text" id="roomNameInput">
         <button id="roomSubmit"></button>
     </form>
@@ -148,8 +149,8 @@
         /*$('form#roukaForm').submit(function (event) {
             socket.emit('join', { room: $('#rooms').val()});
             //socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });*/
-        $('join_message').submit(function (event) {
-            socket.emit('join', { room: $('#rooms').val()});
+        $('join_form').submit(function (event) {
+            socket.emit('join', { room: $('#roomNameInput').val()});
             //socket.emit('join', { room: $('#rooms').val(), name: $("#nameForm").val() });
 
             enterLabel();
