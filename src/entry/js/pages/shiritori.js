@@ -1,5 +1,5 @@
 // TypeScript
-import '../../ts/components/setting_top.ts';
+import '../../ts/components/setting_shiritori.ts';
 
 // JavaScript
 import '../components/opening.js';
