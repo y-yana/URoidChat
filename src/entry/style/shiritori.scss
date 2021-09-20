@@ -115,6 +115,16 @@
   }
 }
 
+#shiritoriWarning{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin: 0.5rem auto 0;
+  color: $text-main;
+  align-items: center;
+}
+
 /* mobileここから */
 @media screen and (max-width: 950px) {
 }

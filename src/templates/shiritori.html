@@ -68,7 +68,7 @@
             <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled" placeholder="Enterで送信"/>
             <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span class="material-icons">send</span></button>
           </div>
-          <p v-html='warning'></p>
+          <p id="shiritoriWarning" v-html='warning'></p>
         </div>
       </div>
     </template>
