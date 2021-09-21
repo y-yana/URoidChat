@@ -27,7 +27,9 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
 thread = None
 thread_lock = Lock()
-member_list_dic = {}
+member_list = [0,0,0,0,0,0,0]
+socketio.set('heartbeat interval', 5000);
+socketio.set('heartbeat timeout', 15000);
 
 @app.route('/')
 def index():
@@ -62,22 +64,27 @@ def openingForm():
 
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
+    member_list[1] += 1
     return render_template('draw.html', pageTitle='Oekaki',async_mode=socketio.async_mode)
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
+    member_list[2] += 1
     return render_template("chat.html", pageTitle='URoidChat')
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
+    member_list[3] += 1
     return render_template("shiritori.html", pageTitle='Shiritori')
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
+    member_list[4] += 1
     return render_template("quiz.html", pageTitle='Quiz')
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():
+    member_list[0] += 1
     return render_template("nigaoe.html", pageTitle='Nigaoe')
 
 @app.route('/rename', methods=['POST'])
@@ -244,20 +251,15 @@ def quiz_ajax():
 #お絵かき
 @socketio.event
 def my_event(message):
+    print('受信確認')
+    print(member_list)
     emit('my_response',
          {'data': message['data']})
-
-
-@socketio.event
-def member_list(message):
-    member_list_dic[message] += 1
-    emit('')
 
 @socketio.event
 def broadcast_event(message):
     emit('my_response',
          {'data': session['user_name'] + ' : ' + message['data']}, to=message['room'])
-
 
 @socketio.event
 def all_broadcast_event(message):
@@ -268,12 +270,21 @@ def all_broadcast_event(message):
 def clear_room_board(message):
     emit('clear user', to=message['room'])
 
+@socketio.event
+def join(message):
+    join_room(message['room'])
+    emit('my_response',
+         {'data': session['user_name']+'さんが入室しました'}, to=message['room'])
 
 @socketio.event
 def join(message):
     join_room(message['room'])
     emit('my_response',
          {'data': session['user_name']+'さんが入室しました'}, to=message['room'])
+
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected')
 #お絵描きここまで
 
 if __name__ == '__main__':
