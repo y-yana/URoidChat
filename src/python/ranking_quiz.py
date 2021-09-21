@@ -13,7 +13,11 @@ def ranking(trueCounter,playTime,name):
     
     for i in range(len(json_load)):
         rank[i]['rank']=i+1
+
+    rank=rank[:7]
     
-    #print(json_load)
+    """#print(json_load)
     with open('./static/json/quiz_ranking.json', 'w') as f:
-        json.dump(rank, f, indent=4)
+        json.dump(rank, f, indent=4)"""
+
+    return rank

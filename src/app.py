@@ -236,10 +236,12 @@ def quiz_ajax():
 
     #print(trueCounter)
     #print(round(playTime/1000, 2))
-    ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
+    rank=ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
 
-    #return jsonify(values=json.dumps(return_json))
-    return ""
+    print(rank)
+
+    return jsonify(values=json.dumps(rank))
+    #return ""
 
 #お絵かき
 @socketio.event
