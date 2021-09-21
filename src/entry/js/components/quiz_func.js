@@ -171,9 +171,11 @@ const quiz = new Vue({
     },
     ajaxGetRanking: function () {
       var trueCounterPost = this.trueCounter
+      var quizNamePost = this.info[this.selectQuizNum].quizName
       var json_text = {
         trueCounter: trueCounterPost,
-        playTime: this.resultTime
+        playTime: this.resultTime,
+        quizName: quizNamePost
       }
       var num = this.resultTime / 1000
       var ans = (Math.round(num * 100)) / 100
