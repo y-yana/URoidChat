@@ -5,6 +5,7 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { getConstantValue, updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
+
   // canvasサイズの制御
   // 表示用のサイズを格納する変数
   var newWidth
@@ -37,9 +38,11 @@ window.addEventListener("DOMContentLoaded", () => {
   var modelArea = document.getElementById('modelArea');
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
+  // canvasの取得
+  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
+
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
-  //var posepass = '../static/pose/suneru.csv';
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
@@ -59,8 +62,27 @@ window.addEventListener("DOMContentLoaded", () => {
     update()
   })
 
+  // シーンの設定
+  const scene = new THREE.Scene()
+  sceneOption()
+
+  function sceneOption() {
+    // ライトの設定
+    const light = new THREE.DirectionalLight(0xffffff)
+    light.position.set(1, 1, 1).normalize()
+    scene.add(light)
+
+    // グリッドを表示
+    const gridHelper = new THREE.GridHelper(10, 10)
+    scene.add(gridHelper)
+    gridHelper.visible = true
+
+    // 座標軸を表示
+    const axesHelper = new THREE.AxesHelper(0.5)
+    scene.add(axesHelper)
+  }
+
   // レンダラーの設定
-  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
   const renderer = new THREE.WebGLRenderer({
     canvas: <HTMLCanvasElement>document.querySelector('#canvas'),
     antialias: true,
@@ -85,26 +107,6 @@ window.addEventListener("DOMContentLoaded", () => {
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
     controls.update()
-  }
-
-  // シーンの設定
-  const scene = new THREE.Scene()
-  sceneOption()
-
-  function sceneOption() {
-    // ライトの設定
-    const light = new THREE.DirectionalLight(0xffffff)
-    light.position.set(1, 1, 1).normalize()
-    scene.add(light)
-
-    // グリッドを表示
-    const gridHelper = new THREE.GridHelper(10, 10)
-    scene.add(gridHelper)
-    gridHelper.visible = true
-
-    // 座標軸を表示
-    const axesHelper = new THREE.AxesHelper(0.5)
-    scene.add(axesHelper)
   }
 
   // VRMの読み込み
