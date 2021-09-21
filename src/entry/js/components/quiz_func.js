@@ -165,7 +165,7 @@ const quiz = new Vue({
       this.selectQuiz = true
       this.quizNameOption = true
     },
-    ajaxGetRanking: async function () {
+    ajaxGetRanking: function () {
       var json_text = {
         trueCounter: this.trueCounter,
         playTime: this.resultTime
@@ -173,14 +173,14 @@ const quiz = new Vue({
       //JSONにエンコード
       var postMessage = JSON.stringify(json_text);
       let self = this;
-      await $.ajax("/quiz/ajax", {
+      $.ajax("/quiz/ajax", {
         type: "post",
         data: postMessage,
         dataType: "json",
       }).done(function (data) {
         console.log("Ajax通信 成功");
-        const getData= JSON.parse(data.values).rankingData
-        console.log(getData)
+        //const getData= JSON.parse(data.values).rankingData
+        //console.log(getData)
       }).fail(function (data) {
         console.log("Ajax通信 失敗");
       })
