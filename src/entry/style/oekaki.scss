@@ -1,0 +1,25 @@
+/* eraser icon */
+#eraser{
+  display: flex;
+  align-items: center;
+  transform: rotate(-45deg);
+}
+
+#rubber{
+  display: block;
+  width: 0.35rem;
+  height: 0.8rem;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 50% 0  0 50%;
+}
+
+#cover{
+  display: block;
+  width: 1.1rem;
+  height: 0.2rem;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.4rem 1px 0.4rem 0;
+}
