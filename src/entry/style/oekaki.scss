@@ -23,3 +23,53 @@
   border-color: black;
   border-width: 0.4rem 1px 0.4rem 0;
 }
+
+#oekakiMainArea{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin: 0 auto;
+  #modelArea{
+    width: fit-content;
+  }
+}
+
+#roomChoiceArea{
+  width: fit-content;
+  margin: auto;
+  color: $text-main;
+  #join_message{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 2rem 1rem;
+    form{
+      width: 8.5rem;
+      background-color: #ffffff;
+      padding: 1rem 1rem 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      hr{
+        margin: 0.5rem 0;
+        color: $border-gray;
+      }
+      div{
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+}
+/* mobileここまで */
