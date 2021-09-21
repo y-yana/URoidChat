@@ -140,6 +140,27 @@ $quiz-grid-shadow: 4px;
   }
 }
 
+#quizYourResultArea{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: $text-main;
+  #quizResultAndTime{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #quizReplayBtnArea{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin: 0.5rem auto 0;
+  }
+}
+
 /* mobileここから */
 @media screen and (max-width: 950px) {
   #quiz{

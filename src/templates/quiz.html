@@ -56,14 +56,20 @@
         </div>
       </template>
       <template v-if="yourResult">
-        <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
-        <p v-if="trueCounter == 0">全問不正解でした…</p>
-        <p v-if="0 < trueCounter && trueCounter < 10">10問中[[ trueCounter ]]問正解！</p>
-        <p v-if="trueCounter == 10">全問正解でした！</p>
-        <p v-if="resultTime">（[[ resultTime ]]秒）</p>
-        <button @click="replaySameQuiz">もう1度あそぶ</button>
-        <a :href="'https://twitter.com/share?url=URL&text='+info[selectQuizNum].quizNameJa+'クイズで10問中'+trueCounter+'問正解でした！&hashtags=URoidChat,技育展'"><img class="TwitterShareBtnCircle" src="../static/images/Twitter_Logo_WhiteOnBlue.png"></a>
-        <button @click="replayAnotherQuiz">別の問題</button>
+        <div id="quizYourResultArea">
+          <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
+          <div id="quizResultAndTime">
+            <p v-if="trueCounter == 0">全問不正解でした…</p>
+            <p v-if="0 < trueCounter && trueCounter < 10">10問中[[ trueCounter ]]問正解！</p>
+            <p v-if="trueCounter == 10">全問正解でした！</p>
+            <p v-if="resultTime">（[[ resultTime ]]秒）</p>
+          </div>
+          <div id="quizReplayBtnArea">
+            <button class="btnBase blueBtn" @click="replaySameQuiz">もう1度あそぶ</button>
+            <a :href="'https://twitter.com/share?url=URL&text='+info[selectQuizNum].quizNameJa+'クイズで10問中'+trueCounter+'問正解でした！&hashtags=URoidChat,技育展'"><img class="TwitterShareBtnCircle" src="../static/images/Twitter_Logo_WhiteOnBlue.png"></a>
+            <button class="btnBase whiteBtn" @click="replayAnotherQuiz">別の問題</button>
+          </div>
+        </div>
       </template>
     </div>
     <div id="optionShowArea">
