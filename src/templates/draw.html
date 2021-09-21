@@ -19,8 +19,7 @@
 </form>
 
 <!-- room選択画面に戻るボタン -->
-<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span
-        class="material-icons">arrow_back</span></button>
+<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span class="material-icons">arrow_back</span></button>
 
 <!-- モデル表示エリア -->
 <div id="modelArea">
@@ -323,6 +322,10 @@
             // 疑似的なページ遷移
             $('#roomChoiceArea').hide();
             $('#oekakiRoomArea').show();
+
+            // 戻るボタンの処理
+            $('#topMoveBtn').hide();
+            $('#leaveButton').show();
         }
     });
 </script>
