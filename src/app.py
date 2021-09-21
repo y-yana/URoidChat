@@ -52,6 +52,11 @@ def openingForm():
     AIname = getData['AIname'] #str
     vrmFile = getData['vrmFile'] #str
 
+    if len(yourName)!=0:
+        session['user_name'] = yourName
+    if len(AIname)!=0:
+        session['bot_name'] = AIname
+
     print(sound)
     print(yourName)
     print(AIname)
@@ -231,15 +236,22 @@ def shiritori_ajax():
 @app.route('/quiz/ajax/', methods=['POST'])
 def quiz_ajax():
     getMessage = request.get_json('postMessage')
+
     trueCounter = getMessage['trueCounter']
     playTime = getMessage['playTime']
 
+    quiz_name=getMessage['quizName']
+
+    print(quiz_name)
+
     #print(trueCounter)
     #print(round(playTime/1000, 2))
-    ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
+    rank=ranking(trueCounter,round(playTime/1000, 2),session['user_name'],quiz_name)
 
-    #return jsonify(values=json.dumps(return_json))
-    return ""
+    print(rank)
+
+    return jsonify(values=json.dumps(rank))
+    #return ""
 
 #お絵かき
 @socketio.event

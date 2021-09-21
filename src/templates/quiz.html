@@ -90,7 +90,16 @@
         </div>
       </template>
       <template v-if="resultRanking">
-        <p>ここにランキングを表示</p>
+        <div id="quizResultRanking">
+          <div class="quizRanking" v-bind:class="rankCheckClass(item.rank)" v-for="item in ranking" :key="item.rank">
+            <div>
+              <p class="rankNum">[[ item.rank ]]位</p>
+              <p>[[ item.name ]]</p>
+              <p>[[ item.trueNum ]]問</p>
+              <p>[[ item.time ]]秒</p>
+            </div>
+          </div>
+        </div>
       </template>
     </div>
   </div>

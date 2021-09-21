@@ -14,6 +14,7 @@ const quiz = new Vue({
     quizAnsShowControl: false,
     info: null,
     quiz: null,
+    ranking: null,
     quizNumArr: [],
     quizName: '',
     selectQuizNum: 0,
@@ -33,7 +34,10 @@ const quiz = new Vue({
     NationalFlagImg: 'America.png',
     timerStart: 0,
     timerEnd: 0,
-    resultTime: 0
+    resultTime: 0,
+    classGold: 'rankGold',
+    classSilver: 'rankSilver',
+    classCopper: 'rankCopper'
   },
   mounted() {
     axios
@@ -129,10 +133,12 @@ const quiz = new Vue({
     },
     replaySameQuiz: function () {
       this.pageMove_yourResult2askQuestion()
+      this.resetQuizPlayData()
       this.createQuiz(this.selectQuizNum)
     },
     replayAnotherQuiz: function () {
       this.pageMove_yourResult2selectQuiz()
+      this.resetQuizPlayData()
     },
     resetQuizPlayData: function () {
       this.questionNumUse = 0
@@ -165,25 +171,43 @@ const quiz = new Vue({
       this.selectQuiz = true
       this.quizNameOption = true
     },
-    ajaxGetRanking: async function () {
+    ajaxGetRanking: function () {
+      var trueCounterPost = this.trueCounter
+      var quizNamePost = this.info[this.selectQuizNum].quizName
       var json_text = {
-        trueCounter: this.trueCounter,
-        playTime: this.resultTime
+        trueCounter: trueCounterPost,
+        playTime: this.resultTime,
+        quizName: quizNamePost
       }
+      var num = this.resultTime / 1000
+      var ans = (Math.round(num * 100)) / 100
+      this.resultTime = ans
       //JSONにエンコード
       var postMessage = JSON.stringify(json_text);
       let self = this;
-      await $.ajax("/quiz/ajax", {
+      $.ajax("/quiz/ajax", {
         type: "post",
         data: postMessage,
         dataType: "json",
       }).done(function (data) {
         console.log("Ajax通信 成功");
-        const getData= JSON.parse(data.values).rankingData
-        console.log(getData)
+        const getData = JSON.parse(data.values)
+        self.ranking = getData
+        self.trueCounter = trueCounterPost
       }).fail(function (data) {
         console.log("Ajax通信 失敗");
       })
+    },
+    rankCheckClass: function (rank) {
+      if (rank === 1) {
+        return this.classGold;
+      } else if (rank === 2) {
+        return this.classSilver;
+      } else if (rank === 3) {
+        return this.classCopper;
+      } else {
+        return
+      }
     }
   }
 });
