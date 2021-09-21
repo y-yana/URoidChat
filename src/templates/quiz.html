@@ -62,7 +62,7 @@
         <p v-if="trueCounter == 10">全問正解でした！</p>
         <p v-if="resultTime">（[[ resultTime ]]秒）</p>
         <button @click="replaySameQuiz">もう1度あそぶ</button>
-        <a href="https://twitter.com/share?url=URL&text=本文&hashtags=ハッシュタグ">ツイートする</a>
+        <a :href="'https://twitter.com/share?url=URL&text='+info[selectQuizNum].quizNameJa+'クイズで10問中'+trueCounter+'問正解でした！&hashtags=URoidChat,技育展'"><img class="TwitterShareBtnCircle" src="../static/images/Twitter_Logo_WhiteOnBlue.png"></a>
         <button @click="replayAnotherQuiz">別の問題</button>
       </template>
     </div>

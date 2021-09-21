@@ -116,6 +116,13 @@ $quiz-green:#56D34C;
   color: $quiz-yellow;
 }
 
+/* Twitter Share Btn (円) */
+.TwitterShareBtnCircle{
+  width:  35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
 /* mobileここから */
 @media screen and (max-width: 950px) {
   .modelAndDialogue{
