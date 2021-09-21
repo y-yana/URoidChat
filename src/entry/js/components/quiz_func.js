@@ -170,8 +170,9 @@ const quiz = new Vue({
       this.quizNameOption = true
     },
     ajaxGetRanking: function () {
+      var trueCounterPost = this.trueCounter
       var json_text = {
-        trueCounter: this.trueCounter,
+        trueCounter: trueCounterPost,
         playTime: this.resultTime
       }
       //JSONにエンコード
@@ -185,9 +186,7 @@ const quiz = new Vue({
         console.log("Ajax通信 成功");
         const getData = JSON.parse(data.values)
         self.ranking = getData
-        //console.log(getData)
-        //console.log(getData[0])
-        //console.log(getData[0].rank)
+        self.trueCounter = trueCounterPost
       }).fail(function (data) {
         console.log("Ajax通信 失敗");
       })
