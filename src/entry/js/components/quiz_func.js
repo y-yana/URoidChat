@@ -14,6 +14,7 @@ const quiz = new Vue({
     quizAnsShowControl: false,
     info: null,
     quiz: null,
+    ranking: null,
     quizNumArr: [],
     quizName: '',
     selectQuizNum: 0,
@@ -33,7 +34,10 @@ const quiz = new Vue({
     NationalFlagImg: 'America.png',
     timerStart: 0,
     timerEnd: 0,
-    resultTime: 0
+    resultTime: 0,
+    classGold: 'rankGold',
+    classSilver: 'rankSilver',
+    classCopper: 'rankCopper'
   },
   mounted() {
     axios
@@ -179,11 +183,25 @@ const quiz = new Vue({
         dataType: "json",
       }).done(function (data) {
         console.log("Ajax通信 成功");
-        //const getData= JSON.parse(data.values).rankingData
+        const getData = JSON.parse(data.values)
+        self.ranking = getData
         //console.log(getData)
+        //console.log(getData[0])
+        //console.log(getData[0].rank)
       }).fail(function (data) {
         console.log("Ajax通信 失敗");
       })
+    },
+    rankCheckClass: function (rank) {
+      if (rank === 1) {
+        return this.classGold;
+      } else if (rank === 2) {
+        return this.classSilver;
+      } else if (rank === 3) {
+        return this.classCopper;
+      } else {
+        return
+      }
     }
   }
 });
