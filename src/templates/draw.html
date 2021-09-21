@@ -5,7 +5,7 @@
     <!-- ロゴ画像 -->
     <img src="../static/images/logo.png">
     <!-- room名&ニックネームの表示 -->
-    <div id="messageHeader" style='display: none;'>
+    <div id="messageHeader">
         <label class="roomLabel" id="selectRooms"></label>
         <!-- ここに現在のルーム内人数を表示 -->
         <!--<label class="roomLabel" id="nameBox">名前</label>
@@ -72,7 +72,7 @@
     </form>
 </div>
 
-<div id="oekakiRoomArea">
+<div id="oekakiRoomArea" style="display:none;">
     <div id="flexArea">
         <canvas id="oekakiCanvas" width="500" height="400"></canvas>
         <div class="container">
@@ -319,6 +319,10 @@
         function enterLabel() {
             isEnter = true;
             $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#roomNameInput").val());
+
+            // 疑似的なページ遷移
+            $('#roomChoiceArea').hide();
+            $('#oekakiRoomArea').show();
         }
     });
 </script>
