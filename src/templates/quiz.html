@@ -1,48 +1,98 @@
 {% extends "layout.html" %}{% block content %}
 
-<div id="quiz">
-  <div id="questionShowArea">
-    <template v-if="selectQuiz">
-      <p>好きなテーマを選んでね！</p>
-      <p>難易度：<span class="material-icons">star</span>〜<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></p>
-      <p>（かんたん）</p>
-      <p>（むずかしい）</p>
-    </template>
-    <template v-if="askQuestion">
-      <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
-      <p v-if="question">[[ question ]]</p>
-      <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg" width=150px>
-      <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
-      <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'" width=30px>
-      <button @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]</button>
-    </template>
-    <template v-if="yourResult">
-      <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
-      <p v-if="trueCounter == 0">全問不正解でした…</p>
-      <p v-if="0 < trueCounter && trueCounter < 10">10問中[[ trueCounter ]]問正解！</p>
-      <p v-if="trueCounter == 10">全問正解でした！</p>
-      <p v-if="resultTime">（[[ resultTime ]]秒）</p>
-      <button @click="replaySameQuiz">もう1度あそぶ</button>
-      <a href="https://twitter.com/share?url=URL&text=本文&hashtags=ハッシュタグ">ツイートする</a>
-      <button @click="replayAnotherQuiz">別の問題</button>
-    </template>
+<!-- オープニング -->
+<div id="opening">
+  <div id="openingContents">
+    <img src="../static/images/logo.png">
+    <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
   </div>
-  <div id="optionShowArea">
-    <template v-if="quizNameOption">
-      <button v-if="info" @click="createQuiz(0)">[[ info[0].quizNameJa ]]<span class="material-icons">star</span></button>
-      <button v-if="info" @click="createQuiz(1)">[[ info[1].quizNameJa ]]<span class="material-icons">star</span></button>
-      <button v-if="info" @click="createQuiz(2)">[[ info[2].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span></button>
-      <button v-if="info" @click="createQuiz(3)">[[ info[3].quizNameJa ]]<span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span></button>
-    </template>
-    <template v-if="quizAnswerOption">
-      <button v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
-      <button v-if="option2" @click="judgeSelectAnswer(2)" :disabled="optionBtnDisabled">[[ option2 ]]</button>
-      <button v-if="option3" @click="judgeSelectAnswer(3)" :disabled="optionBtnDisabled">[[ option3 ]]</button>
-      <button v-if="option4" @click="judgeSelectAnswer(4)" :disabled="optionBtnDisabled">[[ option4 ]]</button>
-    </template>
-    <template v-if="resultRanking">
-      <p>ここにランキングを表示</p>
-    </template>
+</div>
+
+<!-- ヘッダー -->
+<div id="header">
+  <img src="../static/images/logo.png">
+</div>
+
+<!-- topに戻るボタン -->
+<form class="back2topBtn" action="/top" method="POST">
+  <button type="submit"><span class="material-icons">arrow_back</span></button>
+</form>
+
+<div id="quizArea">
+  <!-- モデル表示エリア -->
+  <div id="modelArea">
+  </div>
+  <div id="quizMainArea">
+    <div id="questionShowArea">
+      <template v-if="selectQuiz">
+        <div id="selectQuizArea">
+          <p>好きなテーマを選んでね！</p>
+          <div id="quizDifficulyTeach">
+            <p>難易度：</p>
+            <div class="starFlex">
+              <span class="material-icons star">star</span>
+              <p>（かんたん）</p>
+            </div>
+            <p>〜</p>
+            <div class="starFlex">
+              <div id="threeStar">
+                <span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span>
+              </div>
+              <p>（むずかしい）</p>
+              </div>
+          </div>
+        </div>
+      </template>
+      <template v-if="askQuestion">
+        <div id="askQuestionArea">
+          <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
+          <p v-if="question">[[ question ]]</p>
+          <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg">
+          <div id="quizAnsNextBtnArea">
+            <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
+            <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'">
+            <button class="btnBase blueBtn" v-show="quizAnsShowControl" @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]<span class="material-icons">trending_flat</span></button>
+          </div>
+        </div>
+      </template>
+      <template v-if="yourResult">
+        <div id="quizYourResultArea">
+          <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>
+          <div id="quizResultAndTime">
+            <p v-if="trueCounter == 0">全問不正解でした…</p>
+            <p v-if="0 < trueCounter && trueCounter < 10">10問中[[ trueCounter ]]問正解！</p>
+            <p v-if="trueCounter == 10">全問正解でした！</p>
+            <p v-if="resultTime">（[[ resultTime ]]秒）</p>
+          </div>
+          <div id="quizReplayBtnArea">
+            <button class="btnBase blueBtn" @click="replaySameQuiz">もう1度あそぶ</button>
+            <a :href="'https://twitter.com/share?url=URL&text='+info[selectQuizNum].quizNameJa+'クイズで10問中'+trueCounter+'問正解でした！&hashtags=URoidChat,技育展'"><img class="TwitterShareBtnCircle" src="../static/images/Twitter_Logo_WhiteOnBlue.png"></a>
+            <button class="btnBase whiteBtn" @click="replayAnotherQuiz">別の問題</button>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div id="optionShowArea">
+      <template v-if="quizNameOption">
+        <div class="quizGrid">
+          <button class="quizGrid1 quizChoiceGrid" v-if="info" @click="createQuiz(0)"><span>[[ info[0].quizNameJa ]]</span><span class="material-icons star">star</span></button>
+          <button class="quizGrid2 quizChoiceGrid" v-if="info" @click="createQuiz(1)"><span>[[ info[1].quizNameJa ]]</span><span class="material-icons star">star</span></button>
+          <button class="quizGrid3 quizChoiceGrid" v-if="info" @click="createQuiz(2)"><span>[[ info[2].quizNameJa ]]</span><span><span class="material-icons star">star</span><span class="material-icons star">star</span></span></button>
+          <button class="quizGrid4 quizChoiceGrid" v-if="info" @click="createQuiz(3)"><span>[[ info[3].quizNameJa ]]</span><span><span class="material-icons star">star</span><span class="material-icons star">star</span><span class="material-icons star">star</span></span></button>
+        </div>
+      </template>
+      <template v-if="quizAnswerOption">
+        <div class="quizGrid">
+          <button class="quizGrid1 quizAnswerOptionGrid" v-if="option1" @click="judgeSelectAnswer(1)" :disabled="optionBtnDisabled">[[ option1 ]]</button>
+          <button class="quizGrid2 quizAnswerOptionGrid" v-if="option2" @click="judgeSelectAnswer(2)" :disabled="optionBtnDisabled">[[ option2 ]]</button>
+          <button class="quizGrid3 quizAnswerOptionGrid" v-if="option3" @click="judgeSelectAnswer(3)" :disabled="optionBtnDisabled">[[ option3 ]]</button>
+          <button class="quizGrid4 quizAnswerOptionGrid" v-if="option4" @click="judgeSelectAnswer(4)" :disabled="optionBtnDisabled">[[ option4 ]]</button>
+        </div>
+      </template>
+      <template v-if="resultRanking">
+        <p>ここにランキングを表示</p>
+      </template>
+    </div>
   </div>
 </div>
 

@@ -30,35 +30,33 @@ window.addEventListener("DOMContentLoaded", () => {
   var modelArea = document.getElementById('modelArea');
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
-
   // canvasの取得
-var canvas = <HTMLCanvasElement>document.getElementById('canvas');
+  var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
-  //var posepass = '../static/pose/suneru.csv';
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
-    // シーンの設定
-    const scene = new THREE.Scene()
-    sceneOption()
+  // シーンの設定
+  const scene = new THREE.Scene()
+  sceneOption()
 
-    function sceneOption() {
-      // ライトの設定
-      const light = new THREE.DirectionalLight(0xffffff)
-      light.position.set(1, 1, 1).normalize()
-      scene.add(light)
+  function sceneOption() {
+    // ライトの設定
+    const light = new THREE.DirectionalLight(0xffffff)
+    light.position.set(1, 1, 1).normalize()
+    scene.add(light)
 
-      // グリッドを表示
-      const gridHelper = new THREE.GridHelper(10, 10)
-      scene.add(gridHelper)
-      gridHelper.visible = true
+    // グリッドを表示
+    const gridHelper = new THREE.GridHelper(10, 10)
+    scene.add(gridHelper)
+    gridHelper.visible = true
 
-      // 座標軸を表示
-      const axesHelper = new THREE.AxesHelper(0.5)
-      scene.add(axesHelper)
-    }
+    // 座標軸を表示
+    const axesHelper = new THREE.AxesHelper(0.5)
+    scene.add(axesHelper)
+  }
 
   // レンダラーの設定
   const renderer = new THREE.WebGLRenderer({
@@ -81,10 +79,10 @@ var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // カメラコントロールの設定
   //if (getWidth > 950) {
-    const controls = new OrbitControls(camera, renderer.domElement)
-    controls.target.set(0, 0.85, 0)
-    controls.screenSpacePanning = true
-    controls.update()
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.target.set(0, 0.85, 0)
+  controls.screenSpacePanning = true
+  controls.update()
   //}
 
   // VRMの読み込み

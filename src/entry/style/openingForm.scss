@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Gruppo&display=swap");
+
+#openingForm {
+  width: 100vw;
+  height: 100vh;
+  z-index: 9000;
+  position: fixed;
+
+  #openingFormContents {
+    opacity: 0;
+    transition: 1500ms;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+    &.is-fadein {
+      opacity: 1;
+    }
+
+    img {
+      display: block;
+      width: 22rem;
+      margin: 0 auto;
+    }
+
+    #openingFormText {
+      width: fit-content;
+      display: flex;
+      font-family: "Gruppo", cursive;
+      color: $logo-main-color;
+      font-size: 1.7rem;
+      gap: 0 1rem;
+      margin: 0 auto;
+    }
+
+    #openingForm {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      margin: 5rem auto;
+      color: $logo-main-color;
+
+      #openingFormMain {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        #soundCheckbox {
+          width: fit-content;
+          margin: 0 auto;
+        }
+
+        #openingBtn {
+          width: fit-content;
+          margin: 0 auto;
+        }
+      }
+
+      #openingCustomizeArea {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        background-color: #ffffffd5;
+        padding: 2rem 4rem ;
+        border-radius: 10px;
+
+        #openingFormCustomize {
+          width: fit-content;
+          margin: 0 auto;
+        }
+
+        #openingNameArea {
+          width: max-content;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
+          .openingInputText {
+            width: fit-content;
+            display: flex;
+            flex-direction: row;
+            gap: 0.8rem;
+            margin: 0 auto;
+            align-items: center;
+
+            label{
+              width: fit-content;
+              margin: auto;
+            }
+
+            input {
+              background-color: #ffffff;
+            }
+          }
+
+          #AInameInput {
+            margin: 0 0 0 auto;
+          }
+        }
+
+        #openingVRM {
+          width: fit-content;
+          border: 2px solid $logo-main-color;
+          background-color: #ffffff;
+          border-radius: 25px;
+          margin: 0 auto;
+          padding: 0.5rem 1.3rem;
+
+          #vrmChoiceBtn {
+            width: fit-content;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+          }
+
+          #upFile {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #openingForm {
+    #openingFormContents {
+      top: 15%;
+
+      img {
+        width: 15rem;
+      }
+      #openingFormText {
+        font-size: 1.3rem;
+        gap: 0 0.8rem;
+      }
+
+      #openingForm {
+        gap: 4rem;
+        margin: 3rem auto;
+
+        #openingFormMain {
+          gap: 3rem;
+
+          #soundCheckbox {
+            margin: 0 auto;
+          }
+
+          #openingBtn {
+            margin: 0 auto;
+          }
+        }
+
+        #openingCustomizeArea {
+          gap: 2rem;
+          padding: 2rem 3rem 2.5rem;
+
+          #openingFormCustomize {
+            margin: 0 auto;
+          }
+
+          #openingNameArea {
+            gap: 2.3rem;
+
+            .openingInputText {
+              flex-direction: column;
+              gap: 0.5rem;
+
+              label{
+                margin: 0 auto 0 0;
+              }
+            }
+
+            #AInameInput {
+            margin: 0 auto;
+            }
+          }
+
+          #openingVRM {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+/* mobileここまで */

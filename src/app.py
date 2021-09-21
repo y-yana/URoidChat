@@ -14,6 +14,7 @@ from engineio.payload import Payload
 from negaposi.negaposi import negaposi
 from python.image_transform import image_transform
 from python.shiritori import shiritori
+from python.ranking_quiz import ranking
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
@@ -41,6 +42,23 @@ def index():
 @app.route("/top", methods=["POST"])
 def move_top():
     return render_template("index.html", pageTitle='TopPage')
+
+
+@app.route('/opening', methods=['POST'])
+def openingForm():
+    getData = request.get_json('postFormData')
+    sound = getData['sound']  #boolean
+    yourName = getData['yourName'] #str
+    AIname = getData['AIname'] #str
+    vrmFile = getData['vrmFile'] #str
+
+    print(sound)
+    print(yourName)
+    print(AIname)
+    print(vrmFile)
+
+    return ""
+
 
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
@@ -147,13 +165,26 @@ if not os.path.isdir(SAVE_DIR):
 def send_js(path):
     return send_from_directory(SAVE_DIR, path)
 
+
+    
+
 @app.route('/img', methods=['POST'])
 def upload_img():
     if request.files['image']:
         # 画像として読み込み
         stream = request.files['image'].stream
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
+      
         img = cv2.imdecode(img_array, 1)
+
+        w=img.shape[1]
+
+        if w>300:
+            w=300
+
+        img = cv2.resize(img, dsize=(w, int(w * img.shape[0] / img.shape[1])))
+
+        
 
 
 
@@ -162,8 +193,8 @@ def upload_img():
         dt_now='image'
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
         cv2.imwrite(save_path, img)
-        print("save", save_path)
-        print("ok----------------")
+        #print("save", save_path)
+      
 
         image_transform(save_path)
 
@@ -171,59 +202,44 @@ def upload_img():
 
 @app.route('/shiritori/ajax/', methods=['POST'])
 def shiritori_ajax():
-    ans = request.get_data('postMessage')
-    getMessage = ans.decode()
-    print(getMessage)
-    res_shiritori=shiritori(getMessage)
-    print(res_shiritori)
+    """ans = request.get_data('postMessage')
+    getMessage = ans.decode()"""
+    getMessage = request.get_json('postMessage')
+    word = getMessage['word']
+    defi = getMessage['difficult']
 
-    '''
-    ・ユーザーが入力した単語の最後の1文字(ひらがな)を投げてます
-    ・受け取った文字から始まる単語をひらがなで返してほしいです
-    ・AIが返した単語の重複チェックやAIが負けた場合の処理はフロント側で実装する予定です(たぶん)(がんばる)
-    '''
-    return res_shiritori
+    #print(word,defi)
+
+    #10,8,5
+    #est=0.5
+    res_shiritori,end_str=shiritori(word,defi)
+
+
+    #print(res_shiritori,defi)
+
+    #return res_shiritori
+    return_json = {
+        "res_shiritori": res_shiritori,
+        "endstr":end_str
+    }
+    #print(return_json)
+
+    return jsonify(values=json.dumps(return_json))
+
 
 
 @app.route('/quiz/ajax/', methods=['POST'])
 def quiz_ajax():
-    '''
-    受信するjsonデータ↓
-    {
-        trueCounter: this.trueCounter, // 正解数(0~10)
-        playTime: this.resultTime //かかった時間(単位はミリ秒)
-    }
-    ・かかった時間は単位を秒に変えて、小数点第三位を四捨五入して欲しいです
-    ・「正解数＞かかった時間」の優先度で順位のソート＆ jsonの書き換えをお願いします
-    '''
-
-    # test用なので消して大丈夫です
-    return_json = {
-        "rankingData": 'Ranking!!'
-    }
-
-    '''
-    ・jsonの保存先は、src/static/json の中で、フォーマットは↓のようにお願いします
-    [
-        {"id": 1, "name": "うどん", "trueNum": 10, "time": 32.12},
-        {"id": 2, "name": "そば", "trueNum": 10, "time": 33.45},
-    〜中間省略〜
-        {"id": 7, "name": "らーめん", "trueNum": 8, "time": 46.38}
-    ]
-    id = 順位
-    name = ニックネーム
-    trueNum = 正解数
-    time = かかった時間
-    '''
-
     getMessage = request.get_json('postMessage')
     trueCounter = getMessage['trueCounter']
     playTime = getMessage['playTime']
 
-    print(trueCounter)
-    print(playTime)
+    #print(trueCounter)
+    #print(round(playTime/1000, 2))
+    ranking(trueCounter,round(playTime/1000, 2),session['user_name'])
 
-    return jsonify(values=json.dumps(return_json))
+    #return jsonify(values=json.dumps(return_json))
+    return ""
 
 #お絵かき
 @socketio.event
@@ -239,9 +255,8 @@ def member_list(message):
 
 @socketio.event
 def broadcast_event(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
-         {'data': message['name'] + ' : ' + message['data']}, to=message['room'])
+         {'data': session['user_name'] + ' : ' + message['data']}, to=message['room'])
 
 
 @socketio.event
@@ -257,9 +272,8 @@ def clear_room_board(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
-    session['receive_count'] = session.get('receive_count', 0) + 1
     emit('my_response',
-         {'data': message['name']+'さんが入室しました'}, to=message['room'])
+         {'data': session['user_name']+'さんが入室しました'}, to=message['room'])
 #お絵描きここまで
 
 if __name__ == '__main__':
