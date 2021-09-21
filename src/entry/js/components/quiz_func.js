@@ -175,6 +175,9 @@ const quiz = new Vue({
         trueCounter: trueCounterPost,
         playTime: this.resultTime
       }
+      var num = this.resultTime / 1000
+      var ans = (Math.round(num * 100)) / 100
+      this.resultTime = ans
       //JSONにエンコード
       var postMessage = JSON.stringify(json_text);
       let self = this;
