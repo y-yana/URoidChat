@@ -133,10 +133,12 @@ const quiz = new Vue({
     },
     replaySameQuiz: function () {
       this.pageMove_yourResult2askQuestion()
+      this.resetQuizPlayData()
       this.createQuiz(this.selectQuizNum)
     },
     replayAnotherQuiz: function () {
       this.pageMove_yourResult2selectQuiz()
+      this.resetQuizPlayData()
     },
     resetQuizPlayData: function () {
       this.questionNumUse = 0

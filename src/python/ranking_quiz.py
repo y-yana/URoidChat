@@ -1,11 +1,13 @@
 
 import json
-def ranking(trueCounter,playTime,name):
-    json_open = open('./static/json/quiz_ranking.json', 'r',encoding="utf-8")
+def ranking(trueCounter,playTime,name,quiz_name):
+    json_open = open(f'./static/json/quiz_ranking_{quiz_name}.json', 'r',encoding="utf-8")
     json_load = json.load(json_open)
 
     d={'rank':"NULL",'name':name,'trueNum':trueCounter,'time':playTime}
     json_load.append(d)
+    print(trueCounter)
+    print(name)
 
     #print(json_load)
 
@@ -17,7 +19,7 @@ def ranking(trueCounter,playTime,name):
     rank=rank[:7]
 
     """#print(json_load)"""
-    with open('./static/json/quiz_ranking.json', 'w') as f:
+    with open(f'./static/json/quiz_ranking_{quiz_name}.json', 'w') as f:
         json.dump(rank, f, indent=4)
 
     return rank
