@@ -33,9 +33,10 @@
     width: fit-content;
     display: flex;
     gap: 1rem;
+    margin: 0 auto;
 
     img{
-      width: 16rem;
+      width: calc(100vw*(2/13));
     }
   }
 
