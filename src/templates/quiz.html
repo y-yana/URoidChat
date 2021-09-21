@@ -44,12 +44,16 @@
         </div>
       </template>
       <template v-if="askQuestion">
-        <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
-        <p v-if="question">[[ question ]]</p>
-        <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg" width=150px>
-        <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
-        <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'" width=30px>
-        <button @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]</button>
+        <div id="askQuestionArea">
+          <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
+          <p v-if="question">[[ question ]]</p>
+          <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg">
+          <div id="quizAnsNextBtnArea">
+            <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
+            <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'">
+            <button class="btnBase blueBtn" v-show="quizAnsShowControl" @click="nextQuestion" :disabled="nextQuizBtnDisabled">[[ nextQuestionBtnText ]]<span class="material-icons">trending_flat</span></button>
+          </div>
+        </div>
       </template>
       <template v-if="yourResult">
         <p v-if="info">[[ info[selectQuizNum].quizNameJa ]]クイズ</p>

@@ -105,6 +105,41 @@ $quiz-grid-shadow: 4px;
   text-align: center;
 }
 
+#askQuestionArea{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: $text-main;
+  p{
+    width: fit-content;
+  }
+  img{
+    width: 150px;
+    margin: 0 auto;
+  }
+  #quizAnsNextBtnArea{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin: 0.5rem auto 0;
+    p{
+      width: fit-content;
+    }
+    img{
+      object-fit: cover;
+      width: 30px;
+      height: 30px;
+    }
+    button{
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
+
 /* mobileここから */
 @media screen and (max-width: 950px) {
   #quiz{
