@@ -120,6 +120,9 @@
             }
             if (cb)
                 cb();
+            // チャット欄の自動スクロール機能
+            var container = document.getElementById('allChatLogs');
+            container.scrollTop = container.scrollHeight;
         });
 
         //画面幅によって黒板の横幅を動的に変更する
