@@ -24,6 +24,20 @@
   border-width: 0.35rem 1px 0.35rem 0;
 }
 
+#messageHeader{
+  width: fit-content;
+  margin-right: 3rem;
+  #selectRooms{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    color: $logo-main-color;
+  }
+}
+
 #oekakiMainArea{
   width: fit-content;
   display: flex;
@@ -87,7 +101,7 @@
   border: 6px solid $text-main;
 }
 #oekakiChatArea{
-  width: calc(100vw*(2/8));
+  width: calc(100vw*(1/5));
 }
 #selectArea{
   width: fit-content;

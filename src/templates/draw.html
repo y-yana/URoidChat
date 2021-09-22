@@ -308,7 +308,9 @@
         });
         function enterLabel() {
             isEnter = true;
-            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#roomNameInput").val());
+
+            var roomName = $("#roomNameInput").val();
+            $("#selectRooms").append('<span class="material-icons">sensor_door</span><p>' + roomName + '</p>');
 
             // 疑似的なページ遷移
             $('#roomChoiceArea').hide();
