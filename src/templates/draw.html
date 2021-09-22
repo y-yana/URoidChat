@@ -50,7 +50,9 @@
 
     <div id="oekakiRoomArea" style="display:none;">
         <div id="flexArea">
-            <canvas id="oekakiCanvas" width="500" height="400"></canvas>
+            <div id="oekakiCanvasArea">
+                <canvas id="oekakiCanvas" width="500" height="400"></canvas>
+            </div>
             <div id="oekakiChatArea" class="container">
                 <form class="form-inline">
                     <!--<div id="messageHeader">
@@ -64,8 +66,7 @@
                 </form>
                 <form id="castmessage" class="chatSubmitAreaComponent" method="POST" action='#'>
                     <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
-                    <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span
-                            class="material-icons">send</span></button>
+                    <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span class="material-icons">send</span></button>
                 </form>
             </div>
         </div>
@@ -111,7 +112,12 @@
             var sendTime = new Date();
             var Hour = sendTime.getHours();
             var Min = sendTime.getMinutes();
-            $('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            //$('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            if(msg.name == ''){
+                $('#log').append('<div class="chatNotificationComponent"><div class="chatLogComponent">' + msg.data + '</div></div>');
+            }else{
+                $('#log').append('<div class="oekakiChatMessage oekakiChatGetMessage"><div class="oekakiChatName">' + msg.name + '</div><div class="oekakiChatAndTime oekakiChatAndTimeGet"><div class="speechBalloonBase getMessageComponent"><div class="chatLogComponent">' + msg.data + '</div></div><div class="oekakiChatTime">'+ Hour + ':' + Min +'</div></div></div>');
+            }
             if (cb)
                 cb();
         });
