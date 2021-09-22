@@ -18,11 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
   // レスポンシブ対応
   if (getWidth <= 950) {
     // 比率計算(mobile)
-    newWidth = Math.floor(getWidth * 0.8)
+    newWidth = Math.floor(getWidth * 0.3)
     newHeight = Math.floor(getHeight * 0.8)
   } else {
     // 比率計算(desktop)
-    newWidth = Math.floor(getWidth * (2 / 5))
+    newWidth = Math.floor(getWidth * (1 / 5))
     newHeight = Math.floor(getHeight * (5 / 7))
   }
 

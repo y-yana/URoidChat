@@ -28,15 +28,15 @@
   width: fit-content;
   display: flex;
   flex-direction: row;
-  gap: 3rem;
-  margin: 0 auto;
+  gap: 1rem;
+  margin: 2rem auto 0;
   #modelArea{
     width: fit-content;
   }
 }
 
 #roomChoiceArea{
-  width: fit-content;
+  width: calc(100vw*(5/8));
   margin: auto;
   color: $text-main;
   #join_message{
@@ -45,9 +45,9 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    gap: 2rem 1rem;
+    gap: 1.5rem 0;
     form{
-      width: 8.5rem;
+      width: calc(100vw*(1/7));
       background-color: #ffffff;
       padding: 1rem 1rem 0.5rem;
       border-radius: 10px;
