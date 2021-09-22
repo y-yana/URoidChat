@@ -113,6 +113,9 @@
             var Hour = sendTime.getHours();
             var Min = sendTime.getMinutes();
             //$('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            if(Min < 10){
+                Min = '0' + Min;
+            }
             if(msg.name == ''){
                 $('#log').append('<div class="chatNotificationComponent"><div class="chatLogComponent">' + msg.data + '</div></div>');
             }else{
