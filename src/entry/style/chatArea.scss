@@ -8,6 +8,11 @@
     width: 25rem;
     position: relative;
     overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display:none;
+    }
     #chatLogs{
       min-height: 93%;
       display: flex;

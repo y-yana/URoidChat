@@ -61,6 +61,11 @@
   margin: 0 auto;
   padding: 0 1.2rem;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display:none;
+  }
 }
 
 .shiritoriReplay{

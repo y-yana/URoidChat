@@ -140,6 +140,11 @@
 #allChatLogs{
   height: 30rem;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display:none;
+  }
 }
 #log{
   min-height: fit-content;
