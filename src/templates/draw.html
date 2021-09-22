@@ -51,7 +51,7 @@
     <div id="oekakiRoomArea" style="display:none;">
         <div id="flexArea">
             <canvas id="oekakiCanvas" width="500" height="400"></canvas>
-            <div class="container">
+            <div id="oekakiChatArea" class="container">
                 <form class="form-inline">
                     <!--<div id="messageHeader">
                         <label class="roomLabel" id="selectRooms">部屋</label>
@@ -79,12 +79,12 @@
                     <li style="background-color:#1A54D6"></li>
                 </ul>
                 <div id="button">
-                    <button id="save"><span class="material-icons">file_download</span></button>
-                    <button id="clear"><span class="material-icons">delete</span></button>
-                    <button id="eraser"><span id="rubber"></span><span id="cover"></span></button>
                     <button id="large">大</button>
                     <button id="medium">中</button>
                     <button id="small">小</button>
+                    <button id="eraser"><span id="rubber"></span><span id="cover"></span></button>
+                    <button id="save"><span class="material-icons">file_download</span></button>
+                    <button id="clear"><span class="material-icons">delete</span></button>
                 </div>
             </div>
         </div>
@@ -117,9 +117,9 @@
 
         //画面幅によって黒板の横幅を動的に変更する
         if (window.innerWidth < 950) {
-            document.getElementById("#oekakiCanvas").width = 300;
-            document.getElementById("#oekakiCanvas").height = 400;
-            document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
+            //document.getElementById("#oekakiCanvas").width = 300;
+            //document.getElementById("#oekakiCanvas").height = 400;
+            //document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
         }
 
         //入室
