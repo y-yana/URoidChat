@@ -62,7 +62,7 @@
                         <div id="log"></div>
                     </div>
                 </form>
-                <form id="castmessage" method="POST" action='#'>
+                <form id="castmessage" class="chatSubmitAreaComponent" method="POST" action='#'>
                     <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
                     <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span
                             class="material-icons">send</span></button>
@@ -103,7 +103,8 @@
         var socket = io();
 
         socket.on('connect', function () {
-            socket.emit('my_event', { data: 'I\'m connected!' });
+            //socket.emit('my_event', { data: 'I\'m connected!' });
+            socket.emit(console.log('I\'m connected!'));
         });
 
         socket.on('my_response', function (msg, cb) {

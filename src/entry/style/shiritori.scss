@@ -63,21 +63,6 @@
   overflow: scroll;
 }
 
-.shiritoriSubmitArea{
-  width: fit-content;
-  max-width: fit-content;
-  display: flex;
-  background-color: #ffffff;
-  border-radius: 5rem;
-  padding: 0.5rem 1.3rem;
-  margin: 0.8rem auto 0;
-  gap: 1rem;
-
-  button{
-    color: $logo-main-color;
-  }
-}
-
 .shiritoriReplay{
   width: fit-content;
   height: fit-content;
