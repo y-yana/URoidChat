@@ -171,7 +171,7 @@ def send_js(path):
     return send_from_directory(SAVE_DIR, path)
 
 
-    
+
 
 @app.route('/img', methods=['POST'])
 def upload_img():
@@ -179,7 +179,7 @@ def upload_img():
         # 画像として読み込み
         stream = request.files['image'].stream
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
-      
+
         img = cv2.imdecode(img_array, 1)
 
         w=img.shape[1]
@@ -189,7 +189,7 @@ def upload_img():
 
         img = cv2.resize(img, dsize=(w, int(w * img.shape[0] / img.shape[1])))
 
-        
+
 
 
 
@@ -199,7 +199,7 @@ def upload_img():
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
         cv2.imwrite(save_path, img)
         #print("save", save_path)
-      
+
 
         image_transform(save_path)
 
@@ -263,7 +263,7 @@ def my_event(message):
 @socketio.event
 def broadcast_event(message):
     emit('my_response',
-         {'data': session['user_name'] + ' : ' + message['data']}, to=message['room'])
+        {'name': session['user_name'], 'data': message['data']}, to=message['room'])
 
 
 @socketio.event
@@ -280,7 +280,7 @@ def clear_room_board(message):
 def join(message):
     join_room(message['room'])
     emit('my_response',
-         {'data': session['user_name']+'さんが入室しました'}, to=message['room'])
+        {'name': '', 'data': session['user_name']+'さんが入室しました'}, to=message['room'])
 #お絵描きここまで
 
 if __name__ == '__main__':

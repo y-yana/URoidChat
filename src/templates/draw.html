@@ -5,7 +5,7 @@
     <!-- ロゴ画像 -->
     <img src="../static/images/logo.png">
     <!-- room名&ニックネームの表示 -->
-    <div id="messageHeader" style='display: none;'>
+    <div id="messageHeader">
         <label class="roomLabel" id="selectRooms"></label>
         <!-- ここに現在のルーム内人数を表示 -->
         <!--<label class="roomLabel" id="nameBox">名前</label>
@@ -14,101 +14,79 @@
 </div>
 
 <!-- topに戻るボタン -->
-<form id='topMoveBtn' action="/top" method="POST">
+<form id='topMoveBtn' class="back2topBtn" action="/top" method="POST">
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
 <!-- room選択画面に戻るボタン -->
-<button type="submit" class="btn btn-primary" id="leaveButton" style='display: none;'><span
-        class="material-icons">arrow_back</span></button>
+<button type="submit" class="back2topBtn btn btn-primary" id="leaveButton" style='display: none;'><span class="material-icons">arrow_back</span></button>
 
-<!-- モデル表示エリア -->
-<div id="modelArea">
-</div>
-
-<div id="roomChoiceArea">
-    <!--<form class="form-inline" id="roukaForm">
-        <div class="form-group">
-            <label class="roomLabel" for="rooms">ルーム名</label>
-            <select class="form-control" id="rooms">
-                <option value="room1">3-1</option>
-                <option value="room2">3-2</option>
-                <option value="room3">3-3</option>
-                <option value="room4">3-4</option>
-                <option value="room5">3-5</option>
-                <option value="room6">2-1</option>
-                <option value="room7">2-2</option>
-                <option value="room8">2-3</option>
-                <option value="room9">2-4</option>
-                <option value="room10">2-5</option>
-                <option value="room11">1-1</option>
-                <option value="room12">1-2</option>
-                <option value="room13">1-3</option>
-                <option value="room14">1-4</option>
-                <option value="room15">1-5</option>
-            </select>
-            <span id="nameAreaForm">
-                <label class="nameLabel" for="nameForm">ニックネーム</label>
-                <input type="text" class="form-control" id="nameForm">
-            </span>
-        </div>
-        <button type="submit" class="btn btn-primary" id="enterTheRoom"><span class="material-icons">login</span>入室する</button>
-    </form>-->
-
-    <div id=join_message>
-        <form v-bind:id=item.id method="POST" action='#' onsubmit="return false;" v-for="item in roomData" :key="item.roomName">
-            <p>[[ item.roomName ]]</p>
-            <p>
-                <span class="material-icons">group</span>
-                <!-- ここにroomの人数を表示 -->
-            </p>
-            <button type="submit" @click="sendVue(item.roomName)"><span class="material-icons">login</span></button>
-        </form>
+<!-- main area -->
+<div id="oekakiMainArea">
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
     </div>
-    <!--見えないform-->
-    <form id='join_form' method="POST" action='#' style="display:none;">
-        <input type="text" id="roomNameInput">
-        <button id="roomSubmit"></button>
-    </form>
-</div>
 
-<div id="oekakiRoomArea">
-    <div id="flexArea">
-        <canvas id="oekakiCanvas" width="500" height="400"></canvas>
-        <div class="container">
-            <form class="form-inline">
-                <!--<div id="messageHeader">
-                    <label class="roomLabel" id="selectRooms">部屋</label>
-                    <label class="roomLabel" id="nameBox">名前</label>
-                    <label class="roomMember" id="room">
-                </div>-->
-                <div id="allChatLogs">
-                    <div id="log"></div>
+    <div id="roomChoiceArea">
+        <div id="join_message">
+            <form v-bind:id=item.id method="POST" action='#' onsubmit="return false;" v-for="item in roomData" :key="item.roomName">
+                <p>[[ item.roomName ]]</p>
+                <hr>
+                <div>
+                    <p>
+                        <span class="material-icons">group</span>
+                        <!-- ここにroomの人数を表示 -->
+                    </p>
+                    <button type="submit" @click="sendVue(item.roomName)"><span class="material-icons">login</span></button>
                 </div>
             </form>
-            <form id="castmessage" method="POST" action='#'>
-                <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
-                <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span
-                        class="material-icons">send</span></button>
-            </form>
         </div>
+        <!--見えないform-->
+        <form id='join_form' method="POST" action='#' style="display:none;">
+            <input type="text" id="roomNameInput">
+            <button id="roomSubmit"></button>
+        </form>
     </div>
-    <div id="selectArea">
-        <div id="selectAreaContents">
-            <ul>
-                <li style="background-color:#D61A6A"></li>
-                <li style="background-color:#E68D13"></li>
-                <li style="background-color:#F8F13B"></li>
-                <li style="background-color:#18D37D"></li>
-                <li style="background-color:#1A54D6"></li>
-            </ul>
-            <div id="button">
-                <button id="save"><span class="material-icons">file_download</span></button>
-                <button id="clear"><span class="material-icons">delete</span></button>
-                <button id="eraser"><img id="image" src="./static/images/eraser.png" alt="" title=""></button>
-                <button id="large">大</button>
-                <button id="medium">中</button>
-                <button id="small">小</button>
+
+    <div id="oekakiRoomArea" style="display:none;">
+        <div id="flexArea">
+            <div id="oekakiCanvasArea">
+                <canvas id="oekakiCanvas" width="500" height="400"></canvas>
+            </div>
+            <div id="oekakiChatArea" class="container">
+                <form class="form-inline">
+                    <!--<div id="messageHeader">
+                        <label class="roomLabel" id="selectRooms">部屋</label>
+                        <label class="roomLabel" id="nameBox">名前</label>
+                        <label class="roomMember" id="room">
+                    </div>-->
+                    <div id="allChatLogs">
+                        <div id="log"></div>
+                    </div>
+                </form>
+                <form id="castmessage" class="chatSubmitAreaComponent" method="POST" action='#'>
+                    <input type="text" name="broadcast_data" id="msg_data" placeholder="メッセージを入力">
+                    <button type="submit" class="btn btn-primary" id="sendButton" value="Broadcast"><span class="material-icons">send</span></button>
+                </form>
+            </div>
+        </div>
+        <div id="selectArea">
+            <div id="selectAreaContents">
+                <ul>
+                    <li style="background-color:#D61A6A"></li>
+                    <li style="background-color:#E68D13"></li>
+                    <li style="background-color:#F8F13B"></li>
+                    <li style="background-color:#18D37D"></li>
+                    <li style="background-color:#1A54D6"></li>
+                </ul>
+                <div id="button">
+                    <button id="large">大</button>
+                    <button id="medium">中</button>
+                    <button id="small">小</button>
+                    <button id="eraser"><span id="rubber"></span><span id="cover"></span></button>
+                    <button id="save"><span class="material-icons">file_download</span></button>
+                    <button id="clear"><span class="material-icons">delete</span></button>
+                </div>
             </div>
         </div>
     </div>
@@ -126,23 +104,35 @@
         var socket = io();
 
         socket.on('connect', function () {
-            socket.emit('my_event', { data: 'I\'m connected!' });
+            //socket.emit('my_event', { data: 'I\'m connected!' });
+            socket.emit(console.log('I\'m connected!'));
         });
 
         socket.on('my_response', function (msg, cb) {
             var sendTime = new Date();
             var Hour = sendTime.getHours();
             var Min = sendTime.getMinutes();
-            $('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            //$('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            if(Min < 10){
+                Min = '0' + Min;
+            }
+            if(msg.name == ''){
+                $('#log').append('<div class="chatNotificationComponent"><div class="chatLogComponent">' + msg.data + '</div></div>');
+            }else{
+                $('#log').append('<div class="oekakiChatMessage oekakiChatGetMessage"><div class="oekakiChatName">' + msg.name + '</div><div class="oekakiChatAndTime oekakiChatAndTimeGet"><div class="speechBalloonBase getMessageComponent"><div class="chatLogComponent">' + msg.data + '</div></div><div class="oekakiChatTime">'+ Hour + ':' + Min +'</div></div></div>');
+            }
             if (cb)
                 cb();
+            // チャット欄の自動スクロール機能
+            var container = document.getElementById('allChatLogs');
+            container.scrollTop = container.scrollHeight;
         });
 
         //画面幅によって黒板の横幅を動的に変更する
         if (window.innerWidth < 950) {
-            document.getElementById("#oekakiCanvas").width = 300;
-            document.getElementById("#oekakiCanvas").height = 400;
-            document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
+            //document.getElementById("#oekakiCanvas").width = 300;
+            //document.getElementById("#oekakiCanvas").height = 400;
+            //document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
         }
 
         //入室
@@ -318,7 +308,17 @@
         });
         function enterLabel() {
             isEnter = true;
-            $("#selectRooms").append('<span class="material-icons">sensor_door</span>' + $("#roomNameInput").val());
+
+            var roomName = $("#roomNameInput").val();
+            $("#selectRooms").append('<span class="material-icons">sensor_door</span><p>' + roomName + '</p>');
+
+            // 疑似的なページ遷移
+            $('#roomChoiceArea').hide();
+            $('#oekakiRoomArea').show();
+
+            // 戻るボタンの処理
+            $('#topMoveBtn').hide();
+            $('#leaveButton').show();
         }
     });
 </script>
