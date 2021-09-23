@@ -11,7 +11,6 @@ module.exports = {
         'quiz': './src/entry/js/pages/quiz.js',
         'nigaoe': './src/entry/js/pages/nigaoe.js',
         'oekaki': './src/entry/js/pages/oekaki.js',
-        'style': './src/entry/style/main.scss',
         'top.css': './src/entry/style/pages/top.scss',
         'chat.css': './src/entry/style/pages/chat.scss',
         'shiritori.css': './src/entry/style/pages/shiritori.scss',
