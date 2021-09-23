@@ -12,12 +12,12 @@ module.exports = {
         'nigaoe': './src/entry/js/pages/nigaoe.js',
         'oekaki': './src/entry/js/pages/oekaki.js',
         'style': './src/entry/style/main.scss',
-        'top': './src/entry/style/pages/top.scss',
-        'chat': './src/entry/style/pages/chat.scss',
-        'shiritori': './src/entry/style/pages/shiritori.scss',
-        'quiz': './src/entry/style/pages/quiz.scss',
-        'nigaoe': './src/entry/style/pages/nigaoe.scss',
-        'oekaki': './src/entry/style/pages/oekaki.scss',
+        'top.css': './src/entry/style/pages/top.scss',
+        'chat.css': './src/entry/style/pages/chat.scss',
+        'shiritori.css': './src/entry/style/pages/shiritori.scss',
+        'quiz.css': './src/entry/style/pages/quiz.scss',
+        'nigaoe.css': './src/entry/style/pages/nigaoe.scss',
+        'oekaki.css': './src/entry/style/pages/oekaki.scss',
     },
 
     output: {
@@ -82,7 +82,7 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             // 出力ファイル名
-            filename: "[name].css",
+            filename: "[name]",
         }),
         new FixStyleOnlyEntries(),
     ]
