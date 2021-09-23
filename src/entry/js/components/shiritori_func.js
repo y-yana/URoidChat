@@ -61,7 +61,6 @@ const shiritori = new Vue({
       this.resetArr()
       this.reset()
       this.input()
-      //this.timerVal = this.difficultyVal
       if (this.modePicked == "timer") {
         this.timerMode = true
         this.timerVal = this.difficultyVal
@@ -130,7 +129,6 @@ const shiritori = new Vue({
         difficult: this.difficultyVal
       }
       var postMessage = JSON.stringify(json_text);
-      console.log(postMessage)
       let self = this;
       await $.ajax("/shiritori/ajax/", {
             type: "post",
@@ -138,10 +136,9 @@ const shiritori = new Vue({
             dataType: "json",
         }).done(function (data) {
           console.log("Ajax通信 成功");
-          const getData= JSON.parse(data.values).res_shiritori
-          console.log(getData)
-          self.ajaxText = getData
-          self.endStr = self.ajaxText.slice(-1)
+          const getData= JSON.parse(data.values)
+          self.ajaxText = getData.res_shiritori
+          self.endStr = getData.endstr
           self.pushNewText(self.ajaxText)
           self.classVue.push('getMessageComponent')
           if (self.endStr == 'ん') {
