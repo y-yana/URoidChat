@@ -37,11 +37,13 @@ def index():
     session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
     session['np_ALL']=0
-    return render_template("index.html", pageTitle='TopPage', css='top')
+    session["model_path"]="./static/base_model/base.vrm"
+
+    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"])
 
 @app.route("/top", methods=["POST"])
 def move_top():
-    return render_template("index.html", pageTitle='TopPage', css='top')
+    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"])
 
 
 @app.route('/opening', methods=['POST'])
@@ -67,23 +69,23 @@ def openingForm():
 
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
-    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode)
+    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode,model_path=session["model_path"])
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
-    return render_template("chat.html", pageTitle='URoidChat', css='chat')
+    return render_template("chat.html", pageTitle='URoidChat', css='chat',model_path=session["model_path"])
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
-    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori')
+    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori',model_path=session["model_path"])
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
-    return render_template("quiz.html", pageTitle='Quiz', css='quiz')
+    return render_template("quiz.html", pageTitle='Quiz', css='quiz',model_path=session["model_path"])
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():
-    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe')
+    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe',model_path=session["model_path"])
 
 @app.route('/rename', methods=['POST'])
 def rename():
@@ -139,6 +141,8 @@ def show():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+
+
     the_file = request.files['the_file']
 
     model_dir='./static/models/'
@@ -153,6 +157,8 @@ def upload():
 
     path=f'./static/models/{file_name}.vrm'
     the_file.save(path)
+
+    session['model_path']=path
 
 
     return_json = {
