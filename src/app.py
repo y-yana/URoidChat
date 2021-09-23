@@ -37,11 +37,11 @@ def index():
     session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
     session['np_ALL']=0
-    return render_template("index.html", pageTitle='TopPage')
+    return render_template("index.html", pageTitle='TopPage', css='top')
 
 @app.route("/top", methods=["POST"])
 def move_top():
-    return render_template("index.html", pageTitle='TopPage')
+    return render_template("index.html", pageTitle='TopPage', css='top')
 
 
 @app.route('/opening', methods=['POST'])
@@ -67,23 +67,23 @@ def openingForm():
 
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
-    return render_template('draw.html', pageTitle='Oekaki',async_mode=socketio.async_mode)
+    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode)
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
-    return render_template("chat.html", pageTitle='URoidChat')
+    return render_template("chat.html", pageTitle='URoidChat', css='chat')
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
-    return render_template("shiritori.html", pageTitle='Shiritori')
+    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori')
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
-    return render_template("quiz.html", pageTitle='Quiz')
+    return render_template("quiz.html", pageTitle='Quiz', css='quiz')
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():
-    return render_template("nigaoe.html", pageTitle='Nigaoe')
+    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe')
 
 @app.route('/rename', methods=['POST'])
 def rename():
