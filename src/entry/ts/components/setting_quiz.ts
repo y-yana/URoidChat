@@ -35,7 +35,10 @@ window.addEventListener("DOMContentLoaded", () => {
 var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
-  var modelPass = '../static/base_model/base.vrm';
+  //var modelPass = '../static/base_model/base.vrm';
+  // model_pathの取得
+  var get_path = <HTMLInputElement>document.getElementById('modelChange');
+  var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
@@ -52,7 +55,7 @@ var canvas = <HTMLCanvasElement>document.getElementById('canvas');
       // グリッドを表示
       //const gridHelper = new THREE.GridHelper(10, 10)
       //scene.add(gridHelper)
-      //gridHelper.visible = true 
+      //gridHelper.visible = true
       // 座標軸を表示
       //const axesHelper = new THREE.AxesHelper(0.5)
       //scene.add(axesHelper)

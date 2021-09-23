@@ -1,4 +1,6 @@
 {% extends "layout.html" %}{% block content %}
+<!-- 変数送信用(display:none) -->
+<button id="modelChange" value={{model_path}} style="display: block;"></button>
 
 <div id="openingForm">
   <div id="openingFormContents">
@@ -48,8 +50,6 @@
   </form>
   <!-- 設定ボタン -->
   <button id="setting"><span class="material-icons">settings</span></button>
-  <!-- 変数送信用(display:none) -->
-  <button id="modelChange" style="display: none;"></button>
 
   </div>
   <!-- background -->
@@ -154,15 +154,15 @@
         timeout: 10000
     }).done(function (data) {
       console.log("ok")
-      //PATHの受取
-      path = JSON.parse(data.values).path
 
-      var modelChangeBtn = document.getElementById("modelChange")
+      //PATHの受取
+      path = JSON.parse(data.values).path;
+
+      var modelChangeBtn = document.getElementById("modelChange");
 
       modelChangeBtn.value = path;
 
       modelChangeBtn.click();
-
 
     }).fail(function () {
       console.log('fail');

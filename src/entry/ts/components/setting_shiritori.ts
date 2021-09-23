@@ -34,7 +34,10 @@ window.addEventListener("DOMContentLoaded", () => {
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
-  var modelPass = '../static/base_model/base.vrm';
+  //var modelPass = '../static/base_model/base.vrm';
+  // model_pathの取得
+  var get_path = <HTMLInputElement>document.getElementById('modelChange');
+  var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
@@ -56,7 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // 座標軸を表示
     //const axesHelper = new THREE.AxesHelper(0.5)
     //scene.add(axesHelper)
-    
+
     //床の設置
     const loader = new THREE.TextureLoader();
     const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/depositphotos.jpg') })

@@ -42,7 +42,10 @@ window.addEventListener("DOMContentLoaded", () => {
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
-  var modelPass = '../static/base_model/base.vrm';
+  //var modelPass = '../static/base_model/base.vrm';
+  // model_pathの取得
+  var get_path = <HTMLInputElement>document.getElementById('modelChange');
+  var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
