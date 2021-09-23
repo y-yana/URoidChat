@@ -3,7 +3,7 @@
 <!-- オープニング -->
 <div id="opening">
     <div id="openingContents">
-        <img src="../static/images/logo.png">
+        <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
         <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     </div>
 </div>
@@ -15,7 +15,7 @@
 <!-- ヘッダー  -->
 <div id="header">
     <!-- ロゴ画像 -->
-    <img src="../static/images/logo.png">
+    <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
     <!-- 名前変更フォーム -->
     <div id="renameArea" style="display: none;">
         <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
@@ -77,10 +77,8 @@
             <div id="chatSubmitFormItem">
                 <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
                 <button id="recStart_" class="recordBtn chatBtn"><span class="material-icons">mic</span></button>
-                <button id="recStop_" class="recordBtn chatBtn" style="display:none"><span
-                        class="material-icons">mic_off</span></button>
-                <button id="chatSubmitBtn" class="chatBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span
-                        class="material-icons">send</span></button>
+                <button id="recStop_" class="recordBtn chatBtn" style="display:none"><span class="material-icons">mic_off</span></button>
+                <button id="chatSubmitBtn" class="chatBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
             </div>
         </form>
     </div>
