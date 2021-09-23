@@ -71,7 +71,7 @@ def move_oekaki():
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
-    return render_template("chat.html", pageTitle='URoidChat', css='style')
+    return render_template("chat.html", pageTitle='URoidChat', css='chat')
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
