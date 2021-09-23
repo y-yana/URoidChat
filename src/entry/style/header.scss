@@ -10,69 +10,6 @@
     width: 30%;
     max-width: 20rem;
   }
-  #renameArea{
-    #renameForm{
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      gap: 0.5rem;
-      #renameInputFlex{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        input{
-          background-color: #ffffff;
-          width: 11rem;
-          padding: 0.3rem 0.8rem;
-          border-radius: 25px;
-          border: 2px solid $logo-main-color;
-        }
-      }
-      #rename{
-        width: fit-content;
-        height: fit-content;
-        color: $logo-main-color;
-      }
-    }
-  }
-  #modelChangeArea{
-    #uploadForm{
-      display: flex;
-      gap: 0.5rem;
-      label{
-        background-color: #ffffff;
-        width: 11rem;
-        padding: 0.3rem 0.8rem;
-        border-radius: 25px;
-        border: 2px solid $logo-main-color;
-        #spansFlex{
-          display: flex;
-          align-items: center;
-          span{
-            width: fit-content;
-            height: fit-content;
-          }
-          .material-icons{
-            color: $logo-main-color;
-          }
-        }
-        input{
-          display: none;
-        }
-      }
-      #uploadBtn{
-        color: $logo-main-color;
-      }
-    }
-  }
-  #setting{
-    width: fit-content;
-    height: fit-content;
-    color: $logo-main-color;
-    span{
-      font-size: 2.3rem;
-    }
-  }
 }
 
 /* mobileここから */
@@ -84,69 +21,6 @@
   img{
     width: 60%;
     max-width: 15rem;
-  }
-  #renameArea{
-    #renameForm{
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      gap: 0.5rem;
-      #renameInputFlex{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        input{
-          background-color: #ffffff;
-          width: 11rem;
-          padding: 0.3rem 0.8rem;
-          border-radius: 25px;
-          border: 2px solid $logo-main-color;
-        }
-      }
-      #rename{
-        width: fit-content;
-        height: fit-content;
-        color: $logo-main-color;
-      }
-    }
-  }
-  #modelChangeArea{
-    #uploadForm{
-      display: flex;
-      gap: 0.5rem;
-      label{
-        background-color: #ffffff;
-        width: 11rem;
-        padding: 0.3rem 0.8rem;
-        border-radius: 25px;
-        border: 2px solid $logo-main-color;
-        #spansFlex{
-          display: flex;
-          align-items: center;
-          span{
-            width: fit-content;
-            height: fit-content;
-          }
-          .material-icons{
-            color: $logo-main-color;
-          }
-        }
-        input{
-          display: none;
-        }
-      }
-      #uploadBtn{
-        color: $logo-main-color;
-      }
-    }
-  }
-  #setting{
-    width: fit-content;
-    height: fit-content;
-    color: $logo-main-color;
-    span{
-      font-size: 2.3rem;
-    }
   }
 }
 }
