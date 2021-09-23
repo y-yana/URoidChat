@@ -79,7 +79,7 @@ def move_shiritori():
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
-    return render_template("quiz.html", pageTitle='Quiz', css='style')
+    return render_template("quiz.html", pageTitle='Quiz', css='quiz')
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():

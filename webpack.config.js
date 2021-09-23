@@ -14,6 +14,7 @@ module.exports = {
         'style': './src/entry/style/main.scss',
         'top': './src/entry/style/pages/top.scss',
         'shiritori': './src/entry/style/pages/shiritori.scss',
+        'quiz': './src/entry/style/pages/quiz.scss',
         'nigaoe': './src/entry/style/pages/nigaoe.scss',
     },
 
