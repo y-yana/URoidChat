@@ -73,13 +73,29 @@ window.addEventListener("DOMContentLoaded", () => {
     scene.add(light)
 
     // グリッドを表示
-    const gridHelper = new THREE.GridHelper(10, 10)
-    scene.add(gridHelper)
-    gridHelper.visible = true
+    //const gridHelper = new THREE.GridHelper(10, 10)
+    //scene.add(gridHelper)
+    //gridHelper.visible = true
 
     // 座標軸を表示
-    const axesHelper = new THREE.AxesHelper(0.5)
-    scene.add(axesHelper)
+    //const axesHelper = new THREE.AxesHelper(0.5)
+    //scene.add(axesHelper)
+
+    //床の設置
+    const loader = new THREE.TextureLoader();
+    const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/depositphotos.jpg') })
+    var floorGeometry = new THREE.BoxGeometry(5, 0, 5);
+    var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
+    floorMesh.position.set(0, 0, 0);
+    scene.add(floorMesh);
+
+    //壁紙の設置
+    const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/live.jpg') })
+    var wallGeometry = new THREE.BoxGeometry(5, 0, 5);
+    var wallMesh = new THREE.Mesh(wallGeometry, walltexture);
+    wallMesh.position.set(0, 1.5, -2);
+    scene.add(wallMesh);
+    wallMesh.rotation.set(Math.PI / 2, 0, 0);
   }
 
   // レンダラーの設定
