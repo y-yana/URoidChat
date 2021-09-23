@@ -173,6 +173,7 @@ const shiritori = new Vue({
         this.result = 'タイムオーバーなので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
+        this.scroll()
         return
       }
     },
