@@ -109,6 +109,8 @@ const shiritori = new Vue({
       this.result = ''
       this.warning = ''
       this.replayQuestion = false
+      this.modePicked = null
+      this.difficultyPicked = null
     },
     input: function () {
       this.textArr.push({ id: this.arrNum, text: 'すべてひらがなで回答してね' })
