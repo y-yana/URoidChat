@@ -1,48 +1,14 @@
 {% extends "layout.html" %}{% block content %}
 
-<!-- オープニング -->
 <div id="opening">
     <div id="openingContents">
-        <img src="../static/images/logo.png">
+        <img src="../static/images/logo.png" alt="URoidChat">
         <p id="openingText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     </div>
 </div>
 
-<!-- ローディング -->
-<div id="loadingArea">
-</div>
-
-<!-- ヘッダー  -->
 <div id="header">
-    <!-- ロゴ画像 -->
-    <img src="../static/images/logo.png">
-    <!-- 名前変更フォーム -->
-    <div id="renameArea" style="display: none;">
-        <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
-            <div id='renameInputFlex'>
-            <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
-            <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-            </div>
-            <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
-        </form>
-    </div>
-    <!-- モデル変更フォーム -->
-    <div id="modelChangeArea" style="display: none;">
-        <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
-            <label for="upFile">
-                <div id="spansFlex">
-                    <span class="material-icons">description</span>
-                    <span>ファイルを選択</span>
-                </div>
-                <input id="upFile" type="file" name="the_file">
-            </label>
-            <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
-        </form>
-    </div>
-    <!-- 設定ボタン -->
-    <button id="setting"><span class="material-icons">settings</span></button>
-    <!-- 変数送信用(display:none) -->
-    <button id="modelChange" style="display: none;"></button>
+    <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
 </div>
 
 <!-- 各種ボタンエリア -->
@@ -77,10 +43,8 @@
             <div id="chatSubmitFormItem">
                 <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
                 <button id="recStart_" class="recordBtn chatBtn"><span class="material-icons">mic</span></button>
-                <button id="recStop_" class="recordBtn chatBtn" style="display:none"><span
-                        class="material-icons">mic_off</span></button>
-                <button id="chatSubmitBtn" class="chatBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span
-                        class="material-icons">send</span></button>
+                <button id="recStop_" class="recordBtn chatBtn" style="display:none"><span class="material-icons">mic_off</span></button>
+                <button id="chatSubmitBtn" class="chatBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
             </div>
         </form>
     </div>
