@@ -11,7 +11,8 @@ module.exports = {
         'quiz': './src/entry/js/pages/quiz.js',
         'nigaoe': './src/entry/js/pages/nigaoe.js',
         'oekaki': './src/entry/js/pages/oekaki.js',
-        'style.css': './src/entry/style/main.scss',
+        'style': './src/entry/style/main.scss',
+        'top': './src/entry/style/pages/top.scss',
     },
 
     output: {
@@ -76,7 +77,7 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             // 出力ファイル名
-            filename: "[name]",
+            filename: "[name].css",
         }),
         new FixStyleOnlyEntries(),
     ]
