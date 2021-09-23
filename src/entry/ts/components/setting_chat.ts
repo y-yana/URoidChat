@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
     var path = <HTMLInputElement>document.getElementById("modelChange");
 
     modelPass = path.value;
-    posepass = '../static/pose/anim2.csv'
+    posepass = '../static/pose/hellovrm.csv'
 
     // 現在のモデルを削除
     scene.remove.apply(scene, scene.children);

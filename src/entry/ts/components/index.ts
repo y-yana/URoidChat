@@ -38,6 +38,22 @@ window.addEventListener("DOMContentLoaded", () => {
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
+  $(document).on('click', '#modelChange', function () {
+    // pathの受け取り
+    var path = <HTMLInputElement>document.getElementById("modelChange");
+
+    modelPass = path.value;
+    posepass = '../static/pose/anim2.csv'
+
+    // 現在のモデルを削除
+    scene.remove.apply(scene, scene.children);
+
+    // 再描画
+    sceneOption()
+    newLoad()
+    update()
+  })
+
   // シーンの設定
   const scene = new THREE.Scene()
   sceneOption()
