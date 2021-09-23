@@ -65,7 +65,7 @@
         <p>あと<span>[[ timerVal ]]</span>秒</p>
         <progress id="timerProgress" :value=timerVal :max=difficultyVal></progress>
       </div>
-      <div class="shiritoriSubmitArea">
+      <div class="chatSubmitAreaComponent">
         <input type="text" v-model="inputText" v-on:keydown.enter="enter" :disabled="submitBtnDisabled"
           placeholder="Enterで送信" />
         <button id="submitBtn" @click="submit" :disabled="submitBtnDisabled"><span
@@ -79,6 +79,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
 <script src="static/webpack/build_shiritori.js"></script>
 
 {% endblock %}

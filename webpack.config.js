@@ -3,7 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FixStyleOnlyEntries = require("webpack-fix-style-only-entries");
 
 module.exports = {
-    mode: 'development',
+    //mode: 'development',
+    mode: 'production',
     entry: {
         'top': './src/entry/js/pages/top.js',
         'chat': './src/entry/js/pages/chat.js',
@@ -11,7 +12,12 @@ module.exports = {
         'quiz': './src/entry/js/pages/quiz.js',
         'nigaoe': './src/entry/js/pages/nigaoe.js',
         'oekaki': './src/entry/js/pages/oekaki.js',
-        'style.css': './src/entry/style/main.scss',
+        'top.css': './src/entry/style/pages/top.scss',
+        'chat.css': './src/entry/style/pages/chat.scss',
+        'shiritori.css': './src/entry/style/pages/shiritori.scss',
+        'quiz.css': './src/entry/style/pages/quiz.scss',
+        'nigaoe.css': './src/entry/style/pages/nigaoe.scss',
+        'oekaki.css': './src/entry/style/pages/oekaki.scss',
     },
 
     output: {
@@ -46,13 +52,15 @@ module.exports = {
                             // 1 => postcss-loader;
                             // 2 => postcss-loader, sass-loader
                             importLoaders: 2,
-                            sourceMap: true
+                            //sourceMap: true
+                            sourceMap: false
                         }
                     },
                     {
                         loader: "sass-loader",
-                        options:{
-                        sourceMap: true
+                        options: {
+                            //sourceMap: true
+                            sourceMap: false
                         },
                     },
                 ],
