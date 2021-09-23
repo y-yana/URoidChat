@@ -37,7 +37,7 @@ def index():
     session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
     session['np_ALL']=0
-    return render_template("index.html", pageTitle='TopPage')
+    return render_template("index.html", pageTitle='TopPage', css='style')
 
 @app.route("/top", methods=["POST"])
 def move_top():
