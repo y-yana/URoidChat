@@ -13,6 +13,7 @@ module.exports = {
         'oekaki': './src/entry/js/pages/oekaki.js',
         'style': './src/entry/style/main.scss',
         'top': './src/entry/style/pages/top.scss',
+        'shiritori': './src/entry/style/pages/shiritori.scss',
         'nigaoe': './src/entry/style/pages/nigaoe.scss',
     },
 

@@ -75,7 +75,7 @@ def move_chat():
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
-    return render_template("shiritori.html", pageTitle='Shiritori', css='style')
+    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori')
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
