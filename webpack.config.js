@@ -16,6 +16,7 @@ module.exports = {
         'shiritori': './src/entry/style/pages/shiritori.scss',
         'quiz': './src/entry/style/pages/quiz.scss',
         'nigaoe': './src/entry/style/pages/nigaoe.scss',
+        'oekaki': './src/entry/style/pages/oekaki.scss',
     },
 
     output: {

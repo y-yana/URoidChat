@@ -67,7 +67,7 @@ def openingForm():
 
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
-    return render_template('draw.html', pageTitle='Oekaki', css='style', async_mode=socketio.async_mode)
+    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode)
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
