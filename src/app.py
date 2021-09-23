@@ -50,7 +50,7 @@ def openingForm():
     sound = getData['sound']  #boolean
     yourName = getData['yourName'] #str
     AIname = getData['AIname'] #str
-    vrmFile = getData['vrmFile'] #str
+    #vrmFile = getData['vrmFile'] #str
 
     if len(yourName)!=0:
         session['user_name'] = yourName
@@ -60,7 +60,7 @@ def openingForm():
     print(sound)
     print(yourName)
     print(AIname)
-    print(vrmFile)
+    #print(vrmFile)
 
     return ""
 

@@ -35,6 +35,22 @@
         </div>
       </div>
     </form>
+
+    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
+      <label for="upFile">
+          <div id="spansFlex">
+              <span class="material-icons">description</span>
+              <span>ファイルを選択</span>
+          </div>
+          <input id="upFile" type="file" name="the_file">
+      </label>
+      <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
+  </form>
+  <!-- 設定ボタン -->
+  <button id="setting"><span class="material-icons">settings</span></button>
+  <!-- 変数送信用(display:none) -->
+  <button id="modelChange" style="display: none;"></button>
+
   </div>
   <!-- background -->
   <div class="opening_box">
@@ -124,5 +140,35 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
 <script src="static/webpack/build_top.js"></script>
+
+<script>
+  function uploadFormSubmit(input_value) {
+      var formData = new FormData($('#uploadForm')[0]);
+      console.log(formData)
+      $.ajax({
+        url: '/upload',
+        type: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        timeout: 10000
+    }).done(function (data) {
+      console.log("ok")
+      //PATHの受取
+      path = JSON.parse(data.values).path
+
+      var modelChangeBtn = document.getElementById("modelChange")
+
+      modelChangeBtn.value = path;
+
+      modelChangeBtn.click();
+
+
+    }).fail(function () {
+      console.log('fail');
+    });
+
+  };
+</script>
 
 {% endblock %}
