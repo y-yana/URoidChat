@@ -83,7 +83,7 @@ def move_quiz():
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():
-    return render_template("nigaoe.html", pageTitle='Nigaoe', css='style')
+    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe')
 
 @app.route('/rename', methods=['POST'])
 def rename():
