@@ -107,6 +107,7 @@ const shiritori = new Vue({
     reset: function () {
       this.inputText = ''
       this.result = ''
+      this.warning = ''
       this.replayQuestion = false
     },
     input: function () {
