@@ -15,6 +15,7 @@ from negaposi.negaposi import negaposi
 from python.image_transform import image_transform
 from python.shiritori import shiritori
 from python.ranking_quiz import ranking
+import resource
 app = Flask(__name__)
 
 with open('./config.yml', 'r') as yml:
@@ -295,6 +296,19 @@ def randomname(n):
    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
 #お絵描きここまで
 
+#メモリ―計測
+def setMemoryLimit(n_bytes):
+    """ Force Python to raise an exception when it uses more than
+    n_bytes bytes of memory. 
+    """
+    if n_bytes <= 0: return
+    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+    resource.setrlimit(resource.RLIMIT_AS, (n_bytes, hard))
+    soft, hard = resource.getrlimit(resource.RLIMIT_DATA)
+    if n_bytes < soft*1024:
+        resource.setrlimit(resource.RLIMIT_DATA, (n_bytes, hard))
+
+setMemoryLimit(10_536_000_000)
 
 if __name__ == '__main__':
     #port = int(os.environ.get("PORT", 5000))
