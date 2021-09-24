@@ -64,19 +64,19 @@ var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
       //床の設置
       const loader = new THREE.TextureLoader();
-      const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/depositphotos.jpg') })
+      //const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/sora4.jpg') })
       var floorGeometry = new THREE.BoxGeometry(5, 0, 5);
-      var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
-      floorMesh.position.set(0, 0, 0);
-      scene.add(floorMesh);
+      //var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
+      //floorMesh.position.set(0, 0, 0);
+      //scene.add(floorMesh);
 
       //壁紙の設置
-      const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/live.jpg') })
+      const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi2.jpg') })
       var wallGeometry = new THREE.BoxGeometry(5, 0, 5);
       var wallMesh = new THREE.Mesh(wallGeometry, walltexture);
       wallMesh.position.set(0, 1.5, -2);
       scene.add(wallMesh);
-      wallMesh.rotation.set(Math.PI / 2, 0, 0);
+      wallMesh.rotation.set(Math.PI / 4, 0, 0);
     }
 
   // レンダラーの設定
