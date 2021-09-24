@@ -134,7 +134,11 @@
             if(msg.name == ''){
                 $('#log').append('<div class="chatNotificationComponent"><div class="chatLogComponent">' + msg.data + '</div></div>');
             }else{
-                $('#log').append('<div class="oekakiChatMessage oekakiChatGetMessage"><div class="oekakiChatName">' + msg.name + '</div><div class="oekakiChatAndTime oekakiChatAndTimeGet"><div class="speechBalloonBase getMessageComponent"><div class="chatLogComponent">' + msg.data + '</div></div><div class="oekakiChatTime">'+ Hour + ':' + Min +'</div></div></div>');
+                if(is_me == true){
+                    $('#log').append('<div class="oekakiChatMessage oekakiChatSendMessage"><div class="oekakiChatAndTime oekakiChatAndTimeSend"><div class="speechBalloonBase sendMessageComponent"><div class="chatLogComponent">' + msg.data + '</div></div><div class="oekakiChatTime">' + Hour + ':' + Min + '</div></div></div>');
+                }else{
+                    $('#log').append('<div class="oekakiChatMessage oekakiChatGetMessage"><div class="oekakiChatName">' + msg.name + '</div><div class="oekakiChatAndTime oekakiChatAndTimeGet"><div class="speechBalloonBase getMessageComponent"><div class="chatLogComponent">' + msg.data + '</div></div><div class="oekakiChatTime">' + Hour + ':' + Min + '</div></div></div>');
+                }
             }
             if (cb)
                 cb();
