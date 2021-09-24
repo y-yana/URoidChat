@@ -24,13 +24,13 @@ $("#openingBtn").on('click', function(){
   var soundData = document.querySelector("input[name=sound]");
   var yourNameData = document.querySelector("input[name=yourName]");
   var AInameData = document.querySelector("input[name=AIname]");
-  var vrmFileData = document.querySelector("input[name=vrmFile]");
+  //var vrmFileData = document.querySelector("input[name=vrmFile]");
 
   var formData = {
     sound: soundData.checked, // boolean
     yourName: yourNameData.value, // str
     AIname: AInameData.value, // str
-    vrmFile: vrmFileData.value // str
+    //vrmFile: vrmFileData.value // str
   };
 
   var postFormData = JSON.stringify(formData);
@@ -40,6 +40,35 @@ $("#openingBtn").on('click', function(){
     data: postFormData,
     dataType: "json",
   });
+
+  //追加
+  /*
+  var formData = new FormData($('#uploadForm')[0]);
+  console.log(formData)
+  $.ajax({
+    url: '/upload',
+    type: 'post',
+    data: formData,
+    processData: false,
+    contentType: false,
+    timeout: 10000
+}).done(function (data) {
+ 
+  //PATHの受取
+  path = JSON.parse(data.values).path
+
+  var modelChangeBtn = document.getElementById("modelChange")
+
+  modelChangeBtn.value = path;
+
+  modelChangeBtn.click();
+
+
+}).fail(function () {
+  console.log('fail');
+});
+*/
+
 
   setTimeout(fadeout, 900);
 
