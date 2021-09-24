@@ -1,12 +1,25 @@
 {% extends "layout.html" %}{% block content %}
-<!-- 変数送信用(display:none) -->
 <button id="modelChange" value={{model_path}} style="display: block;"></button>
+
+<form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;"
+  style='display:none;'>
+  <label for="upFile">
+    <div id="spansFlex">
+      <span class="material-icons">description</span>
+      <span>VRMファイルを選択</span>
+    </div>
+    <input id="upFile" type="file" name="the_file" accept=".vrm">
+  </label>
+  <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
+</form>
 
 <div id="openingForm">
   <div id="openingFormContents">
-    <img src="../static/images/logo.png">
-    <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
     <form id="openingForm" action="/opening" method="post" onsubmit="return false;">
+      <div id='openingLogoArea'>
+        <img src="../static/images/logo.png">
+        <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
+      </div>
       <div id="openingFormMain">
         <div id="soundCheckbox">
           <input type="checkbox" id="sound" name="sound">
@@ -26,31 +39,20 @@
             <input type="text" id="AIname" class="whiteInputText" name="AIname">
           </div>
         </div>
-        <div id="openingVRM">
-          <label for="upFile">
-            <div id="vrmChoiceBtn">
-              <span class="material-icons">description</span>
-              <span>VRMファイルを選択</span>
-            </div>
-            <input type="file" id="upFile" name="vrmFile" accept=".vrm">
-          </label>
+        <div id="openingVRMsubmitArea">
+          <div id="openingVRM">
+              <label for="upFile">
+                <div id="vrmChoiceBtn">
+                  <span class="material-icons">description</span>
+                  <span>VRMファイルを選択</span>
+                </div>
+                <input id="upFile" type="file" name="the_file" accept=".vrm" form="uploadForm" style="display:none;">
+              </label>
+          </div>
+          <button id="uploadBtn" form="uploadForm" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
         </div>
       </div>
     </form>
-
-    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
-      <label for="upFile">
-          <div id="spansFlex">
-              <span class="material-icons">description</span>
-              <span>ファイルを選択</span>
-          </div>
-          <input id="upFile" type="file" name="the_file">
-      </label>
-      <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
-  </form>
-  <!-- 設定ボタン -->
-  <button id="setting"><span class="material-icons">settings</span></button>
-
   </div>
   <!-- background -->
   <div class="opening_box">
