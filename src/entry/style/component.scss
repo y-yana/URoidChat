@@ -27,6 +27,12 @@ $rank-silver: #AFAFAF;
 $rank-copper: #D58B00;
 
 
+#modelArea{
+  canvas{
+    border-radius: 10px;
+  }
+}
+
 /* 戻るボタン */
 .back2topBtn{
   width: fit-content;
