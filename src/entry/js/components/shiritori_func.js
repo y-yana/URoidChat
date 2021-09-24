@@ -61,7 +61,7 @@ const shiritori = new Vue({
       this.resetArr()
       this.reset()
       this.input()
-      if (this.modePicked == "timer") {
+      if (this.timerMode == true) {
         this.timerMode = true
         this.timerVal = this.difficultyVal
         this.timerStart()
