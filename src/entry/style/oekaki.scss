@@ -89,6 +89,7 @@
   color: $text-main;
   #flexArea{
     width: fit-content;
+    height: 27rem;
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -102,6 +103,7 @@
 }
 #oekakiChatArea{
   width: calc(100vw*(1/5));
+  height: 27rem;
 }
 #selectArea{
   width: fit-content;
@@ -138,7 +140,7 @@
   height: 420px;
 }
 #allChatLogs{
-  height: 30rem;
+  height: 23rem;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
