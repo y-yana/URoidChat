@@ -119,7 +119,6 @@
 <script>
   function uploadFormSubmit(input_value) {
       var formData = new FormData($('#uploadForm')[0]);
-      console.log(formData)
       $.ajax({
         url: '/upload',
         type: 'post',
@@ -128,8 +127,6 @@
         contentType: false,
         timeout: 10000
     }).done(function (data) {
-      console.log("ok")
-
       //PATHの受取
       path = JSON.parse(data.values).path;
 
@@ -140,7 +137,6 @@
       modelChangeBtn.click();
 
     }).fail(function () {
-      console.log('fail');
     });
 
   };
