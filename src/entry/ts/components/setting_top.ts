@@ -34,9 +34,27 @@ window.addEventListener("DOMContentLoaded", () => {
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   // 初期値
-  var modelPass = '../static/base_model/base.vrm';
+  //var modelPass = '../static/base_model/base.vrm';
+  // model_pathの取得
+  var get_path = <HTMLInputElement>document.getElementById('modelChange');
+  var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
+
+  $(document).on('click', '#modelChange', function () {
+    // pathの受け取り
+    var path = <HTMLInputElement>document.getElementById("modelChange");
+
+    modelPass = path.value;
+
+    // 現在のモデルを削除
+    scene.remove.apply(scene, scene.children);
+
+    // 再描画
+    sceneOption()
+    newLoad()
+    update()
+  })
 
   // シーンの設定
   const scene = new THREE.Scene()
