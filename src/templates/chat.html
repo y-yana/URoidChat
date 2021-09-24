@@ -11,23 +11,23 @@
 
 <div id="header">
     <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
-</div>
-
-<!-- 各種ボタンエリア -->
-<div id="btnArea">
-    <div id="btnFlex">
-        <!-- 録音中の表示 -->
-        <button id="recNow" class="iconBtn" disabled style="display: none;"><span class="material-icons">radio_button_checked</span></button>
-        <!-- スクリーンショットボタン -->
-        <button id="downloadBtn" class="iconBtn"><span class="material-icons">photo_camera</span></button>
-        <!-- ミュートボタン -->
-        <div id="muteBtn" class="iconBtn">
-            <button id="unmute"><span class="material-icons">volume_up</span></button>
+    <!-- 各種ボタンエリア -->
+    <div id="btnArea">
+        <div id="btnFlex">
+            <!-- 録音中の表示 -->
+            <button id="recNow" class="iconBtn" disabled style="display: none;"><span
+                    class="material-icons">radio_button_checked</span></button>
+            <!-- スクリーンショットボタン -->
+            <button id="downloadBtn" class="iconBtn"><span class="material-icons">photo_camera</span></button>
+            <!-- ミュートボタン -->
+            <div id="muteBtn" class="iconBtn">
+                <button id="unmute"><span class="material-icons">volume_up</span></button>
+            </div>
         </div>
     </div>
 </div>
 
-<form action="/top" method="POST">
+<form class="back2topBtn" action="/top" method="POST">
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
