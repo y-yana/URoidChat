@@ -106,8 +106,6 @@
             data: chatMessage,  // POSTでサーバーに送信するデータ
             dataType: "json",
         }).done(function (data) { // 成功した場合実行される
-            console.log("Ajax通信 成功");
-
             // POSTリクエストの結果を受け取ってHTMLを書き換える
             const message = JSON.parse(data.values).message
             if (message.includes('こんにちは') || message.includes('こんばんは') || message.includes('おはよう')) {
@@ -136,8 +134,6 @@
             }
 
         }).fail(function (data) { // 失敗した場合実行される
-            console.log("Ajax通信 失敗");
-
             // エラーメッセージの表示
             var errorMsg = '<span class="material-icons">error</span >送信エラーが発生しました';
             $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
@@ -192,8 +188,6 @@
             $('#loading').fadeOut('normal');
 
         }).fail(function () {
-            console.log('fail');
-
             // loading要素の削除
             $('#loading').fadeOut('normal');
 
