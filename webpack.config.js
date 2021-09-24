@@ -52,15 +52,15 @@ module.exports = {
                             // 1 => postcss-loader;
                             // 2 => postcss-loader, sass-loader
                             importLoaders: 2,
-                            //sourceMap: true
-                            sourceMap: false
+                            sourceMap: true
+                            //sourceMap: false
                         }
                     },
                     {
                         loader: "sass-loader",
                         options: {
-                            //sourceMap: true
-                            sourceMap: false
+                            sourceMap: true
+                            //sourceMap: false
                         },
                     },
                 ],

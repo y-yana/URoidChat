@@ -269,8 +269,7 @@ def my_event(message):
 @socketio.event
 def broadcast_event(message):
     emit('my_response',
-        {'name': session['user_name'], 'data': message['data']}, to=message['room'])
-
+        {'name': session['user_name'], 'data': message['data'],'token':session['token']}, to=message['room'])
 
 @socketio.event
 def all_broadcast_event(message):
@@ -285,9 +284,23 @@ def clear_room_board(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
+    #session['token'] = make_token(randomname(15))
+    session['token'] = randomname(15)
+    emit('oekaki_token',
+    {'token':session['token']})
     emit('my_response',
-        {'name': '', 'data': session['user_name']+'さんが入室しました'}, to=message['room'])
+        {'name': '', 'data': session['user_name']+'さんが入室しました','token':session['token']}, to=message['room'])
+
+'''
+def make_token(id):
+    hash_words = "awkgihrtshuiobfmey"+id
+    return hash(hash_words)
+'''
+
+def randomname(n):
+   return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
 #お絵描きここまで
+
 
 if __name__ == '__main__':
     #port = int(os.environ.get("PORT", 5000))

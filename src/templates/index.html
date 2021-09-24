@@ -17,7 +17,7 @@
   <div id="openingFormContents">
     <form id="openingForm" action="/opening" method="post" onsubmit="return false;">
       <div id='openingLogoArea'>
-        <img src="../static/images/logo.png">
+        <img src="../static/images/logo.png" alt="URoidChat">
         <p id="openingFormText"><span>Produced</span><span>by</span><span>team</span><span>UDN</span></p>
       </div>
       <div id="openingFormMain">
@@ -122,8 +122,8 @@
           <p id="roomPeoples"><span>現在の参加人数</span><span class="material-icons">groups</span></p>
         </div>
         <div id="tutorial_img">
-          <img :src="'../static/images/top/'+info[choiceGameNum].image1">
-          <img :src="'../static/images/top/'+info[choiceGameNum].image2">
+          <img :src="'../static/images/top/'+info[choiceGameNum].image1" decoding="async" loading="lazy">
+          <img :src="'../static/images/top/'+info[choiceGameNum].image2" decoding="async" loading="lazy">
         </div>
         <p v-if="info">[[ info[choiceGameNum].tutorial ]]</p>
         <div id="tutorialBtns">
