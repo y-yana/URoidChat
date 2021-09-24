@@ -3,6 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { getConstantValue, updateArrayBindingPattern } from 'typescript';
+import { DoubleSide } from 'three';
 
 window.addEventListener("DOMContentLoaded", () => {
   // canvasサイズの制御
@@ -48,7 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
     modelPass = path.value;
 
     // 現在のモデルを削除
-    scene.remove.apply(scene, scene.children);
+    //scene.remove.apply(scene, scene.children);
 
     // 再描画
     sceneOption()
@@ -76,19 +77,27 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //床の設置
     const loader = new THREE.TextureLoader();
-    //const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/sora4.jpg') })
-    var floorGeometry = new THREE.BoxGeometry(5, 0, 5);
-    //var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
-    //floorMesh.position.set(0, 0, 0);
-    //scene.add(floorMesh);
+    const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/sunahama2.png') })
+    var floorGeometry = new THREE.BoxGeometry(55, 0, 55);
+    var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
+    floorMesh.position.set(0, 0, 0);
+    scene.add(floorMesh);
 
     //壁紙の設置
-    const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi4.jpg') })
+    /*const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi7.png') })
     var wallGeometry = new THREE.BoxGeometry(5, 0, 5);
     var wallMesh = new THREE.Mesh(wallGeometry, walltexture);
     wallMesh.position.set(0, 1.5, -2);
     scene.add(wallMesh);
-    wallMesh.rotation.set(Math.PI / 4, 0, 0);
+    wallMesh.rotation.set(Math.PI / 4, 0, 0);*/
+
+    //球の設置
+    const cubetexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi10.png'), side: DoubleSide })
+    var cubeGeometry = new THREE.SphereGeometry(30, 30, 30);
+    var cubeMesh = new THREE.Mesh(cubeGeometry, cubetexture);
+    cubeMesh.position.set(0, 0, 0);
+    scene.add(cubeMesh);
+    cubeMesh.rotation.set(0,-Math.PI/2, 0);
   }
 
   // レンダラーの設定
@@ -115,10 +124,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
-    controls.minDistance = 1
+    /*controls.minDistance = 1
     controls.maxDistance = 5
     controls.maxAzimuthAngle = -4*Math.PI/3
-    controls.minAzimuthAngle = 4*Math.PI/3
+    controls.minAzimuthAngle = 4*Math.PI/3*/
     controls.update()
   }
 
