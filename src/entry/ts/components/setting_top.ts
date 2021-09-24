@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
     newHeight = Math.floor(getHeight * 0.8)
   } else {
     // 比率計算(desktop)
-    newWidth = Math.floor(getWidth * (2 / 5))
+    newWidth = Math.floor(getWidth * (2 / 7))
     newHeight = Math.floor(getHeight * (5 / 7))
   }
 
