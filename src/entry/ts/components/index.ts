@@ -85,7 +85,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //scene.add(floorMesh);
 
     //壁紙の設置
-    const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi2.jpg') })
+    const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi4.jpg') })
     var wallGeometry = new THREE.BoxGeometry(5, 0, 5);
     var wallMesh = new THREE.Mesh(wallGeometry, walltexture);
     wallMesh.position.set(0, 1.5, -2);
