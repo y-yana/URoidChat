@@ -1,4 +1,5 @@
 #tutorial{
+  max-width: 36rem;
   background-color: #ffffffe0;
   padding: 3rem 2rem;
   border-radius: 10px;
@@ -37,7 +38,14 @@
 
     img{
       width: calc(100vw*(2/13));
+      border: 1px solid $btn-blue-text;
+      border-radius: 3px;
     }
+  }
+
+  p{
+    text-align: center;
+    line-height: 2rem;
   }
 
   #tutorialBtns{

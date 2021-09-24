@@ -1,8 +1,6 @@
 {% extends "layout.html" %}{% block content %}
-<!-- 変数送信用(display:none) -->
 <button id="modelChange" value={{model_path}} style="display: block;"></button>
 
-<!-- オープニング -->
 <div id="opening">
   <div id="openingContents">
     <img src="../static/images/logo.png" alt="URoidChat">
@@ -10,27 +8,20 @@
   </div>
 </div>
 
-<!-- ヘッダー -->
 <div id="header">
   <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
 </div>
 
-<!-- topに戻るボタン -->
 <form class="back2topBtn" action="/top" method="POST">
   <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
 <div id="mainContent">
-  <!-- モデル表示エリア -->
-  <!--<div id="modelArea">
-  </div>-->
   <div class="modelAndDialogue">
-    <!-- モデル表示エリア -->
     <div id="modelArea">
     </div>
     <p id="message" class="modelMessage">私にまかせてください！</p>
   </div>
-  <!-- uploadエリア -->
   <div id="btn" class="upload">
     <form id="img" enctype="multipart/form-data" method="post" onsubmit="return false;">
       <label for="file-sample">

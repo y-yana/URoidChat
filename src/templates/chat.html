@@ -1,5 +1,4 @@
 {% extends "layout.html" %}{% block content %}
-<!-- 変数送信用(display:none) -->
 <button id="modelChange" value={{model_path}} style="display: block;"></button>
 
 <div id="opening">
@@ -11,15 +10,10 @@
 
 <div id="header">
     <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
-    <!-- 各種ボタンエリア -->
     <div id="btnArea">
         <div id="btnFlex">
-            <!-- 録音中の表示 -->
-            <button id="recNow" class="iconBtn" disabled style="display: none;"><span
-                    class="material-icons">radio_button_checked</span></button>
-            <!-- スクリーンショットボタン -->
+            <button id="recNow" class="iconBtn" disabled style="display: none;"><span class="material-icons">radio_button_checked</span></button>
             <button id="downloadBtn" class="iconBtn"><span class="material-icons">photo_camera</span></button>
-            <!-- ミュートボタン -->
             <div id="muteBtn" class="iconBtn">
                 <button id="unmute"><span class="material-icons">volume_up</span></button>
             </div>
@@ -31,16 +25,12 @@
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
-<!-- メイン機能 -->
 <div id="mainArea">
-    <!-- モデル表示エリア -->
     <div id="modelArea">
     </div>
-    <!-- チャットエリア -->
     <div id="chatArea">
         <div id="chatLogs">
         </div>
-        <!-- チャット送信 -->
         <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
             <div id="chatSubmitFormItem">
                 <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">

@@ -1,8 +1,6 @@
 {% extends "layout.html" %}{% block content %}
-<!-- 変数送信用(display:none) -->
 <button id="modelChange" value={{model_path}} style="display: block;"></button>
 
-<!-- オープニング -->
 <div id="opening">
     <div id="openingContents">
         <img src="../static/images/logo.png" alt="URoidChat">
@@ -10,33 +8,22 @@
     </div>
 </div>
 
-<!-- ヘッダー -->
 <div id="header">
-    <!-- ロゴ画像 -->
     <img src="../static/images/logo.png" alt="URoidChat" decoding="async">
-    <!-- room名&ニックネームの表示 -->
     <div id="messageHeader">
         <label class="roomLabel" id="selectRooms"></label>
-        <!-- ここに現在のルーム内人数を表示 -->
-        <!--<label class="roomLabel" id="nameBox">名前</label>
-        <label class="roomMember" id="room">-->
     </div>
 </div>
 
-<!-- topに戻るボタン -->
 <form id='topMoveBtn' class="back2topBtn" action="/top" method="POST">
     <button type="submit"><span class="material-icons">arrow_back</span></button>
 </form>
 
-<!-- room選択画面に戻るボタン -->
 <button type="submit" class="back2topBtn btn btn-primary" id="leaveButton" style='display: none;'><span class="material-icons">arrow_back</span></button>
 
-<!-- main area -->
 <div id="oekakiMainArea">
-    <!-- モデル表示エリア -->
     <div id="modelArea">
     </div>
-
     <div id="roomChoiceArea">
         <div id="join_message">
             <form v-bind:id=item.id method="POST" action='#' onsubmit="return false;" v-for="item in roomData" :key="item.roomName">
@@ -51,7 +38,6 @@
                 </div>
             </form>
         </div>
-        <!--見えないform-->
         <form id='join_form' method="POST" action='#' style="display:none;">
             <input type="text" id="roomNameInput">
             <button id="roomSubmit"></button>
@@ -65,11 +51,6 @@
             </div>
             <div id="oekakiChatArea" class="container">
                 <form class="form-inline">
-                    <!--<div id="messageHeader">
-                        <label class="roomLabel" id="selectRooms">部屋</label>
-                        <label class="roomLabel" id="nameBox">名前</label>
-                        <label class="roomMember" id="room">
-                    </div>-->
                     <div id="allChatLogs">
                         <div id="log"></div>
                     </div>
@@ -146,13 +127,6 @@
             var container = document.getElementById('allChatLogs');
             container.scrollTop = container.scrollHeight;
         });
-
-        //画面幅によって黒板の横幅を動的に変更する
-        if (window.innerWidth < 950) {
-            //document.getElementById("#oekakiCanvas").width = 300;
-            //document.getElementById("#oekakiCanvas").height = 400;
-            //document.getElementById("blackCover").style = "height: 35%; background-color: #00000000";
-        }
 
         //入室
         $('form#join_form').submit(function (event) {
