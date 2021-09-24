@@ -103,17 +103,21 @@
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         var socket = io();
+        var session_token = ""
 
         socket.on('connect', function () {
-            //socket.emit('my_event', { data: 'I\'m connected!' });
-            socket.emit(console.log('I\'m connected!'));
+            //接続したとき用イベント
         });
 
         socket.on('my_response', function (msg, cb) {
             var sendTime = new Date();
             var Hour = sendTime.getHours();
             var Min = sendTime.getMinutes();
-            //$('#log').append('<br>' + $('<div/>').text(msg.data + ' ' + Hour + ':' + Min).html());
+            if(session_token == msg.token){
+                var is_me = true
+            }else{
+                var is_me = false
+            }
             if(Min < 10){
                 Min = '0' + Min;
             }
@@ -142,9 +146,13 @@
 
             enterLabel();
 
+            socket.on('oekaki_token', function (msg) {
+                session_token = msg.token
+            })
+
             //チャット送信
             $('form#castmessage').submit(function (event) {
-                socket.emit('broadcast_event', { room: $('#roomNameInput').val(), data: $('#msg_data').val()});
+                socket.emit('broadcast_event', { room: $('#roomNameInput').val(), data: $('#msg_data').val(),session_id:session_token});
                 $('#msg_data').val('')
                 return false;
             });
