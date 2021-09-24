@@ -46,6 +46,9 @@ def response(word,u_name,b_name,in_np,np_ALL,npi):
     if word=='うん':
         return 'うん！'
 
+    if word=="クレジット":
+        return "フロントエンド:柳田祐奈\n　バックエンド:池田柳之介\n　インフラ,3D:國司礼言\n　　Voice:みかたま"
+
 
     if in_np<-2:
         return f'{u_name}のばか...'
