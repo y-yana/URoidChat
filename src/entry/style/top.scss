@@ -12,9 +12,6 @@ $grid-size: 5.5rem;
   transform: translateY(-50%) translateX(-50%);
 
   .topWidthCalc{
-    width: calc(100vw*(5/13));
-    min-width: 25rem;
-    height: calc(100vh*(5/9));
     align-self: center;
   }
 
