@@ -97,6 +97,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
+    controls.minDistance = 1
+    controls.maxDistance = 5
+    controls.maxAzimuthAngle = -4*Math.PI/3
+    controls.minAzimuthAngle = 4*Math.PI/3
     controls.update()
   }
 
