@@ -1,3 +1,4 @@
+from typing import SupportsRound
 import yaml
 from flask import Flask, render_template, jsonify, request,session,send_from_directory
 import json
@@ -39,11 +40,13 @@ def index():
     session['np_ALL']=0
     session["model_path"]="./static/base_model/base.vrm"
 
-    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"])
+    session["sound"]=False
+
+    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"],sound=session["sound"])
 
 @app.route("/top", methods=["POST"])
 def move_top():
-    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"])
+    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"],sound=session["sound"])
 
 
 @app.route('/opening', methods=['POST'])
@@ -59,6 +62,8 @@ def openingForm():
     if len(AIname)!=0:
         session['bot_name'] = AIname
 
+    session["sound"]=sound
+
     print(sound)
     print(yourName)
     print(AIname)
@@ -69,23 +74,23 @@ def openingForm():
 
 @app.route('/oekaki',methods=["POST"])
 def move_oekaki():
-    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode,model_path=session["model_path"])
+    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode,model_path=session["model_path"],sound=session["sound"])
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
-    return render_template("chat.html", pageTitle='URoidChat', css='chat',model_path=session["model_path"])
+    return render_template("chat.html", pageTitle='URoidChat', css='chat',model_path=session["model_path"],sound=session["sound"])
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
-    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori',model_path=session["model_path"])
+    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori',model_path=session["model_path"],sound=session["sound"])
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
-    return render_template("quiz.html", pageTitle='Quiz', css='quiz',model_path=session["model_path"])
+    return render_template("quiz.html", pageTitle='Quiz', css='quiz',model_path=session["model_path"],sound=session["sound"])
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():
-    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe',model_path=session["model_path"])
+    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe',model_path=session["model_path"],sound=session["sound"])
 
 @app.route('/rename', methods=['POST'])
 def rename():
