@@ -219,6 +219,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (Number(ALL_NP.value) <= -3) {
       posepass = '../static/pose/suneru.csv'
     }
+    if (Number(ALL_NP.value) <= -3) {
+      scene.remove.apply(scene, scene.children);
+    }
     if (message.value == '1') {
       posepass = '../static/pose/ozigi.csv';
       (<HTMLInputElement>document.getElementById('base_message')).value = '0';
@@ -265,6 +268,7 @@ window.addEventListener("DOMContentLoaded", () => {
       newLoad();
       (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
     }
+
 
     // 時間計測
     let time = (new Date()).getTime()
