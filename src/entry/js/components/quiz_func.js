@@ -46,6 +46,11 @@ const quiz = new Vue({
   },
   methods: {
     createQuiz: async function (value) {
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        const opening_checkbox = new Audio("./static/sound/sound_effect/opening_checkbox.mp3");
+        opening_checkbox.play();
+      }
       this.selectQuizNum = value
       if (value == 2) {
         this.NationalFlagCheck = true
@@ -118,10 +123,19 @@ const quiz = new Vue({
       }
     },
     judgeSelectAnswer: function (ans) {
+      var sound = document.getElementById('vueSound').value;
       if (this.answerNum == ans) {
+        if (sound == 'True') {
+          var result = new Audio("./static/sound/quiz_voice/quiz_true.mp3");
+          result.play();
+        }
         this.answerImageSrc = 'true'
         this.trueCounter += 1
       } else {
+        if (sound == 'True') {
+          var result = new Audio("./static/sound/quiz_voice/quiz_false.mp3");
+          result.play();
+        }
         this.answerImageSrc = 'false'
       }
       if (this.questionNumUse == 9) {
