@@ -26,9 +26,9 @@ $("#openingBtn").on('click', function(){
   var AInameData = document.getElementById("AIname").value;
 
   var formData = {
-    sound: soundData, // boolean
-    yourName: yourNameData, // str
-    AIname: AInameData, // str
+    sound: soundData,
+    yourName: yourNameData,
+    AIname: AInameData,
   };
 
   var postFormData = JSON.stringify(formData);

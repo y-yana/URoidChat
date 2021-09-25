@@ -1,5 +1,6 @@
 {% extends "layout.html" %}{% block content %}
 <button id="modelChange" value={{model_path}} style="display: block;"></button>
+<input id="vueSound" value="{{ sound }}" style="display: none;"></input>
 
 <div id="opening">
   <div id="openingContents">
@@ -48,12 +49,16 @@
 <script src="static/webpack/build_nigaoe.js"></script>
 <script>
   function uploading(input_value) {
-    var fd = new FormData();
+    var sound = document.getElementById('vueSound').value;
+    if (sound == 'True') {
+      const opening_checkbox = new Audio("./static/sound/sound_effect/opening_checkbox.mp3");
+      opening_checkbox.play();
+    }
     var fd = new FormData($('#img').get(0));
     $.ajax({
       url: '/img',
       type: "post",
-      data: fd,  // POSTでサーバーに送信するデータ
+      data: fd,
       processData: false,
       contentType: false,
     }).done(function (data) {
@@ -68,7 +73,34 @@
       submitArea.style.display = 'none';
       downloadArea.style.display = 'block';
       var message = document.getElementById('message');
-      message.innerHTML = 'できました！みてください！！';
+      if (sound == 'True') {
+        const complete = new Audio("./static/sound/sound_effect/complete.mp3");
+        complete.play();
+          var random = Math.floor(Math.random() * 3);
+          switch (random) {
+            case 0:
+              message.innerHTML = 'できました〜！！';
+              var nigaoeVoice = new Audio("./static/sound/nigaoe_voice/nigaoe_1.mp3");
+              setTimeout(() => {
+              nigaoeVoice.play();
+              }, 1000);
+              break;
+            case 1:
+              message.innerHTML = 'できました！どうですか…？';
+              var nigaoeVoice = new Audio("./static/sound/nigaoe_voice/nigaoe_2.mp3");
+              setTimeout(() => {
+              nigaoeVoice.play();
+              }, 1300);
+              break;
+            case 2:
+              message.innerHTML = 'できました！みてください！！';
+              var nigaoeVoice = new Audio("./static/sound/nigaoe_voice/nigaoe_3.mp3");
+              setTimeout(() => {
+              nigaoeVoice.play();
+              }, 1300);
+              break;
+          }
+      }
     }).fail(function () {
       console.log('fail');
     });
