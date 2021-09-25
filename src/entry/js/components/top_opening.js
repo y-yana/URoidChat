@@ -43,7 +43,7 @@ $("#openingBtn").on('click', function(){
 
   if (soundData == true) {
     document.getElementById('vueSound').value = 'True';
-    
+
     const opening_start = new Audio("./static/sound/sound_effect/opening_start.mp3");
     opening_start.play();
 
@@ -60,6 +60,6 @@ $("#openingBtn").on('click', function(){
 
     setTimeout(function () {
       voice.play();
-    },2700);
+    },1700);
   }
 })
