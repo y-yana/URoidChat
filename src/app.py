@@ -288,7 +288,6 @@ def clear_room_board(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
-    #session['token'] = make_token(randomname(15))
     session['token'] = randomname(15)
     emit('oekaki_token',
          {'token': session['token']})

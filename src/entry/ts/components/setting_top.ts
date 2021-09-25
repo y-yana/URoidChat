@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
   var get_path = <HTMLInputElement>document.getElementById('modelChange');
   var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
-  var facemode = "normal";
+  var facemode = "fun";
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
     modelPass = path.value;
 
     // 現在のモデルを削除
-    //scene.remove.apply(scene, scene.children);
+    scene.remove.apply(scene, scene.children);
 
     // 再描画
     sceneOption()
@@ -115,12 +115,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
-    /*controls.minDistance = 1
-    controls.maxDistance = 5
-    controls.maxAzimuthAngle = -4*Math.PI/3
-    controls.minAzimuthAngle = 4*Math.PI/3
-    controls.minPolarAngle = Math.PI
-    controls.maxPolarAngle = 0*/
+    controls.minDistance = 1
+    controls.maxDistance = 28
+    /*controls.maxAzimuthAngle = -4*Math.PI/3
+    controls.minAzimuthAngle = 4*Math.PI/3*/
+    //controls.minPolarAngle = 0
+    controls.maxPolarAngle = Math.PI/2
     controls.update()
   }
 

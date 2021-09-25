@@ -2,13 +2,13 @@ jQuery(function () {
   var webStorage = function () {
     if (sessionStorage.getItem('access')) {
       // 2回目以降のアクセス
-      console.log('2回目以降のアクセスです');
+      //console.log('2回目以降のアクセスです');
       var openingForm = document.getElementById('openingForm');
       openingForm.style.display = 'none';
     } else {
       // 初回アクセス
       sessionStorage.setItem('access', 0);
-      console.log('初回アクセスです');
+      //console.log('初回アクセスです');
       var openingElement = document.getElementById('openingFormContents');
       $(openingElement).addClass('is-fadein');
     }
