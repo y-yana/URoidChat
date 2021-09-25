@@ -239,7 +239,7 @@ def shiritori_ajax():
     return jsonify(values=json.dumps(return_json))
 
 
-@app.route('/quiz/ajax/', methods=['POST'])
+@app.route('/quiz/ajax', methods=['POST'])
 def quiz_ajax():
     getMessage = request.get_json('postMessage')
 
@@ -288,7 +288,6 @@ def clear_room_board(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
-    #session['token'] = make_token(randomname(15))
     session['token'] = randomname(15)
     emit('oekaki_token',
          {'token': session['token']})
