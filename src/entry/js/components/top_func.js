@@ -1,4 +1,5 @@
 const top_choice = new Audio("./static/sound/sound_effect/top_choice.mp3");
+const cancel = new Audio("./static/sound/sound_effect/cancel.mp3");
 
 const shiritori = new Vue({
   el: '#top',
@@ -37,6 +38,10 @@ const shiritori = new Vue({
       this.gameChoice = true
       this.tutorial = false
       this.modelMessage = '私と何をして遊びますか？？'
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        cancel.play();
+      }
     }
   }
 });
