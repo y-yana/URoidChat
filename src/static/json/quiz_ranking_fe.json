@@ -4,6 +4,17 @@
         "name": "UDN",
         "trueNum": 5,
         "time": 24.47
+    },
+    {
+        "rank": 2,
+        "name": "\u30de\u30b9\u30bf\u30fc",
+        "trueNum": 1,
+        "time": 12.39
+    },
+    {
+        "rank": 3,
+        "name": "\u30de\u30b9\u30bf\u30fc",
+        "trueNum": 0,
+        "time": 11.52
     }
-
 ]

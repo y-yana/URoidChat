@@ -12,6 +12,11 @@ document.getElementById('file-sample').addEventListener('change', function (e) {
 
   var img = document.getElementById('file-preview');
   img.style.display = 'block';
+  
+  var getWidth = window.innerWidth;
+  if (getWidth <= 950) {
+    img.style.maxWidth = '20rem';
+  }
 });
 
 // replayBtn

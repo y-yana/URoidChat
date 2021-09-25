@@ -40,6 +40,7 @@ $rank-copper: #D58B00;
   width: fit-content;
   position: absolute;
   margin: 2rem;
+  z-index: 500;
 }
 
 /* ボタン（青・白） */
@@ -170,7 +171,7 @@ $rank-copper: #D58B00;
   }
   .modelAndDialogue{
     width: fit-content;
-    margin: 1rem auto 0;
+    margin: 2.5rem auto 0;
     .modelMessage{
       display: none;
     }
