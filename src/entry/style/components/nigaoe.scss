@@ -46,11 +46,16 @@
     #nigaoeResultBtns{
       width: fit-content;
       display: flex;
+      flex-direction: row;
       gap: 6rem;
       margin: 0 auto;
 
       #nigaoeDownloadBtn{
+        width: fit-content;
+        margin: 0 auto;
         a{
+          width: fit-content;
+          margin: 0 auto;
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -67,6 +72,7 @@
     #file-preview{
       max-width: 28rem;
       border: 6px solid #ffffff;
+      margin: unset;
     }
   }
 }
@@ -74,17 +80,37 @@
 /* mobileここから */
 @media screen and (max-width: 950px) {
   #mainContent{
-  flex-direction: column;
-  gap: 3rem;
-  margin: 0 auto;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    margin: 2.5rem auto 5rem;
 
-  #modelArea{
-    width: fit-content;
-  }
+    #btn{
+      width: auto;
+      gap: 2.5rem;
+      margin-top: 5rem;
 
-  #btn{
-    width: fit-content;
+        #img{
+          gap: 2rem;
+        }
+
+        #nigaoeResultBtns{
+          flex-direction: column-reverse;
+          gap: 1.5rem;
+
+          #nigaoeDownloadBtn{
+            width: fit-content;
+            margin: 0 auto;
+            a{
+              gap: 0.8rem;
+            }
+          }
+
+        #file-preview{
+          max-width: 20rem;
+          margin: 0 auto;
+        }
+      }
+    }
   }
-}
 }
 /* mobileここまで */
