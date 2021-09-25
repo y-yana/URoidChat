@@ -21,7 +21,36 @@ const shiritori = new Vue({
     showTutorial: function (value) {
       var sound = document.getElementById('vueSound').value;
       if (sound == 'True') {
-        top_choice.play();
+        switch (value){
+          case 0:
+            top_choice.play();
+            var tutorial = new Audio("./static/sound/top_voice/top_tutorial_chat.mp3");
+            tutorial.play();
+            break;
+          case 1:
+            top_choice.play();
+            var tutorial = new Audio("./static/sound/top_voice/top_tutorial_shiritori.mp3");
+            tutorial.play();
+            break;
+          case 2:
+            top_choice.play();
+            var tutorial = new Audio("./static/sound/top_voice/top_tutorial_quiz.mp3");
+            tutorial.play();
+            break;
+          case 3:
+            top_choice.play();
+            var tutorial = new Audio("./static/sound/top_voice/top_tutorial_nigaoe.mp3");
+            tutorial.play();
+            break;
+          case 4:
+            top_choice.play();
+            var tutorial = new Audio("./static/sound/top_voice/top_tutorial_oekaki.mp3");
+            tutorial.play();
+            break;
+          default:
+            cancel.play();
+            console.log('Comming soon...');
+        }
       }
       this.choiceGameNum = value
       if (value < 5) {
