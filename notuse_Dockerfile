@@ -17,12 +17,14 @@ RUN pip3 install --no-cache-dir -q -r requirements.txt
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libgl1-mesa-dev
 
-ENV FLASK_APP 'app.py'
+COPY ./Pipfile .
+COPY ./Pipfile.lock .
+RUN pipenv install
 
-#for beanStalk
-EXPOSE 80
-EXPOSE 443
-EXPOSE 5000
+ENV FLASK_ENV=production
+COPY ./uwsgi.ini .
+CMD ["pipenv", "run", "uwsgi", "uwsgi.ini"]
+
+#ENV FLASK_APP 'app.py'
 
 #CMD gunicorn --bind 0.0.0.0:$PORT wsgi
-CMD [ "python" ,"app.py"]

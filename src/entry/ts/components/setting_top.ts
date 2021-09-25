@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
     modelPass = path.value;
 
     // 現在のモデルを削除
-    //scene.remove.apply(scene, scene.children);
+    scene.remove.apply(scene, scene.children);
 
     // 再描画
     sceneOption()
@@ -138,8 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
           vrm.scene.rotation.y = Math.PI
           setupAnimation(vrm)
         })
-      }
-    )
+    })
   }
 
   // http → str

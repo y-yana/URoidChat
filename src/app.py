@@ -295,14 +295,6 @@ def join(message):
     emit('my_response',
          {'name': '', 'data': session['user_name']+'さんが入室しました', 'token': session['token']}, to=message['room'])
 
-
-'''
-def make_token(id):
-    hash_words = "awkgihrtshuiobfmey"+id
-    return hash(hash_words)
-'''
-
-
 def randomname(n):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
 # お絵描きここまで
@@ -311,4 +303,5 @@ def randomname(n):
 if __name__ == '__main__':
     #port = int(os.environ.get("PORT", 5000))
     #app.run(host="0.0.0.0", port=port)
+    #app.run(host="0.0.0.0", port=5000)
     app.run()
