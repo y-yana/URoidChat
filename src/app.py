@@ -26,9 +26,9 @@ app.secret_key = config['flask_secret_key']
 async_mode = None
 Payload.max_decode_packets = 50
 app.config['SECRET_KEY'] = 'secret!'
-#socketio = SocketIO(app, async_mode=async_mode)
-socketio = SocketIO(app)
-socketio.init_app(app, cors_allowed_origins="*")
+socketio = SocketIO(app, async_mode=async_mode)
+#socketio = SocketIO(app)
+#socketio.init_app(app, cors_allowed_origins="*")
 thread = None
 thread_lock = Lock()
 
