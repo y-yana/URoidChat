@@ -8,8 +8,6 @@ const oekakiRoom = new Vue({
   },
   methods: {
     sendVue: function (roomName) {
-      //console.log('sendVue')
-      //console.log(roomName)
       var roomNameInput = document.getElementById('roomNameInput')
       roomNameInput.value = roomName
       document.getElementById('roomSubmit').click();
