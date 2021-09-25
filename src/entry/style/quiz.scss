@@ -116,6 +116,7 @@ $quiz-grid-shadow: 4px;
   img{
     width: 150px;
     margin: 0 auto;
+    border: 1px solid $border-gray;
   }
   #quizAnsNextBtnArea{
     width: fit-content;
