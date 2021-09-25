@@ -113,7 +113,7 @@ $quiz-grid-shadow: 4px;
   p{
     width: fit-content;
   }
-  img{
+  #NationalFlag{
     width: 150px;
     margin: 0 auto;
     border: 1px solid $border-gray;
@@ -172,7 +172,7 @@ $quiz-grid-shadow: 4px;
   color: $text-main;
 }
 .quizRanking{
-  width: 20rem;
+  width: 21rem;
   background-color: #ffffff;
   padding: 0.8rem 1.5rem;
   margin: 0 auto;
