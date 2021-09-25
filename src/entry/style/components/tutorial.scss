@@ -7,26 +7,15 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin: unset;
 
   #tutorialTitleFlex{
     width: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 10rem;
     margin: 0 auto;
 
     #tutorialTitle{
       font-size: 1.5rem;
       letter-spacing: 0.1rem;
-    }
-
-    #roomPeoples{
-      background-color: $btn-blue-BG;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.7rem 1.3rem;
-      border-radius: 10px;
     }
   }
 
@@ -52,6 +41,7 @@
   #tutorialBtns{
     width: fit-content;
     display: flex;
+    flex-direction: row;
     align-items: center;
     margin: 0 auto;
     gap: 5rem;
@@ -60,5 +50,23 @@
 
 /* mobileここから */
 @media screen and (max-width: 950px) {
+  #tutorial{
+    max-width: 20rem;
+    padding: 2rem;
+    gap: 2rem;
+    margin: 0 0 6rem 0;
+
+    #tutorial_img{
+      img{
+        width: calc(100vw*(4/13));
+        max-width: 8rem;
+      }
+    }
+
+    #tutorialBtns{
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
 }
 /* mobileここまで */

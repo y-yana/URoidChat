@@ -72,14 +72,12 @@ $grid-size: 5.5rem;
     .topWidthCalc{
       align-self: center;
     }
-    
+
     #gameChoiceBtns{
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      align-items: center;
-      justify-items: center;
-      margin: auto;
+      margin: 0 auto 6rem;
     }
   }
 }
