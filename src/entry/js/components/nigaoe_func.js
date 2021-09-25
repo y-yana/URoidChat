@@ -16,6 +16,11 @@ document.getElementById('file-sample').addEventListener('change', function (e) {
 
 // replayBtn
 document.getElementById('nigaoeReplayBtn').onclick = function () {
+  var sound = document.getElementById('vueSound').value;
+  if (sound == 'True') {
+    const opening_checkbox = new Audio("./static/sound/sound_effect/opening_checkbox.mp3");
+    opening_checkbox.play();
+  }
   console.log('replay');
   var img = document.getElementById('file-preview');
   var download = document.getElementById('download');
