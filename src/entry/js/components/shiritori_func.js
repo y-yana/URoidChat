@@ -33,6 +33,11 @@ const shiritori = new Vue({
   },
   methods: {
     gameStart: function () {
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        const opening_checkbox = new Audio("./static/sound/sound_effect/opening_checkbox.mp3");
+        opening_checkbox.play();
+      }
       this.difficultyVal = this.difficultyPicked
       this.difficultyChoice = false
       this.playGame = true
@@ -48,6 +53,11 @@ const shiritori = new Vue({
       if (this.inputText == '') {
         console.log('空欄のままです！')
         return
+      }
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        const chat_message = new Audio("./static/sound/sound_effect/chat_message.mp3");
+        chat_message.play();
       }
       this.submitCheck = 'NG'
       this.endStr = this.inputText.slice(-1)
