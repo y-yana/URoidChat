@@ -66,14 +66,6 @@ window.addEventListener("DOMContentLoaded", () => {
     light.position.set(1, 1, 1).normalize()
     scene.add(light)
 
-    // グリッドを表示
-    /*const gridHelper = new THREE.GridHelper(10, 10)
-    scene.add(gridHelper)
-    gridHelper.visible = true */
-    // 座標軸を表示
-    /*const axesHelper = new THREE.AxesHelper(0.5)
-    scene.add(axesHelper)*/
-
     //床の設置
     const loader = new THREE.TextureLoader();
     const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/sunahama2.png') })
@@ -117,10 +109,10 @@ window.addEventListener("DOMContentLoaded", () => {
     controls.screenSpacePanning = true
     controls.minDistance = 1
     controls.maxDistance = 28
+    controls.maxPolarAngle = Math.PI/2
     /*controls.maxAzimuthAngle = -4*Math.PI/3
     controls.minAzimuthAngle = 4*Math.PI/3*/
     //controls.minPolarAngle = 0
-    controls.maxPolarAngle = Math.PI/2
     controls.update()
   }
 
