@@ -46,6 +46,12 @@
   margin: 2rem auto 0;
   #modelArea{
     width: fit-content;
+    height: fit-content;
+    margin: auto;
+    canvas{
+      width: calc(100vw*(1/6));
+      height: calc(100vh*(5/8));
+    }
   }
 }
 
