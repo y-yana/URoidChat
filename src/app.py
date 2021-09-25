@@ -26,7 +26,9 @@ app.secret_key = config['flask_secret_key']
 async_mode = None
 Payload.max_decode_packets = 50
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app, async_mode=async_mode)
+#socketio = SocketIO(app, async_mode=async_mode)
+socketio = SocketIO(app)
+socketio.init_app(app, cors_allowed_origins="*")
 thread = None
 thread_lock = Lock()
 
@@ -213,7 +215,7 @@ def upload_img():
     return ""
 
 
-@app.route('/shiritori/ajax/', methods=['POST'])
+@app.route('/shiritori/ajax', methods=['POST'])
 def shiritori_ajax():
     """ans = request.get_data('postMessage')
     getMessage = ans.decode()"""
@@ -239,7 +241,7 @@ def shiritori_ajax():
     return jsonify(values=json.dumps(return_json))
 
 
-@app.route('/quiz/ajax/', methods=['POST'])
+@app.route('/quiz/ajax', methods=['POST'])
 def quiz_ajax():
     getMessage = request.get_json('postMessage')
 
@@ -288,7 +290,6 @@ def clear_room_board(message):
 @socketio.event
 def join(message):
     join_room(message['room'])
-    #session['token'] = make_token(randomname(15))
     session['token'] = randomname(15)
     emit('oekaki_token',
          {'token': session['token']})

@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
   var get_path = <HTMLInputElement>document.getElementById('modelChange');
   var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
-  var facemode = "normal";
+  var facemode = "fun";
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
     modelPass = path.value;
 
     // 現在のモデルを削除
-    //scene.remove.apply(scene, scene.children);
+    scene.remove.apply(scene, scene.children);
 
     // 再描画
     sceneOption()
@@ -40,14 +40,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const light = new THREE.DirectionalLight(0xffffff)
     light.position.set(1, 1, 1).normalize()
     scene.add(light)
-
-    // グリッドを表示
-    /*const gridHelper = new THREE.GridHelper(10, 10)
-    scene.add(gridHelper)
-    gridHelper.visible = true */
-    // 座標軸を表示
-    /*const axesHelper = new THREE.AxesHelper(0.5)
-    scene.add(axesHelper)*/
 
     //床の設置
     const loader = new THREE.TextureLoader();
@@ -90,12 +82,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
-    //controls.minDistance = 1
-    //controls.maxDistance = 5
-    //controls.maxAzimuthAngle = -4*Math.PI/3
-    //controls.minAzimuthAngle = 4*Math.PI/3
-    //controls.minPolarAngle = Math.PI
-    //controls.maxPolarAngle = 0
+    controls.minDistance = 1
+    controls.maxDistance = 28
+    controls.maxPolarAngle = Math.PI/2
+    /*controls.maxAzimuthAngle = -4*Math.PI/3
+    controls.minAzimuthAngle = 4*Math.PI/3*/
+    //controls.minPolarAngle = 0
     controls.update()
 }
 

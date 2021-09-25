@@ -13,8 +13,20 @@
     },
     {
         "rank": 3,
+        "name": "\u30de\u30b9\u30bf\u30fc",
+        "trueNum": 7,
+        "time": 34.31
+    },
+    {
+        "rank": 4,
         "name": "UDN",
         "trueNum": 4,
         "time": 10.21
+    },
+    {
+        "rank": 5,
+        "name": "\u30de\u30b9\u30bf\u30fc",
+        "trueNum": 2,
+        "time": 10.49
     }
 ]
