@@ -62,6 +62,25 @@ $grid-size: 5.5rem;
   #top{
     width: auto;
     flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: initial;
+
+    .topWidthCalc{
+      align-self: center;
+    }
+    
+    #gameChoiceBtns{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      justify-items: center;
+      margin: auto;
+    }
   }
 }
 /* mobileここまで */

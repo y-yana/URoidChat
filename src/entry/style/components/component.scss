@@ -67,6 +67,8 @@ $rank-copper: #D58B00;
 
 /* model & dialog */
 .modelAndDialogue{
+  width: unset;
+  margin: unset;
   position: relative;
   .modelMessage{
     width: fit-content;
@@ -160,14 +162,17 @@ $rank-copper: #D58B00;
 
 /* mobileここから */
 @media screen and (max-width: 950px) {
+  #modelArea{
+    canvas{
+      width: calc(100vw*(5/7));
+      height: calc(100vh*(3/5));
+    }
+  }
   .modelAndDialogue{
+    width: fit-content;
+    margin: 1rem auto 0;
     .modelMessage{
-      top: 80%;
-      left: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
-      font-size: 1rem;
+      display: none;
     }
   }
 }
