@@ -21,14 +21,14 @@ function fadeout() {
 }
 
 $("#openingBtn").on('click', function(){
-  var soundData = document.querySelector("input[name=sound]");
-  var yourNameData = document.querySelector("input[name=yourName]");
-  var AInameData = document.querySelector("input[name=AIname]");
+  var soundData = document.getElementById("sound").checked
+  var yourNameData = document.getElementById("yourName").value;
+  var AInameData = document.getElementById("AIname").value;
 
   var formData = {
-    sound: soundData.checked, // boolean
-    yourName: yourNameData.value, // str
-    AIname: AInameData.value, // str
+    sound: soundData, // boolean
+    yourName: yourNameData, // str
+    AIname: AInameData, // str
   };
 
   var postFormData = JSON.stringify(formData);
@@ -39,9 +39,12 @@ $("#openingBtn").on('click', function(){
     dataType: "json",
   });
 
-  setTimeout(fadeout, 900);
+  setTimeout(fadeout, 1300);
 
-  if (soundData.checked == true) {
+  if (soundData == true) {
+    const opening_start = new Audio("./static/sound/sound_effect/opening_start.mp3");
+    opening_start.play();
+
     var now = new Date();
     var Hour = now.getHours();
 
@@ -55,6 +58,6 @@ $("#openingBtn").on('click', function(){
 
     setTimeout(function () {
       voice.play();
-    },1500);
+    },2700);
   }
 })
