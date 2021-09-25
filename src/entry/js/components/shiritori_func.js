@@ -145,7 +145,7 @@ const shiritori = new Vue({
       }
       var postMessage = JSON.stringify(json_text);
       let self = this;
-      await $.ajax("/shiritori/ajax/", {
+      await $.ajax("/shiritori/ajax", {
             type: "post",
             data: postMessage,
             dataType: "json",
