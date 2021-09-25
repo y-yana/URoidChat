@@ -5,6 +5,8 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { DoubleSide } from 'three';
 
 window.addEventListener("DOMContentLoaded", () => {
+  var getWidth = window.innerWidth;
+
   // canvasの取得
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
@@ -83,7 +85,6 @@ window.addEventListener("DOMContentLoaded", () => {
   )
   camera.position.set(0, 1, 4)
 
-/*
   // カメラコントロールの設定
   if (getWidth > 950) {
     const controls = new OrbitControls(camera, renderer.domElement)
@@ -97,7 +98,6 @@ window.addEventListener("DOMContentLoaded", () => {
     //controls.maxPolarAngle = 0
     controls.update()
 }
-*/
 
   // VRMの読み込み
   let mixer: any
