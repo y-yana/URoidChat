@@ -42,6 +42,8 @@ $("#openingBtn").on('click', function(){
   setTimeout(fadeout, 1300);
 
   if (soundData == true) {
+    document.getElementById('vueSound').value = 'True';
+    
     const opening_start = new Audio("./static/sound/sound_effect/opening_start.mp3");
     opening_start.play();
 

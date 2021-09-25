@@ -1,3 +1,5 @@
+const top_choice = new Audio("./static/sound/sound_effect/top_choice.mp3");
+
 const shiritori = new Vue({
   el: '#top',
   // FlaskとVueを共存させるためにDelimiterを変更する
@@ -16,6 +18,10 @@ const shiritori = new Vue({
   },
   methods: {
     showTutorial: function (value) {
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        top_choice.play();
+      }
       this.choiceGameNum = value
       if (value < 5) {
         this.gameChoice = false

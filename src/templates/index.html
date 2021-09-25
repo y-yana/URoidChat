@@ -1,5 +1,6 @@
 {% extends "layout.html" %}{% block content %}
-<button id="modelChange" value={{model_path}} style="display: block;"></button>
+<button id="modelChange" value={{model_path}} style="display: none;"></button>
+<input id="vueSound" value="{{ sound }}" style="display: none;"></input>
 
 <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;"
   style='display:none;'>
