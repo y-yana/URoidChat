@@ -1,13 +1,14 @@
 from typing import SupportsRound
 import yaml
-from flask import Flask, render_template, jsonify, request,session,send_from_directory
+from flask import Flask, render_template, jsonify, request, session, send_from_directory
 import json
 from python.chat import response
 import os
 import cv2
 import numpy as np
 import datetime
-import random, string
+import random
+import string
 from threading import Lock
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit, join_room
@@ -32,65 +33,71 @@ thread_lock = Lock()
 
 @app.route('/')
 def index():
-    #return "Hello World"
+    # return "Hello World"
 
     session['user_name'] = 'マスター'
     session['bot_name'] = 'U Roid Chat'
-    session['negaposi']=0
-    session['np_ALL']=0
-    session["model_path"]="./static/base_model/base.vrm"
+    session['negaposi'] = 0
+    session['np_ALL'] = 0
+    session["model_path"] = "./static/base_model/base.vrm"
 
-    session["sound"]=False
+    session["sound"] = False
 
-    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"],sound=session["sound"])
+    return render_template("index.html", pageTitle='TopPage', css='top', model_path=session["model_path"], sound=session["sound"])
+
 
 @app.route("/top", methods=["POST"])
 def move_top():
-    return render_template("index.html", pageTitle='TopPage', css='top',model_path=session["model_path"],sound=session["sound"])
+    return render_template("index.html", pageTitle='TopPage', css='top', model_path=session["model_path"], sound=session["sound"])
 
 
 @app.route('/opening', methods=['POST'])
 def openingForm():
     getData = request.get_json('postFormData')
-    sound = getData['sound']  #boolean
-    yourName = getData['yourName'] #str
-    AIname = getData['AIname'] #str
-    #vrmFile = getData['vrmFile'] #str
+    sound = getData['sound']  # boolean
+    yourName = getData['yourName']  # str
+    AIname = getData['AIname']  # str
+    # vrmFile = getData['vrmFile'] #str
 
-    if len(yourName)!=0:
+    if len(yourName) != 0:
         session['user_name'] = yourName
-    if len(AIname)!=0:
+    if len(AIname) != 0:
         session['bot_name'] = AIname
 
-    session["sound"]=sound
+    session["sound"] = sound
 
     print(sound)
     print(yourName)
     print(AIname)
-    #print(vrmFile)
+    # print(vrmFile)
 
     return ""
 
 
-@app.route('/oekaki',methods=["POST"])
+@app.route('/oekaki', methods=["POST"])
 def move_oekaki():
-    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode,model_path=session["model_path"],sound=session["sound"])
+    return render_template('draw.html', pageTitle='Oekaki', css='oekaki', async_mode=socketio.async_mode, model_path=session["model_path"], sound=session["sound"])
+
 
 @app.route("/chat", methods=["POST"])
 def move_chat():
-    return render_template("chat.html", pageTitle='URoidChat', css='chat',model_path=session["model_path"],sound=session["sound"])
+    return render_template("chat.html", pageTitle='URoidChat', css='chat', model_path=session["model_path"], sound=session["sound"])
+
 
 @app.route("/shiritori", methods=["POST"])
 def move_shiritori():
-    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori',model_path=session["model_path"],sound=session["sound"])
+    return render_template("shiritori.html", pageTitle='Shiritori', css='shiritori', model_path=session["model_path"], sound=session["sound"])
+
 
 @app.route("/quiz", methods=["POST"])
 def move_quiz():
-    return render_template("quiz.html", pageTitle='Quiz', css='quiz',model_path=session["model_path"],sound=session["sound"])
+    return render_template("quiz.html", pageTitle='Quiz', css='quiz', model_path=session["model_path"], sound=session["sound"])
+
 
 @app.route("/nigaoe", methods=["POST"])
 def move_nigaoe():
-    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe',model_path=session["model_path"],sound=session["sound"])
+    return render_template("nigaoe.html", pageTitle='Nigaoe', css='nigaoe', model_path=session["model_path"], sound=session["sound"])
+
 
 @app.route('/rename', methods=['POST'])
 def rename():
@@ -100,45 +107,42 @@ def rename():
     print(session['user_name'])
     print(session['bot_name'])
 
-    #return render_template("chat.html")
+    # return render_template("chat.html")
     return ""
 
 
 # /showにPOSTリクエストが送られたら処理してJSONを返す
 @app.route('/show', methods=['POST'])
 def show():
-    u_name=session['user_name']
-    b_name=session['bot_name']
+    u_name = session['user_name']
+    b_name = session['bot_name']
 
-    np_ALL=session['np_ALL']
+    np_ALL = session['np_ALL']
 
+    npi = negaposi(request.form['chatMessage'])
+    session['negaposi'] += npi
+    if npi == 0 and session['negaposi'] > 0:
+        session['negaposi'] -= 1
+    if npi == 0 and session['negaposi'] < 0:
+        session['negaposi'] += 1
 
+    # print('in_nage',session['negaposi'])
 
-    npi=negaposi(request.form['chatMessage'])
-    session['negaposi']+=npi
-    if npi==0 and session['negaposi']>0:
-        session['negaposi']-=1
-    if npi==0 and session['negaposi']<0:
-        session['negaposi']+=1
+    res = response(request.form['chatMessage'], u_name,
+                   b_name, session['negaposi'], np_ALL, npi)
 
-    #print('in_nage',session['negaposi'])
+    npo = negaposi(res)
 
+    # print(npi)
+    # print(npo)
+    NP = npi+npo
 
-    res = response(request.form['chatMessage'],u_name,b_name,session['negaposi'],np_ALL,npi)
-
-    npo=negaposi(res)
-
-    #print(npi)
-    #print(npo)
-    NP=npi+npo
-
-    session['np_ALL']+=NP
-
+    session['np_ALL'] += NP
 
     return_json = {
         "message": res,
-        "NP":NP,
-        "ALL_NP":session['negaposi']
+        "NP": NP,
+        "ALL_NP": session['negaposi']
     }
 
     return jsonify(values=json.dumps(return_json))
@@ -147,24 +151,22 @@ def show():
 @app.route('/upload', methods=['POST'])
 def upload():
 
-
     the_file = request.files['the_file']
 
-    model_dir='./static/models/'
+    model_dir = './static/models/'
     model_files = os.listdir(model_dir)
     model_files.sort()
     print(model_files)
-    if len(model_files)>=7:
+    if len(model_files) >= 7:
         os.remove(model_dir+model_files[0])
 
     now = datetime.datetime.now()
     file_name = '{0:%d%H%M%S}'.format(now)
 
-    path=f'./static/models/{file_name}.vrm'
+    path = f'./static/models/{file_name}.vrm'
     the_file.save(path)
 
-    session['model_path']=path
-
+    session['model_path'] = path
 
     return_json = {
         "path": path
@@ -177,11 +179,10 @@ SAVE_DIR = "./static/images/nigaoe"
 if not os.path.isdir(SAVE_DIR):
     os.mkdir(SAVE_DIR)
 
+
 @app.route('/images/<path:path>')
 def send_js(path):
     return send_from_directory(SAVE_DIR, path)
-
-
 
 
 @app.route('/img', methods=['POST'])
@@ -193,28 +194,24 @@ def upload_img():
 
         img = cv2.imdecode(img_array, 1)
 
-        w=img.shape[1]
+        w = img.shape[1]
 
-        if w>300:
-            w=300
+        if w > 300:
+            w = 300
 
         img = cv2.resize(img, dsize=(w, int(w * img.shape[0] / img.shape[1])))
 
-
-
-
-
         # 保存
         #dt_now = datetime.now().strftime("test") + random_str(5)
-        dt_now='image'
+        dt_now = 'image'
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
         cv2.imwrite(save_path, img)
         #print("save", save_path)
 
-
         image_transform(save_path)
 
     return ""
+
 
 @app.route('/shiritori/ajax/', methods=['POST'])
 def shiritori_ajax():
@@ -224,24 +221,22 @@ def shiritori_ajax():
     word = getMessage['word']
     defi = getMessage['difficult']
 
-    #print(word,defi)
+    # print(word,defi)
 
-    #10,8,5
-    #est=0.5
-    res_shiritori,end_str=shiritori(word,defi)
+    # 10,8,5
+    # est=0.5
+    res_shiritori, end_str = shiritori(word, defi)
 
+    # print(res_shiritori,defi)
 
-    #print(res_shiritori,defi)
-
-    #return res_shiritori
+    # return res_shiritori
     return_json = {
         "res_shiritori": res_shiritori,
-        "endstr":end_str
+        "endstr": end_str
     }
-    #print(return_json)
+    # print(return_json)
 
     return jsonify(values=json.dumps(return_json))
-
 
 
 @app.route('/quiz/ajax/', methods=['POST'])
@@ -251,20 +246,23 @@ def quiz_ajax():
     trueCounter = getMessage['trueCounter']
     playTime = getMessage['playTime']
 
-    quiz_name=getMessage['quizName']
+    quiz_name = getMessage['quizName']
 
     print(quiz_name)
 
-    #print(trueCounter)
+    # print(trueCounter)
     #print(round(playTime/1000, 2))
-    rank=ranking(trueCounter,round(playTime/1000, 2),session['user_name'],quiz_name)
+    rank = ranking(trueCounter, round(playTime/1000, 2),
+                   session['user_name'], quiz_name)
 
     print(rank)
 
     return jsonify(values=json.dumps(rank))
-    #return ""
+    # return ""
 
-#お絵かき
+# お絵かき
+
+
 @socketio.event
 def my_event(message):
     emit('my_response',
@@ -274,7 +272,8 @@ def my_event(message):
 @socketio.event
 def broadcast_event(message):
     emit('my_response',
-        {'name': session['user_name'], 'data': message['data'],'token':session['token']}, to=message['room'])
+         {'name': session['user_name'], 'data': message['data'], 'token': session['token']}, to=message['room'])
+
 
 @socketio.event
 def all_broadcast_event(message):
@@ -292,9 +291,10 @@ def join(message):
     #session['token'] = make_token(randomname(15))
     session['token'] = randomname(15)
     emit('oekaki_token',
-    {'token':session['token']})
+         {'token': session['token']})
     emit('my_response',
-        {'name': '', 'data': session['user_name']+'さんが入室しました','token':session['token']}, to=message['room'])
+         {'name': '', 'data': session['user_name']+'さんが入室しました', 'token': session['token']}, to=message['room'])
+
 
 '''
 def make_token(id):
@@ -302,9 +302,10 @@ def make_token(id):
     return hash(hash_words)
 '''
 
+
 def randomname(n):
-   return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
-#お絵描きここまで
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
+# お絵描きここまで
 
 
 if __name__ == '__main__':

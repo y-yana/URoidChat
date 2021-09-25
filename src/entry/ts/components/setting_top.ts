@@ -82,14 +82,6 @@ window.addEventListener("DOMContentLoaded", () => {
     floorMesh.position.set(0, 0, 0);
     scene.add(floorMesh);
 
-    //壁紙の設置
-    /*const walltexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi7.png') })
-    var wallGeometry = new THREE.BoxGeometry(5, 0, 5);
-    var wallMesh = new THREE.Mesh(wallGeometry, walltexture);
-    wallMesh.position.set(0, 1.5, -2);
-    scene.add(wallMesh);
-    wallMesh.rotation.set(Math.PI / 4, 0, 0);*/
-
     //球の設置
     const cubetexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi10.png'), side: DoubleSide })
     var cubeGeometry = new THREE.SphereGeometry(30, 30, 30);
@@ -123,12 +115,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
-    controls.minDistance = 1
+    /*controls.minDistance = 1
     controls.maxDistance = 5
     controls.maxAzimuthAngle = -4*Math.PI/3
     controls.minAzimuthAngle = 4*Math.PI/3
     controls.minPolarAngle = Math.PI
-    controls.maxPolarAngle = 0
+    controls.maxPolarAngle = 0*/
     controls.update()
   }
 
