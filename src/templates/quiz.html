@@ -46,7 +46,7 @@
         <div id="askQuestionArea">
           <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
           <p v-if="question">[[ question ]]</p>
-          <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg">
+          <img id="NationalFlag" v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg">
           <div id="quizAnsNextBtnArea">
             <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
             <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'">

@@ -56,7 +56,7 @@
 }
 
 #roomChoiceArea{
-  width: calc(100vw*(5/8));
+  width: calc(100vw*(5/9));
   margin: auto;
   color: $text-main;
   #join_message{
@@ -67,7 +67,7 @@
     justify-items: center;
     gap: 1.5rem 0;
     form{
-      width: calc(100vw*(1/7));
+      width: calc(100vw*(1/8));
       background-color: #ffffff;
       padding: 1rem 1rem 0.5rem;
       border-radius: 10px;
