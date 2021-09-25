@@ -158,6 +158,19 @@ const quiz = new Vue({
         this.quizAnswerOption = false
         this.yourResult = true
         this.resultRanking = true
+        var sound = document.getElementById('vueSound').value;
+        if (sound == 'True') {
+          if (this.trueCounter == 10) {
+            var result = new Audio("./static/sound/quiz_voice/quiz_perfect.mp3");
+            result.play();
+          } else if(this.trueCounter < 10 && this.trueCounter > 5) {
+            var result = new Audio("./static/sound/quiz_voice/quiz_good.mp3");
+            result.play();
+          } else {
+            var result = new Audio("./static/sound/quiz_voice/quiz_bad.mp3");
+            result.play();
+          }
+        }
     },
     pageMove_yourResult2askQuestion: function() {
       this.yourResult = false
