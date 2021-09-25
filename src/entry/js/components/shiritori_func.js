@@ -76,6 +76,7 @@ const shiritori = new Vue({
     },
     textCheck: function () {
       if (this.check.indexOf(this.inputText) != -1) {
+        this.voiceCheckWin()
         this.result = '「' + this.inputText + '」は既出なので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
@@ -83,6 +84,7 @@ const shiritori = new Vue({
         return
       }
       if (this.endStr == 'ん') {
+        this.voiceCheckWin()
         this.result = '最後に「ん」がついたので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
@@ -144,7 +146,16 @@ const shiritori = new Vue({
           self.endStr = getData.endstr
           self.pushNewText(self.ajaxText)
           self.classVue.push('getMessageComponent')
+          if (self.check.indexOf(self.ajaxTex) != -1) {
+            self.voiceCheckLose()
+            self.result = '「' + self.ajaxTex + '」は既出なので、私の負けです…'
+            self.submitBtnDisabled = true
+            self.replayQuestion = true
+            clearInterval(self.intervalID)
+            return
+          }
           if (self.endStr == 'ん') {
+            self.voiceCheckLose()
             self.result = '最後に「ん」がついたので、私の負けです…'
             self.submitBtnDisabled = true
             self.replayQuestion = true
@@ -173,6 +184,7 @@ const shiritori = new Vue({
       this.timerVal -= 1
       if (this.timerVal == 0) {
         clearInterval(this.intervalID)
+        this.voiceCheckWin()
         this.result = 'タイムオーバーなので、あなたの負けです！'
         this.submitBtnDisabled = true
         this.replayQuestion = true
@@ -185,6 +197,32 @@ const shiritori = new Vue({
         var container = this.$el.querySelector(".shiritoriChatArea")
         container.scrollTop = container.scrollHeight
       })
+    },
+    voiceCheckWin: function () {
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        var random = Math.floor(Math.random() * 2);
+        if (random == 0) {
+          const win1 = new Audio("./static/sound/shiritori_voice/shiritori_win1.mp3");
+          win1.play();
+        } else {
+          const win2 = new Audio("./static/sound/shiritori_voice/shiritori_win2.mp3");
+          win2.play();
+        }
+      }
+    },
+    voiceCheckLose: function () {
+      var sound = document.getElementById('vueSound').value;
+      if (sound == 'True') {
+        var random = Math.floor(Math.random() * 2);
+        if (random == 0) {
+          const lose1 = new Audio("./static/sound/shiritori_voice/shiritori_lose1.mp3");
+          lose1.play();
+        } else {
+          const lose2 = new Audio("./static/sound/shiritori_voice/shiritori_lose2.mp3");
+          lose2.play();
+        }
+      }
     }
   },
   watch: {
