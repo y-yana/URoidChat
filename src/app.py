@@ -28,7 +28,9 @@ Payload.max_decode_packets = 50
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
 #socketio = SocketIO(app)
-#socketio.init_app(app, cors_allowed_origins="*")
+socketio.init_app(app, cors_allowed_origins="*")
+#socketio = SocketIO(app, message_queue='redis://')
+
 thread = None
 thread_lock = Lock()
 
@@ -314,3 +316,4 @@ if __name__ == '__main__':
     #port = int(os.environ.get("PORT", 5000))
     #app.run(host="0.0.0.0", port=port)
     app.run()
+    #socketio.run(app, debug=True)
