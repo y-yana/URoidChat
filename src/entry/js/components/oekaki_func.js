@@ -5,64 +5,49 @@ const oekakiRoom = new Vue({
   data: {
     roomData: [
       {
-        roomName: 'HTML',
-        id: 'roomName-1'
+        roomName: 'HTML'
       },
       {
-        roomName: 'css',
-        id: 'roomName-2'
+        roomName: 'css'
       },
       {
-        roomName: 'JavaScript',
-        id: '3'
+        roomName: 'JavaScript'
       },
       {
-        roomName: 'Sass',
-        id: '4'
+        roomName: 'Sass'
       },
       {
-        roomName: 'TypeScript',
-        id: '5'
+        roomName: 'TypeScript'
       },
       {
-        roomName: 'Vue.js',
-        id: '6'
+        roomName: 'Vue.js'
       },
       {
-        roomName: 'Three.js',
-        id: '7'
+        roomName: 'Three.js'
       },
       {
-        roomName: 'Python',
-        id: '8'
+        roomName: 'Python'
       },
       {
-        roomName: 'Flask',
-        id: '9'
+        roomName: 'Flask'
       },
       {
-        roomName: 'jQuery',
-        id: '10'
+        roomName: 'jQuery'
       },
       {
-        roomName: 'webpack',
-        id: '11'
+        roomName: 'webpack'
       },
       {
-        roomName: 'WebSocket',
-        id: '12'
+        roomName: 'WebSocket'
       },
       {
-        roomName: 'Docker',
-        id: '13'
+        roomName: 'Docker'
       },
       {
-        roomName: 'Unity',
-        id: '14'
+        roomName: 'Unity'
       },
       {
-        roomName: 'Heroku',
-        id: '15'
+        roomName: 'Heroku'
       }
     ]
   },

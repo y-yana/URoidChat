@@ -38,6 +38,7 @@
 
     img{
       width: calc(100vw*(2/13));
+      max-width: 15rem;
       border: 1px solid $btn-blue-text;
       border-radius: 3px;
     }
