@@ -1,3 +1,4 @@
+/*
 jQuery(function () {
   var webStorage = function () {
     if (sessionStorage.getItem('access')) {
@@ -15,6 +16,9 @@ jQuery(function () {
   }
   webStorage();
 });
+*/
+var openingElement = document.getElementById('openingFormContents');
+      $(openingElement).addClass('is-fadein');
 
 function fadeout() {
   $('#openingForm').fadeOut('slow');
