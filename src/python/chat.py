@@ -15,6 +15,11 @@ def response(word,u_name,b_name,in_np,np_ALL,npi):
     suki=['すき','好き']
     kirai=['きらい','嫌い','バカ','馬鹿','ばか']
 
+    if in_np>5:
+        flag=[1,2,3,4]
+        f=random.choice(flag)
+        if f==1:
+            return 'もっと褒めてー'
 
     if in_np>=2 and word in suki:
         return f'わたしも{u_name}のこと好きだよ'
@@ -32,13 +37,13 @@ def response(word,u_name,b_name,in_np,np_ALL,npi):
             return f
 
     if np_ALL<-2 and npi<0:
-        flag=[1,2,3,4]
+        flag=[1,2]
         f=random.choice(flag)
         if f==1:
             return 'すねちゃうよ？'
 
     if np_ALL>4 and npi>0:
-        flag=[1,2,3,4]
+        flag=[1,2]
         f=random.choice(flag)
         if f==1:
             return 'そんなこと言ったって喜ばないんだからね！'
@@ -49,9 +54,17 @@ def response(word,u_name,b_name,in_np,np_ALL,npi):
     if word=="クレジット":
         return "フロントエンド:柳田祐奈\n　バックエンド:池田柳之介\n　インフラ,3D:國司礼言\n　　Voice:みかたま"
 
+    if word=="ぬるぽ":
+        return "ガッ"
+    
+
+
 
     if in_np<-2:
         return f'{u_name}のばか...'
+
+    if in_np<-8:
+        return "..."
 
 
 
