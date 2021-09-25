@@ -29,6 +29,8 @@ $rank-copper: #D58B00;
 
 #modelArea{
   canvas{
+    width: calc(100vw*(2/7));
+    height: calc(100vh*(5/7));
     border-radius: 10px;
   }
 }
