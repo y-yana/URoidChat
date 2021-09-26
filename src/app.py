@@ -276,35 +276,28 @@ def my_event(message):
 @socketio.event
 def broadcast_event(message):
     emit('my_response',
-         {'name': session['user_name'], 'data': message['data'], 'token': session['token']}, to=message['room'])
+         {'name': session['user_name'], 'data': message['data'], 'token': session['token']}, to=session['room'])
 
 
 @socketio.event
 def all_broadcast_event(message):
-    emit('send user', message, to=message['room'])
+    emit('send user', message, to=session['room'])
 
 
 @socketio.event
 def clear_room_board(message):
-    emit('clear user', to=message['room'])
+    emit('clear user', to=session['room'])
 
 
 @socketio.event
 def join(message):
     join_room(message['room'])
     session['token'] = randomname(15)
+    session['room'] = message['room']
     emit('oekaki_token',
          {'token': session['token']})
     emit('my_response',
-         {'name': '', 'data': session['user_name']+'さんが入室しました', 'token': session['token']}, to=message['room'])
-
-
-'''
-def make_token(id):
-    hash_words = "awkgihrtshuiobfmey"+id
-    return hash(hash_words)
-'''
-
+         {'name': '', 'data': session['user_name']+'さんが入室しました', 'token': session['token']}, to=session['room'])
 
 def randomname(n):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=n))

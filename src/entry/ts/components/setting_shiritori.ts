@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
-import { DoubleSide } from 'three';
+//import { DoubleSide } from 'three';
 
 window.addEventListener("DOMContentLoaded", () => {
   // canvasの取得
@@ -40,14 +40,15 @@ window.addEventListener("DOMContentLoaded", () => {
     var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
     floorMesh.position.set(0, 0, 0);
     scene.add(floorMesh);
-    
+
+    /*
     //球の設置
     const cubetexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi10.png'), side: DoubleSide })
     var cubeGeometry = new THREE.SphereGeometry(30, 30, 30);
     var cubeMesh = new THREE.Mesh(cubeGeometry, cubetexture);
     cubeMesh.position.set(0, 0, 0);
     scene.add(cubeMesh);
-    cubeMesh.rotation.set(0,-Math.PI/2, 0);
+    cubeMesh.rotation.set(0,-Math.PI/2, 0);*/
   }
 
   // レンダラーの設定
