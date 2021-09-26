@@ -50,8 +50,8 @@
       },
       {
         "id": 4,
-        "root": "/oekaki",
-        "title": "おえかき",
+        "root": "/",
+        "title": "Comming soon...",
         "tutorial": "友達と一緒にチャットしながらお絵描きを楽しむことができます。<br>好きなルームを選んで入室してくださいね。<br>また、ペンの太さを変更したり、描いた絵を保存することもできます！",
         "image1": "tutorial_oekaki1-min.jpg",
         "image2": "tutorial_oekaki2-min.jpg",
