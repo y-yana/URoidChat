@@ -5,41 +5,16 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { DoubleSide } from 'three';
 
 window.addEventListener("DOMContentLoaded", () => {
-  // canvasサイズの制御
-  // 表示用のサイズを格納する変数
-  var newWidth
-  var newHeight
-
-  // 画面サイズを取得
   var getWidth = window.innerWidth;
-  var getHeight = window.innerHeight;
-
-  // レスポンシブ対応
-  if (getWidth <= 950) {
-    // 比率計算(mobile)
-    newWidth = Math.floor(getWidth * 0.8)
-    newHeight = Math.floor(getHeight * 0.8)
-  } else {
-    // 比率計算(desktop)
-    newWidth = Math.floor(getWidth * (2 / 7))
-    newHeight = Math.floor(getHeight * (5 / 7))
-  }
-
-  // canvas生成
-  var modelArea = document.getElementById('modelArea');
-  modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
-
 
   // canvasの取得
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
-  // 初期値
-  //var modelPass = '../static/base_model/base.vrm';
   // model_pathの取得
   var get_path = <HTMLInputElement>document.getElementById('modelChange');
   var modelPass = get_path.value;
   var posepass = '../static/pose/hellovrm.csv';
-  var facemode = "normal";
+  var facemode = "fun";
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -48,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
     modelPass = path.value;
 
     // 現在のモデルを削除
-    //scene.remove.apply(scene, scene.children);
+    scene.remove.apply(scene, scene.children);
 
     // 再描画
     sceneOption()
@@ -65,14 +40,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const light = new THREE.DirectionalLight(0xffffff)
     light.position.set(1, 1, 1).normalize()
     scene.add(light)
-
-    // グリッドを表示
-    /*const gridHelper = new THREE.GridHelper(10, 10)
-    scene.add(gridHelper)
-    gridHelper.visible = true */
-    // 座標軸を表示
-    /*const axesHelper = new THREE.AxesHelper(0.5)
-    scene.add(axesHelper)*/
 
     //床の設置
     const loader = new THREE.TextureLoader();
@@ -115,14 +82,14 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
-    /*controls.minDistance = 1
-    controls.maxDistance = 5
-    controls.maxAzimuthAngle = -4*Math.PI/3
-    controls.minAzimuthAngle = 4*Math.PI/3
-    controls.minPolarAngle = Math.PI
-    controls.maxPolarAngle = 0*/
+    controls.minDistance = 1
+    controls.maxDistance = 28
+    controls.maxPolarAngle = Math.PI/2
+    /*controls.maxAzimuthAngle = -4*Math.PI/3
+    controls.minAzimuthAngle = 4*Math.PI/3*/
+    //controls.minPolarAngle = 0
     controls.update()
-  }
+}
 
   // VRMの読み込み
   let mixer: any

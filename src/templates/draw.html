@@ -23,19 +23,14 @@
 
 <div id="oekakiMainArea">
     <div id="modelArea">
+        <canvas id="canvas"></canvas>
     </div>
     <div id="roomChoiceArea">
         <div id="join_message">
             <form v-bind:id=item.id method="POST" action='#' onsubmit="return false;" v-for="item in roomData" :key="item.roomName">
-                <p>[[ item.roomName ]]</p>
+                <p>[[ item ]]</p>
                 <hr>
-                <div>
-                    <p>
-                        <!--<span class="material-icons">group</span>-->
-                        <!-- ここにroomの人数を表示 -->
-                    </p>
-                    <button type="submit" @click="sendVue(item.roomName)"><span class="material-icons">login</span></button>
-                </div>
+                <button type="submit" @click="sendVue(item)"><span class="material-icons">login</span></button>
             </form>
         </div>
         <form id='join_form' method="POST" action='#' style="display:none;">
@@ -91,6 +86,7 @@
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
+<script src="static/webpack/build_oekaki.js"></script>
 <script charset="utf-8">
     $(document).ready(function () {
         var socket = io();
@@ -319,6 +315,5 @@
         }
     });
 </script>
-<script src="static/webpack/build_oekaki.js"></script>
 
 {% endblock %}

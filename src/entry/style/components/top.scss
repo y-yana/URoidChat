@@ -1,0 +1,84 @@
+$grid-size: 5.5rem;
+
+#top{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  .topWidthCalc{
+    align-self: center;
+  }
+
+  /* grid layout */
+  #gameChoiceBtns{
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    grid-template-rows: $grid-size $grid-size $grid-size $grid-size $grid-size $grid-size;
+    grid-template-columns: $grid-size $grid-size $grid-size $grid-size $grid-size $grid-size;
+    align-items: center;
+    justify-items: center;
+    margin: auto;
+
+    #chat {
+      grid-row: 3 / 5;
+      grid-column: 3 / 5;
+    }
+    #shiritori {
+      grid-row: 2 / 4;
+      grid-column: 5 / 7;
+    }
+    #quiz {
+      grid-row: 1 / 3;
+      grid-column: 3 / 5;
+    }
+    #nigaoe {
+      grid-row: 2 / 4;
+      grid-column: 1 / 3;
+    }
+    #oekaki {
+      grid-row: 4 / 6;
+      grid-column: 1 / 3;
+    }
+    #CommingSoon1 {
+      grid-row: 5 / 7;
+      grid-column: 3 / 5;
+    }
+    #CommingSoon2 {
+      grid-row: 4 / 6;
+      grid-column: 5 / 7;
+    }
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #top{
+    width: auto;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: initial;
+
+    .topWidthCalc{
+      align-self: center;
+    }
+
+    #gameChoiceBtns{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 0 auto 6rem;
+    }
+  }
+}
+/* mobileここまで */

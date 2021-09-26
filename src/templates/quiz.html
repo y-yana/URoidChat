@@ -19,6 +19,7 @@
 
 <div id="quizArea">
   <div id="modelArea">
+    <canvas id="canvas"></canvas>
   </div>
   <div id="quizMainArea">
     <div id="questionShowArea">
@@ -45,7 +46,7 @@
         <div id="askQuestionArea">
           <p v-if="questionNumShow">第[[ questionNumShow ]]問</p>
           <p v-if="question">[[ question ]]</p>
-          <img v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg">
+          <img id="NationalFlag" v-show="NationalFlagCheck" :src="'../static/images/quiz/NationalFlag/'+NationalFlagImg">
           <div id="quizAnsNextBtnArea">
             <p v-show="quizAnsShowControl">正解：[[ answerText ]]</p>
             <img v-show="quizAnsShowControl" :src="'../static/images/quiz/'+answerImageSrc+'.png'">
@@ -64,7 +65,7 @@
           </div>
           <div id="quizReplayBtnArea">
             <button class="btnBase blueBtn" @click="replaySameQuiz">もう1度あそぶ</button>
-            <a :href="'https://twitter.com/share?url=URL&text='+info[selectQuizNum].quizNameJa+'クイズで10問中'+trueCounter+'問正解でした！&hashtags=URoidChat,技育展'"><img class="TwitterShareBtnCircle" src="../static/images/Twitter_Logo_WhiteOnBlue.png"></a>
+            <a :href="'https://twitter.com/share?url=https://uroidchat.herokuapp.com&text='+info[selectQuizNum].quizNameJa+'クイズで10問中'+trueCounter+'問正解でした！&hashtags=URoidChat,技育展'"><img class="TwitterShareBtnCircle" src="../static/images/Twitter_Logo_WhiteOnBlue.png"></a>
             <button class="btnBase whiteBtn" @click="replayAnotherQuiz">別の問題</button>
           </div>
         </div>

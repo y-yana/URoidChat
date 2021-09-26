@@ -13,7 +13,7 @@ WORKDIR /opt/src
 RUN curl https://cli-assets.heroku.com/install.sh | sh
 
 #RUN pip install -r requirements.txt
-RUN pip3 install --no-cache-dir -q -r requirements.txt
+RUN pip install --no-cache-dir -q -r requirements.txt
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libgl1-mesa-dev
 

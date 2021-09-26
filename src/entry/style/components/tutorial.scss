@@ -1,0 +1,72 @@
+#tutorial{
+  max-width: 36rem;
+  background-color: #ffffffe0;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  color: $logo-main-color;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: unset;
+
+  #tutorialTitleFlex{
+    width: fit-content;
+    margin: 0 auto;
+
+    #tutorialTitle{
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+    }
+  }
+
+  #tutorial_img{
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+    margin: 0 auto;
+
+    img{
+      width: calc(100vw*(2/13));
+      max-width: 15rem;
+      border: 1px solid $btn-blue-text;
+      border-radius: 3px;
+    }
+  }
+
+  p{
+    text-align: center;
+    line-height: 2rem;
+  }
+
+  #tutorialBtns{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    gap: 5rem;
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #tutorial{
+    max-width: 20rem;
+    padding: 2rem;
+    gap: 2rem;
+    margin: 0 0 6rem 0;
+
+    #tutorial_img{
+      img{
+        width: calc(100vw*(4/13));
+        max-width: 8rem;
+      }
+    }
+
+    #tutorialBtns{
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}
+/* mobileここまで */

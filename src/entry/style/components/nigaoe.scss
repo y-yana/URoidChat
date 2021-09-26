@@ -1,0 +1,116 @@
+#mainContent{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin: 2.5rem auto 0;
+
+  #modelArea{
+    width: fit-content;
+  }
+
+  #btn{
+    width: 28rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 6rem;
+
+    #img{
+      width: fit-content;
+      display: flex;
+      gap: 6rem;
+      margin: 0 auto;
+
+      label{
+        #fileChoiceBtn{
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        input{
+          display: none;
+        }
+      }
+
+      #Btn{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
+    #nigaoeResultBtns{
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 6rem;
+      margin: 0 auto;
+
+      #nigaoeDownloadBtn{
+        width: fit-content;
+        margin: 0 auto;
+        a{
+          width: fit-content;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+
+      #nigaoeReplayBtn{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
+    #file-preview{
+      max-width: 28rem;
+      border: 6px solid #ffffff;
+      margin: unset;
+    }
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #mainContent{
+    flex-direction: column-reverse;
+    gap: 2rem;
+    margin: 2.5rem auto 5rem;
+
+    #btn{
+      width: auto;
+      gap: 2.5rem;
+      margin-top: 5rem;
+
+        #img{
+          gap: 2rem;
+        }
+
+        #nigaoeResultBtns{
+          flex-direction: column-reverse;
+          gap: 1.5rem;
+
+          #nigaoeDownloadBtn{
+            width: fit-content;
+            margin: 0 auto;
+            a{
+              gap: 0.8rem;
+            }
+          }
+
+        #file-preview{
+          max-width: 20rem;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+/* mobileここまで */

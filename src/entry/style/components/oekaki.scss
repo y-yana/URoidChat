@@ -1,0 +1,262 @@
+/* eraser icon */
+#eraser{
+  display: flex;
+  align-items: center;
+  transform: rotate(-45deg);
+}
+
+#rubber{
+  display: block;
+  width: 0.35rem;
+  height: 0.8rem;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-radius: 50% 0  0 50%;
+}
+
+#cover{
+  display: block;
+  width: 1.1rem;
+  height: 0.2rem;
+  background-color: white;
+  border-style: solid;
+  border-color: $logo-main-color;
+  border-width: 0.35rem 1px 0.35rem 0;
+}
+
+#messageHeader{
+  width: fit-content;
+  margin-right: 3rem;
+  #selectRooms{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    color: $logo-main-color;
+  }
+}
+
+#oekakiMainArea{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 2rem auto 0;
+  #modelArea{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    canvas{
+      width: calc(100vw*(1/6));
+      height: calc(100vh*(5/8));
+      margin: unset;
+    }
+  }
+}
+
+#roomChoiceArea{
+  width: calc(100vw*(5/9));
+  margin: auto;
+  color: $text-main;
+  #join_message{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 1.5rem 0;
+    form{
+      width: calc(100vw*(1/8));
+      background-color: #ffffff;
+      padding: 1rem 1rem 0.5rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      hr{
+        margin: 0.5rem 0;
+        color: $border-gray;
+      }
+      div{
+        width: fit-content;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+#oekakiRoomArea{
+  width: calc(100vw*(5/8));
+  margin: auto;
+  color: $text-main;
+  #flexArea{
+    width: fit-content;
+    height: 27rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0 auto;
+    align-items: center;
+  }
+}
+#oekakiCanvas{
+  width: unset;
+  background-color: #ffffff;
+  border: 6px solid $text-main;
+  margin: unset;
+}
+#oekakiChatArea{
+  width: calc(100vw*(1/5));
+  height: 27rem;
+}
+#selectArea{
+  width: fit-content;
+  margin: 2rem auto 0;
+  #selectAreaContents{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 1rem 3rem;
+    ul{
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      li{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+      }
+    }
+    #button{
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      gap: 2.5rem;
+    }
+  }
+}
+
+#oekakiCanvasArea{
+  height: 420px;
+}
+#allChatLogs{
+  height: 23rem;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display:none;
+  }
+}
+#log{
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 0.3rem;
+}
+
+.oekakiChatMessage{
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.oekakiChatGetMessage{
+  margin: auto auto auto 0;
+}
+.oekakiChatSendMessage{
+  margin: auto 1.5rem auto auto;
+}
+
+.oekakiChatAndTime{
+  width: fit-content;
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+}
+.oekakiChatAndTimeGet{
+  flex-direction: row;
+}
+.oekakiChatAndTimeSend{
+  flex-direction: row-reverse;
+}
+
+.oekakiChatName{
+  width: fit-content;
+  font-size: 0.8rem;
+  margin: auto auto auto 0;
+}
+.oekakiChatTime{
+  font-size: 0.8rem;
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #oekakiMainArea{
+    flex-direction: column-reverse;
+    gap: 2rem;
+    margin: 0 auto;
+    #modelArea{
+      canvas{
+        width: calc(100vw*(5/7));
+        height: calc(100vh*(3/5));
+        margin: 0 auto 5rem;
+      }
+    }
+  }
+
+  #roomChoiceArea{
+    width: 20rem;
+    margin-top: 5rem;
+    #join_message{
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      form{
+        width: 8rem;
+      }
+    }
+  }
+
+  #oekakiCanvas{
+    width: 20rem;
+    margin: 5rem auto 2rem;
+  }
+  #oekakiCanvasArea{
+    height: unset;
+  }
+
+  #oekakiRoomArea{
+    width: calc(100vw*(7/8));
+    #flexArea{
+      height: unset;
+      flex-direction: column;
+      align-items: unset;
+    }
+  }
+  #oekakiChatArea{
+    display: none;
+  }
+  #selectArea{
+    margin: auto;
+    #selectAreaContents{
+      width: 20rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      ul{
+        gap: 1rem;
+      }
+      #button{
+        gap: 1.3rem;
+      }
+    }
+  }
+}
+/* mobileここまで */

@@ -2,46 +2,14 @@ import * as THREE from 'three'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
+import { DoubleSide } from 'three';
 
 window.addEventListener("DOMContentLoaded", () => {
-
-  // canvasサイズの制御
-  // 表示用のサイズを格納する変数
-  var newWidth
-  var newHeight
-
-  // 画面サイズを取得
   var getWidth = window.innerWidth;
-  var getHeight = window.innerHeight;
-
-  // レスポンシブ対応
-  if (getWidth <= 950) {
-    // 比率計算(mobile)
-    newWidth = Math.floor(getWidth * 0.8)
-    newHeight = Math.floor(getHeight * 0.8)
-    // #chatAreaの高さを設定
-    var chatArea = document.getElementById('chatArea')
-    chatArea!.style.height = '16rem'
-    var setting = document.getElementById('setting')
-    setting!.style.display = 'none'
-  } else {
-    // 比率計算(desktop)
-    newWidth = Math.floor(getWidth * (2 / 5))
-    newHeight = Math.floor(getHeight * (5 / 7))
-    // #chatAreaの高さを設定
-    var chatArea = document.getElementById('chatArea')
-    chatArea!.style.height = newHeight + 'px'
-  }
-
-  // canvas生成
-  var modelArea = document.getElementById('modelArea');
-  modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
   // canvasの取得
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
-  // 初期値
-  //var modelPass = '../static/base_model/base.vrm';
   // model_pathの取得
   var get_path = <HTMLInputElement>document.getElementById('modelChange');
   var modelPass = get_path.value;
@@ -74,14 +42,21 @@ window.addEventListener("DOMContentLoaded", () => {
     light.position.set(1, 1, 1).normalize()
     scene.add(light)
 
-    // グリッドを表示
-    //const gridHelper = new THREE.GridHelper(10, 10)
-    //scene.add(gridHelper)
-    //gridHelper.visible = true
-
-    // 座標軸を表示
-    //const axesHelper = new THREE.AxesHelper(0.5)
-    //scene.add(axesHelper)
+    //床の設置
+    const loader = new THREE.TextureLoader();
+    const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/sunahama2.png') })
+    var floorGeometry = new THREE.BoxGeometry(55, 0, 55);
+    var floorMesh = new THREE.Mesh(floorGeometry, floortexture);
+    floorMesh.position.set(0, 0, 0);
+    scene.add(floorMesh);
+      
+    //球の設置
+    const cubetexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/umi10.png'), side:DoubleSide })
+    var cubeGeometry = new THREE.SphereGeometry(30, 30, 30);
+    var cubeMesh = new THREE.Mesh(cubeGeometry, cubetexture);
+    cubeMesh.position.set(0, 0, 0);
+    scene.add(cubeMesh);
+    cubeMesh.rotation.set(0,-Math.PI/2, 0);
   }
 
   // レンダラーの設定
@@ -108,6 +83,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(0, 0.85, 0)
     controls.screenSpacePanning = true
+    controls.minDistance = 1
+    controls.maxDistance = 28
+    controls.maxPolarAngle = Math.PI/2
     controls.update()
   }
 
