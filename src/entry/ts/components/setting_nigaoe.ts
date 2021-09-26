@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
-import { DoubleSide } from 'three';
+//import { DoubleSide } from 'three';
 
 window.addEventListener("DOMContentLoaded", () => {
   // canvasの取得
@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
       light.position.set(1, 1, 1).normalize()
       scene.add(light)
 
+      /*
       //床の設置
       const loader = new THREE.TextureLoader();
       const floortexture = new THREE.MeshBasicMaterial({ map: loader.load('../../static/images/top/sunahama2.png') })
@@ -38,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
       var cubeMesh = new THREE.Mesh(cubeGeometry, cubetexture);
       cubeMesh.position.set(0, 0, 0);
       scene.add(cubeMesh);
-      cubeMesh.rotation.set(0,-Math.PI/2, 0);
+      cubeMesh.rotation.set(0,-Math.PI/2, 0);*/
     }
 
   // レンダラーの設定

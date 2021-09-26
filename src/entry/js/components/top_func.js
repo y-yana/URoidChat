@@ -42,18 +42,18 @@ const shiritori = new Vue({
             var tutorial = new Audio("./static/sound/top_voice/top_tutorial_nigaoe.mp3");
             tutorial.play();
             break;
-          case 4:
+          /*case 4:
             top_choice.play();
             var tutorial = new Audio("./static/sound/top_voice/top_tutorial_oekaki.mp3");
             tutorial.play();
-            break;
+            break;*/
           default:
             cancel.play();
             console.log('Comming soon...');
         }
       }
       this.choiceGameNum = value
-      if (value < 5) {
+      if (value < 4) {
         this.gameChoice = false
         this.tutorial = true
         this.modelMessage = this.info[this.choiceGameNum].dialogue

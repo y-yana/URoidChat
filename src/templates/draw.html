@@ -136,7 +136,7 @@
 
             //チャット送信
             $('form#castmessage').submit(function (event) {
-                socket.emit('broadcast_event', { room: $('#roomNameInput').val(), data: $('#msg_data').val(),session_id:session_token});
+                socket.emit('broadcast_event', {data: $('#msg_data').val(),session_id:session_token});
                 $('#msg_data').val('')
                 return false;
             });
@@ -225,7 +225,7 @@
                 });
 
                 $('#clear').click(function (e) {
-                    socket.emit('clear_room_board', { room: $('#roomNameInput').val() });
+                    socket.emit('clear_room_board');
                     e.preventDefault();
                     context.clearRect(0, 0, $('#oekakiCanvas').width(), $('#oekakiCanvas').height());
                 });
@@ -265,7 +265,7 @@
                     context.closePath();
 
                     // サーバへメッセージ送信
-                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#roomNameInput').val(), mode: context.globalCompositeOperation });
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, mode: context.globalCompositeOperation });
                     fromX = toX;
                     fromY = toY;
                 }
@@ -280,7 +280,7 @@
                     context.closePath();
 
                     // サーバへメッセージ送信
-                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, room: $('#roomNameInput').val(), mode: context.globalCompositeOperation });
+                    socket.emit('all_broadcast_event', { fx: fromX, fy: fromY, tx: toX, ty: toY, color: context.strokeStyle, lineWidth: context.lineWidth, mode: context.globalCompositeOperation });
                     fromX = toX;
                     fromY = toY;
                 }
