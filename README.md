@@ -74,7 +74,7 @@ https://docs.google.com/presentation/d/1bwkwZFQ5rkDQIxiZwiaiJ5d8rrG5uynw5kJxL4zB
 
 ## &#x1f60e; 制作メンバー
 - Teamうどん
-  - Yuuna Yanagida（フロントエンド担当）
+  - Yuuna Yanagida（デザイン・フロントエンド担当）
   - Leon Kunishi（インフラ・3Dモデル担当）
   - Ryunosuke Ikeda（バックエンド担当）
 - Special thanks！
