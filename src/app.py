@@ -18,8 +18,8 @@ from python.image_transform import image_transform
 from python.shiritori import shiritori
 from python.ranking_quiz import ranking
 
-from gevent import monkey
-monkey.patch_all()
+#from gevent import monkey
+#monkey.patch_all()
 
 
 app = Flask(__name__)
@@ -32,8 +32,9 @@ async_mode = None
 Payload.max_decode_packets = 50
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, async_mode=async_mode)
+
 #socketio = SocketIO(app)
-socketio.init_app(app, cors_allowed_origins="*")
+#socketio.init_app(app, cors_allowed_origins="*")
 #socketio = SocketIO(app, message_queue='redis://')
 
 thread = None
