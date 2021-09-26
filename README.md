@@ -56,6 +56,9 @@ https://docs.google.com/presentation/d/1bwkwZFQ5rkDQIxiZwiaiJ5d8rrG5uynw5kJxL4zB
     - Ajaxを用いてページ遷移なしでデータのやり取りをするようにした
     - Vue.jsを用いて機能ごとのSPAにすることでページ遷移の回数を必要最低限にした
   - 画像やソースコードの最適化(圧縮・分割など)をした
+- レスポンシブ対応をした
+- OGPやfaviconなどもこだわった
+- 消しゴムのアイコンを自作した
 
 ## &#x1f4bb; 使用技術
 - HTML
