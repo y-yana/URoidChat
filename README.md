@@ -13,7 +13,7 @@ https://uroidchat.herokuapp.com/<br>
 ※ Chrome推奨
   
 ## &#x1f4c4; 発表資料URL
-https://docs.google.com/presentation/d/1bwkwZFQ5rkDQIxiZwiaiJ5d8rrG5uynw5kJxL4zBWhU/edit#slide=id.ge110286eb2_1_53<br>
+https://docs.google.com/presentation/d/1bwkwZFQ5rkDQIxiZwiaiJ5d8rrG5uynw5kJxL4zBWhU/edit#slide=id.ge110286eb2_3_0<br>
 （動画はぜひ音ありでご覧ください…！&#x1f609;&#x2728;）
 
 ## &#x1f973; 遊び方
